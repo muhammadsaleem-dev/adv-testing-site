@@ -179,6 +179,7 @@
     
     <div class="page-content concept-content">
 
+<!-- QUESTION 1 -->
 <details class="drill-item" open>
   <summary>
     <span class="drill-tag">🏛️ Official Q</span>
@@ -186,6 +187,8 @@
   </summary>
   <div class="drill-a">
     <p><em>Source: AdvTest_05_Cover_Mock_full.pdf</em></p>
+    
+    <p>A colleague analyzes the following function:</p>
     <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">def transfer(amount: float, target_exists: bool, daily_limit: float) -> str:
     if amount <= 0:
         return "invalid"
@@ -194,16 +197,28 @@
     if amount > daily_limit:
         return "limit_exceeded"
     return "approved"</div>
-<ul style="list-style-type: none; padding-left: 0;">
-  <li style="margin-bottom: 0.5rem;"><strong>(a)</strong> How many test cases are needed for 100% statement coverage?</li>
-  <li style="margin-bottom: 0.5rem;"><strong>(b)</strong> How many test cases are needed for 100% branch coverage?</li>
-  <li><strong>(c)</strong> A colleague achieves 100% statement coverage but misses the <span style="color: #d9534f; font-weight: 600;">"limit_exceeded"</span> path. Explain why this is possible and what it reveals about statement coverage as a sole criterion.</li>
-</ul>
+    
+    <p><em>Perform the following tasks:</em></p>
+    <ul style="list-style-type: circle; padding-left: 1.5rem; margin-bottom: 1rem;">
+      <li><span style="color: #d9534f; font-weight: 600;">(a)</span> How many test cases are needed for 100% statement coverage?</li>
+      <li><span style="color: #d9534f; font-weight: 600;">(b)</span> How many test cases are needed for 100% branch coverage?</li>
+      <li><span style="color: #d9534f; font-weight: 600;">(c)</span> A colleague achieves 100% statement coverage but misses the <span style="color: #d9534f; font-weight: 600;">"limit_exceeded"</span> path. Explain why this is possible and what it reveals about statement coverage as a sole criterion.</li>
+    </ul>
+
     <hr>
-    <p><strong style="color: #d9534f;">Answer not provided by professor.</strong></p>
-    <p><em>(We will create the answer for this later!)</em></p>
+    <p><strong>Suggested Answer:</strong></p>
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Test cases for 100% statement coverage <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
+    <p><strong>4 test cases.</strong> To execute every statement in this function, we must trigger every <span style="color: #d9534f; font-weight: 600;">return</span> statement. Because they are mutually exclusive branches, this requires exactly 4 test cases.</p>
+    
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(b)</span> Test cases for 100% branch coverage <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
+    <p><strong>4 test cases.</strong> Because the function consists purely of guard clauses that exit early, traversing all <span style="color: #d9534f; font-weight: 600;">True</span> branches and the final <span style="color: #d9534f; font-weight: 600;">False</span> fall-through path automatically covers all branches.</p>
+    
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(c)</span> Missing the path despite 100% statement coverage <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
+    <p><em>(Trick question / logical nuance)</em>: In this <strong>specific</strong> implementation, it is mathematically impossible to achieve 100% statement coverage and miss the <span style="color: #d9534f; font-weight: 600;">"limit_exceeded"</span> path, because <span style="color: #d9534f; font-weight: 600;">return "limit_exceeded"</span> is itself a statement. If the colleague missed it, they do not actually have 100% statement coverage. <br><br>However, if the code were written differently <span style="color: #d9534f; font-weight: 600;">(e.g., using a single status variable updated by multiple if statements without early returns)</span>, one could hit all statements while skipping a specific logical branch. This reveals that statement coverage is a weak metric because it only guarantees code was <em>executed</em>, not that all logical control-flow permutations were tested.</p>
   </div>
 </details>
+
+<!-- QUESTION 2 -->
 <details class="drill-item" open>
   <summary>
     <span class="drill-tag">🏛️ Official Q</span>
@@ -211,19 +226,45 @@
   </summary>
   <div class="drill-a">
     <p><em>Source: AdvTest_05_Cover_Mock_full.pdf</em></p>
+    
     <p>FinCon applies this rule:</p>
-<div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0;">if is_premium and (balance > 10000 or overdraft_enabled):<br>&nbsp;&nbsp;&nbsp;&nbsp;apply_bonus_rate()</div>
-<p>There are three conditions: <span style="color: #d9534f; font-weight: 600;">is_premium (P)</span>, <span style="color: #d9534f; font-weight: 600;">balance > 10000 (B)</span>, <span style="color: #d9534f; font-weight: 600;">overdraft_enabled (O)</span>.</p>
-<ul style="list-style-type: none; padding-left: 0; margin-top: 1rem;">
-  <li style="margin-bottom: 0.5rem;"><strong>(a)</strong> How many test cases does MC/DC require at minimum?</li>
-  <li style="margin-bottom: 0.5rem;"><strong>(b)</strong> Construct a minimal MC/DC test suite. For each test case, show which condition's independence it demonstrates.</li>
-  <li><strong>(c)</strong> Explain why condition coverage alone would not be sufficient here.</li>
-</ul>
+    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">if is_premium and (balance > 10000 or overdraft_enabled):
+    apply_bonus_rate()</div>
+    
+    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+      <li>There are three conditions: <span style="color: #d9534f; font-weight: 600;">is_premium (P)</span>, <span style="color: #d9534f; font-weight: 600;">balance > 10000 (B)</span>, <span style="color: #d9534f; font-weight: 600;">overdraft_enabled (O)</span>.</li>
+    </ul>
+    
+    <p><em>Perform the following tasks:</em></p>
+    <ul style="list-style-type: circle; padding-left: 1.5rem; margin-bottom: 1rem;">
+      <li><span style="color: #d9534f; font-weight: 600;">(a)</span> How many test cases does MC/DC require at minimum?</li>
+      <li><span style="color: #d9534f; font-weight: 600;">(b)</span> Construct a minimal MC/DC test suite. For each test case, show which condition's independence it demonstrates.</li>
+      <li><span style="color: #d9534f; font-weight: 600;">(c)</span> Explain why condition coverage alone would not be sufficient here.</li>
+    </ul>
+
     <hr>
-    <p><strong style="color: #d9534f;">Answer not provided by professor.</strong></p>
-    <p><em>(We will create the answer for this later!)</em></p>
+    <p><strong>Suggested Answer:</strong></p>
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Minimum MC/DC test cases <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
+    <p>For N independent conditions, Modified Condition/Decision Coverage <span style="color: #d9534f; font-weight: 600;">(MC/DC)</span> requires <strong>N + 1</strong> test cases. Here N=3, so <strong>4 test cases</strong> are required at minimum.</p>
+    
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(b)</span> Minimal MC/DC suite <span style="color: #d9534f; font-weight: 600;">(2 P)</span>:</strong></p>
+    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">TC   P       B       O       | Outcome
+1    True    True    False   | True
+2    False   True    False   | False
+3    True    False   False   | False
+4    True    False   True    | True</div>
+    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+      <li><strong>Independence of P:</strong> Pair <strong>TC 1 and TC 2</strong> <span style="color: #d9534f; font-weight: 600;">(P changes, B and O held constant, outcome changes)</span>.</li>
+      <li><strong>Independence of B:</strong> Pair <strong>TC 1 and TC 3</strong> <span style="color: #d9534f; font-weight: 600;">(B changes, P and O held constant, outcome changes)</span>.</li>
+      <li><strong>Independence of O:</strong> Pair <strong>TC 3 and TC 4</strong> <span style="color: #d9534f; font-weight: 600;">(O changes, P and B held constant, outcome changes)</span>.</li>
+    </ul>
+    
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(c)</span> Insufficiency of Condition Coverage <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
+    <p>Condition coverage merely requires that each individual condition <span style="color: #d9534f; font-weight: 600;">(P, B, O)</span> evaluates to both True and False at least once across the suite. It does <em>not</em> guarantee that the condition actually affects the final decision, nor does it guarantee that the overall decision itself takes on both True and False outcomes.</p>
   </div>
 </details>
+
+<!-- QUESTION 3 -->
 <details class="drill-item" open>
   <summary>
     <span class="drill-tag">🏛️ Official Q</span>
@@ -231,6 +272,8 @@
   </summary>
   <div class="drill-a">
     <p><em>Source: AdvTest_05_Cover_Mock_full.pdf</em></p>
+    
+    <p>You are given the following function:</p>
     <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">def send_transfer(amount: int, recipient_id: str, db, notifier) -> str:
     recipient = db.find_account(recipient_id)
     if recipient is None:
@@ -239,17 +282,55 @@
     db.credit_recipient(recipient, amount)
     notifier.send_email(recipient.email, amount)
     return "transfer_complete"</div>
-<ul style="list-style-type: none; padding-left: 0;">
-  <li style="margin-bottom: 0.5rem;"><strong>(a)</strong> Write a unittest test case using <span style="color: #d9534f; font-weight: 600;">MagicMock</span> that verifies the happy path: both <span style="color: #d9534f; font-weight: 600;">debit_sender</span> and <span style="color: #d9534f; font-weight: 600;">credit_recipient</span> are called, and <span style="color: #d9534f; font-weight: 600;">notifier.send_email</span> is called with the correct recipient email.</li>
-  <li><strong>(b)</strong> Write a test case that verifies that when <span style="color: #d9534f; font-weight: 600;">db.find_account</span> returns <span style="color: #d9534f; font-weight: 600;">None</span>, neither <span style="color: #d9534f; font-weight: 600;">debit_sender</span> nor <span style="color: #d9534f; font-weight: 600;">credit_recipient</span> is called.</li>
-</ul>
+    
+    <p><em>Perform the following tasks:</em></p>
+    <ul style="list-style-type: circle; padding-left: 1.5rem; margin-bottom: 1rem;">
+      <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Write a unittest test case using <span style="color: #d9534f; font-weight: 600;">MagicMock</span> that verifies the happy path: both <span style="color: #d9534f; font-weight: 600;">debit_sender</span> and <span style="color: #d9534f; font-weight: 600;">credit_recipient</span> are called, and <span style="color: #d9534f; font-weight: 600;">notifier.send_email</span> is called with the correct recipient email.</li>
+      <li><span style="color: #d9534f; font-weight: 600;">(b)</span> Write a test case that verifies that when <span style="color: #d9534f; font-weight: 600;">db.find_account</span> returns <span style="color: #d9534f; font-weight: 600;">None</span>, neither <span style="color: #d9534f; font-weight: 600;">debit_sender</span> nor <span style="color: #d9534f; font-weight: 600;">credit_recipient</span> is called.</li>
+    </ul>
+
     <hr>
-    <p><strong style="color: #d9534f;">Answer not provided by professor.</strong></p>
-    <p><em>(We will create the answer for this later!)</em></p>
+    <p><strong>Suggested Answer:</strong></p>
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Happy Path Mock Test <span style="color: #d9534f; font-weight: 600;">(2 P)</span>:</strong></p>
+    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">from unittest.mock import MagicMock
+
+def test_send_transfer_happy_path():
+    # 1. Setup mocks
+    db = MagicMock()
+    notifier = MagicMock()
+    
+    mock_recipient = MagicMock()
+    mock_recipient.email = "test@example.com"
+    db.find_account.return_value = mock_recipient
+    
+    # 2. Execute
+    result = send_transfer(500, "rec_123", db, notifier)
+    
+    # 3. Assert outputs and interactions
+    assert result == "transfer_complete"
+    db.debit_sender.assert_called_once_with(500)
+    db.credit_recipient.assert_called_once_with(mock_recipient, 500)
+    notifier.send_email.assert_called_once_with("test@example.com", 500)</div>
+    
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(b)</span> Negative Path Mock Test <span style="color: #d9534f; font-weight: 600;">(2 P)</span>:</strong></p>
+    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">def test_send_transfer_recipient_not_found():
+    # 1. Setup mocks
+    db = MagicMock()
+    notifier = MagicMock()
+    db.find_account.return_value = None
+    
+    # 2. Execute
+    result = send_transfer(500, "invalid_id", db, notifier)
+    
+    # 3. Assert outputs and non-interactions
+    assert result == "recipient_not_found"
+    db.debit_sender.assert_not_called()
+    db.credit_recipient.assert_not_called()
+    notifier.send_email.assert_not_called()</div>
   </div>
 </details>
-    </div>
-    
+
+</div>
     <footer class="page-footer">
       <span><a href="ch4.html">← Back to Chapter</a></span>
     </footer>
