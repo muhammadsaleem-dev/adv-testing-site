@@ -179,6 +179,7 @@
     
     <div class="page-content concept-content">
 
+<!-- QUESTION 1 -->
 <details class="drill-item" open>
   <summary>
     <span class="drill-tag">🏛️ Official Q</span>
@@ -186,21 +187,49 @@
   </summary>
   <div class="drill-a">
     <p><em>Source: Block B — Pairwise  CEG.pdf</em></p>
+    
     <p>A FinCon report export has three parameters:</p>
-<div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">Parameter            Values
+    
+    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">Parameter            Values
 format               PDF / CSV / XML
 date_range           last 7 days / last 30 days / custom
 include_cancelled    yes / no</div>
-<p>Full combination would require 18 test cases.</p>
-<ul style="list-style-type: none; padding-left: 0; margin-top: 1rem;">
-  <li style="margin-bottom: 0.5rem;"><strong>(a)</strong> Explain what pairwise testing guarantees that the full combination also guarantees &mdash; and what it does not guarantee.</li>
-  <li><strong>(b)</strong> Construct a pairwise test suite for these three parameters. How many test cases does your suite contain? Verify that at least two specific pairs are covered.</li>
-</ul>
+    
+    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+      <li>Full combination would require 18 test cases.</li>
+    </ul>
+    
+    <p><em>Perform the following tasks:</em></p>
+    <ul style="list-style-type: circle; padding-left: 1.5rem; margin-bottom: 1rem;">
+      <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Explain what pairwise testing guarantees that the full combination also guarantees &mdash; and what it does not guarantee.</li>
+      <li><span style="color: #d9534f; font-weight: 600;">(b)</span> Construct a pairwise test suite for these three parameters. How many test cases does your suite contain? Verify that at least two specific pairs are covered.</li>
+    </ul>
+
     <hr>
-    <p><strong style="color: #d9534f;">Answer not provided by professor.</strong></p>
-    <p><em>(We will create the answer for this later!)</em></p>
+    <p><strong>Suggested Answer:</strong></p>
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Guarantees of Pairwise Testing <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
+    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+      <li><strong>What it guarantees:</strong> Pairwise testing guarantees that every possible combination of any two parameters <span style="color: #d9534f; font-weight: 600;">(e.g., every format with every date_range)</span> is covered by at least one test case.</li>
+      <li><strong>What it does not guarantee:</strong> It does not guarantee coverage of 3-way or higher-order interactions <span style="color: #d9534f; font-weight: 600;">(e.g., a specific bug that only occurs when PDF + custom + yes are used together might be missed)</span>.</li>
+    </ul>
+    
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(b)</span> Pairwise Test Suite <span style="color: #d9534f; font-weight: 600;">(3 P)</span>:</strong></p>
+    <p>The largest product of two parameters is 3 &times; 3 = 9 <span style="color: #d9534f; font-weight: 600;">(format &times; date_range)</span>, so a minimum of 9 test cases are required. A valid orthogonal array:</p>
+    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">TC  Format  Date_Range  Include_Cancelled
+1   PDF     7 days      yes
+2   PDF     30 days     no
+3   PDF     custom      yes
+4   CSV     7 days      no
+5   CSV     30 days     yes
+6   CSV     custom      no
+7   XML     7 days      yes
+8   XML     30 days     no
+9   XML     custom      yes</div>
+    <p>Verification of two specific pairs <span style="color: #d9534f; font-weight: 600;">(e.g., CSV + yes, XML + 30 days)</span>: CSV + yes is covered in TC 5. XML + 30 days is covered in TC 8.</p>
   </div>
 </details>
+
+<!-- QUESTION 2 -->
 <details class="drill-item" open>
   <summary>
     <span class="drill-tag">🏛️ Official Q</span>
@@ -208,22 +237,44 @@ include_cancelled    yes / no</div>
   </summary>
   <div class="drill-a">
     <p><em>Source: Block B — Pairwise  CEG.pdf</em></p>
+    
     <p>FinCon applies the following rule for overdraft protection:</p>
-<ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
-  <li>If the account has overdraft protection enabled and the overdraft limit is not exceeded, a payment below the account balance is <span style="color: #d9534f; font-weight: 600;">approved</span>.</li>
-  <li>If the account has no overdraft protection and the balance is insufficient, the payment is rejected with <span style="color: #d9534f; font-weight: 600;">INSUFFICIENT_FUNDS</span>.</li>
-  <li>If the overdraft limit would be exceeded, reject with <span style="color: #d9534f; font-weight: 600;">OVERDRAFT_LIMIT_EXCEEDED</span>.</li>
-</ul>
-<ul style="list-style-type: none; padding-left: 0;">
-  <li style="margin-bottom: 0.5rem;"><strong>(a)</strong> Identify all causes and effects.</li>
-  <li style="margin-bottom: 0.5rem;"><strong>(b)</strong> Build a decision table covering all valid combinations.</li>
-  <li><strong>(c)</strong> State how many test cases result and explain whether any combinations are impossible.</li>
-</ul>
+    
+    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+      <li>If the account has overdraft protection enabled and the overdraft limit is not exceeded, a payment below the account balance is <span style="color: #d9534f; font-weight: 600;">approved</span>.</li>
+      <li>If the account has no overdraft protection and the balance is insufficient, the payment is rejected with <span style="color: #d9534f; font-weight: 600;">INSUFFICIENT_FUNDS</span>.</li>
+      <li>If the overdraft limit would be exceeded, reject with <span style="color: #d9534f; font-weight: 600;">OVERDRAFT_LIMIT_EXCEEDED</span>.</li>
+    </ul>
+    
+    <p><em>Perform the following tasks:</em></p>
+    <ul style="list-style-type: circle; padding-left: 1.5rem; margin-bottom: 1rem;">
+      <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Identify all causes and effects.</li>
+      <li><span style="color: #d9534f; font-weight: 600;">(b)</span> Build a decision table covering all valid combinations.</li>
+      <li><span style="color: #d9534f; font-weight: 600;">(c)</span> State how many test cases result and explain whether any combinations are impossible.</li>
+    </ul>
+
     <hr>
-    <p><strong style="color: #d9534f;">Answer not provided by professor.</strong></p>
-    <p><em>(We will create the answer for this later!)</em></p>
+    <p><strong>Suggested Answer:</strong></p>
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Causes and Effects <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
+    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+      <li><strong>Causes:</strong> C1: Overdraft protection enabled, C2: Payment below account balance <span style="color: #d9534f; font-weight: 600;">(sufficient funds)</span>, C3: Overdraft limit exceeded.</li>
+      <li><strong>Effects:</strong> E1: Approved, E2: Rejected with INSUFFICIENT_FUNDS, E3: Rejected with OVERDRAFT_LIMIT_EXCEEDED.</li>
+    </ul>
+    
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(b)</span> Decision Table <span style="color: #d9534f; font-weight: 600;">(2 P)</span>:</strong></p>
+    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">Rule  C1(OD)  C2(BalOK)  C3(LimitExc) | Expected Effect
+R1    True    True       N/A          | Approved (E1)
+R2    True    False      False        | Approved (E1)
+R3    True    False      True         | OVERDRAFT_LIMIT_EXCEEDED (E3)
+R4    False   True       N/A          | Approved (E1)
+R5    False   False      N/A          | INSUFFICIENT_FUNDS (E2)</div>
+    
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(c)</span> Test Cases and Impossible Combinations <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
+    <p>While 3 boolean causes yield 2^3 = 8 theoretical combinations, several are impossible or redundant. If C2 is True <span style="color: #d9534f; font-weight: 600;">(sufficient funds)</span>, the overdraft limit <span style="color: #d9534f; font-weight: 600;">(C3)</span> cannot mathematically be exceeded, rendering those combinations impossible/N/A. Likewise, if OD is False <span style="color: #d9534f; font-weight: 600;">(C1)</span>, the overdraft limit <span style="color: #d9534f; font-weight: 600;">(C3)</span> does not exist. Collapsing these yields <strong>5 valid test cases</strong>.</p>
   </div>
 </details>
+
+<!-- QUESTION 3 -->
 <details class="drill-item" open>
   <summary>
     <span class="drill-tag">🏛️ Official Q</span>
@@ -231,8 +282,10 @@ include_cancelled    yes / no</div>
   </summary>
   <div class="drill-a">
     <p><em>Source: Block B — Pairwise  CEG.pdf</em></p>
+    
     <p>You give an LLM the FinCon debit handling specification from the lecture and receive these test cases:</p>
-<div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">>>> debit(account_active=True, balance=1000, amount=500)
+    
+    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">>>> debit(account_active=True, balance=1000, amount=500)
 'approved'
 >>> debit(account_active=False, balance=1000, amount=500)
 'INSUFFICIENT_FUNDS'
@@ -240,18 +293,40 @@ include_cancelled    yes / no</div>
 'INSUFFICIENT_FUNDS'
 >>> debit(account_active=True, balance=0, amount=1)
 'approved'</div>
-<ul style="list-style-type: none; padding-left: 0;">
-  <li style="margin-bottom: 0.5rem;"><strong>(a)</strong> Identify two factual errors in the AI output.</li>
-  <li style="margin-bottom: 0.5rem;"><strong>(b)</strong> Identify one important combination missing from this test suite.</li>
-  <li><strong>(c)</strong> Rewrite the test suite with corrections and additions.</li>
-</ul>
+    
+    <p><em>Perform the following tasks:</em></p>
+    <ul style="list-style-type: circle; padding-left: 1.5rem; margin-bottom: 1rem;">
+      <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Identify two factual errors in the AI output.</li>
+      <li><span style="color: #d9534f; font-weight: 600;">(b)</span> Identify one important combination missing from this test suite.</li>
+      <li><span style="color: #d9534f; font-weight: 600;">(c)</span> Rewrite the test suite with corrections and additions.</li>
+    </ul>
+
     <hr>
-    <p><strong style="color: #d9534f;">Answer not provided by professor.</strong></p>
-    <p><em>(We will create the answer for this later!)</em></p>
+    <p><strong>Suggested Answer:</strong></p>
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Two factual errors <span style="color: #d9534f; font-weight: 600;">(2 P)</span>:</strong></p>
+    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+      <li><strong>Error 1:</strong> In the second test case, an inactive account <span style="color: #d9534f; font-weight: 600;">(account_active=False)</span> with plenty of funds <span style="color: #d9534f; font-weight: 600;">(1000)</span> returns <span style="color: #d9534f; font-weight: 600;">'INSUFFICIENT_FUNDS'</span>. This is a hallucinated error code; it should return a state-specific error like <span style="color: #d9534f; font-weight: 600;">'ACCOUNT_INACTIVE'</span>.</li>
+      <li><strong>Error 2:</strong> In the fourth test case, an account with a balance of 0 trying to debit 1 returns <span style="color: #d9534f; font-weight: 600;">'approved'</span>. This is completely false and would result in an unauthorized negative balance.</li>
+    </ul>
+    
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(b)</span> Missing combination <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
+    <p>The suite misses the combination of multiple failure conditions <span style="color: #d9534f; font-weight: 600;">(e.g., account_active=False AND insufficient balance)</span> to verify error priority, as well as missing boundary values <span style="color: #d9534f; font-weight: 600;">(debiting the exact balance amount, e.g., balance=500, amount=500)</span>.</p>
+    
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(c)</span> Rewritten test suite <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
+    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">>>> debit(account_active=True, balance=1000, amount=500)
+'approved'
+>>> debit(account_active=False, balance=1000, amount=500)
+'ACCOUNT_INACTIVE'
+>>> debit(account_active=True, balance=100, amount=500)
+'INSUFFICIENT_FUNDS'
+>>> debit(account_active=True, balance=0, amount=1)
+'INSUFFICIENT_FUNDS'
+>>> debit(account_active=True, balance=500, amount=500)
+'approved'</div>
   </div>
 </details>
-    </div>
-    
+
+</div>
     <footer class="page-footer">
       <span><a href="ch3.html">← Back to Chapter</a></span>
     </footer>
