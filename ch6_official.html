@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>1. Fundamentals & Terms | ADV Testing Methods</title>
+<title>Official Questions | 6. Test Process & MTS</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c7a73'/%3E%3Ccircle cx='10' cy='11' r='3' fill='%23fff'/%3E%3Ccircle cx='22' cy='9' r='2.4' fill='%23fff'/%3E%3Ccircle cx='22' cy='23' r='3' fill='%23fff'/%3E%3Cpath d='M12.5 12.5L19.5 10M12 13.5L20 21' stroke='%23fff' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,7 +66,7 @@
         <summary class="nav-panel-label" style="cursor: pointer;">Process & Risk</summary>
         <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
           <a href="ch6.html">6. Test Process & MTS</a>
-          <a href="ch6_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch6_official.html" class="active" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
           <a href="ch7.html">7. Risk & Model-Based</a>
           <a href="ch7_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
         </div>
@@ -142,7 +142,7 @@
         <summary class="sidebar-label" style="cursor: pointer;">Process & Risk</summary>
         <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
           <a href="ch6.html">6. Test Process & MTS</a>
-          <a href="ch6_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch6_official.html" class="active" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
           <a href="ch7.html">7. Risk & Model-Based</a>
           <a href="ch7_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
         </div>
@@ -181,101 +181,71 @@
   <div class="page">
     <div class="masthead">
       <div>
-        <div class="eyebrow">Advanced Testing Methods · Exam Guide</div>
-        <h1 class="title">1. Fundamentals & Terms</h1>
+        <div class="eyebrow">6. Test Process & MTS</div>
+        <h1 class="title">Official Questions</h1>
       </div>
-      <div class="masthead-meta">Key concepts and techniques</div>
+      <div class="masthead-meta"></div>
     </div>
     
-    <div class="page-content concept-content">
-      
-<h2>Core idea: Testing reduces uncertainty by comparing actual behaviour with expected behaviour.</h2>
-
-<h3>What makes a test case complete?</h3>
-<ul>
-    <li><strong>Preconditions:</strong> What must already be true before execution.</li>
-    <li><strong>Input and action:</strong> Exact reproducible values and steps.</li>
-    <li><strong>Expected result (oracle):</strong> What should happen if the system is correct.</li>
-    <li><strong>Postconditions:</strong> The state that should exist after the test, when relevant.</li>
-</ul>
-
-<h3>Triangle lesson</h3>
-<p>Even a tiny triangle classifier needs valid scalene, equilateral and isosceles cases; all isosceles permutations; zero and negative values; degenerate triangles; non-triangles; wrong input types; wrong number of values; and expected results. Small programs can still have a large test space.</p>
-
-<h3>Essential ISTQB vocabulary</h3>
-<table>
-    <thead>
-        <tr><th>Term</th><th>Easy meaning</th><th>Example</th></tr>
-    </thead>
-    <tbody>
-        <tr><td><strong>Error / mistake</strong></td><td>A human action that produces an incorrect result.</td><td>A developer copies a rounding call twice.</td></tr>
-        <tr><td><strong>Defect / bug / fault</strong></td><td>The flaw left in the code or document.</td><td>The duplicate rounding call remains in the program.</td></tr>
-        <tr><td><strong>Failure</strong></td><td>Observable wrong behaviour during execution.</td><td>Displayed balance is EUR 10 too high.</td></tr>
-        <tr><td><strong>Test case</strong></td><td>Inputs, preconditions, expected result and postconditions for an objective.</td><td>amount=0 should raise ValueError.</td></tr>
-        <tr><td><strong>Test object / SUT</strong></td><td>The component or system being tested.</td><td>FinCon transfer service.</td></tr>
-        <tr><td><strong>Pass</strong></td><td>Actual result equals expected result.</td><td>The invalid amount is rejected as expected.</td></tr>
-        <tr><td><strong>Fail</strong></td><td>Actual result differs from expected result.</td><td>The invalid amount is approved.</td></tr>
-        <tr><td><strong>Root cause</strong></td><td>Underlying source whose removal prevents similar defects.</td><td>Copy-paste practice without review.</td></tr>
-        <tr><td><strong>Debugging</strong></td><td>Finding, analysing and removing causes of failures.</td><td>Developer locates and fixes the duplicate call.</td></tr>
-        <tr><td><strong>Error masking</strong></td><td>Two error states compensate, so no external failure is visible.</td><td>One wrong addition and one wrong subtraction cancel out.</td></tr>
-    </tbody>
-</table>
-
-<h3>AI as a testing tool</h3>
-<table>
-    <thead>
-        <tr><th>Useful for</th><th>Main risk</th><th>Human responsibility</th></tr>
-    </thead>
-    <tbody>
-        <tr><td>Draft test cases</td><td>Happy-path bias and missing edge cases</td><td>Map every case to a class, boundary, requirement or risk</td></tr>
-        <tr><td>Test-code skeletons</td><td>Syntactically correct but weak assertions</td><td>Verify the oracle independently</td></tr>
-        <tr><td>Synthetic test data</td><td>Unrealistic or duplicated data</td><td>Check domain validity and diversity</td></tr>
-        <tr><td>Defect summaries</td><td>Loss of nuance or wrong classification</td><td>Review evidence and severity</td></tr>
-        <tr><td>Static-review assistance</td><td>Invented issues or missed logic</td><td>Use a constrained checklist and inspect the code</td></tr>
-    </tbody>
-</table>
-
-<div class="drill-item">
-  <strong>Non-negotiable AI rule:</strong> Expected results must come from the specification, not from the LLM and not from the implementation. Otherwise the test may simply confirm the same wrong assumption.
+    
+<div class="alert alert-info" style="margin-bottom: 1.5rem;">
+  These are the <strong>Official Practice Questions</strong> provided by the Professor in the slide deck for Chapter 6.
 </div>
 
-<hr>
-<h3>Worked exam questions</h3>
-
-<details class="drill-item">
+<details class="drill-item" open>
   <summary>
-    <span class="drill-tag">✏️ Q1 (3 marks) <span class="source-link" data-source="\'CH01_AdvTest_02_SelfTest.pdf, Page 62\'" style="font-size: 0.8em; color: #007bff; text-decoration: underline; cursor: pointer;">(Source)</span></span>
-    <span class="drill-q">A developer accidentally applies a rounding function twice. The screen shows a wrong balance. Name the three stages.</span>
+    <span class="drill-tag">🏛️ Official Q</span>
+    <span class="drill-q">DAY 7 CLOSING QUESTION</span>
   </summary>
   <div class="drill-a">
-    <p>The copy-paste action is an error. The duplicate function call in code is the defect/bug. The wrong displayed balance is the failure.</p>
-  </div>
-</details>
+    <p><em>Source: CH06_Block_D_Generic_Test_Process.pdf</em></p>
+    <p>If FinCon can only be tested for one more hour before release, which test area would you choose &mdash; and how would you justify that decision?</p>
+    <p><em>Connect your answer to:</em></p>
+    <ul style="list-style-type: circle; padding-left: 1.5rem; margin-bottom: 1rem;">
+      <li>risk,</li>
+      <li>requirements,</li>
+      <li>economic value,</li>
+      <li>stakeholder decision needs.</li>
+    </ul>
 
-<details class="drill-item">
-  <summary>
-    <span class="drill-tag">✏️ Q2 (3 marks)</span>
-    <span class="drill-q">Why is “the testers fixed the bug” inaccurate?</span>
-  </summary>
-  <div class="drill-a">
-    <p>Testers design and execute tests, observe failures and report defects. Debugging - locating and removing the cause - is normally development responsibility. A corrected statement is: testers found the failure and reported the defect; developers debugged and fixed it.</p>
-  </div>
-</details>
-
-<details class="drill-item">
-  <summary>
-    <span class="drill-tag">✏️ Q3 (4 marks)</span>
-    <span class="drill-q">Name two risks of using 20 LLM-generated login tests directly.</span>
-  </summary>
-  <div class="drill-a">
-    <p>Possible answers: hallucinated expected results; happy-path bias; missing security and boundary cases; circular tests that mirror code; duplicate coverage; false confidence. For full marks, give a concrete example and explain the consequence.</p>
+    <hr>
+    
+    <p><strong>Suggested Answer:</strong></p>
+    <p>I would allocate the remaining hour exclusively to the <strong>transfer authorization and session validation</strong> components.</p>
+    <div style="overflow-x: auto; margin-top: 1rem; margin-bottom: 1rem;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9em;">
+        <thead>
+          <tr style="background-color: var(--code-bg); border-bottom: 2px solid var(--border-color);">
+            <th style="padding: 0.75rem;">Criteria</th>
+            <th style="padding: 0.75rem;">Justification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 0.75rem; font-weight: 600;">Risk</td>
+            <td style="padding: 0.75rem;">This area has the highest exposure (Probability &times; Impact). A failure here results in immediate financial loss.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 0.75rem; font-weight: 600;">Requirements</td>
+            <td style="padding: 0.75rem;">It directly tests the most critical functional requirement (R2: Valid transfer limits) and security requirement (R3: Session validity).</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 0.75rem; font-weight: 600;">Economic Value</td>
+            <td style="padding: 0.75rem;">Testing this area prevents existential monetary damage and regulatory fines, maximizing the ROI of the final hour.</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; font-weight: 600;">Stakeholder Needs</td>
+            <td style="padding: 0.75rem;">Stakeholders need confidence that the core business engine is safe to deploy. Lower-risk UI bugs are consciously deferred.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </details>
 
     </div>
-    
     <footer class="page-footer">
-      <span><a href="index.html">← Home</a></span>
+      <span><a href="ch6.html">← Back to Chapter</a></span>
     </footer>
   </div>
 </div>
