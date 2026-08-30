@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1. Fundamentals & Terms | ADV Testing Methods</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c7a73'/%3E%3Ccircle cx='10' cy='11' r='3' fill='%23fff'/%3E%3Ccircle cx='22' cy='9' r='2.4' fill='%23fff'/%3E%3Ccircle cx='22' cy='23' r='3' fill='%23fff'/%3E%3Cpath d='M12.5 12.5L19.5 10M12 13.5L20 21' stroke='%23fff' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=11">
+<script>(function(){try{var t=localStorage.getItem('dm2026-theme')||'light';document.documentElement.setAttribute('data-theme',t);var m=localStorage.getItem('dm2026-mode')||'concept';document.documentElement.setAttribute('data-mode',m);}catch(e){}})();</script>
+</head>
+<body>
+
+<nav class="sitenav">
+  <div class="sitenav-inner">
+    <a class="sitenav-home" href="index.html">ADV Testing</a>
+    <div class="sitenav-links">
+    </div>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navPanel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      Menu
+    </button>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+    <button class="mode-toggle" id="modeToggle" type="button" aria-label="Toggle technical mode" style="font-size: 1.1rem; line-height: 1;">🎓</button>
+  </div>
+  <div class="nav-panel" id="navPanel">
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Introduction</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="index.html">Home</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Core Concepts</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch1.html">1. Fundamentals & Terms</a>
+          <a href="ch1_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch2.html">2. EC & BVA</a>
+          <a href="ch2_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch3.html">3. Pairwise & Decision Tables</a>
+          <a href="ch3_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Code & Coverage</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch4.html">4. White-Box Coverage & MC/DC</a>
+          <a href="ch4_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch5.html">5. AI Code & Static Analysis</a>
+          <a href="ch5_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Process & Risk</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch6.html">6. Test Process & MTS</a>
+          <a href="ch7.html">7. Risk & Model-Based</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Automation & Security</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch8.html">8. BDD & Gherkin</a>
+          <a href="ch9.html">9. Web Automation & Perf</a>
+          <a href="ch10.html">10. Security Testing</a>
+          <a href="ch10_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch11.html">11. BudgetControl Arch</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Exam Preparation</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch12.html">12. Quick-Reference Sheets</a>
+          <a href="ch13.html">13. Mock Exam A</a>
+          <a href="ch14.html">14. Mock Exam A Answers</a>
+          <a href="ch15.html">15. Add'l Slide Questions</a>
+          <a href="ch16.html">16. Final Checklist</a>
+          
+        </div>
+      </details>
+    </div>
+  </div>
+</nav>
+
+<div class="page-shell">
+  <aside class="sidebar-toc">
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Introduction</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="index.html">Home</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Core Concepts</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch1.html">1. Fundamentals & Terms</a>
+          <a href="ch1_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch2.html">2. EC & BVA</a>
+          <a href="ch2_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch3.html">3. Pairwise & Decision Tables</a>
+          <a href="ch3_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Code & Coverage</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch4.html">4. White-Box Coverage & MC/DC</a>
+          <a href="ch4_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch5.html">5. AI Code & Static Analysis</a>
+          <a href="ch5_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Process & Risk</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch6.html">6. Test Process & MTS</a>
+          <a href="ch7.html">7. Risk & Model-Based</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Automation & Security</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch8.html">8. BDD & Gherkin</a>
+          <a href="ch9.html">9. Web Automation & Perf</a>
+          <a href="ch10.html">10. Security Testing</a>
+          <a href="ch10_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch11.html">11. BudgetControl Arch</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Exam Preparation</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch12.html">12. Quick-Reference Sheets</a>
+          <a href="ch13.html">13. Mock Exam A</a>
+          <a href="ch14.html">14. Mock Exam A Answers</a>
+          <a href="ch15.html">15. Add'l Slide Questions</a>
+          <a href="ch16.html">16. Final Checklist</a>
+          
+        </div>
+      </details>
+    </div>
+  </aside>
+
+  <div class="page">
+    <div class="masthead">
+      <div>
+        <div class="eyebrow">Advanced Testing Methods · Exam Guide</div>
+        <h1 class="title">1. Fundamentals & Terms</h1>
+      </div>
+      <div class="masthead-meta">Key concepts and techniques</div>
+    </div>
+    
+    <div class="page-content concept-content">
+      
+<h2>Core idea: Testing reduces uncertainty by comparing actual behaviour with expected behaviour.</h2>
+
+<h3>What makes a test case complete?</h3>
+<ul>
+    <li><strong>Preconditions:</strong> What must already be true before execution.</li>
+    <li><strong>Input and action:</strong> Exact reproducible values and steps.</li>
+    <li><strong>Expected result (oracle):</strong> What should happen if the system is correct.</li>
+    <li><strong>Postconditions:</strong> The state that should exist after the test, when relevant.</li>
+</ul>
+
+<h3>Triangle lesson</h3>
+<p>Even a tiny triangle classifier needs valid scalene, equilateral and isosceles cases; all isosceles permutations; zero and negative values; degenerate triangles; non-triangles; wrong input types; wrong number of values; and expected results. Small programs can still have a large test space.</p>
+
+<h3>Essential ISTQB vocabulary</h3>
+<table>
+    <thead>
+        <tr><th>Term</th><th>Easy meaning</th><th>Example</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><strong>Error / mistake</strong></td><td>A human action that produces an incorrect result.</td><td>A developer copies a rounding call twice.</td></tr>
+        <tr><td><strong>Defect / bug / fault</strong></td><td>The flaw left in the code or document.</td><td>The duplicate rounding call remains in the program.</td></tr>
+        <tr><td><strong>Failure</strong></td><td>Observable wrong behaviour during execution.</td><td>Displayed balance is EUR 10 too high.</td></tr>
+        <tr><td><strong>Test case</strong></td><td>Inputs, preconditions, expected result and postconditions for an objective.</td><td>amount=0 should raise ValueError.</td></tr>
+        <tr><td><strong>Test object / SUT</strong></td><td>The component or system being tested.</td><td>FinCon transfer service.</td></tr>
+        <tr><td><strong>Pass</strong></td><td>Actual result equals expected result.</td><td>The invalid amount is rejected as expected.</td></tr>
+        <tr><td><strong>Fail</strong></td><td>Actual result differs from expected result.</td><td>The invalid amount is approved.</td></tr>
+        <tr><td><strong>Root cause</strong></td><td>Underlying source whose removal prevents similar defects.</td><td>Copy-paste practice without review.</td></tr>
+        <tr><td><strong>Debugging</strong></td><td>Finding, analysing and removing causes of failures.</td><td>Developer locates and fixes the duplicate call.</td></tr>
+        <tr><td><strong>Error masking</strong></td><td>Two error states compensate, so no external failure is visible.</td><td>One wrong addition and one wrong subtraction cancel out.</td></tr>
+    </tbody>
+</table>
+
+<h3>AI as a testing tool</h3>
+<table>
+    <thead>
+        <tr><th>Useful for</th><th>Main risk</th><th>Human responsibility</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Draft test cases</td><td>Happy-path bias and missing edge cases</td><td>Map every case to a class, boundary, requirement or risk</td></tr>
+        <tr><td>Test-code skeletons</td><td>Syntactically correct but weak assertions</td><td>Verify the oracle independently</td></tr>
+        <tr><td>Synthetic test data</td><td>Unrealistic or duplicated data</td><td>Check domain validity and diversity</td></tr>
+        <tr><td>Defect summaries</td><td>Loss of nuance or wrong classification</td><td>Review evidence and severity</td></tr>
+        <tr><td>Static-review assistance</td><td>Invented issues or missed logic</td><td>Use a constrained checklist and inspect the code</td></tr>
+    </tbody>
+</table>
+
+<div class="drill-item">
+  <strong>Non-negotiable AI rule:</strong> Expected results must come from the specification, not from the LLM and not from the implementation. Otherwise the test may simply confirm the same wrong assumption.
+</div>
+
+<hr>
+<h3>Worked exam questions</h3>
+
+<details class="drill-item">
+  <summary>
+    <span class="drill-tag">✏️ Q1 (3 marks) <span class="source-link" data-source="\'AdvTest_02_SelfTest.pdf, Page 62\'" style="font-size: 0.8em; color: #007bff; text-decoration: underline; cursor: pointer;">(Source)</span></span>
+    <span class="drill-q">A developer accidentally applies a rounding function twice. The screen shows a wrong balance. Name the three stages.</span>
+  </summary>
+  <div class="drill-a">
+    <p>The copy-paste action is an error. The duplicate function call in code is the defect/bug. The wrong displayed balance is the failure.</p>
+  </div>
+</details>
+
+<details class="drill-item">
+  <summary>
+    <span class="drill-tag">✏️ Q2 (3 marks)</span>
+    <span class="drill-q">Why is “the testers fixed the bug” inaccurate?</span>
+  </summary>
+  <div class="drill-a">
+    <p>Testers design and execute tests, observe failures and report defects. Debugging - locating and removing the cause - is normally development responsibility. A corrected statement is: testers found the failure and reported the defect; developers debugged and fixed it.</p>
+  </div>
+</details>
+
+<details class="drill-item">
+  <summary>
+    <span class="drill-tag">✏️ Q3 (4 marks)</span>
+    <span class="drill-q">Name two risks of using 20 LLM-generated login tests directly.</span>
+  </summary>
+  <div class="drill-a">
+    <p>Possible answers: hallucinated expected results; happy-path bias; missing security and boundary cases; circular tests that mirror code; duplicate coverage; false confidence. For full marks, give a concrete example and explain the consequence.</p>
+  </div>
+</details>
+
+    </div>
+    
+    <footer class="page-footer">
+      <span><a href="index.html">← Home</a></span>
+    </footer>
+  </div>
+</div>
+<script src="assets/site.js?v=12" defer></script>
+</body>
+</html>

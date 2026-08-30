@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>4. White-Box Coverage & MC/DC | ADV Testing Methods</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c7a73'/%3E%3Ccircle cx='10' cy='11' r='3' fill='%23fff'/%3E%3Ccircle cx='22' cy='9' r='2.4' fill='%23fff'/%3E%3Ccircle cx='22' cy='23' r='3' fill='%23fff'/%3E%3Cpath d='M12.5 12.5L19.5 10M12 13.5L20 21' stroke='%23fff' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=11">
+<script>(function(){try{var t=localStorage.getItem('dm2026-theme')||'light';document.documentElement.setAttribute('data-theme',t);var m=localStorage.getItem('dm2026-mode')||'concept';document.documentElement.setAttribute('data-mode',m);}catch(e){}})();</script>
+</head>
+<body>
+
+<nav class="sitenav">
+  <div class="sitenav-inner">
+    <a class="sitenav-home" href="index.html">ADV Testing</a>
+    <div class="sitenav-links">
+    </div>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navPanel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      Menu
+    </button>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+    <button class="mode-toggle" id="modeToggle" type="button" aria-label="Toggle technical mode" style="font-size: 1.1rem; line-height: 1;">🎓</button>
+  </div>
+  <div class="nav-panel" id="navPanel">
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Introduction</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="index.html">Home</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Core Concepts</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch1.html">1. Fundamentals & Terms</a>
+          <a href="ch1_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch2.html">2. EC & BVA</a>
+          <a href="ch2_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch3.html">3. Pairwise & Decision Tables</a>
+          <a href="ch3_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Code & Coverage</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch4.html">4. White-Box Coverage & MC/DC</a>
+          <a href="ch4_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch5.html">5. AI Code & Static Analysis</a>
+          <a href="ch5_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Process & Risk</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch6.html">6. Test Process & MTS</a>
+          <a href="ch7.html">7. Risk & Model-Based</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Automation & Security</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch8.html">8. BDD & Gherkin</a>
+          <a href="ch9.html">9. Web Automation & Perf</a>
+          <a href="ch10.html">10. Security Testing</a>
+          <a href="ch10_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch11.html">11. BudgetControl Arch</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Exam Preparation</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch12.html">12. Quick-Reference Sheets</a>
+          <a href="ch13.html">13. Mock Exam A</a>
+          <a href="ch14.html">14. Mock Exam A Answers</a>
+          <a href="ch15.html">15. Add'l Slide Questions</a>
+          <a href="ch16.html">16. Final Checklist</a>
+          
+        </div>
+      </details>
+    </div>
+  </div>
+</nav>
+
+<div class="page-shell">
+  <aside class="sidebar-toc">
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Introduction</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="index.html">Home</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Core Concepts</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch1.html">1. Fundamentals & Terms</a>
+          <a href="ch1_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch2.html">2. EC & BVA</a>
+          <a href="ch2_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch3.html">3. Pairwise & Decision Tables</a>
+          <a href="ch3_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Code & Coverage</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch4.html">4. White-Box Coverage & MC/DC</a>
+          <a href="ch4_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch5.html">5. AI Code & Static Analysis</a>
+          <a href="ch5_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Process & Risk</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch6.html">6. Test Process & MTS</a>
+          <a href="ch7.html">7. Risk & Model-Based</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Automation & Security</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch8.html">8. BDD & Gherkin</a>
+          <a href="ch9.html">9. Web Automation & Perf</a>
+          <a href="ch10.html">10. Security Testing</a>
+          <a href="ch10_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch11.html">11. BudgetControl Arch</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Exam Preparation</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch12.html">12. Quick-Reference Sheets</a>
+          <a href="ch13.html">13. Mock Exam A</a>
+          <a href="ch14.html">14. Mock Exam A Answers</a>
+          <a href="ch15.html">15. Add'l Slide Questions</a>
+          <a href="ch16.html">16. Final Checklist</a>
+          
+        </div>
+      </details>
+    </div>
+  </aside>
+
+  <div class="page">
+    <div class="masthead">
+      <div>
+        <div class="eyebrow">Advanced Testing Methods · Exam Guide</div>
+        <h1 class="title">4. White-Box Coverage & MC/DC</h1>
+      </div>
+      <div class="masthead-meta">Key concepts and techniques</div>
+    </div>
+    
+    <div class="page-content concept-content">
+      
+<h2>Coverage tells you what code was executed. It does not prove that the behaviour was correct.</h2>
+
+<h3>Black-box versus white-box</h3>
+<table>
+    <thead><tr><th>Aspect</th><th>Black-box</th><th>White-box</th></tr></thead>
+    <tbody>
+        <tr><td>Basis</td><td>Specification</td><td>Source-code structure</td></tr>
+        <tr><td>Finds</td><td>Missing/wrong behaviour</td><td>Untested branches, dead code</td></tr>
+        <tr><td>Risk</td><td>May miss structural gaps</td><td>May miss missing requirements</td></tr>
+    </tbody>
+</table>
+
+<h3>Coverage hierarchy</h3>
+<table>
+    <thead><tr><th>Criterion</th><th>Question</th><th>Main limitation</th></tr></thead>
+    <tbody>
+        <tr><td>Statement</td><td>Did every executable statement run?</td><td>Can miss false outcomes and ignored parameters.</td></tr>
+        <tr><td>Branch/decision</td><td>Did every decision take true and false outcomes?</td><td>Does not prove each condition matters independently.</td></tr>
+        <tr><td>Condition</td><td>Was every atomic condition true and false?</td><td>Different conditions can be masked.</td></tr>
+        <tr><td>MC/DC</td><td>Did each condition independently change the decision?</td><td>More expensive; used for safety-critical logic.</td></tr>
+    </tbody>
+</table>
+
+<div class="drill-item">
+  <strong>Subsumption used in this course:</strong> Statement &lt; Branch &lt; Condition &lt; MC/DC. Higher criteria provide stronger structural evidence. But no structural criterion replaces a correct oracle.
+</div>
+
+<h3>MC/DC rule</h3>
+<p>For each condition, find two tests where <strong>only that condition changes</strong> and the <strong>overall decision also changes</strong>. For the simple course examples, <em>n</em> conditions often need a minimum of <em>n+1</em> tests.</p>
+
+<h3>unittest and AAA</h3>
+<pre><code>class TestBankAccount(unittest.TestCase):
+    def test_deposit_increases_balance(self):
+        # Arrange
+        account = BankAccount('Alice', 1000.0)
+        # Act
+        account.deposit(500.0)
+        # Assert
+        self.assertEqual(account.balance, 1500.0)
+</code></pre>
+
+<h3>Mocks</h3>
+<ul>
+    <li>Mocks replace slow, fragile, destructive or non-deterministic dependencies.</li>
+    <li>Configure return values, run the SUT, assert the result, then verify interactions.</li>
+    <li>Also verify methods that must <strong>not</strong> be called.</li>
+</ul>
+
+<div class="drill-item">
+  <strong>Mocking trap:</strong> A test that only checks the return value can miss wrong side effects. A test that only checks calls can miss a wrong return value. Check both when both are part of the contract.
+</div>
+
+<hr>
+<h3>Worked exam questions</h3>
+
+<details class="drill-item">
+  <summary>
+    <span class="drill-tag">✏️ Transfer coverage count (3 marks) <span class="source-link" data-source="\'AdvTest_05_Cover_Mock_full.pdf, Page 35\'" style="font-size: 0.8em; color: #007bff; text-decoration: underline; cursor: pointer;">(Source)</span></span>
+    <span class="drill-q">A function returns invalid, unknown_target, limit_exceeded or approved through sequential early returns. How many tests for statement and branch coverage?</span>
+  </summary>
+  <div class="drill-a">
+    <p>Four tests are needed for both, because each return statement/path is mutually exclusive: invalid amount; missing target; amount above limit; approved. A claim of 100% statement coverage while never executing the limit_exceeded return is inconsistent. Even with 100% coverage, the expected results may still be wrong.</p>
+  </div>
+</details>
+
+<details class="drill-item">
+  <summary>
+    <span class="drill-tag">✏️ MC/DC with P and (B or O) (4 marks)</span>
+    <span class="drill-q">Construct a minimum suite for P AND (B OR O).</span>
+  </summary>
+  <div class="drill-a">
+    <p>Use four tests: T,T,F -&gt; T; F,T,F -&gt; F (P independence); T,F,F -&gt; F (B independence compared with first); T,F,T -&gt; T (O independence compared with third). Condition coverage alone can make every condition true/false without proving independent influence.</p>
+  </div>
+</details>
+
+<details class="drill-item">
+  <summary>
+    <span class="drill-tag">✏️ Mock transfer (4 marks)</span>
+    <span class="drill-q">Happy path should debit sender, credit recipient and email recipient.</span>
+  </summary>
+  <div class="drill-a">
+    <p>Create MagicMock objects; configure db.find_account to return a recipient with an email; call send_transfer; assert “transfer_complete”; assert debit_sender(amount), credit_recipient(recipient, amount), and send_email(email, amount) once. For None recipient, assert “recipient_not_found” and assert both debit and credit were not called.</p>
+  </div>
+</details>
+
+    </div>
+    
+    <footer class="page-footer">
+      <span><a href="index.html">← Home</a></span>
+    </footer>
+  </div>
+</div>
+<script src="assets/site.js?v=12" defer></script>
+</body>
+</html>

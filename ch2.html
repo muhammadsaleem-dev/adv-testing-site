@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2. EC & BVA | ADV Testing Methods</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c7a73'/%3E%3Ccircle cx='10' cy='11' r='3' fill='%23fff'/%3E%3Ccircle cx='22' cy='9' r='2.4' fill='%23fff'/%3E%3Ccircle cx='22' cy='23' r='3' fill='%23fff'/%3E%3Cpath d='M12.5 12.5L19.5 10M12 13.5L20 21' stroke='%23fff' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=11">
+<script>(function(){try{var t=localStorage.getItem('dm2026-theme')||'light';document.documentElement.setAttribute('data-theme',t);var m=localStorage.getItem('dm2026-mode')||'concept';document.documentElement.setAttribute('data-mode',m);}catch(e){}})();</script>
+</head>
+<body>
+
+<nav class="sitenav">
+  <div class="sitenav-inner">
+    <a class="sitenav-home" href="index.html">ADV Testing</a>
+    <div class="sitenav-links">
+    </div>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navPanel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      Menu
+    </button>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+    <button class="mode-toggle" id="modeToggle" type="button" aria-label="Toggle technical mode" style="font-size: 1.1rem; line-height: 1;">🎓</button>
+  </div>
+  <div class="nav-panel" id="navPanel">
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Introduction</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="index.html">Home</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Core Concepts</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch1.html">1. Fundamentals & Terms</a>
+          <a href="ch1_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch2.html">2. EC & BVA</a>
+          <a href="ch2_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch3.html">3. Pairwise & Decision Tables</a>
+          <a href="ch3_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Code & Coverage</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch4.html">4. White-Box Coverage & MC/DC</a>
+          <a href="ch4_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch5.html">5. AI Code & Static Analysis</a>
+          <a href="ch5_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Process & Risk</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch6.html">6. Test Process & MTS</a>
+          <a href="ch7.html">7. Risk & Model-Based</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Automation & Security</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch8.html">8. BDD & Gherkin</a>
+          <a href="ch9.html">9. Web Automation & Perf</a>
+          <a href="ch10.html">10. Security Testing</a>
+          <a href="ch10_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch11.html">11. BudgetControl Arch</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Exam Preparation</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch12.html">12. Quick-Reference Sheets</a>
+          <a href="ch13.html">13. Mock Exam A</a>
+          <a href="ch14.html">14. Mock Exam A Answers</a>
+          <a href="ch15.html">15. Add'l Slide Questions</a>
+          <a href="ch16.html">16. Final Checklist</a>
+          
+        </div>
+      </details>
+    </div>
+  </div>
+</nav>
+
+<div class="page-shell">
+  <aside class="sidebar-toc">
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Introduction</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="index.html">Home</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Core Concepts</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch1.html">1. Fundamentals & Terms</a>
+          <a href="ch1_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch2.html">2. EC & BVA</a>
+          <a href="ch2_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch3.html">3. Pairwise & Decision Tables</a>
+          <a href="ch3_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Code & Coverage</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch4.html">4. White-Box Coverage & MC/DC</a>
+          <a href="ch4_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch5.html">5. AI Code & Static Analysis</a>
+          <a href="ch5_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Process & Risk</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch6.html">6. Test Process & MTS</a>
+          <a href="ch7.html">7. Risk & Model-Based</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Automation & Security</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch8.html">8. BDD & Gherkin</a>
+          <a href="ch9.html">9. Web Automation & Perf</a>
+          <a href="ch10.html">10. Security Testing</a>
+          <a href="ch10_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch11.html">11. BudgetControl Arch</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Exam Preparation</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch12.html">12. Quick-Reference Sheets</a>
+          <a href="ch13.html">13. Mock Exam A</a>
+          <a href="ch14.html">14. Mock Exam A Answers</a>
+          <a href="ch15.html">15. Add'l Slide Questions</a>
+          <a href="ch16.html">16. Final Checklist</a>
+          
+        </div>
+      </details>
+    </div>
+  </aside>
+
+  <div class="page">
+    <div class="masthead">
+      <div>
+        <div class="eyebrow">Advanced Testing Methods · Exam Guide</div>
+        <h1 class="title">2. EC & BVA</h1>
+      </div>
+      <div class="masthead-meta">Key concepts and techniques</div>
+    </div>
+    
+    <div class="page-content concept-content">
+      
+<h2>Black-box tests are derived from the specification, not from the code.</h2>
+
+<h3>Equivalence Class Method (EC)</h3>
+<ol>
+    <li>Identify each input parameter.</li>
+    <li>Define its type, range, format and special rules.</li>
+    <li>Split the domain into valid and invalid classes.</li>
+    <li>Split again wherever different behaviour is expected.</li>
+    <li>Choose one representative per class.</li>
+    <li>Combine representatives into test cases.</li>
+</ol>
+
+<table>
+    <thead>
+        <tr><th>Class for amount 1..100000</th><th>Representative</th><th>Expected</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>amount &lt; 1</td><td>0 or -50</td><td>reject</td></tr>
+        <tr><td>1 &lt;= amount &lt;= 100000</td><td>500</td><td>approve</td></tr>
+        <tr><td>amount &gt; 100000</td><td>200000</td><td>reject</td></tr>
+        <tr><td>non-integer</td><td>49.99</td><td>reject/type error</td></tr>
+        <tr><td>missing value</td><td>None</td><td>reject</td></tr>
+    </tbody>
+</table>
+
+<h3>Boundary Value Analysis (BVA)</h3>
+<ul>
+    <li>Bugs often cluster where rules change.</li>
+    <li>For each boundary, test just below, exactly at, and just above.</li>
+    <li>For amount [1, 100000], use 0, 1, 2, 99999, 100000, 100001.</li>
+    <li>Expected results are essential; a list of values alone is not a complete answer.</li>
+</ul>
+
+<table>
+    <thead>
+        <tr><th>Value</th><th>Position</th><th>Expected</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>0</td><td>below lower bound</td><td>reject</td></tr>
+        <tr><td>1</td><td>lower bound</td><td>accept</td></tr>
+        <tr><td>2</td><td>just above lower</td><td>accept</td></tr>
+        <tr><td>99999</td><td>just below upper</td><td>accept</td></tr>
+        <tr><td>100000</td><td>upper bound</td><td>accept</td></tr>
+        <tr><td>100001</td><td>above upper</td><td>reject</td></tr>
+    </tbody>
+</table>
+
+<h3>Multiple inputs and combinatorial explosion</h3>
+<ul>
+    <li>If parameter A has 6 interesting values and B has 9, full combination already creates 54 vectors.</li>
+    <li>Test each valid class of one parameter with valid complements.</li>
+    <li>Test each invalid class with all other parameters valid so the failure cause is isolated.</li>
+    <li>Add high-risk interactions identified from domain knowledge.</li>
+</ul>
+
+<hr>
+<h3>Worked exam questions</h3>
+
+<details class="drill-item">
+  <summary>
+    <span class="drill-tag">✏️ PIN equivalence classes (3 marks) <span class="source-link" data-source="\'AdvTest_03_EC_BVA.pdf, Page 39\'" style="font-size: 0.8em; color: #007bff; text-decoration: underline; cursor: pointer;">(Source)</span></span>
+    <span class="drill-q">The login PIN is a 4-digit numeric string. Define complete classes.</span>
+  </summary>
+  <div class="drill-a">
+    <p>Valid: exactly four digits, e.g. “1234”, accepted as format-valid. Invalid: fewer than four digits (“123”); more than four (“12345”); contains a non-digit (“12A4”); whitespace (“12 4”); empty/missing; wrong type such as integer 1234 if the interface requires a string. Each invalid class is rejected.</p>
+  </div>
+</details>
+
+<details class="drill-item">
+  <summary>
+    <span class="drill-tag">✏️ Interest boundary (4 marks)</span>
+    <span class="drill-q">Bonus interest is 1.5% only on balance above EUR 10000.</span>
+  </summary>
+  <div class="drill-a">
+    <p>Use 9999.99 -&gt; 0; 10000.00 -&gt; 0; 10000.01 -&gt; 0.00015 if values are exact euros. With integer euros: 9999 -&gt; 0; 10000 -&gt; 0; 10001 -&gt; 0.015. Testing only 5000 and 15000 misses the exact threshold and off-by-one errors.</p>
+  </div>
+</details>
+
+<details class="drill-item">
+  <summary>
+    <span class="drill-tag">✏️ Multi-input test gap (3 marks)</span>
+    <span class="drill-q">Tests are (500, True), (0, False), (200000, False) for amount and target_exists.</span>
+  </summary>
+  <div class="drill-a">
+    <p>The invalid amount is always combined with an invalid target, so the reason for rejection is masked. The target-not-found class is never tested with a valid amount. Add (500, False) -&gt; rejected/unknown target. Also add invalid amount with target=True to isolate amount validation.</p>
+  </div>
+</details>
+
+    </div>
+    
+    <footer class="page-footer">
+      <span><a href="index.html">← Home</a></span>
+    </footer>
+  </div>
+</div>
+<script src="assets/site.js?v=12" defer></script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Official Questions | 4. White-Box Coverage & MC/DC</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c7a73'/%3E%3Ccircle cx='10' cy='11' r='3' fill='%23fff'/%3E%3Ccircle cx='22' cy='9' r='2.4' fill='%23fff'/%3E%3Ccircle cx='22' cy='23' r='3' fill='%23fff'/%3E%3Cpath d='M12.5 12.5L19.5 10M12 13.5L20 21' stroke='%23fff' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=11">
+<script>(function(){try{var t=localStorage.getItem('dm2026-theme')||'light';document.documentElement.setAttribute('data-theme',t);var m=localStorage.getItem('dm2026-mode')||'concept';document.documentElement.setAttribute('data-mode',m);}catch(e){}})();</script>
+</head>
+<body>
+
+<nav class="sitenav">
+  <div class="sitenav-inner">
+    <a class="sitenav-home" href="index.html">ADV Testing</a>
+    <div class="sitenav-links">
+    </div>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navPanel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      Menu
+    </button>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+    <button class="mode-toggle" id="modeToggle" type="button" aria-label="Toggle technical mode" style="font-size: 1.1rem; line-height: 1;">🎓</button>
+  </div>
+  <div class="nav-panel" id="navPanel">
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Introduction</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="index.html">Home</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Core Concepts</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch1.html">1. Fundamentals & Terms</a>
+          <a href="ch1_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch2.html">2. EC & BVA</a>
+          <a href="ch2_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch3.html">3. Pairwise & Decision Tables</a>
+          <a href="ch3_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Code & Coverage</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch4.html">4. White-Box Coverage & MC/DC</a>
+          <a href="ch4_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch5.html">5. AI Code & Static Analysis</a>
+          <a href="ch5_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Process & Risk</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch6.html">6. Test Process & MTS</a>
+          <a href="ch7.html">7. Risk & Model-Based</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Automation & Security</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch8.html">8. BDD & Gherkin</a>
+          <a href="ch9.html">9. Web Automation & Perf</a>
+          <a href="ch10.html">10. Security Testing</a>
+          <a href="ch10_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch11.html">11. BudgetControl Arch</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Exam Preparation</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch12.html">12. Quick-Reference Sheets</a>
+          <a href="ch13.html">13. Mock Exam A</a>
+          <a href="ch14.html">14. Mock Exam A Answers</a>
+          <a href="ch15.html">15. Add'l Slide Questions</a>
+          <a href="ch16.html">16. Final Checklist</a>
+          
+        </div>
+      </details>
+    </div>
+  </div>
+</nav>
+
+<div class="page-shell">
+  <aside class="sidebar-toc">
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Introduction</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="index.html">Home</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Core Concepts</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch1.html">1. Fundamentals & Terms</a>
+          <a href="ch1_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch2.html">2. EC & BVA</a>
+          <a href="ch2_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch3.html">3. Pairwise & Decision Tables</a>
+          <a href="ch3_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Code & Coverage</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch4.html">4. White-Box Coverage & MC/DC</a>
+          <a href="ch4_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch5.html">5. AI Code & Static Analysis</a>
+          <a href="ch5_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Process & Risk</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch6.html">6. Test Process & MTS</a>
+          <a href="ch7.html">7. Risk & Model-Based</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Automation & Security</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch8.html">8. BDD & Gherkin</a>
+          <a href="ch9.html">9. Web Automation & Perf</a>
+          <a href="ch10.html">10. Security Testing</a>
+          <a href="ch10_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch11.html">11. BudgetControl Arch</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Exam Preparation</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch12.html">12. Quick-Reference Sheets</a>
+          <a href="ch13.html">13. Mock Exam A</a>
+          <a href="ch14.html">14. Mock Exam A Answers</a>
+          <a href="ch15.html">15. Add'l Slide Questions</a>
+          <a href="ch16.html">16. Final Checklist</a>
+          
+        </div>
+      </details>
+    </div>
+  </aside>
+
+  <div class="page">
+    <div class="masthead">
+      <div>
+        <div class="eyebrow">4. White-Box Coverage & MC/DC</div>
+        <h1 class="title">Official Questions</h1>
+      </div>
+      <div class="masthead-meta"></div>
+    </div>
+    
+    <div class="page-content concept-content">
+
+<details class="drill-item" open>
+  <summary>
+    <span class="drill-tag">🏛️ Official Q</span>
+    <span class="drill-q">COVERAGE SUBSUMPTION (3 P)</span>
+  </summary>
+  <div class="drill-a">
+    <p><em>Source: AdvTest_05_Cover_Mock_full.pdf</em></p>
+    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">def transfer(amount: float, target_exists: bool, daily_limit: float) -> str:
+    if amount <= 0:
+        return "invalid"
+    if not target_exists:
+        return "unknown_target"
+    if amount > daily_limit:
+        return "limit_exceeded"
+    return "approved"</div>
+<ul style="list-style-type: none; padding-left: 0;">
+  <li style="margin-bottom: 0.5rem;"><strong>(a)</strong> How many test cases are needed for 100% statement coverage?</li>
+  <li style="margin-bottom: 0.5rem;"><strong>(b)</strong> How many test cases are needed for 100% branch coverage?</li>
+  <li><strong>(c)</strong> A colleague achieves 100% statement coverage but misses the <span style="color: #d9534f; font-weight: 600;">"limit_exceeded"</span> path. Explain why this is possible and what it reveals about statement coverage as a sole criterion.</li>
+</ul>
+    <hr>
+    <p><strong style="color: #d9534f;">Answer not provided by professor.</strong></p>
+    <p><em>(We will create the answer for this later!)</em></p>
+  </div>
+</details>
+<details class="drill-item" open>
+  <summary>
+    <span class="drill-tag">🏛️ Official Q</span>
+    <span class="drill-q">MC/DC (4 P)</span>
+  </summary>
+  <div class="drill-a">
+    <p><em>Source: AdvTest_05_Cover_Mock_full.pdf</em></p>
+    <p>FinCon applies this rule:</p>
+<div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0;">if is_premium and (balance > 10000 or overdraft_enabled):<br>&nbsp;&nbsp;&nbsp;&nbsp;apply_bonus_rate()</div>
+<p>There are three conditions: <span style="color: #d9534f; font-weight: 600;">is_premium (P)</span>, <span style="color: #d9534f; font-weight: 600;">balance > 10000 (B)</span>, <span style="color: #d9534f; font-weight: 600;">overdraft_enabled (O)</span>.</p>
+<ul style="list-style-type: none; padding-left: 0; margin-top: 1rem;">
+  <li style="margin-bottom: 0.5rem;"><strong>(a)</strong> How many test cases does MC/DC require at minimum?</li>
+  <li style="margin-bottom: 0.5rem;"><strong>(b)</strong> Construct a minimal MC/DC test suite. For each test case, show which condition's independence it demonstrates.</li>
+  <li><strong>(c)</strong> Explain why condition coverage alone would not be sufficient here.</li>
+</ul>
+    <hr>
+    <p><strong style="color: #d9534f;">Answer not provided by professor.</strong></p>
+    <p><em>(We will create the answer for this later!)</em></p>
+  </div>
+</details>
+<details class="drill-item" open>
+  <summary>
+    <span class="drill-tag">🏛️ Official Q</span>
+    <span class="drill-q">MOCKS (4 P)</span>
+  </summary>
+  <div class="drill-a">
+    <p><em>Source: AdvTest_05_Cover_Mock_full.pdf</em></p>
+    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">def send_transfer(amount: int, recipient_id: str, db, notifier) -> str:
+    recipient = db.find_account(recipient_id)
+    if recipient is None:
+        return "recipient_not_found"
+    db.debit_sender(amount)
+    db.credit_recipient(recipient, amount)
+    notifier.send_email(recipient.email, amount)
+    return "transfer_complete"</div>
+<ul style="list-style-type: none; padding-left: 0;">
+  <li style="margin-bottom: 0.5rem;"><strong>(a)</strong> Write a unittest test case using <span style="color: #d9534f; font-weight: 600;">MagicMock</span> that verifies the happy path: both <span style="color: #d9534f; font-weight: 600;">debit_sender</span> and <span style="color: #d9534f; font-weight: 600;">credit_recipient</span> are called, and <span style="color: #d9534f; font-weight: 600;">notifier.send_email</span> is called with the correct recipient email.</li>
+  <li><strong>(b)</strong> Write a test case that verifies that when <span style="color: #d9534f; font-weight: 600;">db.find_account</span> returns <span style="color: #d9534f; font-weight: 600;">None</span>, neither <span style="color: #d9534f; font-weight: 600;">debit_sender</span> nor <span style="color: #d9534f; font-weight: 600;">credit_recipient</span> is called.</li>
+</ul>
+    <hr>
+    <p><strong style="color: #d9534f;">Answer not provided by professor.</strong></p>
+    <p><em>(We will create the answer for this later!)</em></p>
+  </div>
+</details>
+    </div>
+    
+    <footer class="page-footer">
+      <span><a href="ch4.html">← Back to Chapter</a></span>
+    </footer>
+  </div>
+</div>
+<script src="assets/site.js?v=12" defer></script>
+</body>
+</html>
