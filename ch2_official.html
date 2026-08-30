@@ -198,24 +198,47 @@
 
     <hr>
     <p><strong>Suggested Answer:</strong></p>
-    <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Complete set of equivalence classes <span style="color: #d9534f; font-weight: 600;">(1.5 P)</span>:</strong></p>
-    <p>To fully partition the input space, we need one valid class and all corresponding invalid classes.</p>
-    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
-      <li><strong>Valid EC:</strong> Exactly 4 digits <span style="color: #d9534f; font-weight: 600;">(numeric string)</span>.</li>
-      <li><strong>Invalid EC 1:</strong> String length &lt; 4 <span style="color: #d9534f; font-weight: 600;">(too short)</span>.</li>
-      <li><strong>Invalid EC 2:</strong> String length &gt; 4 <span style="color: #d9534f; font-weight: 600;">(too long)</span>.</li>
-      <li><strong>Invalid EC 3:</strong> String containing non-numeric characters <span style="color: #d9534f; font-weight: 600;">(letters, symbols, whitespace)</span>.</li>
-      <li><strong>Invalid EC 4:</strong> Empty string.</li>
-    </ul>
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(a & b)</span> Complete set of equivalence classes and values <span style="color: #d9534f; font-weight: 600;">(3 P)</span>:</strong></p>
+    <p>To fully partition the input space, we need one valid class and all corresponding invalid classes. Following the examiner's strict guidelines, here is the combined table:</p>
     
-    <p><strong><span style="color: #d9534f; font-weight: 600;">(b)</span> Representative values and expected responses <span style="color: #d9534f; font-weight: 600;">(1.5 P)</span>:</strong></p>
-    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
-      <li><strong>Valid EC:</strong> <span style="color: #d9534f; font-weight: 600;">"1234"</span> &rarr; Accepted / processed.</li>
-      <li><strong>Invalid EC 1:</strong> <span style="color: #d9534f; font-weight: 600;">"12"</span> &rarr; Rejected / error message.</li>
-      <li><strong>Invalid EC 2:</strong> <span style="color: #d9534f; font-weight: 600;">"12345"</span> &rarr; Rejected / error message.</li>
-      <li><strong>Invalid EC 3:</strong> <span style="color: #d9534f; font-weight: 600;">"12A4"</span> &rarr; Rejected / error message.</li>
-      <li><strong>Invalid EC 4:</strong> <span style="color: #d9534f; font-weight: 600;">""</span> &rarr; Rejected / error message.</li>
-    </ul>
+    <div style="overflow-x: auto; margin-top: 1rem; margin-bottom: 1rem;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9em;">
+        <thead>
+          <tr style="background-color: var(--code-bg); border-bottom: 2px solid var(--border-color);">
+            <th style="padding: 0.75rem;">Class</th>
+            <th style="padding: 0.75rem;">Representative</th>
+            <th style="padding: 0.75rem;">Expected Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 0.75rem;"><strong>Valid EC:</strong> Exactly 4 digits</td>
+            <td style="padding: 0.75rem; font-family: var(--font-mono); color: #d9534f;">"1234"</td>
+            <td style="padding: 0.75rem;">Accepted</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 0.75rem;"><strong>Invalid EC 1:</strong> Length &lt; 4 <span style="color: #d9534f; font-weight: 600;">(too short)</span></td>
+            <td style="padding: 0.75rem; font-family: var(--font-mono); color: #d9534f;">"12"</td>
+            <td style="padding: 0.75rem;">Rejected / Error</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 0.75rem;"><strong>Invalid EC 2:</strong> Length &gt; 4 <span style="color: #d9534f; font-weight: 600;">(too long)</span></td>
+            <td style="padding: 0.75rem; font-family: var(--font-mono); color: #d9534f;">"12345"</td>
+            <td style="padding: 0.75rem;">Rejected / Error</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 0.75rem;"><strong>Invalid EC 3:</strong> Non-numeric characters</td>
+            <td style="padding: 0.75rem; font-family: var(--font-mono); color: #d9534f;">"12A4"</td>
+            <td style="padding: 0.75rem;">Rejected / Error</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem;"><strong>Invalid EC 4:</strong> Empty string</td>
+            <td style="padding: 0.75rem; font-family: var(--font-mono); color: #d9534f;">""</td>
+            <td style="padding: 0.75rem;">Rejected / Error</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <p><em>Examiner note: Award full credit if at least three distinct invalid equivalence classes are identified alongside the valid class, with correct expected behaviour mapping.</em></p>
   </div>
 </details>
