@@ -179,6 +179,7 @@
     
     <div class="page-content concept-content">
 
+<!-- QUESTION 1 -->
 <details class="drill-item" open>
   <summary>
     <span class="drill-tag">🏛️ Official Q</span>
@@ -186,8 +187,9 @@
   </summary>
   <div class="drill-a">
     <p><em>Source: CH05_AdvTest_06_AICover_Static.pdf</em></p>
+    
     <p>A Copilot-generated function for FinCon account tier classification:</p>
-<div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">def get_tier(balance: float, months_active: int) -> str:
+    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">def get_tier(balance: float, months_active: int) -> str:
     if balance >= 50000 and months_active >= 12:
         return 'platinum'
     elif balance >= 10000 and months_active >= 6:
@@ -198,17 +200,38 @@
         return 'bronze'
     else:
         return 'basic'</div>
-<p>The specification defines only: <span style="color: #d9534f; font-weight: 600;">platinum</span>, <span style="color: #d9534f; font-weight: 600;">gold</span>, <span style="color: #d9534f; font-weight: 600;">silver</span>, <span style="color: #d9534f; font-weight: 600;">basic</span>. No <span style="color: #d9534f; font-weight: 600;">bronze</span> tier exists.</p>
-<ul style="list-style-type: none; padding-left: 0; margin-top: 1rem;">
-  <li style="margin-bottom: 0.5rem;"><strong>(a)</strong> Identify all defects in this function.</li>
-  <li style="margin-bottom: 0.5rem;"><strong>(b)</strong> Explain why 100% branch coverage would NOT reveal these defects without an independent test oracle.</li>
-  <li><strong>(c)</strong> Write two test cases that, together, reveal both defects.</li>
-</ul>
+    
+    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+      <li>The specification defines only: <span style="color: #d9534f; font-weight: 600;">platinum</span>, <span style="color: #d9534f; font-weight: 600;">gold</span>, <span style="color: #d9534f; font-weight: 600;">silver</span>, <span style="color: #d9534f; font-weight: 600;">basic</span>. No <span style="color: #d9534f; font-weight: 600;">bronze</span> tier exists.</li>
+    </ul>
+    
+    <p><em>Perform the following tasks:</em></p>
+    <ul style="list-style-type: circle; padding-left: 1.5rem; margin-bottom: 1rem;">
+      <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Identify all defects in this function.</li>
+      <li><span style="color: #d9534f; font-weight: 600;">(b)</span> Explain why 100% branch coverage would NOT reveal these defects without an independent test oracle.</li>
+      <li><span style="color: #d9534f; font-weight: 600;">(c)</span> Write two test cases that, together, reveal both defects.</li>
+    </ul>
+
     <hr>
-    <p><strong style="color: #d9534f;">Answer not provided by professor.</strong></p>
-    <p><em>(We will create the answer for this later!)</em></p>
+    <p><strong>Suggested Answer:</strong></p>
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Defects identified <span style="color: #d9534f; font-weight: 600;">(1.5 P)</span>:</strong></p>
+    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+      <li><strong>Defect 1 (Dead Code):</strong> Line X is structurally unreachable. The conditions for <span style="color: #d9534f; font-weight: 600;">silver</span> and <span style="color: #d9534f; font-weight: 600;">bronze</span> are identical, meaning any input that satisfies Line X will be intercepted by the <span style="color: #d9534f; font-weight: 600;">silver</span> branch first.</li>
+      <li><strong>Defect 2 (Hallucination):</strong> The AI hallucinated a <span style="color: #d9534f; font-weight: 600;">'bronze'</span> return value that does not exist in the official specification.</li>
+    </ul>
+    
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(b)</span> Why branch coverage fails without an oracle <span style="color: #d9534f; font-weight: 600;">(1.5 P)</span>:</strong></p>
+    <p>A tester deriving tests purely from the code (white-box) to achieve branch coverage will notice that Line X cannot be reached. However, without consulting the specification (an independent test oracle), they will not know <em>why</em> it is dead. They might assume the condition for bronze was coded incorrectly, rather than realizing that bronze is a complete hallucination that shouldn't exist at all.</p>
+    
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(c)</span> Test cases to reveal defects <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
+    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+      <li><strong>TC 1 (Coverage tool check):</strong> Input <span style="color: #d9534f; font-weight: 600;">balance=1000, months_active=1</span>. Expected: <span style="color: #d9534f; font-weight: 600;">silver</span>. Actual: <span style="color: #d9534f; font-weight: 600;">silver</span>. A coverage tool will flag Line X as unexecuted (revealing dead code).</li>
+      <li><strong>TC 2 (Traceability check):</strong> Attempt to map the code branch for <span style="color: #d9534f; font-weight: 600;">'bronze'</span> back to a test case derived from the requirements. Expected: No test case exists for bronze (revealing hallucination).</li>
+    </ul>
   </div>
 </details>
+
+<!-- QUESTION 2 -->
 <details class="drill-item" open>
   <summary>
     <span class="drill-tag">🏛️ Official Q</span>
@@ -216,6 +239,8 @@
   </summary>
   <div class="drill-a">
     <p><em>Source: CH05_AdvTest_06_AICover_Static.pdf</em></p>
+    
+    <p>A colleague writes the following function:</p>
     <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">def batch_transfer(transfers: list, db, logger=[]) -> int:
     success_count = 0
     for tx in transfers:
@@ -226,15 +251,31 @@
     if success_count > 0:
         summary = f"Completed {success_count} transfers"
     return success_count</div>
-<ul style="list-style-type: none; padding-left: 0;">
-  <li style="margin-bottom: 0.5rem;"><strong>(a)</strong> Identify two static defects in this function using the defect category table.</li>
-  <li><strong>(b)</strong> For each defect, state which tool <span style="color: #d9534f; font-weight: 600;">(pylint/mypy/ruff)</span> would most likely detect it and why.</li>
-</ul>
+    
+    <p><em>Perform the following tasks:</em></p>
+    <ul style="list-style-type: circle; padding-left: 1.5rem; margin-bottom: 1rem;">
+      <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Identify two static defects in this function using the defect category table.</li>
+      <li><span style="color: #d9534f; font-weight: 600;">(b)</span> For each defect, state which tool <span style="color: #d9534f; font-weight: 600;">(pylint/mypy/ruff)</span> would most likely detect it and why.</li>
+    </ul>
+
     <hr>
-    <p><strong style="color: #d9534f;">Answer not provided by professor.</strong></p>
-    <p><em>(We will create the answer for this later!)</em></p>
+    <p><strong>Suggested Answer:</strong></p>
+    <p><em>(Following the strict examiner rubric: Defect &rarr; Reason &rarr; Likely Tool)</em></p>
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(a & b)</span> Static Defects and Tools <span style="color: #d9534f; font-weight: 600;">(3 P)</span>:</strong></p>
+    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+      <li style="margin-bottom: 0.5rem;"><strong>Defect 1:</strong> Mutable default argument <span style="color: #d9534f; font-weight: 600;">(logger=[])</span>.
+        <br><strong>Reason:</strong> The list is instantiated only once when the function is defined. Subsequent function calls will share the exact same list instance, causing unintended cross-call state leakage.
+        <br><strong>Likely Tool:</strong> <span style="color: #d9534f; font-weight: 600;">Pylint</span> (or Ruff). It has dedicated rules <span style="color: #d9534f; font-weight: 600;">(e.g., W0102 dangerous-default-value)</span> designed to flag mutable default arguments in Python.
+      </li>
+      <li><strong>Defect 2:</strong> Unused local variable <span style="color: #d9534f; font-weight: 600;">(summary)</span>.
+        <br><strong>Reason:</strong> The variable <span style="color: #d9534f; font-weight: 600;">summary</span> is assigned a formatted string but is never returned, logged, or utilized anywhere in the function.
+        <br><strong>Likely Tool:</strong> <span style="color: #d9534f; font-weight: 600;">Ruff</span> (or Pylint). Linters aggressively flag variables that are assigned but never accessed <span style="color: #d9534f; font-weight: 600;">(e.g., F841)</span> as they indicate logic errors or dead code.
+      </li>
+    </ul>
   </div>
 </details>
+
+<!-- QUESTION 3 -->
 <details class="drill-item" open>
   <summary>
     <span class="drill-tag">🏛️ Official Q</span>
@@ -242,19 +283,30 @@
   </summary>
   <div class="drill-a">
     <p><em>Source: CH05_AdvTest_06_AICover_Static.pdf</em></p>
+    
     <p>A colleague argues:</p>
-<p style="padding-left: 1rem; border-left: 3px solid var(--border); font-style: italic; color: var(--text-muted); margin: 0.5rem 0 1rem 0;">"If we achieve 80% branch coverage, we don't need code inspection &mdash; coverage is more rigorous because it's automated and objective."</p>
-<ul style="list-style-type: none; padding-left: 0;">
-  <li style="margin-bottom: 0.5rem;"><strong>(a)</strong> Give two concrete examples from today's material where 100% branch coverage would miss defects that inspection finds.</li>
-  <li><strong>(b)</strong> Give one example where automated static analysis catches a defect that neither branch coverage nor inspection reliably catches.</li>
-</ul>
+    <p style="padding-left: 1rem; border-left: 3px solid var(--border); font-style: italic; color: var(--text-muted); margin: 0.5rem 0 1rem 0;">"If we achieve 80% branch coverage, we don't need code inspection &mdash; coverage is more rigorous because it's automated and objective."</p>
+    
+    <p><em>Perform the following tasks:</em></p>
+    <ul style="list-style-type: circle; padding-left: 1.5rem; margin-bottom: 1rem;">
+      <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Give two concrete examples from today's material where 100% branch coverage would miss defects that inspection finds.</li>
+      <li><span style="color: #d9534f; font-weight: 600;">(b)</span> Give one example where automated static analysis catches a defect that neither branch coverage nor inspection reliably catches.</li>
+    </ul>
+
     <hr>
-    <p><strong style="color: #d9534f;">Answer not provided by professor.</strong></p>
-    <p><em>(We will create the answer for this later!)</em></p>
+    <p><strong>Suggested Answer:</strong></p>
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Where branch coverage fails but inspection succeeds <span style="color: #d9534f; font-weight: 600;">(2 P)</span>:</strong></p>
+    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+      <li><strong>Missing requirements (Omissions):</strong> If a critical feature <span style="color: #d9534f; font-weight: 600;">(e.g., verifying a user's age)</span> is completely omitted from the code, 100% branch coverage of the <em>existing</em> code will easily be achieved. Coverage cannot detect what isn't there, but a human inspecting against the specification will immediately spot the missing logic.</li>
+      <li><strong>Incorrect Constants / Hallucinations:</strong> If a developer codes a constant wrong <span style="color: #d9534f; font-weight: 600;">(e.g., TAX_RATE = 0.50 instead of 0.05)</span>, tests written to cover the code will blindly assert the wrong value. Inspection catches semantic errors that structural coverage ignores.</li>
+    </ul>
+    
+    <p><strong><span style="color: #d9534f; font-weight: 600;">(b)</span> Where static analysis outperforms both <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
+    <p><strong>Memory leaks, race conditions, or mutable default arguments <span style="color: #d9534f; font-weight: 600;">(e.g., logger=[])</span>.</strong> A human inspector might easily gloss over a `[]` bracket in a function definition due to visual fatigue. A unit test suite might only call the function once, meaning the shared-state bug never triggers. Static analysis algorithms, however, instantaneously flag this exact syntax anti-pattern without needing execution or human attention.</p>
   </div>
 </details>
-    </div>
-    
+
+</div>
     <footer class="page-footer">
       <span><a href="ch5.html">← Back to Chapter</a></span>
     </footer>
