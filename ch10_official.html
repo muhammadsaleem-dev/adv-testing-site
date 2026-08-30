@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>7. Risk, Requirement & Model-Based Testing | ADV Testing Methods</title>
+<title>Official Questions | 10. Security Testing</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c7a73'/%3E%3Ccircle cx='10' cy='11' r='3' fill='%23fff'/%3E%3Ccircle cx='22' cy='9' r='2.4' fill='%23fff'/%3E%3Ccircle cx='22' cy='23' r='3' fill='%23fff'/%3E%3Cpath d='M12.5 12.5L19.5 10M12 13.5L20 21' stroke='%23fff' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,7 +77,7 @@
           <a href="ch8.html">8. BDD & Gherkin</a>
           <a href="ch9.html">9. Web Automation & Perf</a>
           <a href="ch10.html">10. Security Testing</a>
-          <a href="ch10_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch10_official.html" class="active" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
           
           <a href="ch11.html">11. BudgetControl Arch</a>
         </div>
@@ -149,7 +149,7 @@
           <a href="ch8.html">8. BDD & Gherkin</a>
           <a href="ch9.html">9. Web Automation & Perf</a>
           <a href="ch10.html">10. Security Testing</a>
-          <a href="ch10_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch10_official.html" class="active" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
           
           <a href="ch11.html">11. BudgetControl Arch</a>
         </div>
@@ -173,55 +173,70 @@
   <div class="page">
     <div class="masthead">
       <div>
-        <div class="eyebrow">Advanced Testing Methods · Exam Guide</div>
-        <h1 class="title">7. Risk, Requirement & Model-Based Testing</h1>
+        <div class="eyebrow">10. Security Testing</div>
+        <h1 class="title">Official Questions</h1>
       </div>
-      <div class="masthead-meta">Key concepts and techniques</div>
+      <div class="masthead-meta"></div>
     </div>
     
-    <div class="page-content concept-content">
-      
-<h2>Requirements define expected behaviour. Risks decide priority and depth. Traceability proves coverage.</h2>
-
-<h3>Risk-based testing</h3>
-<ul>
-    <li>Risk = probability of failure x impact of failure.</li>
-    <li>The numeric score is a disciplined conversation aid, not exact mathematics.</li>
-    <li>High risk receives deeper negative/boundary testing, more levels, automation and stronger exit evidence.</li>
-    <li>Low risk may receive sampling, brush tests or exploratory checks.</li>
-</ul>
-
-<h3>Traceability matrix</h3>
-<table>
-    <thead><tr><th>Requirement</th><th>Risk</th><th>Condition</th><th>Test case</th><th>Status</th></tr></thead>
-    <tbody>
-        <tr><td>R-TR-01 amount range</td><td>invalid amount accepted</td><td>amount boundaries</td><td>TC-TR-001</td><td>planned</td></tr>
-        <tr><td>R-TR-02 target exists</td><td>money sent to invalid target</td><td>target validation</td><td>TC-TR-008</td><td>planned</td></tr>
-        <tr><td>R-SEC-01 session valid</td><td>expired session accepted</td><td>session validation</td><td>TC-SEC-003</td><td>planned</td></tr>
-    </tbody>
-</table>
-<p><strong>Why traceability matters:</strong> When a requirement changes, you can find affected risks and tests. For release, you can prove which high-risk requirements have evidence and which remain uncovered.</p>
-
-<h3>Selecting test levels</h3>
-<table>
-    <thead><tr><th>Level</th><th>Question</th><th>FinCon example</th></tr></thead>
-    <tbody>
-        <tr><td>Unit</td><td>Does a small function follow its rule?</td><td>Interest threshold</td></tr>
-        <tr><td>Component/API</td><td>Does a service validate correctly?</td><td>Transfer endpoint</td></tr>
-        <tr><td>Integration</td><td>Do components cooperate?</td><td>Service + repository + audit</td></tr>
-        <tr><td>System</td><td>Does the user workflow work?</td><td>Login -&gt; transfer -&gt; confirmation</td></tr>
-        <tr><td>Acceptance</td><td>Does it meet stakeholder need?</td><td>Safe customer money transfer</td></tr>
-    </tbody>
-</table>
-
-<div class="drill-item">
-  <strong>High-risk rule:</strong> Important behaviour should usually be covered at more than one level. Use fast lower-level tests for many boundaries and a few end-to-end tests for stakeholder confidence.
-</div>
-
-    </div>
     
-    <footer class="page-footer">
-      <span><a href="index.html">← Home</a></span>
+<details class="drill-item" open>
+  <summary>
+    <span class="drill-tag">🏛️ Official Q</span>
+    <span class="drill-q">CLOSING SECURITY QUESTION</span>
+  </summary>
+  <div class="drill-a">
+    <p><em>Source: CH10_Block_F_Security_Testing_Mock_Exam_Prep.pdf</em></p>
+    <p>For FinCon, which security risk deserves the strongest test evidence: <span style="color: #d9534f; font-weight: 600;">invalid login</span>, <span style="color: #d9534f; font-weight: 600;">unauthorized transfer</span>, <span style="color: #d9534f; font-weight: 600;">missing audit trail</span>, or <span style="color: #d9534f; font-weight: 600;">prompt injection in an AI assistant</span>?</p>
+    <p><em>Justify using:</em></p>
+    <ul style="list-style-type: circle; padding-left: 1.5rem; margin-bottom: 1rem;">
+      <li>protected asset</li>
+      <li>impact</li>
+      <li>probability</li>
+      <li>testability</li>
+      <li>residual risk</li>
+    </ul>
+
+    <hr>
+    
+    <p><strong>Suggested Answer:</strong></p>
+    <p><strong><span style="color: #d9534f; font-weight: 600;">Unauthorized transfer</span></strong> deserves the strongest test evidence because it directly threatens the core operational integrity and survival of FinCon.</p>
+    <div style="overflow-x: auto; margin-top: 1rem; margin-bottom: 1rem;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9em;">
+        <thead>
+          <tr style="background-color: var(--code-bg); border-bottom: 2px solid var(--border-color);">
+            <th style="padding: 0.75rem;">Criteria</th>
+            <th style="padding: 0.75rem;">Justification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 0.75rem; font-weight: 600;">Protected Asset</td>
+            <td style="padding: 0.75rem;">Customer funds and the core transactional integrity of the FinCon platform.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 0.75rem; font-weight: 600;">Impact</td>
+            <td style="padding: 0.75rem;">Extreme / Critical. Direct financial loss, massive regulatory fines, and permanent destruction of customer trust.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 0.75rem; font-weight: 600;">Probability</td>
+            <td style="padding: 0.75rem;">High. Fintech APIs and transactional endpoints are the primary targets for organized financial attackers.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 0.75rem; font-weight: 600;">Testability</td>
+            <td style="padding: 0.75rem;">High. Can be rigorously verified through negative workflow tests, API boundary tests, and strict permission isolation checks.</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; font-weight: 600;">Residual Risk</td>
+            <td style="padding: 0.75rem;">Unacceptable. If left untested or mitigated poorly, a successful exploit destroys the business. (Comparatively, invalid login is easily mitigated by standard rate-limiting, and AI prompt injection is typically isolated from the core transactional engine).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</details>
+<footer class="page-footer">
+      <span><a href="ch10.html">← Back to Chapter</a></span>
     </footer>
   </div>
 </div>

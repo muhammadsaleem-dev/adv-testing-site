@@ -134,3 +134,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Persist sidebar scroll position across page loads
+  var sidebar = document.querySelector(".sidebar-toc") || document.querySelector(".sidebar-scroll");
+  if (sidebar) {
+    var savedScroll = sessionStorage.getItem("sidebarScroll");
+    if (savedScroll) {
+      sidebar.scrollTop = parseInt(savedScroll, 10);
+    }
+    window.addEventListener("beforeunload", function() {
+      sessionStorage.setItem("sidebarScroll", sidebar.scrollTop);
+    });
+  }
+});
