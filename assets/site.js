@@ -1,4 +1,22 @@
 (function () {
+
+  // 1-Tap Force Refresh button for mobile cache busting
+  var refreshBtn = document.getElementById("forceRefreshBtn");
+  if (refreshBtn) {
+    refreshBtn.addEventListener("click", function () {
+      var toast = document.getElementById("toast");
+      if (toast) {
+        toast.textContent = "Updating App...";
+        toast.className = "toast show";
+      }
+      setTimeout(function() {
+        var url = new URL(window.location.href);
+        url.searchParams.set("v", Date.now().toString());
+        window.location.href = url.toString();
+      }, 150);
+    });
+  }
+
   "use strict";
 
   // Theme toggle
