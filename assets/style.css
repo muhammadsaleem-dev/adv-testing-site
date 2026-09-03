@@ -2,6 +2,10 @@
    Shared design system for all module pages + index. */
 
 :root {
+  --card-bg: #FFFFFF;
+  --card-bg-elevated: #F8FAFC;
+  --border-color: #E2E6EA;
+  --text-color: #12161B;
   --bg: #F6F7F9;
   --bg-raised: #FFFFFF;
   --text: #12161B;
@@ -34,6 +38,10 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
+  --card-bg: #FFFFFF;
+  --card-bg-elevated: #F8FAFC;
+  --border-color: #E2E6EA;
+  --text-color: #12161B;
     --bg: #0B0F14;
     --bg-raised: #131920;
     --text: #E7ECEF;
@@ -59,6 +67,10 @@
   }
 }
 :root[data-theme="dark"] {
+  --card-bg: #131920;
+  --card-bg-elevated: #161C23;
+  --border-color: #232C35;
+  --text-color: #E7ECEF;
   --bg: #0B0F14;
   --bg-raised: #131920;
   --text: #E7ECEF;
@@ -1833,4 +1845,61 @@ pre code.hljs {
   background: #0c7a73;
   color: #ffffff !important;
   font-weight: 700;
+}
+
+
+/* ==========================================================================
+   QUESTION CARDS & DRILL ITEMS THEME FIX
+   ========================================================================== */
+
+.question-card, div[style*="var(--card-bg"] {
+  background: var(--bg-raised) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+
+.question-prompt {
+  color: var(--text) !important;
+}
+
+.question-prompt p, .question-prompt li, .question-prompt span {
+  color: var(--text);
+}
+
+.drill-item summary {
+  background: var(--bg-raised) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.drill-a {
+  color: var(--text) !important;
+}
+
+[data-theme="dark"] .drill-item summary,
+:root[data-theme="dark"] .drill-item summary {
+  background: #161C23 !important;
+  border-color: #232C35 !important;
+}
+
+[data-theme="dark"] .drill-a,
+:root[data-theme="dark"] .drill-a {
+  color: #E7ECEF !important;
+}
+
+[data-theme="dark"] table,
+:root[data-theme="dark"] table {
+  color: #E7ECEF !important;
+}
+
+[data-theme="dark"] td,
+:root[data-theme="dark"] td {
+  color: #E7ECEF !important;
+}
+
+[data-theme="dark"] .alert-info,
+:root[data-theme="dark"] .alert-info {
+  background: #131920 !important;
+  border-color: #0c7a73 !important;
+  color: #E7ECEF !important;
 }
