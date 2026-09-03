@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>11. BudgetControl Architecture | ADV Testing Methods</title>
+<title>11. BudgetControl Arch | ADV Testing Methods</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c7a73'/%3E%3Ccircle cx='10' cy='11' r='3' fill='%23fff'/%3E%3Ccircle cx='22' cy='9' r='2.4' fill='%23fff'/%3E%3Ccircle cx='22' cy='23' r='3' fill='%23fff'/%3E%3Cpath d='M12.5 12.5L19.5 10M12 13.5L20 21' stroke='%23fff' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -183,46 +183,97 @@
   <div class="page">
     <div class="masthead">
       <div>
-        <div class="eyebrow">Advanced Testing Methods · Exam Guide</div>
-        <h1 class="title">11. BudgetControl Architecture</h1>
+        <div class="eyebrow">System Context · Architecture & HLRS</div>
+        <h1 class="title">11. BudgetControl Arch</h1>
       </div>
       <div class="masthead-meta">Key concepts and techniques</div>
     </div>
     
     <div class="page-content concept-content">
-      
-<h2>BudgetControl Architecture and Requirements as Test Context</h2>
-<p>Business calculations such as balances, forecasts, recurrence and currency conversion should not live inside window classes. Keeping them in domain/application layers makes them easier to test.</p>
+    
+    
+      <!-- HERO BANNER -->
+      <div class="alert alert-info" style="margin-bottom: 2rem; border-left: 4px solid #0c7a73; background: var(--code-bg);">
+        <h3 style="margin: 0 0 0.5rem 0; color: var(--text-color); font-size: 1.2rem;">
+          🎯 Chapter 11 Core Mission: The FinCon BudgetControl System Architecture &amp; HLRS
+        </h3>
+        <p style="margin: 0; font-size: 0.95rem; line-height: 1.6;">
+          <strong>BudgetControl (FinCon)</strong> is the course-long banking application used across all exam scenarios.
+          Understand its multi-tier component architecture, High-Level Requirements (HLRS), and end-to-end user stories.
+        </p>
+      </div>
 
-<h3>Core domain objects and rules</h3>
-<table>
-    <thead><tr><th>Object/rule</th><th>Testing idea</th></tr></thead>
-    <tbody>
-        <tr><td>Account and opening balance</td><td>Balance calculation and persistence</td></tr>
-        <tr><td>Expense, income and transfer are distinct</td><td>Correct storage and reporting by type</td></tr>
-        <tr><td>Separate transfer process dates</td><td>Source debit and target credit on different dates</td></tr>
-        <tr><td>Recurrence patterns</td><td>Monthly, quarterly, every 4 months, half-yearly, yearly</td></tr>
-        <tr><td>Foreign currency</td><td>Show/edit last rate; store only converted base amount</td></tr>
-        <tr><td>Forecast</td><td>12-month recurring expense projection</td></tr>
-        <tr><td>Planning income</td><td>Recurring monthly incoming transactions count as income</td></tr>
-        <tr><td>Attachments</td><td>Filesystem file + DB metadata consistency</td></tr>
-    </tbody>
-</table>
+      <!-- SECTION 1: ARCHITECTURE OVERVIEW -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--text-color);">
+          1. Multi-Tier System Architecture
+        </h2>
+        <div style="background: var(--code-bg); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
+          <ul style="line-height: 1.8; margin: 0; padding-left: 1.5rem;">
+            <li><strong>Frontend Presentation Layer:</strong> Web UI (HTML5/JS) + Mobile Banking Interface.</li>
+            <li><strong>API &amp; Gateway Layer:</strong> Session authentication, rate-limiting, and request validation.</li>
+            <li><strong>Core Business Engine (FinCon Core):</strong>
+              <br>• <em>Transfer Engine:</em> Validates amounts (1–100k cents), balances, and overdraft limits.
+              <br>• <em>Beneficiary Manager:</em> Manages verified recipient IBANs and step-up 2FA confirmation.
+              <br>• <em>Voucher &amp; Interest Service:</em> Handles discount percentages (5–40%) and savings tier calculations.
+            </li>
+            <li><strong>Data &amp; Persistence Layer:</strong> Relational Database (Accounts, Ledgers) + Immutable Audit Log Store.</li>
+          </ul>
+        </div>
+      </section>
 
-<hr>
-<h3>Architecture exam application</h3>
-<details class="drill-item">
-  <summary>
-    <span class="drill-tag">✏️ Select levels (Applied reasoning)</span>
-    <span class="drill-q">Where should recurrence expansion, SQLite save/reload and ENTER-twice behaviour be tested?</span>
-  </summary>
-  <div class="drill-a">
-    <p>Recurrence expansion: domain unit tests. SQLite save/reload: integration tests against repository/database. ENTER-twice behaviour: UI/system test using pytest-qt or equivalent. A BDD scenario may describe the business workflow while technical execution occurs at the suitable level.</p>
-  </div>
-</details>
+      <!-- SECTION 2: HLRS & USER STORIES TRACEABILITY -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--text-color);">
+          2. High-Level Requirements (HLRS) Traceability
+        </h2>
+        <div style="overflow-x: auto; margin: 1rem 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+            <thead>
+              <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border-color);">
+                <th style="padding: 0.75rem; width: 15%;">Req ID</th>
+                <th style="padding: 0.75rem; width: 45%;">Requirement Description</th>
+                <th style="padding: 0.75rem; width: 40%;">Associated Test Level &amp; Response</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">HLRS-R1</td>
+                <td style="padding: 0.75rem;">Login PIN must be exactly 4 numeric digits.</td>
+                <td style="padding: 0.75rem;">Unit &amp; Equivalence class testing (valid &amp; invalid PINs).</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">HLRS-R2</td>
+                <td style="padding: 0.75rem;">Transfer amount must be an integer between 1 and 100,000 Euro cents.</td>
+                <td style="padding: 0.75rem;">Boundary Value Analysis (0, 1, 100k, 100001) + API negative tests.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">HLRS-R3</td>
+                <td style="padding: 0.75rem;">Session token must be valid and non-expired to execute financial actions.</td>
+                <td style="padding: 0.75rem;">Integration tests with expired tokens &amp; unauthorized requests.</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">HLRS-R4</td>
+                <td style="padding: 0.75rem;">Every transfer attempt (success or fail) must be recorded in the audit log.</td>
+                <td style="padding: 0.75rem;">Database integration assert queries verifying audit table row generation.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- EXAM DRILL LINK -->
+      <div style="text-align: center; margin: 3rem 0 1rem 0; padding: 2rem; background: var(--code-bg); border-radius: 8px;">
+        <h3 style="margin-top: 0; color: var(--text-color);">Apply FinCon Knowledge in Real Exam Tasks</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+          Put the FinCon architecture into practice on the official 25-point Beneficiary Management exam worksheet!
+        </p>
+        <a href="exam_block_d.html" class="btn" style="background: #0c7a73; color: #fff; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block;">
+          ⭐ Open Exam Task: Block D (Beneficiary Mgmt - 25 P) &rarr;
+        </a>
+      </div>
 
     </div>
-    
     <footer class="page-footer">
       <span><a href="index.html">← Home</a></span>
     </footer>

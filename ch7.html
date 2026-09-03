@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>7. Risk, Requirement & Model-Based Testing | ADV Testing Methods</title>
+<title>7. Risk & Model-Based | ADV Testing Methods</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c7a73'/%3E%3Ccircle cx='10' cy='11' r='3' fill='%23fff'/%3E%3Ccircle cx='22' cy='9' r='2.4' fill='%23fff'/%3E%3Ccircle cx='22' cy='23' r='3' fill='%23fff'/%3E%3Cpath d='M12.5 12.5L19.5 10M12 13.5L20 21' stroke='%23fff' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -183,53 +183,148 @@
   <div class="page">
     <div class="masthead">
       <div>
-        <div class="eyebrow">Advanced Testing Methods · Exam Guide</div>
-        <h1 class="title">7. Risk, Requirement & Model-Based Testing</h1>
+        <div class="eyebrow">Process & Risk · Risk-Based Testing</div>
+        <h1 class="title">7. Risk & Model-Based</h1>
       </div>
       <div class="masthead-meta">Key concepts and techniques</div>
     </div>
     
     <div class="page-content concept-content">
-      
-<h2>Requirements define expected behaviour. Risks decide priority and depth. Traceability proves coverage.</h2>
+    
+    
+      <!-- HERO BANNER -->
+      <div class="alert alert-info" style="margin-bottom: 2rem; border-left: 4px solid #0c7a73; background: var(--code-bg);">
+        <h3 style="margin: 0 0 0.5rem 0; color: var(--text-color); font-size: 1.2rem;">
+          🎯 Chapter 7 Core Mission: Risk-Based Testing (RBT) &amp; Test Level Selection
+        </h3>
+        <p style="margin: 0; font-size: 0.95rem; line-height: 1.6;">
+          You can never test everything. <strong>Risk-Based Testing (RBT)</strong> ensures that testing resources are ruthlessly focused where failure costs the most.
+          Calculate <strong>Risk Exposure</strong> ($	ext{Probability} \times 	ext{Impact}$) and assign rigorous test responses.
+        </p>
+      </div>
 
-<h3>Risk-based testing</h3>
-<ul>
-    <li>Risk = probability of failure x impact of failure.</li>
-    <li>The numeric score is a disciplined conversation aid, not exact mathematics.</li>
-    <li>High risk receives deeper negative/boundary testing, more levels, automation and stronger exit evidence.</li>
-    <li>Low risk may receive sampling, brush tests or exploratory checks.</li>
-</ul>
+      <!-- SECTION 1: RISK EXPOSURE -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--text-color);">
+          1. Risk Identification &amp; Exposure Calculation
+        </h2>
+        <p>
+          A <strong>Risk</strong> is a potential problem that may happen in the future, defined by two fundamental dimensions:
+        </p>
 
-<h3>Traceability matrix</h3>
-<table>
-    <thead><tr><th>Requirement</th><th>Risk</th><th>Condition</th><th>Test case</th><th>Status</th></tr></thead>
-    <tbody>
-        <tr><td>R-TR-01 amount range</td><td>invalid amount accepted</td><td>amount boundaries</td><td>TC-TR-001</td><td>planned</td></tr>
-        <tr><td>R-TR-02 target exists</td><td>money sent to invalid target</td><td>target validation</td><td>TC-TR-008</td><td>planned</td></tr>
-        <tr><td>R-SEC-01 session valid</td><td>expired session accepted</td><td>session validation</td><td>TC-SEC-003</td><td>planned</td></tr>
-    </tbody>
-</table>
-<p><strong>Why traceability matters:</strong> When a requirement changes, you can find affected risks and tests. For release, you can prove which high-risk requirements have evidence and which remain uncovered.</p>
+        <div style="background: var(--code-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid #0c7a73; margin: 1.5rem 0;">
+          <h4 style="margin-top: 0; color: #0c7a73;">📐 The Risk Exposure Formula:</h4>
+          <p style="margin: 0; font-size: 1.05rem; line-height: 1.6;">
+            $$\text{Risk Exposure} = \text{Probability (Likelihood)} \times \text{Impact (Damage)}$$
+          </p>
+        </div>
 
-<h3>Selecting test levels</h3>
-<table>
-    <thead><tr><th>Level</th><th>Question</th><th>FinCon example</th></tr></thead>
-    <tbody>
-        <tr><td>Unit</td><td>Does a small function follow its rule?</td><td>Interest threshold</td></tr>
-        <tr><td>Component/API</td><td>Does a service validate correctly?</td><td>Transfer endpoint</td></tr>
-        <tr><td>Integration</td><td>Do components cooperate?</td><td>Service + repository + audit</td></tr>
-        <tr><td>System</td><td>Does the user workflow work?</td><td>Login -&gt; transfer -&gt; confirmation</td></tr>
-        <tr><td>Acceptance</td><td>Does it meet stakeholder need?</td><td>Safe customer money transfer</td></tr>
-    </tbody>
-</table>
+        <div style="overflow-x: auto; margin: 1.5rem 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+            <thead>
+              <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border-color);">
+                <th style="padding: 0.75rem;">Risk Description</th>
+                <th style="padding: 0.75rem; text-align: center;">Probability (1–3)</th>
+                <th style="padding: 0.75rem; text-align: center;">Impact (1–3)</th>
+                <th style="padding: 0.75rem; text-align: center;">Exposure (P&times;I)</th>
+                <th style="padding: 0.75rem;">Assigned Test Response</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color); background: rgba(217, 83, 79, 0.05);">
+                <td style="padding: 0.75rem; font-weight: 600;">Transfer above limit approved</td>
+                <td style="padding: 0.75rem; text-align: center;">2</td>
+                <td style="padding: 0.75rem; text-align: center;">3</td>
+                <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: #d9534f;">6</td>
+                <td style="padding: 0.75rem;">Boundary value + negative API/System tests</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color); background: rgba(217, 83, 79, 0.05);">
+                <td style="padding: 0.75rem; font-weight: 600;">Expired session permits transfer</td>
+                <td style="padding: 0.75rem; text-align: center;">2</td>
+                <td style="padding: 0.75rem; text-align: center;">3</td>
+                <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: #d9534f;">6</td>
+                <td style="padding: 0.75rem;">Integration tests with expired token injection</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem;">Invalid currency accepted</td>
+                <td style="padding: 0.75rem; text-align: center;">2</td>
+                <td style="padding: 0.75rem; text-align: center;">2</td>
+                <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: #f0ad4e;">4</td>
+                <td style="padding: 0.75rem;">Equivalence class validation tests</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem;">Login page typo / CSS glitch</td>
+                <td style="padding: 0.75rem; text-align: center;">2</td>
+                <td style="padding: 0.75rem; text-align: center;">1</td>
+                <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: #0c7a73;">2</td>
+                <td style="padding: 0.75rem;">Low-priority visual review</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-<div class="drill-item">
-  <strong>High-risk rule:</strong> Important behaviour should usually be covered at more than one level. Use fast lower-level tests for many boundaries and a few end-to-end tests for stakeholder confidence.
-</div>
+      <!-- SECTION 2: DEEP VS LIGHT TESTING -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--text-color);">
+          2. Deep vs. Light Testing Justification Matrix
+        </h2>
+        <p>
+          In the exam, the professor asks you to contrast a feature that must be tested <strong>deeply</strong> against one tested <strong>lightly</strong> using 5 criteria:
+        </p>
+
+        <div style="overflow-x: auto; margin: 1rem 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+            <thead>
+              <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border-color);">
+                <th style="padding: 0.75rem; width: 20%;">Criteria</th>
+                <th style="padding: 0.75rem; width: 40%; color: #d9534f;">Test Deeply (e.g. Transfer Validation)</th>
+                <th style="padding: 0.75rem; width: 40%; color: #0c7a73;">Test Lightly (e.g. Dashboard Theme)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-weight: 700;">Probability</td>
+                <td style="padding: 0.75rem;">High (Complex business &amp; boundary logic).</td>
+                <td style="padding: 0.75rem;">Low (Static CSS values rarely break logically).</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-weight: 700;">Impact</td>
+                <td style="padding: 0.75rem;">Critical (Direct financial loss / regulatory fine).</td>
+                <td style="padding: 0.75rem;">Low (Minor visual annoyance).</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-weight: 700;">Req. Criticality</td>
+                <td style="padding: 0.75rem;">Core business compliance requirement.</td>
+                <td style="padding: 0.75rem;">Non-essential aesthetic preference.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-weight: 700;">Test Cost</td>
+                <td style="padding: 0.75rem;">High ROI &mdash; cost of defect astronomically exceeds test cost.</td>
+                <td style="padding: 0.75rem;">Low ROI &mdash; visual regression maintenance is costly.</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem; font-weight: 700;">Required Confidence</td>
+                <td style="padding: 0.75rem;">Stakeholders demand 100% proof before deployment.</td>
+                <td style="padding: 0.75rem;">Stakeholders accept hotfixing visual bugs post-release.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- EXAM DRILL LINK -->
+      <div style="text-align: center; margin: 3rem 0 1rem 0; padding: 2rem; background: var(--code-bg); border-radius: 8px;">
+        <h3 style="margin-top: 0; color: var(--text-color);">Practice Chapter 7 Exam Questions</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+          Master Risk Exposure calculations, Deep vs Light testing matrices, and Risk-Based Test Level assignments!
+        </p>
+        <a href="ch7_official.html" class="btn" style="background: #0c7a73; color: #fff; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block;">
+          🚀 Practice Chapter 7 Official Questions &rarr;
+        </a>
+      </div>
 
     </div>
-    
     <footer class="page-footer">
       <span><a href="index.html">← Home</a></span>
     </footer>

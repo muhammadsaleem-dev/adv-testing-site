@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>12. Quick-Reference Sheets | ADV Testing Methods</title>
+<title>12. Course Summary | ADV Testing Methods</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c7a73'/%3E%3Ccircle cx='10' cy='11' r='3' fill='%23fff'/%3E%3Ccircle cx='22' cy='9' r='2.4' fill='%23fff'/%3E%3Ccircle cx='22' cy='23' r='3' fill='%23fff'/%3E%3Cpath d='M12.5 12.5L19.5 10M12 13.5L20 21' stroke='%23fff' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -183,67 +183,74 @@
   <div class="page">
     <div class="masthead">
       <div>
-        <div class="eyebrow">Advanced Testing Methods · Exam Guide</div>
-        <h1 class="title">12. Quick-Reference Sheets</h1>
+        <div class="eyebrow">Exam Preparation · Synthesis & Artifacts</div>
+        <h1 class="title">12. Course Summary</h1>
       </div>
       <div class="masthead-meta">Key concepts and techniques</div>
     </div>
     
     <div class="page-content concept-content">
-      
-<h2>Final Quick-Reference Sheets</h2>
+    
+    
+      <!-- HERO BANNER -->
+      <div class="alert alert-info" style="margin-bottom: 2rem; border-left: 4px solid #0c7a73; background: var(--code-bg);">
+        <h3 style="margin: 0 0 0.5rem 0; color: var(--text-color); font-size: 1.2rem;">
+          🎯 Chapter 12 Core Mission: Course Synthesis &amp; The 3 Prepared Exam Artifacts
+        </h3>
+        <p style="margin: 0; font-size: 0.95rem; line-height: 1.6;">
+          This chapter brings together the entire curriculum for exam day.
+          Master the analysis of the <strong>3 Prepared Exam Artifacts</strong> (Weak Test Strategy, Incomplete Risk Table, Traceability Gap Analysis) and review the complete syllabus checklist.
+        </p>
+      </div>
 
-<h3>Method selection in one table</h3>
-<table>
-    <thead><tr><th>Question clue</th><th>Use</th></tr></thead>
-    <tbody>
-        <tr><td>Range, format, valid/invalid groups</td><td>Equivalence classes</td></tr>
-        <tr><td>Just below / at / above threshold</td><td>Boundary Value Analysis</td></tr>
-        <tr><td>Many independent parameters</td><td>Pairwise/CTE</td></tr>
-        <tr><td>Logical combinations and priorities</td><td>Cause-effect graph / decision table</td></tr>
-        <tr><td>Which code paths ran?</td><td>Statement/branch/condition coverage</td></tr>
-        <tr><td>Independent effect of each Boolean condition</td><td>MC/DC</td></tr>
-        <tr><td>Slow/fragile dependency</td><td>Mock</td></tr>
-        <tr><td>Requirement examples in business language</td><td>BDD/Gherkin</td></tr>
-        <tr><td>What to test first/deepest</td><td>Risk-based testing</td></tr>
-        <tr><td>Proof requirement-risk-test link</td><td>Traceability matrix</td></tr>
-        <tr><td>States and transitions</td><td>Model-based testing</td></tr>
-        <tr><td>Known security patterns</td><td>Vulnerability scanning</td></tr>
-        <tr><td>Realistic exploit chain</td><td>Penetration testing</td></tr>
-        <tr><td>Expected load/limits</td><td>Performance test type</td></tr>
-    </tbody>
-</table>
+      <!-- SECTION 1: THE 3 PREPARED ARTIFACTS -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--text-color);">
+          1. The 3 Prepared Exam Summary Artifacts
+        </h2>
+        
+        <div style="background: var(--code-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 1.5rem;">
+          <h4 style="margin-top: 0; color: #d9534f;">Artifact A: Weak Test Strategy Excerpt</h4>
+          <p style="font-style: italic; margin-bottom: 0.75rem;">
+            "We will test FinCon thoroughly. The main scope is all important features. Testing will start when the software is ready. Testing ends when all tests are completed. Automation should be used where possible. Security will be checked by a tool."
+          </p>
+          <strong>5 Fatal Flaws to Identify:</strong>
+          <ul style="margin: 0.5rem 0 0 0; padding-left: 1.5rem; font-size: 0.9em; line-height: 1.6;">
+            <li><em>"thoroughly":</em> Unmeasurable vanity claim.</li>
+            <li><em>"all important features":</em> Undefined scope.</li>
+            <li><em>"software is ready":</em> Vague, non-objective entry criterion.</li>
+            <li><em>"all tests completed":</em> Weak exit criterion ignoring open defects and risk.</li>
+            <li><em>"security checked by a tool":</em> Tools cannot replace threat modeling and architectural risk analysis.</li>
+          </ul>
+        </div>
 
-<h3>Definitions you must not confuse</h3>
-<table>
-    <thead><tr><th>Pair</th><th>Difference</th></tr></thead>
-    <tbody>
-        <tr><td>Error vs defect vs failure</td><td>Human mistake vs flaw in artifact vs observable wrong behaviour</td></tr>
-        <tr><td>Testing vs debugging</td><td>Detect/report vs locate/remove cause</td></tr>
-        <tr><td>Severity vs priority</td><td>Impact vs fixing order</td></tr>
-        <tr><td>Authentication vs authorization</td><td>Identity vs permission</td></tr>
-        <tr><td>BDD vs Gherkin vs behave</td><td>Approach vs language vs execution framework</td></tr>
-        <tr><td>Load vs stress</td><td>Expected workload vs push until degradation</td></tr>
-        <tr><td>Pass vs product quality</td><td>A passing test only confirms its covered example</td></tr>
-        <tr><td>Coverage vs correctness</td><td>Execution structure vs semantic truth</td></tr>
-    </tbody>
-</table>
+        <div style="background: var(--code-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 1.5rem;">
+          <h4 style="margin-top: 0; color: #0c7a73;">Artifact B: Incomplete Risk Exposure Table</h4>
+          <p style="margin: 0; font-size: 0.9em; line-height: 1.6;">
+            Calculate $\text{Exposure} = \text{Probability} \times \text{Impact}$ for all items. Assign boundary and security tests to highest exposure (e.g. Exposure 6), and lightweight visual reviews to lowest exposure (e.g. Exposure 2).
+          </p>
+        </div>
 
-<h3>Common exam traps</h3>
-<ul>
-    <li>Listing values without expected results.</li>
-    <li>Combining two invalid parameters and then claiming both validations were tested.</li>
-    <li>Calling a human mistake a bug instead of an error.</li>
-    <li>Calling an observable failure a defect.</li>
-    <li>Claiming pairwise coverage without checking pairs.</li>
-    <li>Using condition coverage as proof of MC/DC.</li>
-    <li>Believing 100% coverage proves correctness.</li>
-    <li>Writing vague Gherkin: "data", "works", "correct".</li>
-    <li>Treating AI output as an oracle.</li>
-</ul>
+        <div style="background: var(--code-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem;">
+          <h4 style="margin-top: 0; color: #0c7a73;">Artifact C: Traceability Gap Analysis</h4>
+          <p style="margin: 0; font-size: 0.9em; line-height: 1.6;">
+            Find requirements missing negative test cases (e.g., valid PIN tested, but invalid length missing; amount 500 tested, but boundary 100,001 missing; expired session has no linked test case).
+          </p>
+        </div>
+      </section>
+
+      <!-- EXAM DRILL LINK -->
+      <div style="text-align: center; margin: 3rem 0 1rem 0; padding: 2rem; background: var(--code-bg); border-radius: 8px;">
+        <h3 style="margin-top: 0; color: var(--text-color);">Practice Chapter 12 Official Exam Artifacts</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+          Solve Artifacts A, B, and C with full interactive model answers!
+        </p>
+        <a href="ch12_official.html" class="btn" style="background: #0c7a73; color: #fff; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block;">
+          🚀 Practice Chapter 12 Official Questions &rarr;
+        </a>
+      </div>
 
     </div>
-    
     <footer class="page-footer">
       <span><a href="index.html">← Home</a></span>
     </footer>

@@ -183,94 +183,155 @@
   <div class="page">
     <div class="masthead">
       <div>
-        <div class="eyebrow">Advanced Testing Methods · Exam Guide</div>
+        <div class="eyebrow">Core Concepts · Combinatorics</div>
         <h1 class="title">3. Pairwise & Decision Tables</h1>
       </div>
       <div class="masthead-meta">Key concepts and techniques</div>
     </div>
     
     <div class="page-content concept-content">
-      
-<h2>EC and BVA focus on individual parameters. Pairwise and decision tables focus on interactions.</h2>
+    
+    
+      <!-- HERO BANNER -->
+      <div class="alert alert-info" style="margin-bottom: 2rem; border-left: 4px solid #0c7a73; background: var(--code-bg);">
+        <h3 style="margin: 0 0 0.5rem 0; color: var(--text-color); font-size: 1.2rem;">
+          🎯 Chapter 3 Core Mission: Mastering Combinatorial Testing &amp; Logic Tables
+        </h3>
+        <p style="margin: 0; font-size: 0.95rem; line-height: 1.6;">
+          When an application has multiple configuration parameters, testing every combination leads to <strong>combinatorial explosion</strong> (e.g., $2 \times 2 \times 3 = 12$ tests, but 10 parameters with 4 values each = $4^{10} = 1,048,576$ tests).
+          <strong>Pairwise (All-Pairs) Testing</strong> and <strong>Decision Tables</strong> drastically reduce tests while catching over 85% of multi-variable defects.
+        </p>
+      </div>
 
-<h3>Pairwise testing</h3>
-<ul>
-    <li><strong>Guarantee:</strong> every combination of values between every pair of parameters appears at least once.</li>
-    <li>It does <strong>not</strong> guarantee every 3-way or full combination.</li>
-    <li>The largest 2-way pair gives a lower bound for the number of rows.</li>
-    <li>Always verify the table; do not claim pairwise coverage only because the row count looks reasonable.</li>
-</ul>
+      <!-- SECTION 1: PAIRWISE TESTING -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--text-color);">
+          1. Pairwise (All-Pairs) Testing &amp; The Minimum Theorem
+        </h2>
+        <p>
+          Empirical research by NIST shows that most software defects are triggered by single parameters (single-mode faults) or <strong>interactions between two parameters (double-mode faults)</strong>. Faults triggered by 3 or more variables interacting simultaneously are exceptionally rare.
+        </p>
+        <p>
+          <strong>Pairwise Testing</strong> ensures that <em>every possible pair of parameter values is tested in at least one test case</em>.
+        </p>
 
-<table>
-    <thead><tr><th>Parameter</th><th>Values</th></tr></thead>
-    <tbody>
-        <tr><td>Format</td><td>PDF / CSV / XML</td></tr>
-        <tr><td>Date range</td><td>7 days / 30 days / custom</td></tr>
-        <tr><td>Include cancelled</td><td>yes / no</td></tr>
-    </tbody>
-</table>
+        <div style="background: var(--code-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid #0c7a73; margin: 1.5rem 0;">
+          <h4 style="margin-top: 0; color: #0c7a73;">📐 The Pairwise Lower Bound Formula (Exam Essential):</h4>
+          <p style="margin: 0; font-size: 0.95rem; line-height: 1.6;">
+            The theoretical absolute minimum number of test cases required for pairwise coverage is determined by the product of the number of values of the <strong>two largest parameters</strong>:
+            <br>
+            $$\text{Pairwise Minimum} \ge |\text{Values}_{\text{Largest Parameter 1}}| \times |\text{Values}_{\text{Largest Parameter 2}}|$$
+          </p>
+        </div>
 
-<div class="drill-item">
-  <strong>Minimum reasoning:</strong> Largest pair = Format x Date range = 3 x 3 = 9. Therefore fewer than 9 rows cannot cover every format-date combination.
-</div>
+        <div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 1.5rem;">
+          <h4 style="margin-top: 0; color: var(--text-color);">FinCon Report Export Example:</h4>
+          <ul style="line-height: 1.6; margin-bottom: 1rem;">
+            <li><strong>Format:</strong> PDF, CSV (2 values)</li>
+            <li><strong>Include Summary:</strong> Yes, No (2 values)</li>
+            <li><strong>Language:</strong> EN, DE, FR (3 values)</li>
+          </ul>
+          <p style="margin: 0; font-size: 0.9em;">
+            Total exhaustive combinations: $2 \times 2 \times 3 = 12$ test cases.<br>
+            <strong>Pairwise Minimum:</strong> The two largest parameters are <code>Language (3)</code> and <code>Format (2)</code> (or Summary).<br>
+            Minimum test suite size $= 3 \times 2 = \mathbf{6\text{ test cases}}$.
+          </p>
+        </div>
+      </section>
 
-<h3>Cause-effect graphing</h3>
-<ol>
-    <li>Divide the specification into a manageable rule.</li>
-    <li>List causes: input conditions or equivalence classes.</li>
-    <li>List effects: outputs, messages or state changes.</li>
-    <li>Connect them using Boolean logic (identity, NOT, AND, OR).</li>
-    <li>Add constraints for impossible combinations (Exclusive, Inclusive, One and only one).</li>
-    <li>Convert the graph into a decision table.</li>
-    <li>Create one test case per decision-table column.</li>
-</ol>
+      <!-- SECTION 2: CAUSE-EFFECT GRAPHING & DECISION TABLES -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--text-color);">
+          2. Cause-Effect Graphing (CEG) &amp; Decision Tables
+        </h2>
+        <p>
+          When complex business logic involves combinations of boolean conditions and interdependent rules, <strong>Cause-Effect Graphing</strong> maps inputs (causes) to outputs (effects) using boolean logic gates:
+        </p>
 
-<h3>Debit decision table</h3>
-<table>
-    <thead><tr><th>Account active</th><th>Balance sufficient</th><th>Expected</th></tr></thead>
-    <tbody>
-        <tr><td>Yes</td><td>Yes</td><td>approved</td></tr>
-        <tr><td>No</td><td>Yes</td><td>ACCOUNT_INACTIVE</td></tr>
-        <tr><td>Yes</td><td>No</td><td>INSUFFICIENT_FUNDS</td></tr>
-        <tr><td>No</td><td>No</td><td>ACCOUNT_INACTIVE because account check has priority</td></tr>
-    </tbody>
-</table>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+          <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+            <strong style="color: #0c7a73;">Identity / NOT</strong>
+            <p style="margin: 0.35rem 0 0 0; font-size: 0.85em;">Cause $C_1$ directly enables Effect $E_1$, or inverted via $\neg C_1$.</p>
+          </div>
+          <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+            <strong style="color: #0c7a73;">AND (&amp;)</strong>
+            <p style="margin: 0.35rem 0 0 0; font-size: 0.85em;">Effect occurs only if all connected causes are TRUE.</p>
+          </div>
+          <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+            <strong style="color: #0c7a73;">OR (||)</strong>
+            <p style="margin: 0.35rem 0 0 0; font-size: 0.85em;">Effect occurs if at least one connected cause is TRUE.</p>
+          </div>
+          <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+            <strong style="color: #d9534f;">Constraints (E, I, O, R)</strong>
+            <p style="margin: 0.35rem 0 0 0; font-size: 0.85em;">Exclusive ($E$), Inclusive ($I$), One-and-only-one ($O$), Requires ($R$).</p>
+          </div>
+        </div>
 
-<hr>
-<h3>Worked exam questions</h3>
+        <h4 style="color: var(--text-color);">FinCon Overdraft Decision Table:</h4>
+        <div style="overflow-x: auto; margin: 1rem 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9em; text-align: center;">
+            <thead>
+              <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border-color);">
+                <th style="padding: 0.75rem; text-align: left;">Condition / Action</th>
+                <th style="padding: 0.75rem;">Rule 1</th>
+                <th style="padding: 0.75rem;">Rule 2</th>
+                <th style="padding: 0.75rem;">Rule 3</th>
+                <th style="padding: 0.75rem;">Rule 4</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; text-align: left;">C1: Balance &ge; Amount</td>
+                <td style="padding: 0.75rem; color: #0c7a73; font-weight: 700;">T</td>
+                <td style="padding: 0.75rem; color: #d9534f; font-weight: 700;">F</td>
+                <td style="padding: 0.75rem; color: #d9534f; font-weight: 700;">F</td>
+                <td style="padding: 0.75rem; color: #d9534f; font-weight: 700;">F</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; text-align: left;">C2: Overdraft Enabled</td>
+                <td style="padding: 0.75rem;">&mdash;</td>
+                <td style="padding: 0.75rem; color: #0c7a73; font-weight: 700;">T</td>
+                <td style="padding: 0.75rem; color: #0c7a73; font-weight: 700;">T</td>
+                <td style="padding: 0.75rem; color: #d9534f; font-weight: 700;">F</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; text-align: left;">C3: Deficit &le; Limit</td>
+                <td style="padding: 0.75rem;">&mdash;</td>
+                <td style="padding: 0.75rem; color: #0c7a73; font-weight: 700;">T</td>
+                <td style="padding: 0.75rem; color: #d9534f; font-weight: 700;">F</td>
+                <td style="padding: 0.75rem;">&mdash;</td>
+              </tr>
+              <tr style="border-top: 2px solid var(--border-color); background: rgba(12, 122, 115, 0.04);">
+                <td style="padding: 0.75rem; text-align: left; font-weight: 700;">Action: Approve Transfer</td>
+                <td style="padding: 0.75rem; color: #0c7a73; font-weight: 700;">X</td>
+                <td style="padding: 0.75rem; color: #0c7a73; font-weight: 700;">X</td>
+                <td style="padding: 0.75rem;">&mdash;</td>
+                <td style="padding: 0.75rem;">&mdash;</td>
+              </tr>
+              <tr style="background: rgba(217, 83, 79, 0.04);">
+                <td style="padding: 0.75rem; text-align: left; font-weight: 700;">Action: Reject Transfer</td>
+                <td style="padding: 0.75rem;">&mdash;</td>
+                <td style="padding: 0.75rem;">&mdash;</td>
+                <td style="padding: 0.75rem; color: #d9534f; font-weight: 700;">X</td>
+                <td style="padding: 0.75rem; color: #d9534f; font-weight: 700;">X</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-<details class="drill-item">
-  <summary>
-    <span class="drill-tag">✏️ Pairwise guarantee (4 marks) <span class="source-link" data-source="\'Block B — Pairwise CEG.pdf, Page 75\'" style="font-size: 0.8em; color: #007bff; text-decoration: underline; cursor: pointer;">(Source)</span> <span class="source-link" data-source="\'Block B — Pairwise CEG.pdf, Page 55\'" style="font-size: 0.8em; color: #007bff; text-decoration: underline; cursor: pointer;">(Source)</span></span>
-    <span class="drill-q">Explain what pairwise guarantees and does not guarantee.</span>
-  </summary>
-  <div class="drill-a">
-    <p>It guarantees that every 2-way value combination appears in at least one test. It does not guarantee all 3-way or full combinations, so defects requiring three simultaneous conditions can remain.</p>
-  </div>
-</details>
-
-<details class="drill-item">
-  <summary>
-    <span class="drill-tag">✏️ Overdraft decision table (4 marks)</span>
-    <span class="drill-q">Protection enabled, balance sufficiency and overdraft limit determine approval.</span>
-  </summary>
-  <div class="drill-a">
-    <p>State assumptions because the wording is ambiguous. A reasonable table is: sufficient balance -&gt; approve; insufficient + protection + limit not exceeded -&gt; approve; insufficient + no protection -&gt; INSUFFICIENT_FUNDS; insufficient + protection + limit exceeded -&gt; OVERDRAFT_LIMIT_EXCEEDED. “Limit exceeded” without protection can be marked impossible/not applicable.</p>
-  </div>
-</details>
-
-<details class="drill-item">
-  <summary>
-    <span class="drill-tag">✏️ Review AI debit tests (4 marks)</span>
-    <span class="drill-q">AI says inactive+sufficient -&gt; INSUFFICIENT_FUNDS and active+0 balance+1 amount -&gt; approved.</span>
-  </summary>
-  <div class="drill-a">
-    <p>Both are wrong. Inactive takes priority and should return ACCOUNT_INACTIVE. An active account with insufficient balance should return INSUFFICIENT_FUNDS. The missing combination is inactive plus insufficient balance; expected ACCOUNT_INACTIVE.</p>
-  </div>
-</details>
+      <!-- EXAM DRILL LINK -->
+      <div style="text-align: center; margin: 3rem 0 1rem 0; padding: 2rem; background: var(--code-bg); border-radius: 8px;">
+        <h3 style="margin-top: 0; color: var(--text-color);">Practice Chapter 3 Exam Questions</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+          Master Pairwise Minimum calculations, finding missing 2-way pairs, Cause-Effect Graphing, and reviewing AI decision tables!
+        </p>
+        <a href="ch3_official.html" class="btn" style="background: #0c7a73; color: #fff; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block;">
+          🚀 Practice Chapter 3 Official Questions &rarr;
+        </a>
+      </div>
 
     </div>
-    
     <footer class="page-footer">
       <span><a href="index.html">← Home</a></span>
     </footer>

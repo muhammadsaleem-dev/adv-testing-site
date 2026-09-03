@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>5. AI-Generated Code & Static Analysis | ADV Testing Methods</title>
+<title>5. AI Code & Static Analysis | ADV Testing Methods</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c7a73'/%3E%3Ccircle cx='10' cy='11' r='3' fill='%23fff'/%3E%3Ccircle cx='22' cy='9' r='2.4' fill='%23fff'/%3E%3Ccircle cx='22' cy='23' r='3' fill='%23fff'/%3E%3Cpath d='M12.5 12.5L19.5 10M12 13.5L20 21' stroke='%23fff' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -183,101 +183,113 @@
   <div class="page">
     <div class="masthead">
       <div>
-        <div class="eyebrow">Advanced Testing Methods · Exam Guide</div>
-        <h1 class="title">5. AI-Generated Code & Static Analysis</h1>
+        <div class="eyebrow">Code & Coverage · Static Analysis</div>
+        <h1 class="title">5. AI Code & Static Analysis</h1>
       </div>
       <div class="masthead-meta">Key concepts and techniques</div>
     </div>
     
     <div class="page-content concept-content">
-      
-<h2>AI-generated code often looks correct. Review it against the specification before trusting coverage or generated tests.</h2>
+    
+    
+      <!-- HERO BANNER -->
+      <div class="alert alert-info" style="margin-bottom: 2rem; border-left: 4px solid #0c7a73; background: var(--code-bg);">
+        <h3 style="margin: 0 0 0.5rem 0; color: var(--text-color); font-size: 1.2rem;">
+          🎯 Chapter 5 Core Mission: Static Code Analysis, Inspections &amp; AI Defect Patterns
+        </h3>
+        <p style="margin: 0; font-size: 0.95rem; line-height: 1.6;">
+          Static testing evaluates code, architecture, and requirements <strong>without executing the software</strong>.
+          Learn how to catch defects early via <strong>Fagan Inspections</strong>, linters (Pylint, Ruff), type checkers (MyPy), and recognize AI-generated code antipatterns.
+        </p>
+      </div>
 
-<h3>Typical AI-code defect patterns</h3>
-<table>
-    <thead><tr><th>Pattern</th><th>Example</th><th>Why coverage may miss it</th></tr></thead>
-    <tbody>
-        <tr><td>Dead path from hallucinated logic</td><td>Extra branch that cannot be reached</td><td>Coverage shows a gap but cannot explain the intended rule.</td></tr>
-        <tr><td>Plausible but invented boundary</td><td>Age restricted to &lt;=120 although spec has no maximum</td><td>Tests generated from the same code can validate the invented rule.</td></tr>
-        <tr><td>Copy-paste semantic error</td><td>Refund calls debit instead of credit</td><td>100% statement/branch coverage can still execute the wrong method.</td></tr>
-        <tr><td>Duplicate branch logic</td><td>Different labels return identical result</td><td>All branches can run but the business distinction is absent.</td></tr>
-        <tr><td>Wrong test oracle</td><td>Expected result copied from implementation</td><td>The test confirms the defect instead of revealing it.</td></tr>
-    </tbody>
-</table>
+      <!-- SECTION 1: STATIC ANALYSIS VS DYNAMIC TESTING -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--text-color);">
+          1. Static Analysis vs. Dynamic Testing &amp; Inspections
+        </h2>
+        <p>
+          While dynamic testing discovers <strong>runtime failures</strong> by running test cases, static analysis discovers <strong>defects directly in the code or document</strong> before execution begins.
+        </p>
 
-<h3>AI-code review checklist</h3>
-<ol>
-    <li>Read the specification and list valid/invalid inputs and outputs.</li>
-    <li>List every branch; mark branches not required by the specification.</li>
-    <li>Check reachability and dead code.</li>
-    <li>Compare all boundaries with the specification.</li>
-    <li>Look for duplicate or near-duplicate branch logic.</li>
-    <li>Derive test oracles independently.</li>
-    <li>Only then measure coverage and investigate gaps.</li>
-</ol>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.5rem 0;">
+          <div style="background: var(--code-bg); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color);">
+            <h4 style="margin-top: 0; color: #0c7a73;">🔍 Formal Code Inspections (Fagan)</h4>
+            <p style="font-size: 0.9em; margin: 0; line-height: 1.6;">
+              A structured, human review process following strict roles (Author, Inspector, Moderator, Scribe).
+              <br><strong>Key Advantage:</strong> Catches <em>omitted requirements</em>, unmaintainable architecture, and logical flaws that pass 100% automated branch coverage!
+            </p>
+          </div>
 
-<h3>Static analysis versus inspection</h3>
-<table>
-    <thead><tr><th>Technique</th><th>How it works</th><th>Strength</th><th>Limitation</th></tr></thead>
-    <tbody>
-        <tr><td>Static analysis</td><td>Tool reads code without executing it</td><td>Fast; catches type/data/control-flow issues</td><td>False positives; weak business understanding</td></tr>
-        <tr><td>Code inspection</td><td>Human reviews systematically</td><td>Finds logic, design and specification mismatches</td><td>Needs skill and discipline</td></tr>
-        <tr><td>Dynamic testing</td><td>Executes software</td><td>Observes real behaviour and failures</td><td>Only covers executed cases</td></tr>
-    </tbody>
-</table>
+          <div style="background: var(--code-bg); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color);">
+            <h4 style="margin-top: 0; color: #0c7a73;">⚡ Automated Static Analysis Tools</h4>
+            <p style="font-size: 0.9em; margin: 0; line-height: 1.6;">
+              Linters and abstract syntax tree (AST) scanners that automatically analyze source files.
+              <br><strong>Tool Suite:</strong>
+              <br>• <strong>Pylint / Ruff:</strong> Syntax, code quality, unused variables, antipatterns.
+              <br>• <strong>MyPy:</strong> Static type mismatches and None-pointer exceptions.
+              <br>• <strong>Bandit / SonarQube:</strong> Hardcoded credentials &amp; security vulnerabilities.
+            </p>
+          </div>
+        </div>
+      </section>
 
-<h3>Common data reference defects</h3>
-<pre><code># Use before assignment
-for item in items:
-    if item.valid:
-        result = item.value
-return result  # fails if no valid item
+      <!-- SECTION 2: THE 3-PART STATIC DEFECT RUBRIC -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--text-color);">
+          2. The Strict Exam Grading Rubric: Defect &rarr; Reason &rarr; Tool
+        </h2>
+        <p>
+          On the exam, the professor requires you to analyze a Python code snippet and report defects using the <strong>3-part formula</strong>:
+        </p>
 
-# Mutable default
-def append_log(msg, log=[]):  # same list reused across calls
-    log.append(msg)
+        <div style="overflow-x: auto; margin: 1.5rem 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+            <thead>
+              <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border-color);">
+                <th style="padding: 0.75rem; width: 30%;">Identified Defect</th>
+                <th style="padding: 0.75rem; width: 45%;">Why It Is A Quality Problem (Reason)</th>
+                <th style="padding: 0.75rem; width: 25%;">Likely Detection Tool</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-family: var(--font-mono); color: #d9534f;">Mutable Default Argument (e.g., logger=[])</td>
+                <td style="padding: 0.75rem;">In Python, default lists are created once at function definition time. State persists across subsequent function calls, causing insidious data leakage and test pollution!</td>
+                <td style="padding: 0.75rem; font-weight: 600; color: #0c7a73;">Linter (Pylint / Ruff)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-family: var(--font-mono); color: #d9534f;">Unused Variable (e.g., message = "done")</td>
+                <td style="padding: 0.75rem;">Dead store. Indicates dead code, unfinished development logic, or potential typo in a variable reference.</td>
+                <td style="padding: 0.75rem; font-weight: 600; color: #0c7a73;">Linter (Pylint / Ruff / Flake8)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-family: var(--font-mono); color: #d9534f;">Dead Code / Unreachable Branch</td>
+                <td style="padding: 0.75rem;">Code that can never execute under any possible condition (e.g., <code>if amount &lt; 0 and amount &gt; 100</code>). Wastes maintenance effort and confuses reviewers.</td>
+                <td style="padding: 0.75rem; font-weight: 600; color: #0c7a73;">Static Analyzer / Code Review</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem; font-family: var(--font-mono); color: #d9534f;">Missing Type Annotation / None Dereference</td>
+                <td style="padding: 0.75rem;">Passing <code>None</code> to a function that expects an object causes unhandled <code>AttributeError</code> crashes at runtime.</td>
+                <td style="padding: 0.75rem; font-weight: 600; color: #0c7a73;">Type Checker (MyPy)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-# Variable shadowing
-amount = 1000
-def calculate():
-    amount = amount * 0.9  # UnboundLocalError
-</code></pre>
-
-<hr>
-<h3>Worked exam questions</h3>
-
-<details class="drill-item">
-  <summary>
-    <span class="drill-tag">✏️ Duplicate tier branch (4 marks) <span class="source-link" data-source="\'CH05_AdvTest_06_AICover_Static.pdf, Page 27\'" style="font-size: 0.8em; color: #007bff; text-decoration: underline; cursor: pointer;">(Source)</span></span>
-    <span class="drill-q">A bronze branch repeats the exact silver condition, but bronze is not in the specification.</span>
-  </summary>
-  <div class="drill-a">
-    <p>Defects: the bronze condition is unreachable because the earlier identical silver branch always matches; bronze is an unsupported tier. A strict 100% branch target cannot be reached while that dead branch exists. Coverage can expose an unexecuted branch but not decide the correct business tiers. No ordinary input test can execute the unreachable line; static inspection plus a specification-based test for representative silver/basic values is required.</p>
-  </div>
-</details>
-
-<details class="drill-item">
-  <summary>
-    <span class="drill-tag">✏️ Static defects (3 marks)</span>
-    <span class="drill-q">batch_transfer has logger=[] and assigns summary but never uses it.</span>
-  </summary>
-  <div class="drill-a">
-    <p>logger=[] is a mutable default argument and causes state to persist across calls; Pylint/Ruff and review can detect it. summary is an unused variable; Pylint/Ruff can detect it. Mypy is not the main tool unless useful type annotations exist.</p>
-  </div>
-</details>
-
-<details class="drill-item">
-  <summary>
-    <span class="drill-tag">✏️ Why inspection still matters (3 marks)</span>
-    <span class="drill-q">Give defects branch coverage can miss.</span>
-  </summary>
-  <div class="drill-a">
-    <p>Examples: invented age maximum; debit instead of credit in refund; duplicate branches with identical results; unsupported business tier. Static tools can more reliably flag use-before-assignment, mutable defaults, unreachable code after return/raise, and type mismatches.</p>
-  </div>
-</details>
+      <!-- EXAM DRILL LINK -->
+      <div style="text-align: center; margin: 3rem 0 1rem 0; padding: 2rem; background: var(--code-bg); border-radius: 8px;">
+        <h3 style="margin-top: 0; color: var(--text-color);">Practice Chapter 5 Exam Questions</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+          Analyze AI defect patterns, spot mutable default arguments, and critique code inspections vs. branch coverage!
+        </p>
+        <a href="ch5_official.html" class="btn" style="background: #0c7a73; color: #fff; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block;">
+          🚀 Practice Chapter 5 Official Questions &rarr;
+        </a>
+      </div>
 
     </div>
-    
     <footer class="page-footer">
       <span><a href="index.html">← Home</a></span>
     </footer>

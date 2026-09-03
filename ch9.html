@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>9. Web Automation & Performance | ADV Testing Methods</title>
+<title>9. Web Automation & Perf | ADV Testing Methods</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c7a73'/%3E%3Ccircle cx='10' cy='11' r='3' fill='%23fff'/%3E%3Ccircle cx='22' cy='9' r='2.4' fill='%23fff'/%3E%3Ccircle cx='22' cy='23' r='3' fill='%23fff'/%3E%3Cpath d='M12.5 12.5L19.5 10M12 13.5L20 21' stroke='%23fff' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -183,61 +183,87 @@
   <div class="page">
     <div class="masthead">
       <div>
-        <div class="eyebrow">Advanced Testing Methods · Exam Guide</div>
-        <h1 class="title">9. Web Automation & Performance</h1>
+        <div class="eyebrow">Automation & Security · UI & Performance</div>
+        <h1 class="title">9. Web Automation & Perf</h1>
       </div>
       <div class="masthead-meta">Key concepts and techniques</div>
     </div>
     
     <div class="page-content concept-content">
-      
-<h2>Automation is valuable only when it provides reliable, diagnosable and decision-relevant evidence.</h2>
+    
+    
+      <!-- HERO BANNER -->
+      <div class="alert alert-info" style="margin-bottom: 2rem; border-left: 4px solid #0c7a73; background: var(--code-bg);">
+        <h3 style="margin: 0 0 0.5rem 0; color: var(--text-color); font-size: 1.2rem;">
+          🎯 Chapter 9 Core Mission: Robust Web UI Automation &amp; Non-Functional Performance Testing
+        </h3>
+        <p style="margin: 0; font-size: 0.95rem; line-height: 1.6;">
+          UI tests are notoriously fragile when built on poor locators and static waits.
+          Learn how to design robust, resilient UI automation with <strong>Test-IDs and Dynamic Waits</strong>, and master non-functional performance testing using <strong>Latency Percentiles (p95, p99)</strong> instead of misleading averages.
+        </p>
+      </div>
 
-<h3>Automation level and test pyramid</h3>
-<table>
-    <thead><tr><th>Check</th><th>Best primary level</th></tr></thead>
-    <tbody>
-        <tr><td>Amount 100001 rejected</td><td>Unit or API</td></tr>
-        <tr><td>Login page shows PIN message</td><td>UI/system</td></tr>
-        <tr><td>Audit entry stored after rejection</td><td>Integration/database</td></tr>
-        <tr><td>Successful customer transfer journey</td><td>UI/end-to-end</td></tr>
-    </tbody>
-</table>
+      <!-- SECTION 1: ROBUST UI AUTOMATION -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--text-color);">
+          1. Robust Web UI Automation vs. Fragile Antipatterns
+        </h2>
+        <div style="overflow-x: auto; margin: 1.5rem 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+            <thead>
+              <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border-color);">
+                <th style="padding: 0.75rem; width: 35%; color: #d9534f;">❌ Fragile Antipattern</th>
+                <th style="padding: 0.75rem; width: 35%; color: #0c7a73;">✅ Robust Solution</th>
+                <th style="padding: 0.75rem; width: 30%;">Why It Matters</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-family: var(--font-mono); color: #d9534f;">"Click third button" / Absolute XPath (/html/body/div[2]/button[3])</td>
+                <td style="padding: 0.75rem; font-family: var(--font-mono); color: #0c7a73;">data-testid="submit-transfer" or accessible role [role="button"][name="Transfer"]</td>
+                <td style="padding: 0.75rem;">DOM restructuring or adding a navbar breaks positional XPaths. Test-IDs survive layout redesigns.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-family: var(--font-mono); color: #d9534f;">time.sleep(5) (Fixed sleep)</td>
+                <td style="padding: 0.75rem; font-family: var(--font-mono); color: #0c7a73;">WebDriverWait / expect(locator).to_be_visible() (Explicit Dynamic Wait)</td>
+                <td style="padding: 0.75rem;">Fixed sleeps make suites agonizingly slow while still causing flaky test failures on slow CI runners.</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem; font-family: var(--font-mono); color: #d9534f;">"Fill any amount" / "Check page changed"</td>
+                <td style="padding: 0.75rem; font-family: var(--font-mono); color: #0c7a73;">amount=500 / assert text "Transfer ID #123 created"</td>
+                <td style="padding: 0.75rem;">Non-deterministic inputs cannot verify exact accounting oracles.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-<h3>Stable locators and waits</h3>
-<table>
-    <thead><tr><th>Locator</th><th>Stability</th></tr></thead>
-    <tbody>
-        <tr><td>Role + accessible name</td><td>High</td></tr>
-        <tr><td>Label text</td><td>High</td></tr>
-        <tr><td>Dedicated test id</td><td>High</td></tr>
-        <tr><td>CSS class</td><td>Medium/low</td></tr>
-        <tr><td>Visible text only</td><td>Medium; translation risk</td></tr>
-        <tr><td>Absolute XPath</td><td>Low; layout fragile</td></tr>
-    </tbody>
-</table>
+      <!-- SECTION 2: PERFORMANCE TESTING -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--text-color);">
+          2. Web Performance: Why Averages Lie (Percentiles p95 / p99)
+        </h2>
+        <div style="background: rgba(12, 122, 115, 0.08); border-left: 4px solid #0c7a73; padding: 1.25rem; border-radius: 6px; margin: 1.5rem 0;">
+          <h4 style="margin-top: 0; color: #0c7a73;">Exam Concept: The Flaw of Averages</h4>
+          <p style="margin: 0; font-size: 0.9em; line-height: 1.6;">
+            Never report <em>"Average response time is 200ms"</em>. If 90 users experience 10ms, but 10 VIP users experience 10,000ms (10 seconds timeout), the average looks great (~1,000ms) while 10% of customers are failing!<br>
+            <strong>Standard Performance Metric:</strong> <em>"The 95th percentile (p95) response time must be &le; 200ms under a load of 10,000 concurrent users."</em>
+          </p>
+        </div>
+      </section>
 
-<h3>Performance test types</h3>
-<table>
-    <thead><tr><th>Type</th><th>Question</th><th>Example</th></tr></thead>
-    <tbody>
-        <tr><td>Load</td><td>Handles expected workload?</td><td>200 users for 1 hour</td></tr>
-        <tr><td>Stress</td><td>Where does it break/degrade?</td><td>Increase until unacceptable</td></tr>
-        <tr><td>Spike</td><td>What happens after a sudden jump?</td><td>50 to 800 users in 2 minutes</td></tr>
-        <tr><td>Endurance</td><td>Stable over time?</td><td>Overnight scheduled transfers</td></tr>
-        <tr><td>Volume</td><td>Handles large data volume?</td><td>50,000 historical transactions</td></tr>
-        <tr><td>Scalability</td><td>Capacity grows with resources?</td><td>Add nodes/CPU and measure gain</td></tr>
-    </tbody>
-</table>
-
-<div class="drill-item">
-  <strong>Weak vs strong requirement:</strong><br>
-  Weak: "FinCon must be fast."<br>
-  Strong: "During normal hours, 95% of transfer confirmations appear within 2 seconds for 200 concurrent active users, with error rate below 1%."
-</div>
+      <!-- EXAM DRILL LINK -->
+      <div style="text-align: center; margin: 3rem 0 1rem 0; padding: 2rem; background: var(--code-bg); border-radius: 8px;">
+        <h3 style="margin-top: 0; color: var(--text-color);">Practice Chapter 9 Exam Questions</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+          Repair weak UI automation scripts and critique performance test reports!
+        </p>
+        <a href="ch9_official.html" class="btn" style="background: #0c7a73; color: #fff; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block;">
+          🚀 Practice Chapter 9 Official Questions &rarr;
+        </a>
+      </div>
 
     </div>
-    
     <footer class="page-footer">
       <span><a href="index.html">← Home</a></span>
     </footer>

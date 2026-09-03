@@ -183,67 +183,109 @@
   <div class="page">
     <div class="masthead">
       <div>
-        <div class="eyebrow">Advanced Testing Methods · Exam Guide</div>
+        <div class="eyebrow">Automation & Security · Specification by Example</div>
         <h1 class="title">8. BDD & Gherkin</h1>
       </div>
       <div class="masthead-meta">Key concepts and techniques</div>
     </div>
     
     <div class="page-content concept-content">
-      
-<h2>BDD is a collaboration and specification approach. Gherkin is the language; behave is a Python execution framework.</h2>
+    
+    
+      <!-- HERO BANNER -->
+      <div class="alert alert-info" style="margin-bottom: 2rem; border-left: 4px solid #0c7a73; background: var(--code-bg);">
+        <h3 style="margin: 0 0 0.5rem 0; color: var(--text-color); font-size: 1.2rem;">
+          🎯 Chapter 8 Core Mission: Behavior-Driven Development (BDD) &amp; Gherkin Engineering
+        </h3>
+        <p style="margin: 0; font-size: 0.95rem; line-height: 1.6;">
+          BDD bridges the communication gap between business stakeholders, developers, and QA using <strong>Specification by Example</strong>.
+          Learn how to write precise, testable <strong>Gherkin Scenarios</strong> (Given/When/Then) and map natural language steps into robust backend automation.
+        </p>
+      </div>
 
-<h3>Good scenario grammar</h3>
-<ul>
-    <li><strong>Given:</strong> relevant starting state or precondition.</li>
-    <li><strong>When:</strong> one main action or event.</li>
-    <li><strong>Then:</strong> observable expected result.</li>
-    <li><strong>And/But:</strong> additional conditions or important side effects.</li>
-    <li>Use exact data and a title that names the business rule.</li>
-</ul>
+      <!-- SECTION 1: GHERKIN GRAMMAR -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--text-color);">
+          1. The Core Grammar of a Robust Gherkin Scenario
+        </h2>
+        <p>
+          A good Gherkin scenario answers four core questions with <strong>observable, measurable outcomes</strong>:
+        </p>
 
-<pre><code>Scenario: Reject transfer above the maximum amount
- Given a logged-in FinCon user has a balance of 200000 cents
- And target account "T-100" exists
- When the user submits a transfer of 100001 cents to "T-100"
- Then the transfer is rejected
- And no money is debited from the source account
- And the rejection is recorded in the audit trail
-</code></pre>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+          <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+            <strong style="color: #0c7a73;">Given (Context)</strong>
+            <p style="margin: 0.35rem 0 0 0; font-size: 0.85em;">Sets up the initial state (preconditions: user balance, target account exists).</p>
+          </div>
+          <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+            <strong style="color: #0c7a73;">When (Action)</strong>
+            <p style="margin: 0.35rem 0 0 0; font-size: 0.85em;">The single specific trigger event executed by the actor (submitting a transfer).</p>
+          </div>
+          <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+            <strong style="color: #0c7a73;">Then (Outcome)</strong>
+            <p style="margin: 0.35rem 0 0 0; font-size: 0.85em;">The observable test oracle (transfer rejected, status code 400).</p>
+          </div>
+          <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+            <strong style="color: #0c7a73;">And (Side-Effects)</strong>
+            <p style="margin: 0.35rem 0 0 0; font-size: 0.85em;">Secondary state invariants (no money debited from account, audit log written).</p>
+          </div>
+        </div>
 
-<div class="drill-item">
-  <strong>Oracle rule:</strong> "Works correctly", "page changed" and "everything is fine" are not observable oracles. State exact status, message, balance, audit record or other measurable outcome.
-</div>
+        <div style="background: rgba(217, 83, 79, 0.08); border-left: 4px solid #d9534f; padding: 1.25rem; border-radius: 6px; margin: 1.5rem 0;">
+          <h4 style="margin-top: 0; color: #d9534f;">⚠️ Exam Trap: Vague Oracles in Gherkin</h4>
+          <p style="margin: 0; font-size: 0.9em; line-height: 1.6;">
+            Never accept steps like <code>Then everything is correct</code> or <code>Then the page changed</code>. These are un-automatable vanity steps! A real oracle must assert exact status, balance invariancy, or audit logging.
+          </p>
+        </div>
+      </section>
 
-<h3>Scenario Outline</h3>
-<pre><code>Scenario Outline: Reject invalid PIN formats
- Given a registered FinCon user exists
- When the user submits PIN "&lt;pin&gt;"
- Then the login is rejected
- And the message "&lt;message&gt;" is shown
+      <!-- SECTION 2: MAPPING TO STEP DEFINITIONS -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--text-color);">
+          2. Mapping Gherkin Steps to Technical Automation
+        </h2>
+        <div style="overflow-x: auto; margin: 1rem 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+            <thead>
+              <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border-color);">
+                <th style="padding: 0.75rem; width: 40%;">Gherkin Step</th>
+                <th style="padding: 0.75rem; width: 60%;">Technical Implementation / Automation Setup</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-family: var(--font-mono); color: #0c7a73;">Given user has balance of 200000 cents</td>
+                <td style="padding: 0.75rem;">Database INSERT or API fixture provisioning user account with 200,000 cents in DB ledger.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-family: var(--font-mono); color: #0c7a73;">When transfer of 100001 cents is submitted</td>
+                <td style="padding: 0.75rem;">HTTP POST request to <code>/api/transfers</code> with payload <code>{"amount": 100001, "target": "acc_123"}</code>.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-family: var(--font-mono); color: #0c7a73;">Then transfer is rejected</td>
+                <td style="padding: 0.75rem;">Assert HTTP response code is 400 Bad Request and error JSON equals "Amount exceeds limit".</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem; font-family: var(--font-mono); color: #0c7a73;">And no money is debited from source account</td>
+                <td style="padding: 0.75rem;">Database SELECT query asserting source balance remains exactly 200,000 cents.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-Examples:
- | pin   | message                               |
- | 123   | PIN must contain exactly 4 digits     |
- | 12345 | PIN must contain exactly 4 digits     |
- | 12A4  | PIN must contain digits only          |
-</code></pre>
-
-<hr>
-<h3>Worked exam questions</h3>
-
-<details class="drill-item">
-  <summary>
-    <span class="drill-tag">✏️ Weak scenario (Typical exam task)</span>
-    <span class="drill-q">Scenario: User transfers money / Given user is logged in / When user transfers money / Then transfer works.</span>
-  </summary>
-  <div class="drill-a">
-    <p>Weaknesses: no rule, no concrete amount, hidden account/target data, vague action, vague oracle, no side-effect check, no traceability. Improve it by specifying balance, target, exact amount, one submit action, approval/rejection and balance/audit effects.</p>
-  </div>
-</details>
+      <!-- EXAM DRILL LINK -->
+      <div style="text-align: center; margin: 3rem 0 1rem 0; padding: 2rem; background: var(--code-bg); border-radius: 8px;">
+        <h3 style="margin-top: 0; color: var(--text-color);">Practice Chapter 8 Exam Questions</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+          Critique weak Gherkin scenarios, rewrite non-observable oracles, and map feature steps to Python automation!
+        </p>
+        <a href="ch8_official.html" class="btn" style="background: #0c7a73; color: #fff; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block;">
+          🚀 Practice Chapter 8 Official Questions &rarr;
+        </a>
+      </div>
 
     </div>
-    
     <footer class="page-footer">
       <span><a href="index.html">← Home</a></span>
     </footer>

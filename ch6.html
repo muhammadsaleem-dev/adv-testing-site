@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>6. Generic Test Process & MTS | ADV Testing Methods</title>
+<title>6. Test Process & MTS | ADV Testing Methods</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c7a73'/%3E%3Ccircle cx='10' cy='11' r='3' fill='%23fff'/%3E%3Ccircle cx='22' cy='9' r='2.4' fill='%23fff'/%3E%3Ccircle cx='22' cy='23' r='3' fill='%23fff'/%3E%3Cpath d='M12.5 12.5L19.5 10M12 13.5L20 21' stroke='%23fff' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -183,60 +183,138 @@
   <div class="page">
     <div class="masthead">
       <div>
-        <div class="eyebrow">Advanced Testing Methods · Exam Guide</div>
-        <h1 class="title">6. Generic Test Process & MTS</h1>
+        <div class="eyebrow">Process & Risk · Test Management</div>
+        <h1 class="title">6. Test Process & MTS</h1>
       </div>
       <div class="masthead-meta">Key concepts and techniques</div>
     </div>
     
     <div class="page-content concept-content">
-      
-<h2>Testing is a controlled information process: uncertainty -&gt; evidence -&gt; decision.</h2>
+    
+    
+      <!-- HERO BANNER -->
+      <div class="alert alert-info" style="margin-bottom: 2rem; border-left: 4px solid #0c7a73; background: var(--code-bg);">
+        <h3 style="margin: 0 0 0.5rem 0; color: var(--text-color); font-size: 1.2rem;">
+          🎯 Chapter 6 Core Mission: Steering Testing as a Professional Process (GTP &amp; MTS)
+        </h3>
+        <p style="margin: 0; font-size: 0.95rem; line-height: 1.6;">
+          Testing without a structured process is ad-hoc chaos.
+          Master the <strong>6-Phase Generic Test Process (GTP)</strong>, the architecture of a <strong>Master Test Strategy (MTS)</strong>, objective <strong>Quality Gates</strong> (Entry &amp; Exit Criteria), and <strong>Decision-Oriented Metrics</strong>.
+        </p>
+      </div>
 
-<h3>Generic Test Process (GTP)</h3>
-<table>
-    <thead><tr><th>Phase</th><th>Main question</th><th>Typical output</th></tr></thead>
-    <tbody>
-        <tr><td>1. Planning</td><td>What, why, how much, who, when?</td><td>scope, risks, levels, entry/exit criteria</td></tr>
-        <tr><td>2. Analysis and design</td><td>What must be checked and which cases cover it?</td><td>test conditions, cases, data, techniques</td></tr>
-        <tr><td>3. Implementation</td><td>Are tests executable and reproducible?</td><td>scripts, automation, environment, prepared data</td></tr>
-        <tr><td>4. Execution</td><td>What actually happened?</td><td>pass/fail/blocked/inconclusive results</td></tr>
-        <tr><td>5. Evaluation and reporting</td><td>Is evidence sufficient for the decision?</td><td>risk status, open defects, recommendation</td></tr>
-        <tr><td>6. Closure and improvement</td><td>What should be retained or improved?</td><td>archived testware, lessons, regression updates</td></tr>
-    </tbody>
-</table>
+      <!-- SECTION 1: THE 6 PHASES OF GTP -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--text-color);">
+          1. The 6 Phases of the Generic Test Process (GTP)
+        </h2>
+        <p>
+          ISTQB 4.0 structures professional software testing into 6 iterative phases:
+        </p>
 
-<div class="drill-item">
-  <strong>Iterative, not strictly linear:</strong> A failure during execution can send the team back to requirement clarification, test redesign, environment repair or risk reassessment.
-</div>
+        <div style="overflow-x: auto; margin: 1.5rem 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+            <thead>
+              <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border-color);">
+                <th style="padding: 0.75rem; width: 22%;">Phase</th>
+                <th style="padding: 0.75rem; width: 38%;">Core Strategic Question</th>
+                <th style="padding: 0.75rem; width: 40%;">Key Deliverable / Artifact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">1. Planning</td>
+                <td style="padding: 0.75rem;">What is the scope, budget, risks, test levels, and schedule?</td>
+                <td style="padding: 0.75rem;">Master Test Strategy (MTS) / Test Plan</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">2. Analysis</td>
+                <td style="padding: 0.75rem;"><em>What</em> must be tested? (Identify testable conditions from requirements).</td>
+                <td style="padding: 0.75rem;">Test Conditions, Traceability Matrix</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">3. Design</td>
+                <td style="padding: 0.75rem;"><em>How</em> should conditions be tested? (Specify test data &amp; oracles).</td>
+                <td style="padding: 0.75rem;">High-level Test Cases, BVA &amp; Decision Tables</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">4. Implementation</td>
+                <td style="padding: 0.75rem;">Are tests executable and automated? (Write scripts &amp; seed DB).</td>
+                <td style="padding: 0.75rem;">Pytest scripts, Gherkin feature files, CI pipelines</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">5. Execution &amp; Reporting</td>
+                <td style="padding: 0.75rem;">What actually happened? Does evidence justify release?</td>
+                <td style="padding: 0.75rem;">Test Logs, Defect Reports, Test Summary Report</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">6. Completion / Closure</td>
+                <td style="padding: 0.75rem;">What reusable testware and lessons learned should be archived?</td>
+                <td style="padding: 0.75rem;">Archived Testware, Process Improvement Retrospective</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-<h3>Execution result meanings</h3>
-<ul>
-    <li><strong>Pass:</strong> Observed result matches expected result.</li>
-    <li><strong>Fail:</strong> Observed result differs from expected result.</li>
-    <li><strong>Blocked:</strong> Dependency/environment prevents execution.</li>
-    <li><strong>Inconclusive:</strong> Result cannot be interpreted reliably.</li>
-</ul>
-<p><em>Important:</em> A failed test does not automatically mean a product defect. It can be a test defect, bad test data, environment problem or ambiguous requirement.</p>
+      <!-- SECTION 2: ENTRY & EXIT CRITERIA -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--text-color);">
+          2. Quality Gates: Entry &amp; Exit Criteria
+        </h2>
+        <p>
+          A central responsibility in test strategy is defining objective quality gates. <strong>Never use vague language</strong> like <em>"software is ready"</em> or <em>"all tests completed"</em>.
+        </p>
 
-<h3>Master Test Specification (MTS)</h3>
-<table>
-    <thead><tr><th>Section</th><th>What it explains</th></tr></thead>
-    <tbody>
-        <tr><td>Purpose</td><td>Why the strategy document exists</td></tr>
-        <tr><td>Subject under test</td><td>Functions and interfaces</td></tr>
-        <tr><td>Scope/non-scope</td><td>Included and deliberately excluded areas</td></tr>
-        <tr><td>Test basis</td><td>Requirements, stories, rules, models</td></tr>
-        <tr><td>Risk analysis</td><td>Business and technical risks</td></tr>
-        <tr><td>Test approach</td><td>Levels, techniques, automation/manual split</td></tr>
-        <tr><td>Entry/exit criteria</td><td>Start and stop conditions</td></tr>
-        <tr><td>Reporting/metrics</td><td>Evidence, defects, status and decisions</td></tr>
-    </tbody>
-</table>
-<p><strong>MTS is not a test-case list:</strong> It explains the logic behind the test effort: what is tested, why, how deeply, when enough evidence exists, and how results support decisions.</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.5rem 0;">
+          <div style="background: var(--code-bg); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color);">
+            <h4 style="margin-top: 0; color: #0c7a73;">📋 Standard Entry Criteria (Start Testing)</h4>
+            <ul style="font-size: 0.9em; padding-left: 1.25rem; line-height: 1.6; margin: 0;">
+              <li>Automated CI build succeeds with 100% unit test pass rate.</li>
+              <li>Unit branch coverage exceeds &ge; 90%.</li>
+              <li>Test environment is deployed with mock banking APIs and test accounts provisioned.</li>
+              <li>All testable requirements are reviewed and approved.</li>
+            </ul>
+          </div>
+
+          <div style="background: var(--code-bg); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color);">
+            <h4 style="margin-top: 0; color: #d9534f;">🚩 Standard Exit Criteria (Release to Production)</h4>
+            <ul style="font-size: 0.9em; padding-left: 1.25rem; line-height: 1.6; margin: 0;">
+              <li>100% of P1 &amp; P2 (Critical/High) test cases executed with 100% pass rate.</li>
+              <li>Zero open Critical or High severity defects.</li>
+              <li>Residual risk assessment reviewed and approved by Product Owner.</li>
+              <li>User documentation and release notes verified.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: METRICS -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--text-color);">
+          3. Test Metrics: Decision-Oriented vs. Vanity Metrics
+        </h2>
+        <div style="background: rgba(12, 122, 115, 0.08); border-left: 4px solid #0c7a73; padding: 1.25rem; border-radius: 6px;">
+          <h4 style="margin-top: 0; color: #0c7a73;">Golden Rule: Start with the Stakeholder Decision Question!</h4>
+          <p style="margin: 0; font-size: 0.9em; line-height: 1.6;">
+            <strong>Decision-Oriented Metric:</strong> <em>"Open defects by risk area"</em> or <em>"Pass rate of critical financial workflows"</em> directly tells stakeholders if customer money is safe.<br>
+            <strong>Misleading / Vanity Metric:</strong> <em>"Total test case count (e.g. 5,000 tests executed)"</em> only measures activity or volume &mdash; 5,000 green button-color tests mean nothing if the single money transfer test is failing!
+          </p>
+        </div>
+      </section>
+
+      <!-- EXAM DRILL LINK -->
+      <div style="text-align: center; margin: 3rem 0 1rem 0; padding: 2rem; background: var(--code-bg); border-radius: 8px;">
+        <h3 style="margin-top: 0; color: var(--text-color);">Practice Chapter 6 Exam Questions</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+          Master the "1-Hour Timebox Decision", Entry/Exit criteria formulation, and Decision Metrics!
+        </p>
+        <a href="ch6_official.html" class="btn" style="background: #0c7a73; color: #fff; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block;">
+          🚀 Practice Chapter 6 Official Questions &rarr;
+        </a>
+      </div>
 
     </div>
-    
     <footer class="page-footer">
       <span><a href="index.html">← Home</a></span>
     </footer>
