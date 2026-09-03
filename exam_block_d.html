@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exam Task: Block D (Beneficiary Mgmt - 25 P) | ADV Testing</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c7a73'/%3E%3Ccircle cx='10' cy='11' r='3' fill='%23fff'/%3E%3Ccircle cx='22' cy='9' r='2.4' fill='%23fff'/%3E%3Ccircle cx='22' cy='23' r='3' fill='%23fff'/%3E%3Cpath d='M12.5 12.5L19.5 10M12 13.5L20 21' stroke='%23fff' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=11">
+<script>(function(){try{var t=localStorage.getItem('dm2026-theme')||'light';document.documentElement.setAttribute('data-theme',t);var m=localStorage.getItem('dm2026-mode')||'concept';document.documentElement.setAttribute('data-mode',m);}catch(e){}})();</script>
+</head>
+<body>
+
+<nav class="sitenav">
+  <div class="sitenav-inner">
+    <a class="sitenav-home" href="index.html">ADV Testing</a>
+    <div class="sitenav-links">
+    </div>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navPanel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      Menu
+    </button>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+    <button class="mode-toggle" id="modeToggle" type="button" aria-label="Toggle technical mode" style="font-size: 1.1rem; line-height: 1;">🎓</button>
+  </div>
+  <div class="nav-panel" id="navPanel">
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Introduction</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="index.html">Home</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Core Concepts</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch1.html">1. Fundamentals & Terms</a>
+          <a href="ch1_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch2.html">2. EC & BVA</a>
+          <a href="ch2_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch3.html">3. Pairwise & Decision Tables</a>
+          <a href="ch3_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Code & Coverage</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch4.html">4. White-Box Coverage & MC/DC</a>
+          <a href="ch4_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch5.html">5. AI Code & Static Analysis</a>
+          <a href="ch5_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Process & Risk</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch6.html">6. Test Process & MTS</a>
+          <a href="ch6_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch7.html">7. Risk & Model-Based</a>
+          <a href="ch7_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Automation & Security</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch8.html">8. BDD & Gherkin</a>
+          <a href="ch8_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch9.html">9. Web Automation & Perf</a>
+          <a href="ch9_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch10.html">10. Security Testing</a>
+          <a href="ch10_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          
+          <a href="ch11.html">11. BudgetControl Arch</a>
+        </div>
+      </details>
+    </div>
+    <div class="nav-panel-section">
+      <details open>
+        <summary class="nav-panel-label" style="cursor: pointer;">Exam Preparation</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch12.html">12. Quick-Reference Sheets</a>
+          <a href="ch13.html">13. Mock Exam A</a>
+          <a href="ch14.html">14. Mock Exam A Answers</a>
+          <a href="ch15.html">15. Add'l Slide Questions</a>
+          <a href="exam_block_d.html">⭐ Exam Task: Block D (25 P)</a>
+          <a href="ch16.html">16. Final Checklist</a>
+          
+        </div>
+      </details>
+    </div>
+  </div>
+</nav>
+
+<div class="page-shell">
+  <aside class="sidebar-toc">
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Introduction</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="index.html">Home</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Core Concepts</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch1.html">1. Fundamentals & Terms</a>
+          <a href="ch1_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch2.html">2. EC & BVA</a>
+          <a href="ch2_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch3.html">3. Pairwise & Decision Tables</a>
+          <a href="ch3_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Code & Coverage</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch4.html">4. White-Box Coverage & MC/DC</a>
+          <a href="ch4_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch5.html">5. AI Code & Static Analysis</a>
+          <a href="ch5_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Process & Risk</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch6.html">6. Test Process & MTS</a>
+          <a href="ch6_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch7.html">7. Risk & Model-Based</a>
+          <a href="ch7_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Automation & Security</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch8.html">8. BDD & Gherkin</a>
+          <a href="ch8_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch9.html">9. Web Automation & Perf</a>
+          <a href="ch9_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          <a href="ch10.html">10. Security Testing</a>
+          <a href="ch10_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
+          
+          <a href="ch11.html">11. BudgetControl Arch</a>
+        </div>
+      </details>
+    </div>
+    <div class="sidebar-block">
+      <details open>
+        <summary class="sidebar-label" style="cursor: pointer;">Exam Preparation</summary>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
+          <a href="ch12.html">12. Quick-Reference Sheets</a>
+          <a href="ch13.html">13. Mock Exam A</a>
+          <a href="ch14.html">14. Mock Exam A Answers</a>
+          <a href="ch15.html">15. Add'l Slide Questions</a>
+          <a href="exam_block_d.html">⭐ Exam Task: Block D (25 P)</a>
+          <a href="ch16.html">16. Final Checklist</a>
+          
+        </div>
+      </details>
+    </div>
+  </aside>
+
+  <div class="page">
+    <div class="masthead">
+      <div>
+        <div class="eyebrow">Official Exam Task · Block D</div>
+        <h1 class="title">ACB – GTP, MTS &amp; Risk-Based Testing (25 P)</h1>
+      </div>
+      <div class="masthead-meta">Key concepts and techniques</div>
+    </div>
+    
+            
+      <div class="alert alert-info" style="margin-bottom: 1.5rem;">
+        <strong>📝 Real Exam Worksheet (25 Points)</strong>: This is an official Competency Assessment Task. The questions are displayed below for active practice. Click the reveal bar under each question when you are ready to review the model solution and grading rubric.
+      </div>
+
+      <!-- SCENARIO CARD -->
+      <div style="background: var(--code-bg); border-left: 4px solid #0c7a73; padding: 1.25rem; border-radius: 6px; margin-bottom: 2rem;">
+        <h3 style="margin-top: 0; margin-bottom: 0.5rem; font-size: 1.15rem; color: var(--text-color);">
+          Scenario: FinCon Beneficiary Management
+        </h3>
+        <p style="margin: 0; font-size: 1rem; line-height: 1.5;">
+          <strong>FinCon introduces beneficiary management.</strong><br>
+          The system must validate <span style="color: #d9534f; font-weight: 600;">account data</span>, <span style="color: #d9534f; font-weight: 600;">user session</span>, <span style="color: #d9534f; font-weight: 600;">confirmation</span>, and <span style="color: #d9534f; font-weight: 600;">audit trail</span>.
+        </p>
+      </div>
+
+      <!-- QUESTION D1 -->
+      <div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+          <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+            D1) List three important risks. For each, estimate priority and define a test response. <span style="color: #d9534f; font-weight: 700;">(6 P)</span>
+          </h3>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9em; margin-bottom: 1rem;">
+          <em>Instructions: Identify 3 distinct failure modes across data, session, confirmation, or audit trail. Specify priority (Exposure) and the concrete test response.</em>
+        </p>
+        
+        <details class="drill-item" style="margin-top: 1rem;">
+          <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+            <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+            <span class="drill-q">Click to reveal D1 solution</span>
+          </summary>
+          <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+            <div style="overflow-x: auto; margin-bottom: 1rem;">
+              <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9em;">
+                <thead>
+                  <tr style="background-color: var(--code-bg); border-bottom: 2px solid var(--border-color);">
+                    <th style="padding: 0.75rem; width: 35%;">Risk</th>
+                    <th style="padding: 0.75rem; width: 15%;">Priority</th>
+                    <th style="padding: 0.75rem;">Test response</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom: 1px solid var(--border-color);">
+                    <td style="padding: 0.75rem;"><strong>1. Unauthorized beneficiary creation</strong> via expired or hijacked session / CSRF (attacker adds unauthorized recipient).</td>
+                    <td style="padding: 0.75rem;"><span style="color: #d9534f; font-weight: 600;">High</span><br><small>(Critical Impact)</small></td>
+                    <td style="padding: 0.75rem;"><strong>Security &amp; Negative Integration Tests:</strong> Attempt adding beneficiary with expired token, manipulated session ID, and missing CSRF headers.</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border-color);">
+                    <td style="padding: 0.75rem;"><strong>2. Invalid or malformed account data accepted</strong> (e.g., incorrect IBAN checksum, invalid length), leading to failed/misrouted transfers.</td>
+                    <td style="padding: 0.75rem;"><span style="color: #d9534f; font-weight: 600;">High</span><br><small>(High Probability)</small></td>
+                    <td style="padding: 0.75rem;"><strong>Equivalence Partitioning &amp; BVA:</strong> Test valid IBANs, invalid MOD-97 checksums, min/max length boundaries, and non-alphanumeric input.</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 0.75rem;"><strong>3. Confirmation / 2FA bypass</strong> allowing beneficiary persistence without secondary authentication.</td>
+                    <td style="padding: 0.75rem;"><span style="color: #d9534f; font-weight: 600;">High</span><br><small>(High Impact)</small></td>
+                    <td style="padding: 0.75rem;"><strong>Negative Workflow Tests:</strong> Submit beneficiary payload while skipping confirmation step or supplying invalid 2FA/TAN code.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p style="font-size: 0.85em; color: var(--text-muted); margin: 0;">
+              <em>Alternative valid risk: <strong>Missing audit trail</strong> on beneficiary creation/modification (Priority: Medium-High &rarr; Test response: Integration test asserting DB audit log records).</em>
+            </p>
+          </div>
+        </details>
+      </div>
+
+      <!-- QUESTION D2 -->
+      <div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+          <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+            D2) Define two entry criteria and two exit criteria for testing this feature. <span style="color: #d9534f; font-weight: 700;">(6 P)</span>
+          </h3>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9em; margin-bottom: 1rem;">
+          <em>Instructions: Provide objective, reviewable quality gates. Avoid vague phrases like "software is ready".</em>
+        </p>
+        
+        <details class="drill-item" style="margin-top: 1rem;">
+          <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+            <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+            <span class="drill-q">Click to reveal D2 solution</span>
+          </summary>
+          <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+            <div style="overflow-x: auto; margin-bottom: 1rem;">
+              <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9em;">
+                <thead>
+                  <tr style="background-color: var(--code-bg); border-bottom: 2px solid var(--border-color);">
+                    <th style="padding: 0.75rem; width: 50%;">📋 Entry criteria</th>
+                    <th style="padding: 0.75rem; width: 50%;">🚩 Exit criteria</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom: 1px solid var(--border-color);">
+                    <td style="padding: 0.75rem;"><strong>1.</strong> Unit tests for account validation pass with &ge; 90% branch coverage in the CI/CD pipeline.</td>
+                    <td style="padding: 0.75rem;"><strong>1.</strong> 100% of P1/P2 test cases executed with a 100% pass rate on all critical security &amp; financial flows.</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 0.75rem;"><strong>2.</strong> Test environment deployed with mock banking API and test accounts provisioned.</td>
+                    <td style="padding: 0.75rem;"><strong>2.</strong> Zero open Critical or High severity defects (no blockers in session, confirmation, or validation).</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- QUESTION D3 -->
+      <div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+          <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+            D3) Select two suitable test levels and justify what each level should verify. <span style="color: #d9534f; font-weight: 700;">(6 P)</span>
+          </h3>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9em; margin-bottom: 1rem;">
+          <em>Instructions: Choose from standard ISTQB test levels (Unit, Integration, System, Acceptance) and provide specific justifications for Beneficiary Management.</em>
+        </p>
+        
+        <details class="drill-item" style="margin-top: 1rem;">
+          <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+            <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+            <span class="drill-q">Click to reveal D3 solution</span>
+          </summary>
+          <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+            <div style="overflow-x: auto; margin-bottom: 1rem;">
+              <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9em;">
+                <thead>
+                  <tr style="background-color: var(--code-bg); border-bottom: 2px solid var(--border-color);">
+                    <th style="padding: 0.75rem; width: 22%;">🧱 Test level</th>
+                    <th style="padding: 0.75rem; width: 38%;">🔍 What it verifies</th>
+                    <th style="padding: 0.75rem; width: 40%;">💡 Why suitable</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom: 1px solid var(--border-color);">
+                    <td style="padding: 0.75rem;"><strong>1. Unit / Component Testing</strong></td>
+                    <td style="padding: 0.75rem;">Account data validation algorithms: IBAN MOD-97 checksum calculation, regex patterns, field length boundaries, and string sanitization.</td>
+                    <td style="padding: 0.75rem;"><strong>Fast, deterministic, and exhaustive:</strong> Provides high combinatorial coverage of invalid input classes in isolation without requiring database/network overhead.</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 0.75rem;"><strong>2. System / Integration Testing (End-to-End)</strong></td>
+                    <td style="padding: 0.75rem;">Complete workflow: User login &rarr; Session validation &rarr; Beneficiary input &rarr; 2FA confirmation prompt &rarr; DB persistence &rarr; Audit trail logging.</td>
+                    <td style="padding: 0.75rem;"><strong>Verifies cross-boundary integrity:</strong> Ensures authentication, multi-step confirmation, and immutable audit logging work reliably together across services.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- QUESTION D4 -->
+      <div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+          <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+            D4) Name two decision-oriented test metrics and one misleading metric. Explain in brief. <span style="color: #d9534f; font-weight: 700;">(7 P)</span>
+          </h3>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9em; margin-bottom: 1rem;">
+          <em>Instructions: Connect metrics to stakeholder decision questions vs. raw vanity/activity counts.</em>
+        </p>
+        
+        <details class="drill-item" style="margin-top: 1rem;">
+          <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+            <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+            <span class="drill-q">Click to reveal D4 solution</span>
+          </summary>
+          <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+            <ul style="list-style-type: disc; padding-left: 1.5rem; line-height: 1.6;">
+              <li><strong>Decision-oriented metric 1:</strong> <span style="color: #d9534f; font-weight: 600;">Open High-Severity Defect Count / Density by Risk Area</span> (e.g., number of open defects in security, session, or confirmation).</li>
+              <li><strong>Decision-oriented metric 2:</strong> <span style="color: #d9534f; font-weight: 600;">Pass Rate of Critical (P1) Acceptance / Business Scenarios</span> (percentage of mandatory regulatory &amp; core financial checks currently green).</li>
+              <li><strong>Misleading metric:</strong> <span style="color: #d9534f; font-weight: 600;">Total Number of Executed Test Cases</span> (or total test count / lines of test code).</li>
+              <li><strong>Explanation:</strong> Decision-oriented metrics directly answer release-risk questions (e.g. <em>"Is financial and customer data safe to deploy?"</em>). In contrast, total test count measures only <strong>activity or volume</strong>, not <strong>quality or risk reduction</strong> &mdash; 1,000 passing low-risk UI tests give a dangerous illusion of quality if the single critical 2FA confirmation test is failing or omitted.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+    </div>
+    <footer class="page-footer">
+      <span><a href="index.html">← Home</a></span>
+    </footer>
+  </div>
+</div>
+<script src="assets/site.js?v=12" defer></script>
+</body>
+</html>
