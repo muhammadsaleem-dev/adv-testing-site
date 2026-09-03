@@ -28,156 +28,292 @@
     </button>
     <button class="mode-toggle" id="modeToggle" type="button" aria-label="Toggle technical mode" style="font-size: 1.1rem; line-height: 1;">🎓</button>
   </div>
-  <div class="nav-panel" id="navPanel">
-    <div class="nav-panel-section">
-      <details open>
-        <summary class="nav-panel-label" style="cursor: pointer;">Introduction</summary>
-        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
-          <a href="index.html">Home</a>
-        </div>
-      </details>
-    </div>
-    <div class="nav-panel-section">
-      <details open>
-        <summary class="nav-panel-label" style="cursor: pointer;">Core Concepts</summary>
-        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
-          <a href="ch1.html">1. Fundamentals & Terms</a>
-          <a href="ch1_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
-          <a href="ch2.html">2. EC & BVA</a>
-          <a href="ch2_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
-          <a href="ch3.html">3. Pairwise & Decision Tables</a>
-          <a href="ch3_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
-        </div>
-      </details>
-    </div>
-    <div class="nav-panel-section">
-      <details open>
-        <summary class="nav-panel-label" style="cursor: pointer;">Code & Coverage</summary>
-        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
-          <a href="ch4.html">4. White-Box Coverage & MC/DC</a>
-          <a href="ch4_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
-          <a href="ch5.html">5. AI Code & Static Analysis</a>
-          <a href="ch5_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
-        </div>
-      </details>
-    </div>
-    <div class="nav-panel-section">
-      <details open>
-        <summary class="nav-panel-label" style="cursor: pointer;">Process & Risk</summary>
-        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
-          <a href="ch6.html">6. Test Process & MTS</a>
-          <a href="ch6_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
-          <a href="ch7.html">7. Risk & Model-Based</a>
-          <a href="ch7_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
-        </div>
-      </details>
-    </div>
-    <div class="nav-panel-section">
-      <details open>
-        <summary class="nav-panel-label" style="cursor: pointer;">Automation & Security</summary>
-        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
-          <a href="ch8.html">8. BDD & Gherkin</a>
-          <a href="ch8_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
-          <a href="ch9.html">9. Web Automation & Perf</a>
-          <a href="ch9_official.html" class="active" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
-          <a href="ch10.html">10. Security Testing</a>
-          <a href="ch10_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
-          
-          <a href="ch11.html">11. BudgetControl Arch</a>
-        </div>
-      </details>
-    </div>
-    <div class="nav-panel-section">
-      <details open>
-        <summary class="nav-panel-label" style="cursor: pointer;">Exam Preparation</summary>
-        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
-          <a href="ch12.html">12. Quick-Reference Sheets</a>
-          <a href="ch13.html">13. Mock Exam A</a>
-          <a href="ch14.html">14. Mock Exam A Answers</a>
-          <a href="ch15.html">15. Add'l Slide Questions</a>
-          <a href="exam_block_d.html">⭐ Exam Task: Block D (25 P)</a>
-          <a href="ch16.html">16. Final Checklist</a>
+    <div class="nav-panel" id="navPanel">
+    <div class="nav-group-title">Introduction</div>
+            <div class="nav-card-row">
+          <a href="index.html" class="nav-main-target">
+            <span class="nav-ch-badge">🏠</span>
+            <span class="nav-text-truncate">Home Overview</span>
+          </a>
           
         </div>
-      </details>
-    </div>
+
+    <div class="nav-group-title">Core Concepts</div>
+            <div class="nav-card-row">
+          <a href="ch1.html" class="nav-main-target">
+            <span class="nav-ch-badge">01</span>
+            <span class="nav-text-truncate">Fundamentals & Terms</span>
+          </a>
+          <a href="ch1_official.html" class="nav-pill-exam" title="Practice 5 Questions">🏛️ 5 Qs</a>
+        </div>
+            <div class="nav-card-row">
+          <a href="ch2.html" class="nav-main-target">
+            <span class="nav-ch-badge">02</span>
+            <span class="nav-text-truncate">EC & BVA</span>
+          </a>
+          <a href="ch2_official.html" class="nav-pill-exam" title="Practice 3 Questions">🏛️ 3 Qs</a>
+        </div>
+            <div class="nav-card-row">
+          <a href="ch3.html" class="nav-main-target">
+            <span class="nav-ch-badge">03</span>
+            <span class="nav-text-truncate">Pairwise & Decision Tables</span>
+          </a>
+          <a href="ch3_official.html" class="nav-pill-exam" title="Practice 3 Questions">🏛️ 3 Qs</a>
+        </div>
+
+    <div class="nav-group-title">Code & Coverage</div>
+            <div class="nav-card-row">
+          <a href="ch4.html" class="nav-main-target">
+            <span class="nav-ch-badge">04</span>
+            <span class="nav-text-truncate">White-Box & MC/DC</span>
+          </a>
+          <a href="ch4_official.html" class="nav-pill-exam" title="Practice 3 Questions">🏛️ 3 Qs</a>
+        </div>
+            <div class="nav-card-row">
+          <a href="ch5.html" class="nav-main-target">
+            <span class="nav-ch-badge">05</span>
+            <span class="nav-text-truncate">AI Code & Static Analysis</span>
+          </a>
+          <a href="ch5_official.html" class="nav-pill-exam" title="Practice 3 Questions">🏛️ 3 Qs</a>
+        </div>
+
+    <div class="nav-group-title">Process & Risk</div>
+            <div class="nav-card-row">
+          <a href="ch6.html" class="nav-main-target">
+            <span class="nav-ch-badge">06</span>
+            <span class="nav-text-truncate">Test Process & MTS</span>
+          </a>
+          <a href="ch6_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
+        </div>
+            <div class="nav-card-row">
+          <a href="ch7.html" class="nav-main-target">
+            <span class="nav-ch-badge">07</span>
+            <span class="nav-text-truncate">Risk-Based Testing</span>
+          </a>
+          <a href="ch7_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
+        </div>
+
+    <div class="nav-group-title">Automation & Security</div>
+            <div class="nav-card-row">
+          <a href="ch8.html" class="nav-main-target">
+            <span class="nav-ch-badge">08</span>
+            <span class="nav-text-truncate">BDD & Gherkin</span>
+          </a>
+          <a href="ch8_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
+        </div>
+            <div class="nav-card-row">
+          <a href="ch9.html" class="nav-main-target">
+            <span class="nav-ch-badge">09</span>
+            <span class="nav-text-truncate">Web Automation & Perf</span>
+          </a>
+          <a href="ch9_official.html" class="nav-pill-exam active-pill" title="Practice 1 Questions">🏛️ 1 Qs</a>
+        </div>
+            <div class="nav-card-row">
+          <a href="ch10.html" class="nav-main-target">
+            <span class="nav-ch-badge">10</span>
+            <span class="nav-text-truncate">Security Testing</span>
+          </a>
+          <a href="ch10_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
+        </div>
+
+    <div class="nav-group-title">System Context</div>
+            <div class="nav-card-row">
+          <a href="ch11.html" class="nav-main-target">
+            <span class="nav-ch-badge">11</span>
+            <span class="nav-text-truncate">BudgetControl Architecture</span>
+          </a>
+          
+        </div>
+            <div class="nav-card-row">
+          <a href="ch12.html" class="nav-main-target">
+            <span class="nav-ch-badge">12</span>
+            <span class="nav-text-truncate">Course Summary & Artifacts</span>
+          </a>
+          <a href="ch12_official.html" class="nav-pill-exam" title="Practice 3 Questions">🏛️ 3 Qs</a>
+        </div>
+
+    <div class="nav-group-title">Exam Preparation</div>
+            <div class="nav-card-row">
+          <a href="exam_block_d.html" class="nav-main-target">
+            <span class="nav-ch-badge">⭐</span>
+            <span class="nav-text-truncate">Exam Task: Block D (25 P)</span>
+          </a>
+          
+        </div>
+            <div class="nav-card-row">
+          <a href="ch13.html" class="nav-main-target">
+            <span class="nav-ch-badge">📝</span>
+            <span class="nav-text-truncate">13. Mock Exam A (Questions)</span>
+          </a>
+          
+        </div>
+            <div class="nav-card-row">
+          <a href="ch14.html" class="nav-main-target">
+            <span class="nav-ch-badge">✅</span>
+            <span class="nav-text-truncate">14. Mock Exam A (Answers)</span>
+          </a>
+          
+        </div>
+            <div class="nav-card-row">
+          <a href="ch15.html" class="nav-main-target">
+            <span class="nav-ch-badge">🎯</span>
+            <span class="nav-text-truncate">15. Add'l Slide Questions</span>
+          </a>
+          
+        </div>
+            <div class="nav-card-row">
+          <a href="ch16.html" class="nav-main-target">
+            <span class="nav-ch-badge">🏁</span>
+            <span class="nav-text-truncate">16. Final Checklist</span>
+          </a>
+          
+        </div>
   </div>
 </nav>
 
 <div class="page-shell">
-  <aside class="sidebar-toc">
-    <div class="sidebar-block">
-      <details open>
-        <summary class="sidebar-label" style="cursor: pointer;">Introduction</summary>
-        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
-          <a href="index.html">Home</a>
-        </div>
-      </details>
-    </div>
-    <div class="sidebar-block">
-      <details open>
-        <summary class="sidebar-label" style="cursor: pointer;">Core Concepts</summary>
-        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
-          <a href="ch1.html">1. Fundamentals & Terms</a>
-          <a href="ch1_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
-          <a href="ch2.html">2. EC & BVA</a>
-          <a href="ch2_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
-          <a href="ch3.html">3. Pairwise & Decision Tables</a>
-          <a href="ch3_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
-        </div>
-      </details>
-    </div>
-    <div class="sidebar-block">
-      <details open>
-        <summary class="sidebar-label" style="cursor: pointer;">Code & Coverage</summary>
-        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
-          <a href="ch4.html">4. White-Box Coverage & MC/DC</a>
-          <a href="ch4_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
-          <a href="ch5.html">5. AI Code & Static Analysis</a>
-          <a href="ch5_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
-        </div>
-      </details>
-    </div>
-    <div class="sidebar-block">
-      <details open>
-        <summary class="sidebar-label" style="cursor: pointer;">Process & Risk</summary>
-        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
-          <a href="ch6.html">6. Test Process & MTS</a>
-          <a href="ch6_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
-          <a href="ch7.html">7. Risk & Model-Based</a>
-          <a href="ch7_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
-        </div>
-      </details>
-    </div>
-    <div class="sidebar-block">
-      <details open>
-        <summary class="sidebar-label" style="cursor: pointer;">Automation & Security</summary>
-        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
-          <a href="ch8.html">8. BDD & Gherkin</a>
-          <a href="ch8_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
-          <a href="ch9.html">9. Web Automation & Perf</a>
-          <a href="ch9_official.html" class="active" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
-          <a href="ch10.html">10. Security Testing</a>
-          <a href="ch10_official.html" style="padding-left: 1.5rem; font-size: 0.85em; color: var(--text-muted); display: flex; align-items: center;">↳ Official Questions</a>
-          
-          <a href="ch11.html">11. BudgetControl Arch</a>
-        </div>
-      </details>
-    </div>
-    <div class="sidebar-block">
-      <details open>
-        <summary class="sidebar-label" style="cursor: pointer;">Exam Preparation</summary>
-        <div style="margin-top: 0.5rem; display: flex; flex-direction: column;">
-          <a href="ch12.html">12. Quick-Reference Sheets</a>
-          <a href="ch13.html">13. Mock Exam A</a>
-          <a href="ch14.html">14. Mock Exam A Answers</a>
-          <a href="ch15.html">15. Add'l Slide Questions</a>
-          <a href="exam_block_d.html">⭐ Exam Task: Block D (25 P)</a>
-          <a href="ch16.html">16. Final Checklist</a>
+    <aside class="sidebar-toc">
+    
+    <div class="nav-group-title">Introduction</div>
+            <div class="nav-card-row">
+          <a href="index.html" class="nav-main-target">
+            <span class="nav-ch-badge">🏠</span>
+            <span class="nav-text-truncate">Home Overview</span>
+          </a>
           
         </div>
-      </details>
-    </div>
+
+    <div class="nav-group-title">Core Concepts</div>
+            <div class="nav-card-row">
+          <a href="ch1.html" class="nav-main-target">
+            <span class="nav-ch-badge">01</span>
+            <span class="nav-text-truncate">Fundamentals & Terms</span>
+          </a>
+          <a href="ch1_official.html" class="nav-pill-exam" title="Practice 5 Questions">🏛️ 5 Qs</a>
+        </div>
+            <div class="nav-card-row">
+          <a href="ch2.html" class="nav-main-target">
+            <span class="nav-ch-badge">02</span>
+            <span class="nav-text-truncate">EC & BVA</span>
+          </a>
+          <a href="ch2_official.html" class="nav-pill-exam" title="Practice 3 Questions">🏛️ 3 Qs</a>
+        </div>
+            <div class="nav-card-row">
+          <a href="ch3.html" class="nav-main-target">
+            <span class="nav-ch-badge">03</span>
+            <span class="nav-text-truncate">Pairwise & Decision Tables</span>
+          </a>
+          <a href="ch3_official.html" class="nav-pill-exam" title="Practice 3 Questions">🏛️ 3 Qs</a>
+        </div>
+
+    <div class="nav-group-title">Code & Coverage</div>
+            <div class="nav-card-row">
+          <a href="ch4.html" class="nav-main-target">
+            <span class="nav-ch-badge">04</span>
+            <span class="nav-text-truncate">White-Box & MC/DC</span>
+          </a>
+          <a href="ch4_official.html" class="nav-pill-exam" title="Practice 3 Questions">🏛️ 3 Qs</a>
+        </div>
+            <div class="nav-card-row">
+          <a href="ch5.html" class="nav-main-target">
+            <span class="nav-ch-badge">05</span>
+            <span class="nav-text-truncate">AI Code & Static Analysis</span>
+          </a>
+          <a href="ch5_official.html" class="nav-pill-exam" title="Practice 3 Questions">🏛️ 3 Qs</a>
+        </div>
+
+    <div class="nav-group-title">Process & Risk</div>
+            <div class="nav-card-row">
+          <a href="ch6.html" class="nav-main-target">
+            <span class="nav-ch-badge">06</span>
+            <span class="nav-text-truncate">Test Process & MTS</span>
+          </a>
+          <a href="ch6_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
+        </div>
+            <div class="nav-card-row">
+          <a href="ch7.html" class="nav-main-target">
+            <span class="nav-ch-badge">07</span>
+            <span class="nav-text-truncate">Risk-Based Testing</span>
+          </a>
+          <a href="ch7_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
+        </div>
+
+    <div class="nav-group-title">Automation & Security</div>
+            <div class="nav-card-row">
+          <a href="ch8.html" class="nav-main-target">
+            <span class="nav-ch-badge">08</span>
+            <span class="nav-text-truncate">BDD & Gherkin</span>
+          </a>
+          <a href="ch8_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
+        </div>
+            <div class="nav-card-row">
+          <a href="ch9.html" class="nav-main-target">
+            <span class="nav-ch-badge">09</span>
+            <span class="nav-text-truncate">Web Automation & Perf</span>
+          </a>
+          <a href="ch9_official.html" class="nav-pill-exam active-pill" title="Practice 1 Questions">🏛️ 1 Qs</a>
+        </div>
+            <div class="nav-card-row">
+          <a href="ch10.html" class="nav-main-target">
+            <span class="nav-ch-badge">10</span>
+            <span class="nav-text-truncate">Security Testing</span>
+          </a>
+          <a href="ch10_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
+        </div>
+
+    <div class="nav-group-title">System Context</div>
+            <div class="nav-card-row">
+          <a href="ch11.html" class="nav-main-target">
+            <span class="nav-ch-badge">11</span>
+            <span class="nav-text-truncate">BudgetControl Architecture</span>
+          </a>
+          
+        </div>
+            <div class="nav-card-row">
+          <a href="ch12.html" class="nav-main-target">
+            <span class="nav-ch-badge">12</span>
+            <span class="nav-text-truncate">Course Summary & Artifacts</span>
+          </a>
+          <a href="ch12_official.html" class="nav-pill-exam" title="Practice 3 Questions">🏛️ 3 Qs</a>
+        </div>
+
+    <div class="nav-group-title">Exam Preparation</div>
+            <div class="nav-card-row">
+          <a href="exam_block_d.html" class="nav-main-target">
+            <span class="nav-ch-badge">⭐</span>
+            <span class="nav-text-truncate">Exam Task: Block D (25 P)</span>
+          </a>
+          
+        </div>
+            <div class="nav-card-row">
+          <a href="ch13.html" class="nav-main-target">
+            <span class="nav-ch-badge">📝</span>
+            <span class="nav-text-truncate">13. Mock Exam A (Questions)</span>
+          </a>
+          
+        </div>
+            <div class="nav-card-row">
+          <a href="ch14.html" class="nav-main-target">
+            <span class="nav-ch-badge">✅</span>
+            <span class="nav-text-truncate">14. Mock Exam A (Answers)</span>
+          </a>
+          
+        </div>
+            <div class="nav-card-row">
+          <a href="ch15.html" class="nav-main-target">
+            <span class="nav-ch-badge">🎯</span>
+            <span class="nav-text-truncate">15. Add'l Slide Questions</span>
+          </a>
+          
+        </div>
+            <div class="nav-card-row">
+          <a href="ch16.html" class="nav-main-target">
+            <span class="nav-ch-badge">🏁</span>
+            <span class="nav-text-truncate">16. Final Checklist</span>
+          </a>
+          
+        </div>
+  
   </aside>
 
   <div class="page">

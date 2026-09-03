@@ -1705,3 +1705,132 @@ pre code.hljs {
   text-decoration: none;
 }
 
+
+
+/* ==========================================================================
+   MODERN APP-STYLE NAVIGATION MENU & SIDEBAR
+   ========================================================================== */
+
+.nav-panel {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .nav-panel.open {
+    display: block !important;
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-raised, #161b22);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 1rem 1.25rem 3rem;
+    overflow-y: auto;
+    z-index: 9999;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.nav-group-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #0c7a73;
+  margin: 1.25rem 0 0.5rem 0.25rem;
+}
+
+.nav-group-title:first-child {
+  margin-top: 0.25rem;
+}
+
+.nav-card-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--code-bg, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+  border-radius: 8px;
+  margin-bottom: 0.45rem;
+  padding: 0.45rem 0.65rem 0.45rem 0.75rem;
+  transition: all 0.15s ease-in-out;
+  gap: 0.5rem;
+}
+
+.nav-card-row:hover {
+  background: rgba(12, 122, 115, 0.08);
+  border-color: #0c7a73;
+  transform: translateY(-1px);
+}
+
+.nav-card-row.active-row {
+  background: rgba(12, 122, 115, 0.15);
+  border-color: #0c7a73;
+  box-shadow: 0 0 0 1px #0c7a73;
+}
+
+.nav-main-target {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text-color, #e6edf3);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  min-width: 0;
+}
+
+.nav-main-target:hover {
+  color: #0c7a73;
+}
+
+.nav-ch-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #0c7a73;
+  background: rgba(12, 122, 115, 0.12);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  font-family: var(--font-mono, monospace);
+  flex-shrink: 0;
+}
+
+.nav-text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-pill-exam {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #0c7a73;
+  background: rgba(12, 122, 115, 0.12);
+  border: 1px solid rgba(12, 122, 115, 0.3);
+  padding: 0.2rem 0.55rem;
+  border-radius: 20px;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.nav-pill-exam:hover {
+  background: #0c7a73;
+  color: #ffffff !important;
+  transform: scale(1.05);
+}
+
+.nav-pill-exam.active-pill {
+  background: #0c7a73;
+  color: #ffffff !important;
+  font-weight: 700;
+}
