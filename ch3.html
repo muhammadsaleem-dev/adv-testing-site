@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=25">
+<link rel="stylesheet" href="assets/style.css?v=26">
 <script>(function(){try{var t=localStorage.getItem('dm2026-theme')||'light';document.documentElement.setAttribute('data-theme',t);var m=localStorage.getItem('dm2026-mode')||'concept';document.documentElement.setAttribute('data-mode',m);}catch(e){}})();</script>
 </head>
 <body>
@@ -334,7 +334,7 @@
           🎯 Chapter 3 Core Mission: Mastering Combinatorial Testing &amp; Logic Tables
         </h3>
         <p style="margin: 0; font-size: 0.95rem; line-height: 1.6;">
-          When an application has multiple configuration parameters, testing every combination leads to <strong>combinatorial explosion</strong> (e.g., $2 \times 2 \times 3 = 12$ tests, but 10 parameters with 4 values each = $4^{10} = 1,048,576$ tests).
+          When an application has multiple configuration parameters, testing every combination leads to <strong>combinatorial explosion</strong> (e.g., <strong>2 &times; 2 &times; 3 = 12</strong> tests, but 10 parameters with 4 values each = <strong>4<sup>10</sup> = 1,048,576</strong> tests).
           <strong>Pairwise (All-Pairs) Testing</strong> and <strong>Decision Tables</strong> drastically reduce tests while catching over 85% of multi-variable defects.
         </p>
       </div>
@@ -351,13 +351,14 @@
           <strong>Pairwise Testing</strong> ensures that <em>every possible pair of parameter values is tested in at least one test case</em>.
         </p>
 
-        <div style="background: var(--code-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid #0c7a73; margin: 1.5rem 0;">
-          <h4 style="margin-top: 0; color: #0c7a73;">📐 The Pairwise Lower Bound Formula (Exam Essential):</h4>
+        <div class="formula-box">
+          <h4 style="margin-top: 0; color: var(--accent);">📐 The Pairwise Lower Bound Formula (Exam Essential):</h4>
           <p style="margin: 0; font-size: 0.95rem; line-height: 1.6;">
             The theoretical absolute minimum number of test cases required for pairwise coverage is determined by the product of the number of values of the <strong>two largest parameters</strong>:
-            <br>
-            $$\text{Pairwise Minimum} \ge |\text{Values}_{\text{Largest Parameter 1}}| \times |\text{Values}_{\text{Largest Parameter 2}}|$$
           </p>
+          <div class="formula-display">
+            Pairwise Minimum &ge; |Values<sub>Largest Parameter 1</sub>| &times; |Values<sub>Largest Parameter 2</sub>|
+          </div>
         </div>
 
         <div class="question-card" style="background: var(--bg-raised); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin-bottom: 1.5rem; color: var(--text);">
@@ -368,9 +369,9 @@
             <li><strong>Language:</strong> EN, DE, FR (3 values)</li>
           </ul>
           <p style="margin: 0; font-size: 0.9em;">
-            Total exhaustive combinations: $2 \times 2 \times 3 = 12$ test cases.<br>
-            <strong>Pairwise Minimum:</strong> The two largest parameters are <code>Language (3)</code> and <code>Format (2)</code> (or Summary).<br>
-            Minimum test suite size $= 3 \times 2 = \mathbf{6\text{ test cases}}$.
+            Total exhaustive combinations: <strong>2 &times; 2 &times; 3 = 12 test cases</strong>.<br>
+            <strong>Pairwise Minimum:</strong> The two largest parameters are <code>Language (3)</code> and <code>Format (2)</code>.<br>
+            Minimum test suite size = 3 &times; 2 = <strong style="color: var(--accent); font-size: 1.05em;">6 test cases</strong>.
           </p>
         </div>
       </section>
@@ -387,7 +388,7 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
           <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
             <strong style="color: #0c7a73;">Identity / NOT</strong>
-            <p style="margin: 0.35rem 0 0 0; font-size: 0.85em;">Cause $C_1$ directly enables Effect $E_1$, or inverted via $\neg C_1$.</p>
+            <p style="margin: 0.35rem 0 0 0; font-size: 0.85em;">Cause C<sub>1</sub> directly enables Effect E<sub>1</sub>, or inverted via NOT C<sub>1</sub> (&not;C<sub>1</sub>).</p>
           </div>
           <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
             <strong style="color: #0c7a73;">AND (&amp;)</strong>
@@ -473,6 +474,6 @@
     </footer>
   </div>
 </div>
-<script src="assets/site.js?v=25" defer></script>
+<script src="assets/site.js?v=26" defer></script>
 </body>
 </html>
