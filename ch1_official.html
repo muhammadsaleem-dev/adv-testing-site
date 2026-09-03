@@ -192,12 +192,14 @@
     <div class="page-content concept-content">
 
 <!-- QUESTION 1 -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q</span>
-    <span class="drill-q">COMPLETENESS (4 P)</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q</span> COMPLETENESS (4 P)
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p><em>Source: CH01_AdvTest_02_SelfTest.pdf</em></p>
     
     <p>You are given the following function specification: A payment gateway accepts a transaction amount <span style="color: #d9534f; font-weight: 600;">(integer, in Euro cents)</span>.</p>
@@ -214,25 +216,34 @@
     </ul>
     
     <p><em>Identify at least three significant gaps in this test suite and justify why each gap matters.</em></p>
-    
-    <hr>
-    <p><strong>Suggested Answer:</strong></p>
+  </div>
+
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <p>The test suite has at least the following significant gaps:</p>
     <p><strong>1.</strong> No boundary values tested <span style="color: #d9534f; font-weight: 600;">(1 P)</span> The boundaries of the valid range &mdash; 1 <span style="color: #d9534f; font-weight: 600;">(minimum)</span>, 100000 <span style="color: #d9534f; font-weight: 600;">(maximum)</span> &mdash; are not tested. Boundary values are the most likely locations for off-by-one errors <span style="color: #d9534f; font-weight: 600;">(e.g., > instead of >= in the implementation)</span>. The given values <span style="color: #d9534f; font-weight: 600;">(500, 50000)</span> lie well inside the valid range and reveal nothing about boundary behaviour.</p>
     <p><strong>2.</strong> No invalid inputs tested <span style="color: #d9534f; font-weight: 600;">(1 P)</span> There are no test cases for values outside the valid range: 0, -1, 100001, or very large negative numbers. A correct implementation must raise a <span style="color: #d9534f; font-weight: 600;">ValueError</span> for these inputs, but the test suite provides no means to detect a missing or incorrectly placed guard.</p>
     <p><strong>3.</strong> No edge case for the minimum valid value <span style="color: #d9534f; font-weight: 600;">(1 P)</span> amount = 1 is the smallest valid input. Many implementations fail silently at the lower bound <span style="color: #d9534f; font-weight: 600;">(e.g., treating 0 as valid, or raising an error for 1 instead)</span>. This case must be tested explicitly.</p>
     <p><strong>4.</strong> No test for non-integer or missing input <span style="color: #d9534f; font-weight: 600;">(1 P, optional / bonus)</span> The specification says <span style="color: #d9534f; font-weight: 600;">"integer in Euro cents"</span>. Passing a float <span style="color: #d9534f; font-weight: 600;">(0.5)</span>, a string <span style="color: #d9534f; font-weight: 600;">("abc")</span>, or None should either be rejected by the type system or handled gracefully. The current suite does not probe this at all.</p>
     <p><em>Examiner note: Award 1 P per clearly identified gap with a justification that references why the gap matters <span style="color: #d9534f; font-weight: 600;">(i.e., what class of bug it would miss)</span>. Listing gaps without justification earns half credit.</em></p>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
 <!-- QUESTION 2 -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q</span>
-    <span class="drill-q">ISTQB TERMINOLOGY IN CONTEXT (3 P)</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q</span> ISTQB TERMINOLOGY IN CONTEXT (3 P)
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p><em>Source: CH01_AdvTest_02_SelfTest.pdf</em></p>
     
     <p>A developer runs the FinCon application and notices that the account balance displayed on screen is always &euro;10 higher than the value stored in the database.</p>
@@ -247,9 +258,15 @@
       <li><span style="color: #d9534f; font-weight: 600;">(b)</span> the flaw in the code</li>
       <li><span style="color: #d9534f; font-weight: 600;">(c)</span> the observable wrong behaviour</li>
     </ul>
+  </div>
 
-    <hr>
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <ul style="list-style-type: none; padding-left: 0;">
       <li style="margin-bottom: 0.5rem;"><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Error <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong> The human action &mdash; the developer copying the rounding function call and accidentally applying it twice &mdash; is an error <span style="color: #d9534f; font-weight: 600;">(ISTQB: a human action that produces an incorrect result)</span>. The mistake was made at the point of writing the code, not at the point of execution.</li>
       <li style="margin-bottom: 0.5rem;"><strong><span style="color: #d9534f; font-weight: 600;">(b)</span> Defect / Bug <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong> The incorrect code that remains in the system &mdash; the duplicated rounding call &mdash; is a defect <span style="color: #d9534f; font-weight: 600;">(synonym: bug, fault)</span>. It is a flaw in the component that can cause the system to fail. The defect existed in the codebase for six months before it was observed.</li>
@@ -257,16 +274,19 @@
     </ul>
     <p><strong>Summary of the chain:</strong> Error <span style="color: #d9534f; font-weight: 600;">(human mistake)</span> &rarr; Defect <span style="color: #d9534f; font-weight: 600;">(flaw in code)</span> &rarr; Failure <span style="color: #d9534f; font-weight: 600;">(observable wrong behaviour)</span>.</p>
     <p><em>Examiner note: Deduct 0.5 P if the student conflates <span style="color: #d9534f; font-weight: 600;">"defect"</span> and <span style="color: #d9534f; font-weight: 600;">"failure"</span>. Deduct 0.5 P if the human action is described as a <span style="color: #d9534f; font-weight: 600;">"bug"</span> rather than an <span style="color: #d9534f; font-weight: 600;">"error"</span>. Full credit requires all three terms used correctly with a brief explanation of each.</em></p>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
 <!-- QUESTION 3 -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q</span>
-    <span class="drill-q">AI IN TEST DESIGN (4 P)</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q</span> AI IN TEST DESIGN (4 P)
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p><em>Source: CH01_AdvTest_02_SelfTest.pdf</em></p>
     
     <p>You prompt an LLM with the full FinCon requirements document and ask it to generate a complete test suite for the login feature.</p>
@@ -280,9 +300,15 @@
       <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Name two concrete risks of using these test cases directly without review.</li>
       <li><span style="color: #d9534f; font-weight: 600;">(b)</span> Describe a practical review step you would apply to each generated test case before including it in the test suite.</li>
     </ul>
+  </div>
 
-    <hr>
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Two concrete risks <span style="color: #d9534f; font-weight: 600;">(2 P, 1 P each)</span>:</strong></p>
     <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
       <li><strong>Risk 1 &mdash; Hallucinated expected results:</strong> LLMs generate plausible-sounding output but may produce test cases where the expected result is wrong. For example, the model might assert that a login with an empty password returns <span style="color: #d9534f; font-weight: 600;">"success"</span> if the training data contains similar patterns. Using such a test directly would validate incorrect behaviour.</li>
@@ -292,16 +318,19 @@
     
     <p><strong><span style="color: #d9534f; font-weight: 600;">(b)</span> Practical review step <span style="color: #d9534f; font-weight: 600;">(2 P)</span>:</strong></p>
     <p>For each generated test case, the tester should verify independently &mdash; without looking at the implementation &mdash; whether the expected result stated in the test case is correct according to the specification <span style="color: #d9534f; font-weight: 600;">(not the code)</span>.</p>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
 <!-- QUESTION 4 -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q</span>
-    <span class="drill-q">DEBUGGING VS. TESTING (3 P)</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q</span> DEBUGGING VS. TESTING (3 P)
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p><em>Source: CH01_AdvTest_02_SelfTest.pdf</em></p>
     
     <p>A project manager tells the team:</p>
@@ -311,9 +340,15 @@
     </ul>
     
     <p><em>Explain what is wrong with this statement using the ISTQB definitions covered in this session. What are the correct responsibilities of testing and development respectively?</em></p>
+  </div>
 
-    <hr>
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <p>The statement conflates two distinct activities that ISTQB assigns to different roles:</p>
     <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
       <li><strong>Testing <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong> Testing is the activity of finding failures &mdash; observing that the system's actual result deviates from the expected result. Testers design and execute test cases, observe failures, and report defects. Finding the bug <span style="color: #d9534f; font-weight: 600;">(i.e., detecting the failure)</span> is within the tester's responsibility.</li>
@@ -321,16 +356,19 @@
       <li><strong>Why the distinction matters <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong> If testers fix code, the separation of concerns that makes quality assurance meaningful breaks down. A developer who also tests their own fix is subject to confirmation bias &mdash; they tend to write tests that confirm the fix works rather than tests that challenge it. The ISTQB model deliberately separates detection <span style="color: #d9534f; font-weight: 600;">(testing)</span> from removal <span style="color: #d9534f; font-weight: 600;">(debugging)</span> to preserve objectivity.</li>
     </ul>
     <p><strong>Corrected statement:</strong> <span style="color: #d9534f; font-weight: 600;">"Our testers found a failure and reported the defect; our developers debugged and fixed it."</span></p>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
 <!-- QUESTION 5 -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q</span>
-    <span class="drill-q">DOCTEST DESIGN (4 P)</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q</span> DOCTEST DESIGN (4 P)
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p><em>Source: CH01_AdvTest_02_SelfTest.pdf</em></p>
     
     <p>Below is a Python function without any doctest:</p>
@@ -348,9 +386,15 @@
       <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Write a doctest block that achieves meaningful coverage, including at least one boundary/invalid case.</li>
       <li><span style="color: #d9534f; font-weight: 600;">(b)</span> The function currently accepts <span style="color: #d9534f; font-weight: 600;">classify_triangle(0, 0, 0)</span> and returns <span style="color: #d9534f; font-weight: 600;">"equilateral"</span>. Is this correct behaviour? Justify your answer and describe how you would handle it in both the function and the doctest.</li>
     </ul>
+  </div>
 
-    <hr>
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Doctest block with meaningful coverage <span style="color: #d9534f; font-weight: 600;">(2 P)</span>:</strong></p>
     <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">def classify_triangle(a, b, c):
     """
@@ -385,8 +429,9 @@
         raise ValueError("not a valid triangle")
     if a == b == c:
         return "equilateral"</div>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
 </div>
     <footer class="page-footer">

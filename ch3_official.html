@@ -192,12 +192,14 @@
     <div class="page-content concept-content">
 
 <!-- QUESTION 1 -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q</span>
-    <span class="drill-q">PAIRWISE TESTING (4 P)</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q</span> PAIRWISE TESTING (4 P)
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p><em>Source: CH03_Block_B_Pairwise_CEG.pdf</em></p>
     
     <p>A FinCon report export has three parameters:</p>
@@ -216,9 +218,15 @@ include_cancelled    yes / no</div>
       <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Explain what pairwise testing guarantees that the full combination also guarantees &mdash; and what it does not guarantee.</li>
       <li><span style="color: #d9534f; font-weight: 600;">(b)</span> Construct a pairwise test suite for these three parameters. How many test cases does your suite contain? Verify that at least two specific pairs are covered.</li>
     </ul>
+  </div>
 
-    <hr>
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Guarantees of Pairwise Testing <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
     <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
       <li><strong>What it guarantees:</strong> Pairwise testing guarantees that every possible combination of any two parameters <span style="color: #d9534f; font-weight: 600;">(e.g., every format with every date_range)</span> is covered by at least one test case.</li>
@@ -238,16 +246,19 @@ include_cancelled    yes / no</div>
 8   XML     30 days     no
 9   XML     custom      yes</div>
     <p>Verification of two specific pairs <span style="color: #d9534f; font-weight: 600;">(e.g., CSV + yes, XML + 30 days)</span>: CSV + yes is covered in TC 5. XML + 30 days is covered in TC 8.</p>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
 <!-- QUESTION 2 -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q</span>
-    <span class="drill-q">CAUSE-EFFECT GRAPHING (4 P)</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q</span> CAUSE-EFFECT GRAPHING (4 P)
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p><em>Source: CH03_Block_B_Pairwise_CEG.pdf</em></p>
     
     <p>FinCon applies the following rule for overdraft protection:</p>
@@ -264,9 +275,15 @@ include_cancelled    yes / no</div>
       <li><span style="color: #d9534f; font-weight: 600;">(b)</span> Build a decision table covering all valid combinations.</li>
       <li><span style="color: #d9534f; font-weight: 600;">(c)</span> State how many test cases result and explain whether any combinations are impossible.</li>
     </ul>
+  </div>
 
-    <hr>
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Causes and Effects <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
     <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
       <li><strong>Causes:</strong> C1: Overdraft protection enabled, C2: Payment below account balance <span style="color: #d9534f; font-weight: 600;">(sufficient funds)</span>, C3: Overdraft limit exceeded.</li>
@@ -283,16 +300,19 @@ R5    False   False      N/A          | INSUFFICIENT_FUNDS (E2)</div>
     
     <p><strong><span style="color: #d9534f; font-weight: 600;">(c)</span> Test Cases and Impossible Combinations <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
     <p>While 3 boolean causes yield 2^3 = 8 theoretical combinations, several are impossible or redundant. If C2 is True <span style="color: #d9534f; font-weight: 600;">(sufficient funds)</span>, the overdraft limit <span style="color: #d9534f; font-weight: 600;">(C3)</span> cannot mathematically be exceeded, rendering those combinations impossible/N/A. Likewise, if OD is False <span style="color: #d9534f; font-weight: 600;">(C1)</span>, the overdraft limit <span style="color: #d9534f; font-weight: 600;">(C3)</span> does not exist. Collapsing these yields <strong>5 valid test cases</strong>.</p>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
 <!-- QUESTION 3 -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q</span>
-    <span class="drill-q">AI OUTPUT REVIEW (4 P)</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q</span> AI OUTPUT REVIEW (4 P)
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p><em>Source: CH03_Block_B_Pairwise_CEG.pdf</em></p>
     
     <p>You give an LLM the FinCon debit handling specification from the lecture and receive these test cases:</p>
@@ -312,9 +332,15 @@ R5    False   False      N/A          | INSUFFICIENT_FUNDS (E2)</div>
       <li><span style="color: #d9534f; font-weight: 600;">(b)</span> Identify one important combination missing from this test suite.</li>
       <li><span style="color: #d9534f; font-weight: 600;">(c)</span> Rewrite the test suite with corrections and additions.</li>
     </ul>
+  </div>
 
-    <hr>
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Two factual errors <span style="color: #d9534f; font-weight: 600;">(2 P)</span>:</strong></p>
     <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
       <li><strong>Error 1:</strong> In the second test case, an inactive account <span style="color: #d9534f; font-weight: 600;">(account_active=False)</span> with plenty of funds <span style="color: #d9534f; font-weight: 600;">(1000)</span> returns <span style="color: #d9534f; font-weight: 600;">'INSUFFICIENT_FUNDS'</span>. This is a hallucinated error code; it should return a state-specific error like <span style="color: #d9534f; font-weight: 600;">'ACCOUNT_INACTIVE'</span>.</li>
@@ -335,8 +361,9 @@ R5    False   False      N/A          | INSUFFICIENT_FUNDS (E2)</div>
 'INSUFFICIENT_FUNDS'
 >>> debit(account_active=True, balance=500, amount=500)
 'approved'</div>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
 </div>
     <footer class="page-footer">

@@ -192,12 +192,14 @@
     <div class="page-content concept-content">
 
 <!-- QUESTION 1 -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q</span>
-    <span class="drill-q">EC METHOD (3 P)</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q</span> EC METHOD (3 P)
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p><em>Source: CH02_AdvTest_03_EC_BVA.pdf</em></p>
     
     <p>The FinCon login form accepts a PIN: a 4-digit numeric string <span style="color: #d9534f; font-weight: 600;">(e.g., "1234")</span>.</p>
@@ -207,9 +209,15 @@
       <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Define a complete set of equivalence classes for the PIN input.</li>
       <li><span style="color: #d9534f; font-weight: 600;">(b)</span> For each class, state one representative value and the expected system response.</li>
     </ul>
+  </div>
 
-    <hr>
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <p><strong><span style="color: #d9534f; font-weight: 600;">(a & b)</span> Complete set of equivalence classes and values <span style="color: #d9534f; font-weight: 600;">(3 P)</span>:</strong></p>
     <p>To fully partition the input space, we need one valid class and all corresponding invalid classes. Following the examiner's strict guidelines, here is the combined table:</p>
     
@@ -252,16 +260,19 @@
       </table>
     </div>
     <p><em>Examiner note: Award full credit if at least three distinct invalid equivalence classes are identified alongside the valid class, with correct expected behaviour mapping.</em></p>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
 <!-- QUESTION 2 -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q</span>
-    <span class="drill-q">BOUNDARY VALUE ANALYSIS (4 P)</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q</span> BOUNDARY VALUE ANALYSIS (4 P)
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p><em>Source: CH02_AdvTest_03_EC_BVA.pdf</em></p>
     
     <p>A FinCon savings account pays a bonus interest rate of 1.5% on the balance above &euro;10000.</p>
@@ -278,9 +289,15 @@ else:
       <li><span style="color: #d9534f; font-weight: 600;">(b)</span> For each boundary value, state the expected value of interest.</li>
       <li><span style="color: #d9534f; font-weight: 600;">(c)</span> A colleague proposes testing only <span style="color: #d9534f; font-weight: 600;">balance = 5000</span> and <span style="color: #d9534f; font-weight: 600;">balance = 15000</span>. What is the critical risk of this approach?</li>
     </ul>
+  </div>
 
-    <hr>
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Boundary values to test <span style="color: #d9534f; font-weight: 600;">(1.5 P)</span>:</strong></p>
     <p>According to Boundary Value Analysis principles, we must test just below, exactly at, and just above the boundary condition <span style="color: #d9534f; font-weight: 600;">(10000)</span>. Assuming standard currency representation <span style="color: #d9534f; font-weight: 600;">(cents/decimals)</span> or integers:</p>
     <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
@@ -298,16 +315,19 @@ else:
     
     <p><strong><span style="color: #d9534f; font-weight: 600;">(c)</span> Critical risk of this approach <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
     <p>Testing only values deep inside the equivalence partitions <span style="color: #d9534f; font-weight: 600;">(5000 and 15000)</span> completely misses boundary defects. The most common programming errors are off-by-one errors <span style="color: #d9534f; font-weight: 600;">(e.g., using >= instead of >)</span>. A test suite with only 5000 and 15000 will silently pass even if the code incorrectly uses <span style="color: #d9534f; font-weight: 600;">balance >= 10000</span>, meaning a user with exactly 10000 would incorrectly receive a bonus.</p>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
 <!-- QUESTION 3 -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q</span>
-    <span class="drill-q">MULTI-DIMENSIONAL TEST DATA (3 P)</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q</span> MULTI-DIMENSIONAL TEST DATA (3 P)
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p><em>Source: CH02_AdvTest_03_EC_BVA.pdf</em></p>
     
     <p>A FinCon money transfer has two independent inputs:</p>
@@ -324,9 +344,15 @@ else:
 3   200000  False           rejected</div>
     
     <p><em>Identify two structural problems with this test suite; propose one additional test case that addresses them.</em></p>
+  </div>
 
-    <hr>
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Two structural problems <span style="color: #d9534f; font-weight: 600;">(2 P)</span>:</strong></p>
     <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
       <li><strong>Problem 1 &mdash; Multiple invalid conditions combined:</strong> Test Cases 2 and 3 combine an invalid <span style="color: #d9534f; font-weight: 600;">amount</span> with an invalid <span style="color: #d9534f; font-weight: 600;">target_account</span>. If the system rejects the transaction, it is impossible to know which of the two invalid inputs triggered the rejection <span style="color: #d9534f; font-weight: 600;">(this is known as fault masking)</span>.</li>
@@ -339,8 +365,9 @@ else:
       <li><strong>TC 4:</strong> amount = <span style="color: #d9534f; font-weight: 600;">500</span> <span style="color: #d9534f; font-weight: 600;">(valid)</span>, target_account = <span style="color: #d9534f; font-weight: 600;">False</span> <span style="color: #d9534f; font-weight: 600;">(invalid)</span> &rarr; Expected: <span style="color: #d9534f; font-weight: 600;">rejected</span></li>
       <li><strong>TC 5:</strong> amount = <span style="color: #d9534f; font-weight: 600;">0</span> <span style="color: #d9534f; font-weight: 600;">(invalid)</span>, target_account = <span style="color: #d9534f; font-weight: 600;">True</span> <span style="color: #d9534f; font-weight: 600;">(valid)</span> &rarr; Expected: <span style="color: #d9534f; font-weight: 600;">rejected</span></li>
     </ul>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
 </div>
     <footer class="page-footer">

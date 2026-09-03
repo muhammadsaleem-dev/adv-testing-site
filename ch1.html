@@ -189,93 +189,343 @@
       <div class="masthead-meta">Key concepts and techniques</div>
     </div>
     
-    <div class="page-content concept-content">
-      
-<h2>Core idea: Testing reduces uncertainty by comparing actual behaviour with expected behaviour.</h2>
+    
+      <!-- HERO BANNER -->
+      <div class="alert alert-info" style="margin-bottom: 2rem; border-left: 4px solid #0c7a73; background: var(--code-bg);">
+        <h3 style="margin: 0 0 0.5rem 0; color: var(--text-color); font-size: 1.2rem;">
+          🎯 Chapter 1 Core Mission: From Intuitive Guesswork to Systematic Evidence
+        </h3>
+        <p style="margin: 0; font-size: 0.95rem; line-height: 1.6;">
+          Software testing is not merely <em>"running the app to see if it crashes."</em> It is a <strong>controlled information process</strong> designed to reduce risk and uncertainty:
+          <br>
+          <strong style="color: #0c7a73;">Uncertainty &rarr; Empirical Evidence &rarr; Confident Release Decision</strong>.
+        </p>
+      </div>
 
-<h3>What makes a test case complete?</h3>
-<ul>
-    <li><strong>Preconditions:</strong> What must already be true before execution.</li>
-    <li><strong>Input and action:</strong> Exact reproducible values and steps.</li>
-    <li><strong>Expected result (oracle):</strong> What should happen if the system is correct.</li>
-    <li><strong>Postconditions:</strong> The state that should exist after the test, when relevant.</li>
-</ul>
+      <!-- SECTION 1: THE MYERS TRIANGLE PROBLEM -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--text-color);">
+          1. The Myers Triangle Problem: Why Testing is Deceptively Hard
+        </h2>
+        <p>
+          In 1979, software engineering pioneer <strong>Glenford Myers</strong> introduced a deceptively simple programming task that remains the ultimate baseline for test case completeness.
+        </p>
 
-<h3>Triangle lesson</h3>
-<p>Even a tiny triangle classifier needs valid scalene, equilateral and isosceles cases; all isosceles permutations; zero and negative values; degenerate triangles; non-triangles; wrong input types; wrong number of values; and expected results. Small programs can still have a large test space.</p>
+        <div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 1.5rem;">
+          <h4 style="margin-top: 0; color: #d9534f;">The Specification:</h4>
+          <blockquote style="margin: 0; font-style: italic; color: var(--text-color); border-left: 3px solid #d9534f; padding-left: 1rem;">
+            "The program accepts three integer values representing the lengths of the sides of a triangle (a, b, c). It returns a string stating whether the triangle is <strong>scalene</strong>, <strong>isosceles</strong>, or <strong>equilateral</strong>."
+          </blockquote>
+        </div>
 
-<h3>Essential ISTQB vocabulary</h3>
-<table>
-    <thead>
-        <tr><th>Term</th><th>Easy meaning</th><th>Example</th></tr>
-    </thead>
-    <tbody>
-        <tr><td><strong>Error / mistake</strong></td><td>A human action that produces an incorrect result.</td><td>A developer copies a rounding call twice.</td></tr>
-        <tr><td><strong>Defect / bug / fault</strong></td><td>The flaw left in the code or document.</td><td>The duplicate rounding call remains in the program.</td></tr>
-        <tr><td><strong>Failure</strong></td><td>Observable wrong behaviour during execution.</td><td>Displayed balance is EUR 10 too high.</td></tr>
-        <tr><td><strong>Test case</strong></td><td>Inputs, preconditions, expected result and postconditions for an objective.</td><td>amount=0 should raise ValueError.</td></tr>
-        <tr><td><strong>Test object / SUT</strong></td><td>The component or system being tested.</td><td>FinCon transfer service.</td></tr>
-        <tr><td><strong>Pass</strong></td><td>Actual result equals expected result.</td><td>The invalid amount is rejected as expected.</td></tr>
-        <tr><td><strong>Fail</strong></td><td>Actual result differs from expected result.</td><td>The invalid amount is approved.</td></tr>
-        <tr><td><strong>Root cause</strong></td><td>Underlying source whose removal prevents similar defects.</td><td>Copy-paste practice without review.</td></tr>
-        <tr><td><strong>Debugging</strong></td><td>Finding, analysing and removing causes of failures.</td><td>Developer locates and fixes the duplicate call.</td></tr>
-        <tr><td><strong>Error masking</strong></td><td>Two error states compensate, so no external failure is visible.</td><td>One wrong addition and one wrong subtraction cancel out.</td></tr>
-    </tbody>
-</table>
+        <p>
+          Most untrained developers write only 3 test cases (one for each word). However, to be <strong>rigorously tested</strong>, Myers showed that at least <strong>14 distinct test categories</strong> are required:
+        </p>
 
-<h3>AI as a testing tool</h3>
-<table>
-    <thead>
-        <tr><th>Useful for</th><th>Main risk</th><th>Human responsibility</th></tr>
-    </thead>
-    <tbody>
-        <tr><td>Draft test cases</td><td>Happy-path bias and missing edge cases</td><td>Map every case to a class, boundary, requirement or risk</td></tr>
-        <tr><td>Test-code skeletons</td><td>Syntactically correct but weak assertions</td><td>Verify the oracle independently</td></tr>
-        <tr><td>Synthetic test data</td><td>Unrealistic or duplicated data</td><td>Check domain validity and diversity</td></tr>
-        <tr><td>Defect summaries</td><td>Loss of nuance or wrong classification</td><td>Review evidence and severity</td></tr>
-        <tr><td>Static-review assistance</td><td>Invented issues or missed logic</td><td>Use a constrained checklist and inspect the code</td></tr>
-    </tbody>
-</table>
+        <div style="overflow-x: auto; margin: 1.5rem 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+            <thead>
+              <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border-color);">
+                <th style="padding: 0.75rem; width: 8%;">#</th>
+                <th style="padding: 0.75rem; width: 42%;">Test Case Category</th>
+                <th style="padding: 0.75rem; width: 25%;">Sample Input (a, b, c)</th>
+                <th style="padding: 0.75rem; width: 25%;">Expected Output</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.6rem 0.75rem; font-weight: 700;">1</td>
+                <td style="padding: 0.6rem 0.75rem;">Valid Scalene Triangle (all sides different)</td>
+                <td style="padding: 0.6rem 0.75rem; font-family: var(--font-mono); color: #0c7a73;">(3, 4, 5)</td>
+                <td style="padding: 0.6rem 0.75rem;">"scalene"</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.6rem 0.75rem; font-weight: 700;">2</td>
+                <td style="padding: 0.6rem 0.75rem;">Valid Equilateral Triangle (all sides equal)</td>
+                <td style="padding: 0.6rem 0.75rem; font-family: var(--font-mono); color: #0c7a73;">(5, 5, 5)</td>
+                <td style="padding: 0.6rem 0.75rem;">"equilateral"</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.6rem 0.75rem; font-weight: 700;">3–5</td>
+                <td style="padding: 0.6rem 0.75rem;"><strong>All 3 Permutations of Isosceles:</strong><br><small>(Must test pair matching in every position: a=b, a=c, b=c)</small></td>
+                <td style="padding: 0.6rem 0.75rem; font-family: var(--font-mono); color: #0c7a73;">(3, 3, 4)<br>(3, 4, 3)<br>(4, 3, 3)</td>
+                <td style="padding: 0.6rem 0.75rem;">"isosceles"<br>"isosceles"<br>"isosceles"</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.6rem 0.75rem; font-weight: 700;">6</td>
+                <td style="padding: 0.6rem 0.75rem;">One side length is zero</td>
+                <td style="padding: 0.6rem 0.75rem; font-family: var(--font-mono); color: #d9534f;">(0, 4, 5)</td>
+                <td style="padding: 0.6rem 0.75rem;">ValueError / Invalid</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.6rem 0.75rem; font-weight: 700;">7</td>
+                <td style="padding: 0.6rem 0.75rem;">One side length is negative</td>
+                <td style="padding: 0.6rem 0.75rem; font-family: var(--font-mono); color: #d9534f;">(-3, 4, 5)</td>
+                <td style="padding: 0.6rem 0.75rem;">ValueError / Invalid</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.6rem 0.75rem; font-weight: 700;">8–10</td>
+                <td style="padding: 0.6rem 0.75rem;"><strong>Degenerate Triangle (Sum of two sides equals third):</strong><br><small>Forms a flat line, not a triangle! Must test all 3 permutations: a+b=c, a+c=b, b+c=a</small></td>
+                <td style="padding: 0.6rem 0.75rem; font-family: var(--font-mono); color: #d9534f;">(1, 2, 3)<br>(1, 3, 2)<br>(3, 1, 2)</td>
+                <td style="padding: 0.6rem 0.75rem;">ValueError / Invalid</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.6rem 0.75rem; font-weight: 700;">11–13</td>
+                <td style="padding: 0.6rem 0.75rem;"><strong>Non-Triangle (Sum of two sides less than third):</strong><br><small>Sides cannot connect! Must test all 3 permutations.</small></td>
+                <td style="padding: 0.6rem 0.75rem; font-family: var(--font-mono); color: #d9534f;">(1, 2, 4)<br>(1, 4, 2)<br>(4, 1, 2)</td>
+                <td style="padding: 0.6rem 0.75rem;">ValueError / Invalid</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.6rem 0.75rem; font-weight: 700;">14</td>
+                <td style="padding: 0.6rem 0.75rem;">All sides are zero</td>
+                <td style="padding: 0.6rem 0.75rem; font-family: var(--font-mono); color: #d9534f;">(0, 0, 0)</td>
+                <td style="padding: 0.6rem 0.75rem;">ValueError / Invalid</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.6rem 0.75rem; font-weight: 700;">Bonus</td>
+                <td style="padding: 0.6rem 0.75rem;">Invalid Types &amp; Missing Parameters</td>
+                <td style="padding: 0.6rem 0.75rem; font-family: var(--font-mono); color: #d9534f;">(2.5, 3, 4), ("a", 2, 3), (3, 4)</td>
+                <td style="padding: 0.6rem 0.75rem;">TypeError / Rejection</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-<div class="drill-item">
-  <strong>Non-negotiable AI rule:</strong> Expected results must come from the specification, not from the LLM and not from the implementation. Otherwise the test may simply confirm the same wrong assumption.
-</div>
+        <div style="background: rgba(217, 83, 79, 0.08); border-left: 4px solid #d9534f; padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+          <strong style="color: #d9534f;">🎓 Essential Exam Takeaway:</strong>
+          <p style="margin: 0.5rem 0 0 0; font-size: 0.9em;">
+            Never assume a program works because it handles happy paths. Even a 5-line script has boundary conditions, geometric constraints (triangle inequality theorem $a + b > c$), and invalid input types. Testing adds business value by systematically probing these hidden failure modes.
+          </p>
+        </div>
+      </section>
 
-<hr>
-<h3>Worked exam questions</h3>
+      <!-- SECTION 2: WHAT MAKES A COMPLETE TEST CASE -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--text-color);">
+          2. The Anatomy of a Complete Test Case
+        </h2>
+        <p>
+          In professional testing, writing <em>"test with amount=500"</em> is incomplete and unexecutable. A standardized test case requires <strong>4 pillars</strong>:
+        </p>
 
-<details class="drill-item">
-  <summary>
-    <span class="drill-tag">✏️ Q1 (3 marks) <span class="source-link" data-source="\'CH01_AdvTest_02_SelfTest.pdf, Page 62\'" style="font-size: 0.8em; color: #007bff; text-decoration: underline; cursor: pointer;">(Source)</span></span>
-    <span class="drill-q">A developer accidentally applies a rounding function twice. The screen shows a wrong balance. Name the three stages.</span>
-  </summary>
-  <div class="drill-a">
-    <p>The copy-paste action is an error. The duplicate function call in code is the defect/bug. The wrong displayed balance is the failure.</p>
-  </div>
-</details>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+          <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+            <div style="font-weight: 700; color: #0c7a73; margin-bottom: 0.35rem;">1. Preconditions</div>
+            <p style="margin: 0; font-size: 0.88em; color: var(--text-color);">
+              The exact environmental state required before execution (e.g. <em>"User is logged in; source account has balance &ge; €500"</em>).
+            </p>
+          </div>
+          <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+            <div style="font-weight: 700; color: #0c7a73; margin-bottom: 0.35rem;">2. Explicit Input &amp; Action</div>
+            <p style="margin: 0; font-size: 0.88em; color: var(--text-color);">
+              The exact, reproducible values entered and specific trigger executed (e.g. <em>"Enter amount = 500 cents, click 'Confirm Transfer'"</em>).
+            </p>
+          </div>
+          <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+            <div style="font-weight: 700; color: #0c7a73; margin-bottom: 0.35rem;">3. Expected Result (Oracle)</div>
+            <p style="margin: 0; font-size: 0.88em; color: var(--text-color);">
+              The concrete, measurable output expected from a correct system (e.g. <em>"Return 'approved'; HTTP status 200"</em>).
+            </p>
+          </div>
+          <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; border: 1px solid var(--border-color);">
+            <div style="font-weight: 700; color: #0c7a73; margin-bottom: 0.35rem;">4. Postconditions</div>
+            <p style="margin: 0; font-size: 0.88em; color: var(--text-color);">
+              The resulting system state after the action finishes (e.g. <em>"Balance debited by €5.00; immutable audit log record created"</em>).
+            </p>
+          </div>
+        </div>
+      </section>
 
-<details class="drill-item">
-  <summary>
-    <span class="drill-tag">✏️ Q2 (3 marks)</span>
-    <span class="drill-q">Why is “the testers fixed the bug” inaccurate?</span>
-  </summary>
-  <div class="drill-a">
-    <p>Testers design and execute tests, observe failures and report defects. Debugging - locating and removing the cause - is normally development responsibility. A corrected statement is: testers found the failure and reported the defect; developers debugged and fixed it.</p>
-  </div>
-</details>
+      <!-- SECTION 3: ISTQB 4.0 CORE TERMINOLOGY -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--text-color);">
+          3. ISTQB 4.0 Core Terminology &amp; Causation Chain
+        </h2>
+        <p>
+          One of the most heavily graded exam topics is distinguishing between <strong>Error</strong>, <strong>Defect</strong>, and <strong>Failure</strong>:
+        </p>
 
-<details class="drill-item">
-  <summary>
-    <span class="drill-tag">✏️ Q3 (4 marks)</span>
-    <span class="drill-q">Name two risks of using 20 LLM-generated login tests directly.</span>
-  </summary>
-  <div class="drill-a">
-    <p>Possible answers: hallucinated expected results; happy-path bias; missing security and boundary cases; circular tests that mirror code; duplicate coverage; false confidence. For full marks, give a concrete example and explain the consequence.</p>
-  </div>
-</details>
+        <!-- CAUSATION CHAIN DIAGRAM -->
+        <div style="background: var(--code-bg); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; text-align: center;">
+          <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0.75rem; font-size: 0.95rem;">
+            <div style="background: var(--card-bg, #fff); border: 2px solid #0c7a73; border-radius: 6px; padding: 0.75rem 1rem;">
+              <strong style="color: #0c7a73;">🧑 ERROR (Mistake)</strong><br>
+              <small style="color: var(--text-muted);">Human Action</small>
+            </div>
+            <span style="font-weight: 700; font-size: 1.2rem; color: #0c7a73;">&rarr; leads to &rarr;</span>
+            <div style="background: var(--card-bg, #fff); border: 2px solid #f0ad4e; border-radius: 6px; padding: 0.75rem 1rem;">
+              <strong style="color: #f0ad4e;">💻 DEFECT (Bug / Fault)</strong><br>
+              <small style="color: var(--text-muted);">Flaw in Code or Spec</small>
+            </div>
+            <span style="font-weight: 700; font-size: 1.2rem; color: #f0ad4e;">&rarr; causes &rarr;</span>
+            <div style="background: var(--card-bg, #fff); border: 2px solid #d9534f; border-radius: 6px; padding: 0.75rem 1rem;">
+              <strong style="color: #d9534f;">💥 FAILURE</strong><br>
+              <small style="color: var(--text-muted);">Runtime Deviation</small>
+            </div>
+          </div>
+        </div>
+
+        <div style="overflow-x: auto; margin: 1.5rem 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+            <thead>
+              <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border-color);">
+                <th style="padding: 0.75rem; width: 22%;">ISTQB Term</th>
+                <th style="padding: 0.75rem; width: 38%;">Precise Definition</th>
+                <th style="padding: 0.75rem; width: 40%;">FinCon Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">Error (Mistake)</td>
+                <td style="padding: 0.75rem;">A <strong>human action</strong> (misunderstanding, fatigue, typo) that produces an incorrect result.</td>
+                <td style="padding: 0.75rem;">A developer copies a fee-deduction line twice while editing the transfer module.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-weight: 700; color: #f0ad4e;">Defect (Bug, Fault)</td>
+                <td style="padding: 0.75rem;">A <strong>static flaw or anomaly</strong> in a component, code, or requirement document.</td>
+                <td style="padding: 0.75rem;">The duplicate fee deduction code remains committed in the repository.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-weight: 700; color: #d9534f;">Failure</td>
+                <td style="padding: 0.75rem;">An <strong>observable runtime deviation</strong> of the software from its expected behavior or output.</td>
+                <td style="padding: 0.75rem;">A customer executes a €100 transfer and notices €10 deducted instead of €5.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-weight: 700;">Root Cause</td>
+                <td style="padding: 0.75rem;">The fundamental, underlying reason for a defect. Removing it prevents an entire class of defects.</td>
+                <td style="padding: 0.75rem;">Lack of code reviews and missing automated static analysis linters in the CI/CD pipeline.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem; font-weight: 700;">Testing vs. Debugging</td>
+                <td style="padding: 0.75rem;"><strong>Testing:</strong> Demonstrates quality and finds failures against the spec.<br><strong>Debugging:</strong> Locates, analyzes, and fixes root causes in code.</td>
+                <td style="padding: 0.75rem;"><em>Testing:</em> Automated pytest marks transfer test red.<br><em>Debugging:</em> Developer attaches debugger and removes duplicate line.</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem; font-weight: 700;">Error Masking</td>
+                <td style="padding: 0.75rem;">A condition where two distinct defects <strong>compensate for each other</strong>, hiding external failures during runtime execution.</td>
+                <td style="padding: 0.75rem;">One function adds €5 extra fee, but the display function subtracts €5 erroneously &rarr; balance appears correct while ledger is corrupted!</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION 4: AI IN THE TESTING LANDSCAPE -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--text-color);">
+          4. AI in Testing: Capabilities, Traps &amp; The Evolved Role
+        </h2>
+        <p>
+          The emergence of LLMs (ChatGPT, Copilot) has transformed software engineering. In the exam, the professor specifically tests your ability to critique AI test outputs.
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.5rem 0;">
+          <div style="background: rgba(12, 122, 115, 0.05); border: 1px solid rgba(12, 122, 115, 0.3); border-radius: 8px; padding: 1.25rem;">
+            <h4 style="margin-top: 0; color: #0c7a73;">✨ What AI Does Exceptionally Well:</h4>
+            <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.9em; line-height: 1.6;">
+              <li><strong>Rapid Test Drafting:</strong> Generates initial test suites and boilerplate pytest/doctest fixtures in seconds.</li>
+              <li><strong>Test Data Synthesis:</strong> Synthesizes large arrays of diverse names, addresses, and sample currencies.</li>
+              <li><strong>Defect Triage &amp; Summarization:</strong> Clusters bug reports and suggests potential duplicate issues.</li>
+            </ul>
+          </div>
+
+          <div style="background: rgba(217, 83, 79, 0.05); border: 1px solid rgba(217, 83, 79, 0.3); border-radius: 8px; padding: 1.25rem;">
+            <h4 style="margin-top: 0; color: #d9534f;">⚠️ Critical AI Traps &amp; Risks:</h4>
+            <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.9em; line-height: 1.6;">
+              <li><strong>Hallucinations:</strong> LLMs generate plausible-looking test cases with completely fabricated assertions.</li>
+              <li><strong>Happy-Path Bias:</strong> AI defaults to standard cases and systematically omits tricky boundaries.</li>
+              <li><strong>The Circular Oracle Trap:</strong> AI prompted with buggy code will write test assertions that match the bug!</li>
+              <li><strong>Automation Bias:</strong> Human testers blindly trusting green AI test results without reviewing logic.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="background: var(--code-bg); padding: 1.25rem; border-radius: 8px; border-left: 4px solid #0c7a73;">
+          <h4 style="margin-top: 0; color: var(--text-color);">The Shift in the Tester's Role</h4>
+          <p style="margin: 0; font-size: 0.9em; line-height: 1.6;">
+            Routine manual test execution is increasingly automated. The modern test engineer shifts to the role of <strong>Validator, Specification Guardian, and Prompt Architect</strong>. Senior testers formulate precise constraints, verify AI-generated assertions against legal/business specs, and identify the blind spots AI cannot see.
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION 5: PYTHON DOCTEST ENGINEERING -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; color: var(--text-color);">
+          5. Python Doctest Engineering for Testers
+        </h2>
+        <p>
+          In this course, <strong>Python Doctests</strong> bridge documentation and automated unit verification by embedding interactive test sessions directly inside Python docstrings.
+        </p>
+
+        <div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin: 1.5rem 0;">
+          <h4 style="margin-top: 0; color: #0c7a73;">Complete Doctest Implementation (FinCon Triangle Classifier):</h4>
+          <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; overflow-x: auto; white-space: pre;">def classify_triangle(a: int, b: int, c: int) -> str:
+    """
+    Classifies a triangle based on three integer side lengths.
+    
+    Valid Equilateral, Isosceles & Scalene:
+    >>> classify_triangle(5, 5, 5)
+    'equilateral'
+    >>> classify_triangle(3, 3, 4)
+    'isosceles'
+    >>> classify_triangle(3, 4, 3)
+    'isosceles'
+    >>> classify_triangle(3, 4, 5)
+    'scalene'
+    
+    Invalid & Degenerate inputs (Must raise ValueError):
+    >>> classify_triangle(0, 0, 0)
+    Traceback (most recent call last):
+      ...
+    ValueError: sides must be positive integers
+    
+    >>> classify_triangle(1, 2, 3)
+    Traceback (most recent call last):
+      ...
+    ValueError: not a valid triangle (triangle inequality violation)
+    """
+    # 1. Guard: Check for non-positive sides
+    if a <= 0 or b <= 0 or c <= 0:
+        raise ValueError("sides must be positive integers")
+        
+    # 2. Guard: Check triangle inequality theorem (sum of any 2 > 3rd)
+    if (a + b <= c) or (a + c <= b) or (b + c <= a):
+        raise ValueError("not a valid triangle (triangle inequality violation)")
+        
+    # 3. Classify valid triangles
+    if a == b == c:
+        return "equilateral"
+    elif a == b or a == c or b == c:
+        return "isosceles"
+    else:
+        return "scalene"</div>
+        </div>
+
+        <p><strong>Running Doctests from Command Line:</strong></p>
+        <div style="background: var(--code-bg); padding: 0.75rem 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.88em; margin-bottom: 1.5rem;">
+          python -m doctest -v triangle_classifier.py
+        </div>
+
+        <div style="background: rgba(12, 122, 115, 0.08); border-left: 4px solid #0c7a73; padding: 1rem; border-radius: 6px;">
+          <strong style="color: #0c7a73;">💡 Doctest Exception Formatting Rule:</strong>
+          <p style="margin: 0.5rem 0 0 0; font-size: 0.88em;">
+            When asserting that an exception is raised in a doctest, you only write <code>Traceback (most recent call last):</code>, followed by the wildcard ellipsis <code>...</code>, and then the exact exception line (e.g. <code>ValueError: sides must be positive integers</code>).
+          </p>
+        </div>
+      </section>
+
+      <!-- EXAM DRILL LINK -->
+      <div style="text-align: center; margin: 3rem 0 1rem 0; padding: 2rem; background: var(--code-bg); border-radius: 8px;">
+        <h3 style="margin-top: 0; color: var(--text-color);">Ready to Test Your Knowledge?</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+          Put these Chapter 1 fundamentals into practice with official exam questions!
+        </p>
+        <a href="ch1_official.html" class="btn" style="background: #0c7a73; color: #fff; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block;">
+          🚀 Practice Chapter 1 Official Questions (5 Exam Tasks) &rarr;
+        </a>
+      </div>
 
     </div>
-    
     <footer class="page-footer">
       <span><a href="index.html">← Home</a></span>
     </footer>

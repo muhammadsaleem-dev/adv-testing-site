@@ -190,12 +190,14 @@
     </div>
     
     
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q</span>
-    <span class="drill-q">CLOSING SECURITY QUESTION</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q</span> CLOSING SECURITY QUESTION
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p><em>Source: CH10_Block_F_Security_Testing_Mock_Exam_Prep.pdf</em></p>
     <p>For FinCon, which security risk deserves the strongest test evidence: <span style="color: #d9534f; font-weight: 600;">invalid login</span>, <span style="color: #d9534f; font-weight: 600;">unauthorized transfer</span>, <span style="color: #d9534f; font-weight: 600;">missing audit trail</span>, or <span style="color: #d9534f; font-weight: 600;">prompt injection in an AI assistant</span>?</p>
     <p><em>Justify using:</em></p>
@@ -206,10 +208,15 @@
       <li>testability</li>
       <li>residual risk</li>
     </ul>
+  </div>
 
-    <hr>
-    
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <p><strong><span style="color: #d9534f; font-weight: 600;">Unauthorized transfer</span></strong> deserves the strongest test evidence because it directly threatens the core operational integrity and survival of FinCon.</p>
     <div style="overflow-x: auto; margin-top: 1rem; margin-bottom: 1rem;">
       <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9em;">
@@ -243,8 +250,9 @@
         </tbody>
       </table>
     </div>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 <footer class="page-footer">
       <span><a href="ch10.html">← Back to Chapter</a></span>
     </footer>

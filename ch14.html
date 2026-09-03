@@ -195,12 +195,14 @@
       </div>
 
 <!-- MOCK Q1 + A1 -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q & A</span>
-    <span class="drill-q">Q1 &mdash; BOUNDARY VALUES</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q & A</span> Q1 &mdash; BOUNDARY VALUES
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p><em>Source: CH10_Block_F_Security_Testing_Mock_Exam_Prep.pdf</em></p>
     <p>A FinCon voucher accepts a discount percentage.</p>
     <p><strong>Rules:</strong></p>
@@ -216,10 +218,15 @@
       <li><span style="color: #d9534f; font-weight: 600;">(b)</span> State the expected result for each value.</li>
       <li><span style="color: #d9534f; font-weight: 600;">(c)</span> Name one additional invalid equivalence class not covered by integer boundary values.</li>
     </ul>
+  </div>
 
-    <hr>
-    
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <p><strong><span style="color: #d9534f; font-weight: 600;">(a & b)</span> Boundary values and expected results:</strong></p>
     <div style="overflow-x: auto; margin-top: 1rem; margin-bottom: 1rem;">
       <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9em;">
@@ -256,16 +263,19 @@
         </tbody>
       </table>
     </div>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
 <!-- MOCK Q2 + A2 -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q & A</span>
-    <span class="drill-q">Q2 &mdash; PAIRWISE GAP</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q & A</span> Q2 &mdash; PAIRWISE GAP
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p><em>Source: CH10_Block_F_Security_Testing_Mock_Exam_Prep.pdf</em></p>
     <p>A report export function has these parameters:</p>
     <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">Parameter            Values
@@ -284,10 +294,15 @@ Language             EN / DE / FR</div>
       <li><span style="color: #d9534f; font-weight: 600;">(b)</span> Identify one missing 2-way pair.</li>
       <li><span style="color: #d9534f; font-weight: 600;">(c)</span> Add one test case that covers that missing pair.</li>
     </ul>
+  </div>
 
-    <hr>
-    
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Pairwise minimum:</strong></p>
     <p>Largest pair = Format &times; Language = 2 &times; 3 = <span style="color: #d9534f; font-weight: 600;">6</span>. Therefore, fewer than 6 test cases cannot be sufficient.</p>
     
@@ -299,16 +314,19 @@ Language             EN / DE / FR</div>
     
     <p><strong><span style="color: #d9534f; font-weight: 600;">(c)</span> Add one test case that covers that missing pair:</strong></p>
     <p>One valid additional test case is: <span style="color: #d9534f; font-weight: 600;">PDF, No, FR</span> (Covers PDF &times; FR and No &times; FR).</p>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
 <!-- MOCK Q3 + A3 -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q & A</span>
-    <span class="drill-q">Q3 &mdash; GHERKIN CRITIQUE</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q & A</span> Q3 &mdash; GHERKIN CRITIQUE
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p><em>Source: CH10_Block_F_Security_Testing_Mock_Exam_Prep.pdf</em></p>
     <p>A student writes this scenario:</p>
     <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">Scenario: Transfer works
@@ -321,10 +339,15 @@ Language             EN / DE / FR</div>
       <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Identify two weaknesses in the scenario.</li>
       <li><span style="color: #d9534f; font-weight: 600;">(b)</span> Rewrite it as one concise Gherkin scenario with observable expected results.</li>
     </ul>
+  </div>
 
-    <hr>
-    
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Two weaknesses:</strong></p>
     <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
       <li><strong>Vague title:</strong> Does not name the business rule being tested.</li>
@@ -339,16 +362,19 @@ Language             EN / DE / FR</div>
   When the user submits a transfer of 100001 cents
   Then the transfer is rejected
   And no money is debited from the source account</div>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
 <!-- MOCK Q4 + A4 -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q & A</span>
-    <span class="drill-q">Q4 &mdash; STATIC ANALYSIS AND COVERAGE</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q & A</span> Q4 &mdash; STATIC ANALYSIS AND COVERAGE
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p><em>Source: CH10_Block_F_Security_Testing_Mock_Exam_Prep.pdf</em></p>
     <p>Given code:</p>
     <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">def approve_transfer(amount, target_exists, session_valid, log=[]):
@@ -367,10 +393,15 @@ Language             EN / DE / FR</div>
       <li><span style="color: #d9534f; font-weight: 600;">(b)</span> State which tool type would likely detect each.</li>
       <li><span style="color: #d9534f; font-weight: 600;">(c)</span> Give one important rejection-path test not covered by the given test.</li>
     </ul>
+  </div>
 
-    <hr>
-    
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <p><strong><span style="color: #d9534f; font-weight: 600;">(a & b)</span> Static defects and likely detection tools:</strong></p>
     <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
       <li><strong>Defect:</strong> Mutable default argument <span style="color: #d9534f; font-weight: 600;">log=[]</span> <br><strong>Likely detection:</strong> Linter such as <span style="color: #d9534f; font-weight: 600;">Pylint</span>; or code review.</li>
@@ -380,16 +411,19 @@ Language             EN / DE / FR</div>
     <p><strong><span style="color: #d9534f; font-weight: 600;">(c)</span> Coverage issue / Rejection-path test:</strong></p>
     <p>The given test covers only the approval path. It does not cover rejection behavior. One valid additional test:</p>
     <p><span style="color: #d9534f; font-weight: 600;">amount = 0, target_exists = True, session_valid = True</span> &rarr; Expected: <span style="color: #d9534f; font-weight: 600;">False</span></p>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
 <!-- MOCK Q5 + A5 -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q & A</span>
-    <span class="drill-q">Q5 &mdash; SECURITY RISK DECISION</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q & A</span> Q5 &mdash; SECURITY RISK DECISION
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p><em>Source: CH10_Block_F_Security_Testing_Mock_Exam_Prep.pdf</em></p>
     <p>FinCon introduces a support chatbot that can answer account questions, but it must not reveal personal account data or execute transfers.</p>
     <p>Possible risks:</p>
@@ -403,10 +437,15 @@ Language             EN / DE / FR</div>
     <ul style="list-style-type: circle; padding-left: 1.5rem; margin-bottom: 1rem;">
       <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Select the two highest-priority security risks and justify your choice using impact and test response.</li>
     </ul>
+  </div>
 
-    <hr>
-    
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Strongest selection and justification:</strong></p>
     <div style="overflow-x: auto; margin-top: 1rem; margin-bottom: 1rem;">
       <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9em;">
@@ -432,8 +471,9 @@ Language             EN / DE / FR</div>
       </table>
     </div>
     <p><em>(Note: Prompt injection is also acceptable if justified correctly as a high-priority attack mechanism leading to data disclosure or unauthorized action. Vague help answers are lower priority usability issues, not high security risks.)</em></p>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
     </div>
     <footer class="page-footer">

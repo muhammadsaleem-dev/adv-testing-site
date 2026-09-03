@@ -192,12 +192,14 @@
     <div class="page-content concept-content">
 
 <!-- QUESTION 1 -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q</span>
-    <span class="drill-q">AI DEFECT PATTERNS (4 P)</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q</span> AI DEFECT PATTERNS (4 P)
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p><em>Source: CH05_AdvTest_06_AICover_Static.pdf</em></p>
     
     <p>A Copilot-generated function for FinCon account tier classification:</p>
@@ -223,9 +225,15 @@
       <li><span style="color: #d9534f; font-weight: 600;">(b)</span> Explain why 100% branch coverage would NOT reveal these defects without an independent test oracle.</li>
       <li><span style="color: #d9534f; font-weight: 600;">(c)</span> Write two test cases that, together, reveal both defects.</li>
     </ul>
+  </div>
 
-    <hr>
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Defects identified <span style="color: #d9534f; font-weight: 600;">(1.5 P)</span>:</strong></p>
     <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
       <li><strong>Defect 1 (Dead Code):</strong> Line X is structurally unreachable. The conditions for <span style="color: #d9534f; font-weight: 600;">silver</span> and <span style="color: #d9534f; font-weight: 600;">bronze</span> are identical, meaning any input that satisfies Line X will be intercepted by the <span style="color: #d9534f; font-weight: 600;">silver</span> branch first.</li>
@@ -240,16 +248,19 @@
       <li><strong>TC 1 (Coverage tool check):</strong> Input <span style="color: #d9534f; font-weight: 600;">balance=1000, months_active=1</span>. Expected: <span style="color: #d9534f; font-weight: 600;">silver</span>. Actual: <span style="color: #d9534f; font-weight: 600;">silver</span>. A coverage tool will flag Line X as unexecuted (revealing dead code).</li>
       <li><strong>TC 2 (Traceability check):</strong> Attempt to map the code branch for <span style="color: #d9534f; font-weight: 600;">'bronze'</span> back to a test case derived from the requirements. Expected: No test case exists for bronze (revealing hallucination).</li>
     </ul>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
 <!-- QUESTION 2 -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q</span>
-    <span class="drill-q">STATIC ANALYSIS (3 P)</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q</span> STATIC ANALYSIS (3 P)
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p><em>Source: CH05_AdvTest_06_AICover_Static.pdf</em></p>
     
     <p>A colleague writes the following function:</p>
@@ -269,9 +280,15 @@
       <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Identify two static defects in this function using the defect category table.</li>
       <li><span style="color: #d9534f; font-weight: 600;">(b)</span> For each defect, state which tool <span style="color: #d9534f; font-weight: 600;">(pylint/mypy/ruff)</span> would most likely detect it and why.</li>
     </ul>
+  </div>
 
-    <hr>
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <p><em>(Following the strict examiner rubric: Defect &rarr; Reason &rarr; Likely Tool)</em></p>
     <p><strong><span style="color: #d9534f; font-weight: 600;">(a & b)</span> Static Defects and Tools <span style="color: #d9534f; font-weight: 600;">(3 P)</span>:</strong></p>
     <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
@@ -284,16 +301,19 @@
         <br><strong>Likely Tool:</strong> <span style="color: #d9534f; font-weight: 600;">Ruff</span> (or Pylint). Linters aggressively flag variables that are assigned but never accessed <span style="color: #d9534f; font-weight: 600;">(e.g., F841)</span> as they indicate logic errors or dead code.
       </li>
     </ul>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
 <!-- QUESTION 3 -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q</span>
-    <span class="drill-q">INSPECTION VS. COVERAGE (3 P)</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q</span> INSPECTION VS. COVERAGE (3 P)
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p><em>Source: CH05_AdvTest_06_AICover_Static.pdf</em></p>
     
     <p>A colleague argues:</p>
@@ -304,9 +324,15 @@
       <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Give two concrete examples from today's material where 100% branch coverage would miss defects that inspection finds.</li>
       <li><span style="color: #d9534f; font-weight: 600;">(b)</span> Give one example where automated static analysis catches a defect that neither branch coverage nor inspection reliably catches.</li>
     </ul>
+  </div>
 
-    <hr>
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Where branch coverage fails but inspection succeeds <span style="color: #d9534f; font-weight: 600;">(2 P)</span>:</strong></p>
     <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
       <li><strong>Missing requirements (Omissions):</strong> If a critical feature <span style="color: #d9534f; font-weight: 600;">(e.g., verifying a user's age)</span> is completely omitted from the code, 100% branch coverage of the <em>existing</em> code will easily be achieved. Coverage cannot detect what isn't there, but a human inspecting against the specification will immediately spot the missing logic.</li>
@@ -315,8 +341,9 @@
     
     <p><strong><span style="color: #d9534f; font-weight: 600;">(b)</span> Where static analysis outperforms both <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
     <p><strong>Memory leaks, race conditions, or mutable default arguments <span style="color: #d9534f; font-weight: 600;">(e.g., logger=[])</span>.</strong> A human inspector might easily gloss over a `[]` bracket in a function definition due to visual fatigue. A unit test suite might only call the function once, meaning the shared-state bug never triggers. Static analysis algorithms, however, instantaneously flag this exact syntax anti-pattern without needing execution or human attention.</p>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
 </div>
     <footer class="page-footer">

@@ -195,12 +195,14 @@
 </div>
 
 <!-- Q1: Payment Test Completeness -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q</span>
-    <span class="drill-q">PAYMENT TEST COMPLETENESS (4 MARKS)</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q</span> PAYMENT TEST COMPLETENESS (4 MARKS)
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p>You are given a function specification for a payment gateway:</p>
     <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
       <li>The valid range for a transaction is <span style="color: #d9534f; font-weight: 600;">1</span> to <span style="color: #d9534f; font-weight: 600;">100000</span>.</li>
@@ -211,86 +213,116 @@
       <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Identify at least three categories of missing test values.</li>
       <li><span style="color: #d9534f; font-weight: 600;">(b)</span> Explain why relying only on interior values is insufficient.</li>
     </ul>
+  </div>
 
-    <hr>
-    
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
       <li><strong>Missing Categories:</strong> Exact boundaries (<span style="color: #d9534f; font-weight: 600;">1</span>, <span style="color: #d9534f; font-weight: 600;">100000</span>), just-outside invalid values (<span style="color: #d9534f; font-weight: 600;">0</span>, <span style="color: #d9534f; font-weight: 600;">100001</span>), negative values, and non-integer/missing types.</li>
       <li><strong>Reason:</strong> Interior values cannot reveal off-by-one errors in boundary guards, nor can they prove that the system correctly rejects invalid inputs (negative testing).</li>
     </ul>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
 <!-- Q2: Doctest Invalid Triangle -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q</span>
-    <span class="drill-q">DOCTEST INVALID TRIANGLE (4 MARKS)</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q</span> DOCTEST INVALID TRIANGLE (4 MARKS)
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p>A student writes a Python doctest that asserts the input <span style="color: #d9534f; font-weight: 600;">(0, 0, 0)</span> correctly returns <span style="color: #d9534f; font-weight: 600;">"equilateral"</span> because all three sides are equal.</p>
     <p><em>Perform the following task:</em></p>
     <ul style="list-style-type: circle; padding-left: 1.5rem; margin-bottom: 1rem;">
       <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Explain why this logic is wrong and how the code/doctest should be fixed.</li>
     </ul>
+  </div>
 
-    <hr>
-    
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
       <li><strong>Mathematical Flaw:</strong> A geometric triangle requires positive side lengths and must satisfy the triangle inequality theorem. A <span style="color: #d9534f; font-weight: 600;">(0, 0, 0)</span> shape does not exist.</li>
       <li><strong>Resolution:</strong> The implementation must add guards to reject zero or negative values. The doctest should be updated to expect a <span style="color: #d9534f; font-weight: 600;">ValueError</span> (or similar exception) for zero, negative, and degenerate cases like <span style="color: #d9534f; font-weight: 600;">(1, 2, 3)</span>.</li>
     </ul>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
 <!-- Q3: MTS One-Hour Decision -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q</span>
-    <span class="drill-q">MTS ONE-HOUR DECISION (RISK ANSWER)</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q</span> MTS ONE-HOUR DECISION (RISK ANSWER)
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p>A critical production release is scheduled, but testing has fallen behind. <strong>Only one hour remains before release.</strong></p>
     <p><em>Perform the following task:</em></p>
     <ul style="list-style-type: circle; padding-left: 1.5rem; margin-bottom: 1rem;">
       <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Using Risk-Based Testing principles, what must the Test Manager do?</li>
     </ul>
+  </div>
 
-    <hr>
-    
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
       <li><strong>Action:</strong> Direct the remaining time exclusively toward testing the highest exposure areas (e.g., transfer authorization, validation, and session controls).</li>
       <li><strong>Communication:</strong> The Test Manager must clearly explain the probability and economic impact of untested areas to stakeholders, providing evidence of what was tested and explicitly identifying what lower-risk features are being consciously deferred to production.</li>
     </ul>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
 <!-- Q4: Weak Performance Report -->
-<details class="drill-item" open>
-  <summary>
-    <span class="drill-tag">🏛️ Official Q</span>
-    <span class="drill-q">WEAK PERFORMANCE REPORT (CONCEPT)</span>
-  </summary>
-  <div class="drill-a">
+<div style="background: var(--card-bg, #fff); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04);">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
+      <span class="drill-tag">🏛️ Official Q</span> WEAK PERFORMANCE REPORT (CONCEPT)
+    </h3>
+  </div>
+  
+  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
     <p>A junior tester submits the following performance testing report to the stakeholders:</p>
     <p style="padding-left: 1.5rem; font-style: italic; color: #d9534f;">"The system is mostly fast with many users."</p>
     <p><em>Perform the following task:</em></p>
     <ul style="list-style-type: circle; padding-left: 1.5rem; margin-bottom: 1rem;">
       <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Critique the report and provide an example of a proper performance statement.</li>
     </ul>
+  </div>
 
-    <hr>
-    
-    <p><strong>Suggested Answer:</strong></p>
+  <details class="drill-item" style="margin-top: 1.25rem;">
+    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
+      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
+      <span class="drill-q">Click to reveal Suggested Answer</span>
+    </summary>
+    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer:</strong></p>
     <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
       <li><strong>Critique:</strong> The statement is entirely vague, subjective, and non-actionable. It lacks concrete load parameters and measurable response criteria.</li>
       <li><strong>Correction:</strong> A proper report must use quantifiable metrics and specific loads. <br><em>Example: "The 95th percentile response time remains under 200ms when subjected to a load of 10,000 concurrent users."</em></li>
     </ul>
-  </div>
-</details>
+    </div>
+  </details>
+</div>
 
     </div>
     <footer class="page-footer">
