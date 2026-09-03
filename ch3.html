@@ -339,79 +339,103 @@
           🎯 Chapter 3: Pairwise Testing &amp; Cause-Effect Graphing
         </h3>
         <p style="margin: 0; font-size: 0.95rem; line-height: 1.6; color: var(--text);">
-          Why test billions of combinations when most bugs are caused by the <strong>interaction of just 2 parameters</strong>?
-          Learn how to slash test suites by <strong>80&ndash;95%</strong> using Pairwise Testing, and master Cause-Effect Graphing to turn complex business rules into simple Decision Tables.
+          Directly aligned with lecture slides (<code>CH03_Block_B_Pairwise_CEG.pdf</code>).
         </p>
       </div>
 
-      <!-- SECTION 1: WHEN EC + BVA IS NOT ENOUGH -->
+      <!-- SLIDE 6 & 7: WHEN EC + BVA IS NOT ENOUGH -->
       <section style="margin-bottom: 2.5rem;">
         <h2 style="border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; color: var(--text);">
-          1. When EC + BVA is Not Enough (The Autopilot Problem)
+          1. When EC + BVA is Not Enough (Slides 6&ndash;7)
         </h2>
         <p>
-          Equivalence Partitioning and Boundary Value Analysis test each parameter in <strong>isolation</strong>.
-          However, real software bugs hide in the <strong>interaction between parameters</strong>:
+          Equivalence classes and boundary values test each parameter in <strong>isolation</strong>.<br>
+          But bugs also hide in <strong>interactions between parameters</strong>:
         </p>
 
-        <div style="background: var(--code-bg); border-left: 4px solid var(--accent); padding: 1.25rem; border-radius: 8px; margin: 1.5rem 0;">
-          <h4 style="margin-top: 0; color: var(--accent); font-size: 1.1rem;">✈️ The Famous Airplane Analogy (Slide 6):</h4>
-          <p style="margin: 0; font-size: 1.05rem; font-style: italic; color: var(--text);">
+        <div style="background: var(--code-bg); border-left: 4px solid var(--accent); padding: 1.25rem; border-radius: 8px; margin: 1.25rem 0;">
+          <p style="margin: 0; font-size: 1.1rem; font-style: italic; color: var(--text); font-weight: 600;">
             "Would you expect the autopilot to switch off if the toilet is flushed?"
           </p>
-          <p style="margin: 0.5rem 0 0 0; font-size: 0.9em; color: var(--text-muted);">
-            Individually, the toilet flush works perfectly, and the autopilot works perfectly. But when combined simultaneously, an unexpected bug triggers! EC &amp; BVA test them separately and miss this completely.
+          <p style="margin: 0.5rem 0 0 0; font-size: 0.92rem; color: var(--text-muted);">
+            &bull; Two independently valid inputs combine to produce an unexpected failure.<br>
+            &bull; EC and BVA will miss this entirely!
           </p>
         </div>
 
-        <h3 style="color: var(--text); margin-top: 1.5rem;">The Combinatorial Explosion Problem</h3>
+        <h3 style="color: var(--text); margin-top: 1.5rem;">The Full-Combination Problem (Slide 7)</h3>
         <ul>
-          <li>For a FinCon transfer form with 4 parameters (3 values each): <strong>3 &times; 3 &times; 3 &times; 3 = 81 test cases</strong>.</li>
-          <li>For a configuration screen with 10 parameters (3 values each): <strong>3<sup>10</sup> = 59,049 test cases</strong> (Impossible to test manually!).</li>
+          <li>For a FinCon transaction form with 4 independent parameters, each with 3 values:<br>
+              <strong>3 &times; 3 &times; 3 &times; 3 = 81 test cases</strong></li>
+          <li>For a configuration screen with 10 parameters at 3 values each:<br>
+              <strong>3<sup>10</sup> = 59,049 test cases</strong></li>
+          <li><strong>Conclusion:</strong> Full combination testing is completely impractical.</li>
         </ul>
       </section>
 
-      <!-- SECTION 2: PAIRWISE TESTING -->
+      <!-- SLIDE 8: PAIRWISE TESTING -->
       <section style="margin-bottom: 2.5rem;">
         <h2 style="border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; color: var(--text);">
-          2. Pairwise Testing: The 2-Way Magic
+          2. Pairwise Testing (Slide 8)
         </h2>
         <div style="background: var(--bg-raised); border: 1px solid var(--border); padding: 1.25rem; border-radius: 8px; margin-bottom: 1.5rem;">
-          <h4 style="margin-top: 0; color: var(--accent);">🔑 The Key Insight (Slide 8):</h4>
+          <h4 style="margin-top: 0; color: var(--accent);">🔑 Key Insight:</h4>
           <p style="margin: 0; font-size: 0.95rem; line-height: 1.6; color: var(--text);">
-            Empirical studies show that <strong>over 80% of software defects</strong> are triggered by the interaction of just <strong>two parameters</strong> (2-way interaction), not three or more.<br>
-            Instead of testing every full combination, we test <strong>every pair of parameter values at least once</strong>. This slashes test cases by 80&ndash;95% while keeping high defect-finding power!
+            Most bugs are triggered by the <strong>interaction of two parameters</strong>, not three or more.<br>
+            <strong>The Rule:</strong> Test every pair of parameter values at least once &mdash; instead of every full combination.<br>
+            <strong>Result:</strong> Typically reduces the test set by <strong>80&ndash;95%</strong> while retaining high defect-finding power for two-way interactions.
           </p>
         </div>
+      </section>
 
-        <div class="formula-box">
-          <h4 style="margin-top: 0; color: var(--accent);">📐 The Pairwise Minimum Rule (Exam Essential):</h4>
-          <p style="margin: 0; font-size: 0.95rem; line-height: 1.6; color: var(--text);">
-            The absolute minimum number of test cases required for pairwise coverage equals the product of the number of values of the <strong>two largest parameters</strong>:
-          </p>
-          <div class="formula-display">
-            Pairwise Minimum &ge; (Values in Largest Param 1) &times; (Values in Largest Param 2)
-          </div>
-        </div>
-
-        <h3 style="color: var(--text); margin-top: 1.5rem;">The Lecture Slide Print Dialog Example (Slides 9&ndash;10)</h3>
-        <p>Given 4 print settings:</p>
-        <ul>
-          <li><strong>Print Header:</strong> Checked / Unchecked (2 values)</li>
-          <li><strong>Print Logo:</strong> Yes / No (2 values)</li>
-          <li><strong>Print Footer:</strong> Checked / Unchecked (2 values)</li>
-          <li><strong>Print Date:</strong> Today / Last saved / Special date (3 values)</li>
-        </ul>
-        <p>
-          • <strong>Full Combinations:</strong> 2 &times; 2 &times; 2 &times; 3 = <strong>24 test cases</strong>.<br>
-          • <strong>Pairwise Minimum:</strong> Largest pair is <code>Header (2) &times; Date (3)</code> = <strong style="color: var(--accent);">6 test cases</strong>!
-        </p>
-
-        <div style="overflow-x: auto; margin: 1.5rem 0;">
+      <!-- SLIDE 9-11: PAIRWISE HOW IT WORKS & MINIMUM TABLE -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; color: var(--text);">
+          3. Pairwise: How It Works &amp; Minimum Table (Slides 9&ndash;11)
+        </h2>
+        <p><strong>Given Parameters:</strong></p>
+        <div style="overflow-x: auto; margin: 1rem 0;">
           <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
             <thead>
               <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border);">
-                <th style="padding: 0.75rem; text-align: center;">Test Case #</th>
+                <th style="padding: 0.75rem; width: 40%;">Parameter</th>
+                <th style="padding: 0.75rem; width: 60%;">Values</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem; font-weight: 600;">Print Header</td>
+                <td style="padding: 0.75rem;">Checked / Unchecked (2 values)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem; font-weight: 600;">Print Logo</td>
+                <td style="padding: 0.75rem;">Yes / No (2 values)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem; font-weight: 600;">Print Footer</td>
+                <td style="padding: 0.75rem;">Checked / Unchecked (2 values)</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem; font-weight: 600;">Print Date</td>
+                <td style="padding: 0.75rem;">Today / Last saved / Special date (3 values)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          &bull; <strong>Full combinations:</strong> 2 &times; 2 &times; 2 &times; 3 = <strong>24 test cases</strong>.<br>
+          &bull; <strong>Pairwise Requirement:</strong> Every combination of values between any two parameters must appear at least once.<br>
+          &bull; <strong>The Largest 2-way pair is:</strong> <code>Header (2) &times; Date (3)</code> = <strong style="color: var(--accent); font-size: 1.1em;">2 &times; 3 = 6 test cases</strong>.<br>
+          &bull; Therefore, fewer than 6 test cases <strong>cannot be sufficient</strong>.
+        </p>
+
+        <h3 style="color: var(--text); margin-top: 1.5rem;">The Exact 6-Row Minimum Table (Slide 10)</h3>
+        <div style="overflow-x: auto; margin: 1rem 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9em; text-align: center;">
+            <thead>
+              <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border);">
+                <th style="padding: 0.75rem;">TC #</th>
                 <th style="padding: 0.75rem;">Header</th>
                 <th style="padding: 0.75rem;">Logo</th>
                 <th style="padding: 0.75rem;">Footer</th>
@@ -420,42 +444,42 @@
             </thead>
             <tbody>
               <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: var(--accent);">TC 1</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: var(--accent);">1</td>
                 <td style="padding: 0.75rem;">Checked</td>
                 <td style="padding: 0.75rem;">Yes</td>
                 <td style="padding: 0.75rem;">Checked</td>
                 <td style="padding: 0.75rem; font-weight: 600;">Today</td>
               </tr>
               <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: var(--accent);">TC 2</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: var(--accent);">2</td>
                 <td style="padding: 0.75rem;">Checked</td>
                 <td style="padding: 0.75rem;">No</td>
                 <td style="padding: 0.75rem;">Unchecked</td>
                 <td style="padding: 0.75rem; font-weight: 600;">Last saved</td>
               </tr>
               <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: var(--accent);">TC 3</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: var(--accent);">3</td>
                 <td style="padding: 0.75rem;">Checked</td>
                 <td style="padding: 0.75rem;">Yes</td>
                 <td style="padding: 0.75rem;">Unchecked</td>
                 <td style="padding: 0.75rem; font-weight: 600;">Special date</td>
               </tr>
               <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: var(--accent);">TC 4</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: var(--accent);">4</td>
                 <td style="padding: 0.75rem;">Unchecked</td>
                 <td style="padding: 0.75rem;">No</td>
                 <td style="padding: 0.75rem;">Checked</td>
                 <td style="padding: 0.75rem; font-weight: 600;">Today</td>
               </tr>
               <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: var(--accent);">TC 5</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: var(--accent);">5</td>
                 <td style="padding: 0.75rem;">Unchecked</td>
                 <td style="padding: 0.75rem;">Yes</td>
                 <td style="padding: 0.75rem;">Unchecked</td>
                 <td style="padding: 0.75rem; font-weight: 600;">Last saved</td>
               </tr>
               <tr>
-                <td style="padding: 0.75rem; text-align: center; font-weight: 700; color: var(--accent);">TC 6</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: var(--accent);">6</td>
                 <td style="padding: 0.75rem;">Unchecked</td>
                 <td style="padding: 0.75rem;">No</td>
                 <td style="padding: 0.75rem;">Checked</td>
@@ -464,82 +488,236 @@
             </tbody>
           </table>
         </div>
-        <p style="font-size: 0.9em; color: var(--text-muted);">
-          <em>Every 2-way pair between any two columns appears at least once in just 6 test cases instead of 24!</em>
+        <p style="font-size: 0.9em; color: var(--text-muted); font-style: italic;">
+          "This table covers every 2-way pair at least once. Other 6-row tables are valid if they cover the same pairwise combinations." (Slide 10&ndash;11)
         </p>
-
-        <div style="background: var(--code-bg); padding: 1.25rem; border-radius: 8px; margin-top: 1.5rem;">
-          <h4 style="margin-top: 0; color: var(--accent);">🏦 FinCon Transfer Form Exercise (Slide 13):</h4>
-          <ul>
-            <li><code>amount</code>: small (500), boundary (100k), oversized (200k) &rarr; <strong>3 values</strong></li>
-            <li><code>currency</code>: EUR, USD, invalid &rarr; <strong>3 values</strong></li>
-            <li><code>target_account_exists</code>: yes, no &rarr; <strong>2 values</strong></li>
-            <li><code>session_valid</code>: yes, no &rarr; <strong>2 values</strong></li>
-          </ul>
-          <p style="margin: 0; font-size: 0.95rem;">
-            • <strong>Full Combinations:</strong> 3 &times; 3 &times; 2 &times; 2 = <strong>36 tests</strong>.<br>
-            • <strong>Pairwise Minimum:</strong> 3 &times; 3 = <strong style="color: var(--accent);">9 test cases</strong>!
-          </p>
-        </div>
       </section>
 
-      <!-- SECTION 3: CAUSE-EFFECT GRAPHING & DECISION TABLES -->
+      <!-- SLIDE 13 & 14: FINCON EXERCISE -->
       <section style="margin-bottom: 2.5rem;">
         <h2 style="border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; color: var(--text);">
-          3. Cause-Effect Graphing (CEG) in 7 Simple Steps
+          4. Pairwise Applied to FinCon (Slides 13&ndash;14)
         </h2>
-        <p>
-          When business logic has interdependent rules (e.g. <em>"If VIP AND balance &gt; 1000 OR overdraft enabled, approve transfer"</em>), Cause-Effect Graphing systematically prevents missing test cases.
-        </p>
-
-        <div style="background: var(--bg-raised); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin: 1.5rem 0;">
-          <h4 style="margin-top: 0; color: var(--accent);">📋 The 7-Step Process (Slide 18):</h4>
-          <ol style="margin: 0; padding-left: 1.5rem; line-height: 1.7; font-size: 0.92rem;">
-            <li><strong>Divide specification</strong> into workable features/rules.</li>
-            <li><strong>Identify Causes</strong> (distinct input conditions or equivalence classes).</li>
-            <li><strong>Identify Effects</strong> (output actions or system state changes).</li>
-            <li><strong>Draw Boolean graph</strong> linking causes to effects with logic gates: <strong>AND</strong>, <strong>OR</strong>, <strong>NOT</strong>, <strong>Identity</strong>.</li>
-            <li><strong>Add Constraints</strong> for impossible combinations (E, I, O, R).</li>
-            <li><strong>Convert graph into Decision Table</strong> (each column represents one test case).</li>
-            <li><strong>Execute test cases</strong> corresponding to columns.</li>
-          </ol>
-        </div>
-
-        <h3 style="color: var(--text); margin-top: 1.5rem;">The Core Constraint Symbols (Slide 20)</h3>
+        <p>The FinCon transfer form has four independent parameters:</p>
         <div style="overflow-x: auto; margin: 1rem 0;">
           <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
             <thead>
               <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border);">
-                <th style="padding: 0.75rem; width: 20%;">Symbol</th>
-                <th style="padding: 0.75rem; width: 35%;">Name</th>
-                <th style="padding: 0.75rem; width: 45%;">Rule Meaning</th>
+                <th style="padding: 0.75rem; width: 40%;">Parameter</th>
+                <th style="padding: 0.75rem; width: 60%;">Values</th>
               </tr>
             </thead>
             <tbody>
               <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding: 0.75rem; font-weight: 700; color: var(--accent); font-family: var(--font-mono);">E</td>
-                <td style="padding: 0.75rem; font-weight: 600;">Exclusive</td>
-                <td style="padding: 0.75rem;"><strong>At most one</strong> cause can be true (0 or 1). Both cannot be true simultaneously.</td>
+                <td style="padding: 0.75rem; font-weight: 600;">amount</td>
+                <td style="padding: 0.75rem;">small (500) / boundary (100000) / oversized (200000) &rarr; <strong>3 values</strong></td>
               </tr>
               <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding: 0.75rem; font-weight: 700; color: var(--accent); font-family: var(--font-mono);">I</td>
-                <td style="padding: 0.75rem; font-weight: 600;">Inclusive</td>
-                <td style="padding: 0.75rem;"><strong>At least one</strong> cause must be true (cannot both be false).</td>
+                <td style="padding: 0.75rem; font-weight: 600;">currency</td>
+                <td style="padding: 0.75rem;">EUR / USD / invalid &rarr; <strong>3 values</strong></td>
               </tr>
               <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding: 0.75rem; font-weight: 700; color: var(--accent); font-family: var(--font-mono);">O</td>
-                <td style="padding: 0.75rem; font-weight: 600;">One and Only One</td>
-                <td style="padding: 0.75rem;"><strong>Exactly one</strong> cause must be true (e.g. Account Type is either Savings OR Checking).</td>
-              </tr>
-              <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding: 0.75rem; font-weight: 700; color: var(--accent); font-family: var(--font-mono);">R</td>
-                <td style="padding: 0.75rem; font-weight: 600;">Requires</td>
-                <td style="padding: 0.75rem;">If Cause A is true, then Cause B <strong>must also be true</strong>.</td>
+                <td style="padding: 0.75rem; font-weight: 600;">target_account_exists</td>
+                <td style="padding: 0.75rem;">yes / no &rarr; <strong>2 values</strong></td>
               </tr>
               <tr>
-                <td style="padding: 0.75rem; font-weight: 700; color: var(--accent); font-family: var(--font-mono);">M</td>
-                <td style="padding: 0.75rem; font-weight: 600;">Masks (Effects)</td>
-                <td style="padding: 0.75rem;">If Effect 1 occurs, Effect 2 is <strong>suppressed/masked</strong>.</td>
+                <td style="padding: 0.75rem; font-weight: 600;">session_valid</td>
+                <td style="padding: 0.75rem;">yes / no &rarr; <strong>2 values</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="background: var(--code-bg); padding: 1.25rem; border-radius: 8px; margin: 1.25rem 0;">
+          <h4 style="margin-top: 0; color: var(--accent);">5-Minute Slide Exercise Answer:</h4>
+          <p style="margin: 0; font-size: 0.95rem; line-height: 1.6;">
+            &bull; <strong>Full combinations:</strong> 3 &times; 3 &times; 2 &times; 2 = <strong>36 test cases</strong>.<br>
+            &bull; <strong>Expected Pairwise Minimum:</strong> The two largest parameters are <code>amount (3)</code> &times; <code>currency (3)</code> = <strong style="color: var(--accent); font-size: 1.1em;">9 test cases</strong>!<br>
+            &bull; <strong>Most important 2-way interaction:</strong> <code>amount &times; currency</code> (financial validity logic).
+          </p>
+        </div>
+      </section>
+
+      <!-- SLIDE 16-20: CAUSE-EFFECT GRAPHING -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; color: var(--text);">
+          5. Cause-Effect Graphing (CEG) &amp; Notation (Slides 16&ndash;20)
+        </h2>
+        <p>
+          Both EC and BVA test individual parameters independently.<br>
+          Neither systematically tests combinations that arise from <strong>logical dependencies in the specification</strong>:
+        </p>
+        <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-style: italic; margin-bottom: 1.25rem;">
+          "The file is updated if column 1 is A or B and column 2 is a digit."
+        </div>
+
+        <h3 style="color: var(--text);">The 7-Step Process (Slide 18)</h3>
+        <ol style="line-height: 1.7; font-size: 0.95rem;">
+          <li>Divide the specification into workable pieces (one graph per feature/rule).</li>
+          <li><strong>Identify Causes</strong> &mdash; distinct input conditions or equivalence classes.</li>
+          <li><strong>Identify Effects</strong> &mdash; output conditions or system state changes.</li>
+          <li><strong>Draw the Boolean graph</strong> linking causes to effects.</li>
+          <li><strong>Add Constraints</strong> for impossible combinations.</li>
+          <li><strong>Convert the graph to a Decision Table</strong> &mdash; each column is one test case.</li>
+          <li>Each column becomes a test case.</li>
+        </ol>
+
+        <h3 style="color: var(--text); margin-top: 1.5rem;">Notation: Boolean Symbols (Slide 19)</h3>
+        <div style="overflow-x: auto; margin: 1rem 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+            <thead>
+              <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border);">
+                <th style="padding: 0.75rem; width: 25%;">Symbol</th>
+                <th style="padding: 0.75rem; width: 75%;">Meaning</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem; font-weight: 700; color: var(--accent);">Identity</td>
+                <td style="padding: 0.75rem;">If A = 1, then B = 1</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem; font-weight: 700; color: var(--accent);">NOT</td>
+                <td style="padding: 0.75rem;">If A = 1, then B = 0</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem; font-weight: 700; color: var(--accent);">AND</td>
+                <td style="padding: 0.75rem;">C = 1 only if A = 1 and B = 1</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem; font-weight: 700; color: var(--accent);">OR</td>
+                <td style="padding: 0.75rem;">C = 1 if A = 1 or B = 1 (or both)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="color: var(--text); margin-top: 1.5rem;">Constraints Between Causes (Slide 20)</h3>
+        <div style="overflow-x: auto; margin: 1rem 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+            <thead>
+              <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border);">
+                <th style="padding: 0.75rem; width: 25%;">Constraint</th>
+                <th style="padding: 0.75rem; width: 75%;">Rule Meaning</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem; font-weight: 700; color: var(--accent); font-family: var(--font-mono);">E (Exclusive)</td>
+                <td style="padding: 0.75rem;"><strong>At most one</strong> can be true. Both cannot be 1 at the same time.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem; font-weight: 700; color: var(--accent); font-family: var(--font-mono);">I (Inclusive)</td>
+                <td style="padding: 0.75rem;"><strong>At least one</strong> must be true. Both cannot be 0 at the same time.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem; font-weight: 700; color: var(--accent); font-family: var(--font-mono);">O (One &amp; Only One)</td>
+                <td style="padding: 0.75rem;"><strong>Exactly one</strong> is true. (1 and only 1).</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem; font-weight: 700; color: var(--accent); font-family: var(--font-mono);">R (Requires)</td>
+                <td style="padding: 0.75rem;">For A to be 1, B <strong>must be 1</strong>. (A requires B).</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem; font-weight: 700; color: var(--accent); font-family: var(--font-mono);">M (Masks - Effects)</td>
+                <td style="padding: 0.75rem;">If Effect 1 is true, Effect 2 is <strong>suppressed/masked</strong>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SLIDE 30-31: CLASSIC EXAMPLE -->
+      <section style="margin-bottom: 2.5rem;">
+        <h2 style="border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; color: var(--text);">
+          6. Classic Example &mdash; Character Validation (Slides 30&ndash;31)
+        </h2>
+        <div style="background: var(--code-bg); padding: 1.25rem; border-radius: 8px; margin-bottom: 1.25rem;">
+          <h4 style="margin-top: 0; color: var(--accent);">Specification:</h4>
+          <ul style="margin: 0; padding-left: 1.25rem; line-height: 1.6;">
+            <li>The character in column 1 must be "A" or "B".</li>
+            <li>The character in column 2 must be a digit.</li>
+            <li>If both are valid, the file is updated.</li>
+            <li>If column 1 is invalid, message X12 is issued.</li>
+            <li>If column 2 is not a digit, message X13 is issued.</li>
+          </ul>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+          <div style="background: var(--bg-raised); border: 1px solid var(--border); padding: 1rem; border-radius: 6px;">
+            <strong style="color: var(--accent);">Causes:</strong>
+            <ul style="margin: 0.5rem 0 0 0; padding-left: 1.25rem; line-height: 1.6; font-size: 0.9em;">
+              <li><code>C1:</code> column 1 = "A"</li>
+              <li><code>C2:</code> column 1 = "B"</li>
+              <li><code>C3:</code> column 2 = digit</li>
+            </ul>
+          </div>
+          <div style="background: var(--bg-raised); border: 1px solid var(--border); padding: 1rem; border-radius: 6px;">
+            <strong style="color: var(--accent);">Effects:</strong>
+            <ul style="margin: 0.5rem 0 0 0; padding-left: 1.25rem; line-height: 1.6; font-size: 0.9em;">
+              <li><code>E70:</code> file updated</li>
+              <li><code>E71:</code> message X12 issued</li>
+              <li><code>E72:</code> message X13 issued</li>
+            </ul>
+          </div>
+        </div>
+
+        <p><strong>Constraints:</strong> An <strong>E (Exclusive)</strong> constraint exists between C1 and C2 (Column 1 cannot be both "A" and "B" simultaneously).</p>
+
+        <h3 style="color: var(--text); margin-top: 1.5rem;">Resulting Decision Table (4 Test Cases)</h3>
+        <div style="overflow-x: auto; margin: 1rem 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9em; text-align: center;">
+            <thead>
+              <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border);">
+                <th style="padding: 0.75rem; text-align: left;">Condition / Action</th>
+                <th style="padding: 0.75rem;">TC 1</th>
+                <th style="padding: 0.75rem;">TC 2</th>
+                <th style="padding: 0.75rem;">TC 3</th>
+                <th style="padding: 0.75rem;">TC 4</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem; text-align: left; font-family: var(--font-mono);">C1: col 1 = 'A'</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">1</td>
+                <td style="padding: 0.75rem;">0</td>
+                <td style="padding: 0.75rem;">0</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">1</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem; text-align: left; font-family: var(--font-mono);">C2: col 1 = 'B'</td>
+                <td style="padding: 0.75rem;">0</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">1</td>
+                <td style="padding: 0.75rem;">0</td>
+                <td style="padding: 0.75rem;">0</td>
+              </tr>
+              <tr style="border-bottom: 2px solid var(--border);">
+                <td style="padding: 0.75rem; text-align: left; font-family: var(--font-mono);">C3: col 2 = digit</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">1</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">1</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">1</td>
+                <td style="padding: 0.75rem; color: #d9534f; font-weight: 700;">0</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border); background: rgba(12, 122, 115, 0.05);">
+                <td style="padding: 0.75rem; text-align: left; font-weight: 600;">E70: File Updated</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">X</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">X</td>
+                <td style="padding: 0.75rem;">&mdash;</td>
+                <td style="padding: 0.75rem;">&mdash;</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem; text-align: left; font-weight: 600;">E71: Msg X12 (col 1 invalid)</td>
+                <td style="padding: 0.75rem;">&mdash;</td>
+                <td style="padding: 0.75rem;">&mdash;</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: #d9534f;">X</td>
+                <td style="padding: 0.75rem;">&mdash;</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem; text-align: left; font-weight: 600;">E72: Msg X13 (col 2 not digit)</td>
+                <td style="padding: 0.75rem;">&mdash;</td>
+                <td style="padding: 0.75rem;">&mdash;</td>
+                <td style="padding: 0.75rem;">&mdash;</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: #d9534f;">X</td>
               </tr>
             </tbody>
           </table>
@@ -550,7 +728,7 @@
       <div style="text-align: center; margin: 3rem 0 1rem 0; padding: 2rem; background: var(--code-bg); border-radius: 8px;">
         <h3 style="margin-top: 0; color: var(--text);">Practice Chapter 3 Official Questions</h3>
         <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
-          Solve the Pairwise calculation problems, build Cause-Effect Graphs, and fill Decision Tables!
+          Test your knowledge on Pairwise lower-bound formulas, Cause-Effect Graphing, and Decision Tables!
         </p>
         <a href="ch3_official.html" class="btn" style="background: var(--accent); color: #fff; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 6px; font-weight: 600; display: inline-block;">
           🚀 Practice Chapter 3 Official Questions &rarr;
