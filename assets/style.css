@@ -1690,6 +1690,7 @@ pre code.hljs {
    MODERN APP-STYLE FULLSCREEN MOBILE MENU & DESKTOP SIDEBAR
    ========================================================================== */
 
+
 .nav-panel {
   display: none;
 }
@@ -1698,22 +1699,32 @@ pre code.hljs {
   .nav-panel.open {
     display: block !important;
     position: fixed !important;
-    top: 52px !important;
+    top: 50px !important;
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
-    width: 100vw !important;
-    height: calc(100vh - 52px) !important;
-    height: calc(100dvh - 52px) !important;
-    background: var(--bg-raised) !important;
-    border-top: 1px solid var(--border) !important;
+    width: 100% !important;
+    height: calc(100vh - 50px) !important;
+    height: calc(100dvh - 50px) !important;
+    background-color: #0B0F14 !important;
     padding: 1.25rem 1.25rem 5rem !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
-    z-index: 999999 !important;
+    z-index: 9999999 !important;
     box-sizing: border-box !important;
   }
 }
+
+:root[data-theme="light"] .nav-panel.open,
+[data-theme="light"] .nav-panel.open {
+  background-color: #FFFFFF !important;
+}
+
+:root[data-theme="dark"] .nav-panel.open,
+[data-theme="dark"] .nav-panel.open {
+  background-color: #0B0F14 !important;
+}
+
 
 .nav-group-title {
   display: flex;
