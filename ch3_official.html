@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=38">
+<link rel="stylesheet" href="assets/style.css?v=39">
 <script>(function(){try{var t=localStorage.getItem('dm2026-theme')||'light';document.documentElement.setAttribute('data-theme',t);var m=localStorage.getItem('dm2026-mode')||'concept';document.documentElement.setAttribute('data-mode',m);}catch(e){}})();</script>
 </head>
 <body>
@@ -478,24 +478,102 @@ include_cancelled    yes / no</div>
       <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
       <span class="drill-q">Click to reveal Suggested Answer</span>
     </summary>
-    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
-      <p><strong>Suggested Answer:</strong></p>
-    <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Causes and Effects <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
-    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
-      <li><strong>Causes:</strong> C1: Overdraft protection enabled, C2: Payment below account balance <span style="color: #d9534f; font-weight: 600;">(sufficient funds)</span>, C3: Overdraft limit exceeded.</li>
-      <li><strong>Effects:</strong> E1: Approved, E2: Rejected with INSUFFICIENT_FUNDS, E3: Rejected with OVERDRAFT_LIMIT_EXCEEDED.</li>
-    </ul>
-    
-    <p><strong><span style="color: #d9534f; font-weight: 600;">(b)</span> Decision Table <span style="color: #d9534f; font-weight: 600;">(2 P)</span>:</strong></p>
-    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">Rule  C1(OD)  C2(BalOK)  C3(LimitExc) | Expected Effect
-R1    True    True       N/A          | Approved (E1)
-R2    True    False      False        | Approved (E1)
-R3    True    False      True         | OVERDRAFT_LIMIT_EXCEEDED (E3)
-R4    False   True       N/A          | Approved (E1)
-R5    False   False      N/A          | INSUFFICIENT_FUNDS (E2)</div>
-    
-    <p><strong><span style="color: #d9534f; font-weight: 600;">(c)</span> Test Cases and Impossible Combinations <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
-    <p>While 3 boolean causes yield 2^3 = 8 theoretical combinations, several are impossible or redundant. If C2 is True <span style="color: #d9534f; font-weight: 600;">(sufficient funds)</span>, the overdraft limit <span style="color: #d9534f; font-weight: 600;">(C3)</span> cannot mathematically be exceeded, rendering those combinations impossible/N/A. Likewise, if OD is False <span style="color: #d9534f; font-weight: 600;">(C1)</span>, the overdraft limit <span style="color: #d9534f; font-weight: 600;">(C3)</span> does not exist. Collapsing these yields <strong>5 valid test cases</strong>.</p>
+        <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
+      <p><strong>Suggested Answer &amp; Rubric:</strong></p>
+      
+      <p style="margin-top: 1rem;"><strong style="color: var(--accent);">(a) Causes and Effects (1 P):</strong></p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 0.75rem 0 1.25rem;">
+        <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--accent);">
+          <strong style="color: var(--accent);">Causes (Inputs):</strong>
+          <ul style="margin: 0.5rem 0 0 0; padding-left: 1.25rem; line-height: 1.8; font-family: var(--font-mono); font-size: 0.88rem;">
+            <li><strong>C1:</strong> Overdraft protection enabled (T/F)</li>
+            <li><strong>C2:</strong> Payment &le; balance / sufficient funds (T/F)</li>
+            <li><strong>C3:</strong> Payment exceeds overdraft limit (T/F)</li>
+          </ul>
+        </div>
+        
+        <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; border-left: 3px solid #d9534f;">
+          <strong style="color: #d9534f;">Effects (Outputs):</strong>
+          <ul style="margin: 0.5rem 0 0 0; padding-left: 1.25rem; line-height: 1.8; font-family: var(--font-mono); font-size: 0.88rem;">
+            <li><strong>E1:</strong> Payment approved</li>
+            <li><strong>E2:</strong> Rejected with <code>INSUFFICIENT_FUNDS</code></li>
+            <li><strong>E3:</strong> Rejected with <code>OVERDRAFT_LIMIT_EXCEEDED</code></li>
+          </ul>
+        </div>
+      </div>
+      
+      <p style="margin-top: 1.25rem;"><strong style="color: var(--accent);">(b) Decision Table (2 P):</strong></p>
+      <div style="overflow-x: auto; margin: 0.75rem 0 1.25rem;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: center;">
+          <thead>
+            <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border);">
+              <th style="padding: 0.5rem 0.75rem; text-align: left;">Condition / Action</th>
+              <th style="padding: 0.5rem 0.75rem; font-weight: 700;">R1 (Normal)</th>
+              <th style="padding: 0.5rem 0.75rem; font-weight: 700;">R2 (OD Pay)</th>
+              <th style="padding: 0.5rem 0.75rem; font-weight: 700; color: #d9534f;">R3 (Exceeded)</th>
+              <th style="padding: 0.5rem 0.75rem; font-weight: 700;">R4 (No OD Pay)</th>
+              <th style="padding: 0.5rem 0.75rem; font-weight: 700; color: #d9534f;">R5 (No OD Fail)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem 0.75rem; text-align: left; font-family: var(--font-mono);">C1: Overdraft Enabled</td>
+              <td style="padding: 0.5rem 0.75rem; font-weight: 600; color: var(--accent);">True</td>
+              <td style="padding: 0.5rem 0.75rem; font-weight: 600; color: var(--accent);">True</td>
+              <td style="padding: 0.5rem 0.75rem; font-weight: 600; color: var(--accent);">True</td>
+              <td style="padding: 0.5rem 0.75rem;">False</td>
+              <td style="padding: 0.5rem 0.75rem;">False</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem 0.75rem; text-align: left; font-family: var(--font-mono);">C2: Balance Sufficient</td>
+              <td style="padding: 0.5rem 0.75rem; font-weight: 600; color: var(--accent);">True</td>
+              <td style="padding: 0.5rem 0.75rem; color: #d9534f;">False</td>
+              <td style="padding: 0.5rem 0.75rem; color: #d9534f;">False</td>
+              <td style="padding: 0.5rem 0.75rem; font-weight: 600; color: var(--accent);">True</td>
+              <td style="padding: 0.5rem 0.75rem; color: #d9534f;">False</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem 0.75rem; text-align: left; font-family: var(--font-mono);">C3: Overdraft Exceeded</td>
+              <td style="padding: 0.5rem 0.75rem; color: var(--text-muted);">N/A</td>
+              <td style="padding: 0.5rem 0.75rem;">False</td>
+              <td style="padding: 0.5rem 0.75rem; font-weight: 700; color: #d9534f;">True</td>
+              <td style="padding: 0.5rem 0.75rem; color: var(--text-muted);">N/A</td>
+              <td style="padding: 0.5rem 0.75rem; color: var(--text-muted);">N/A</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border); background: rgba(12, 122, 115, 0.05);">
+              <td style="padding: 0.5rem 0.75rem; text-align: left; font-weight: 600;">E1: Payment Approved</td>
+              <td style="padding: 0.5rem 0.75rem; font-weight: 700; color: var(--accent);">X</td>
+              <td style="padding: 0.5rem 0.75rem; font-weight: 700; color: var(--accent);">X</td>
+              <td style="padding: 0.5rem 0.75rem;">&mdash;</td>
+              <td style="padding: 0.5rem 0.75rem; font-weight: 700; color: var(--accent);">X</td>
+              <td style="padding: 0.5rem 0.75rem;">&mdash;</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.5rem 0.75rem; text-align: left; font-weight: 600;">E2: INSUFFICIENT_FUNDS</td>
+              <td style="padding: 0.5rem 0.75rem;">&mdash;</td>
+              <td style="padding: 0.5rem 0.75rem;">&mdash;</td>
+              <td style="padding: 0.5rem 0.75rem;">&mdash;</td>
+              <td style="padding: 0.5rem 0.75rem;">&mdash;</td>
+              <td style="padding: 0.5rem 0.75rem; font-weight: 700; color: #d9534f;">X</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.5rem 0.75rem; text-align: left; font-weight: 600;">E3: OVERDRAFT_LIMIT_EXCEEDED</td>
+              <td style="padding: 0.5rem 0.75rem;">&mdash;</td>
+              <td style="padding: 0.5rem 0.75rem;">&mdash;</td>
+              <td style="padding: 0.5rem 0.75rem; font-weight: 700; color: #d9534f;">X</td>
+              <td style="padding: 0.5rem 0.75rem;">&mdash;</td>
+              <td style="padding: 0.5rem 0.75rem;">&mdash;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <p style="margin-top: 1.25rem;"><strong style="color: var(--accent);">(c) Test Cases &amp; Impossible Combinations (1 P):</strong></p>
+      <ul style="margin: 0.5rem 0 0 0; padding-left: 1.25rem; line-height: 1.7; font-size: 0.9em;">
+        <li>3 boolean causes yield <strong>2<sup>3</sup> = 8 theoretical combinations</strong>.</li>
+        <li><strong>Impossible Combinations:</strong> If <code>C2</code> is True (balance is sufficient), the overdraft limit cannot mathematically be exceeded (<code>C3</code> is N/A). Furthermore, if <code>C1</code> is False (no overdraft protection), <code>C3</code> does not apply.</li>
+        <li><strong>Resulting Test Suite:</strong> Collapsing these impossible combinations leaves <strong>exactly 5 executable test cases</strong> (Rules R1 &ndash; R5).</li>
+      </ul>
     </div>
   </details>
 </div>
@@ -535,38 +613,4 @@ R5    False   False      N/A          | INSUFFICIENT_FUNDS (E2)</div>
       <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
       <span class="drill-q">Click to reveal Suggested Answer</span>
     </summary>
-    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
-      <p><strong>Suggested Answer:</strong></p>
-    <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Two factual errors <span style="color: #d9534f; font-weight: 600;">(2 P)</span>:</strong></p>
-    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
-      <li><strong>Error 1:</strong> In the second test case, an inactive account <span style="color: #d9534f; font-weight: 600;">(account_active=False)</span> with plenty of funds <span style="color: #d9534f; font-weight: 600;">(1000)</span> returns <span style="color: #d9534f; font-weight: 600;">'INSUFFICIENT_FUNDS'</span>. This is a hallucinated error code; it should return a state-specific error like <span style="color: #d9534f; font-weight: 600;">'ACCOUNT_INACTIVE'</span>.</li>
-      <li><strong>Error 2:</strong> In the fourth test case, an account with a balance of 0 trying to debit 1 returns <span style="color: #d9534f; font-weight: 600;">'approved'</span>. This is completely false and would result in an unauthorized negative balance.</li>
-    </ul>
     
-    <p><strong><span style="color: #d9534f; font-weight: 600;">(b)</span> Missing combination <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
-    <p>The suite misses the combination of multiple failure conditions <span style="color: #d9534f; font-weight: 600;">(e.g., account_active=False AND insufficient balance)</span> to verify error priority, as well as missing boundary values <span style="color: #d9534f; font-weight: 600;">(debiting the exact balance amount, e.g., balance=500, amount=500)</span>.</p>
-    
-    <p><strong><span style="color: #d9534f; font-weight: 600;">(c)</span> Rewritten test suite <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
-    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">>>> debit(account_active=True, balance=1000, amount=500)
-'approved'
->>> debit(account_active=False, balance=1000, amount=500)
-'ACCOUNT_INACTIVE'
->>> debit(account_active=True, balance=100, amount=500)
-'INSUFFICIENT_FUNDS'
->>> debit(account_active=True, balance=0, amount=1)
-'INSUFFICIENT_FUNDS'
->>> debit(account_active=True, balance=500, amount=500)
-'approved'</div>
-    </div>
-  </details>
-</div>
-
-</div>
-    <footer class="page-footer">
-      <span><a href="ch3.html">← Back to Chapter</a></span>
-    </footer>
-  </div>
-</div>
-<script src="assets/site.js?v=38" defer></script>
-</body>
-</html>
