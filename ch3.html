@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=35">
+<link rel="stylesheet" href="assets/style.css?v=36">
 <script>(function(){try{var t=localStorage.getItem('dm2026-theme')||'light';document.documentElement.setAttribute('data-theme',t);var m=localStorage.getItem('dm2026-mode')||'concept';document.documentElement.setAttribute('data-mode',m);}catch(e){}})();</script>
 </head>
 <body>
@@ -658,22 +658,42 @@
           </table>
         </div>
 
-        <!-- PROFESSOR'S OFFICIAL EXAMPLE -->
+                <!-- PROFESSOR'S OFFICIAL EXAMPLE -->
         <h3 style="color: var(--text); margin-top: 2rem;">Example 2: The Professor's Official Slide Example (Character Validation - Slides 30&ndash;31)</h3>
-        <div style="background: var(--code-bg); padding: 1rem 1.25rem; border-radius: 8px; margin-bottom: 1rem;">
-          <h4 style="margin-top: 0; color: var(--accent);">Official Specification:</h4>
+        <div style="background: var(--code-bg); padding: 1rem 1.25rem; border-radius: 8px; margin-bottom: 1.25rem;">
+          <h4 style="margin-top: 0; color: var(--accent);">Official Specification (Slide 30):</h4>
           <ul style="margin: 0; padding-left: 1.25rem; line-height: 1.6; font-size: 0.92rem;">
-            <li>Column 1 must be <strong>"A"</strong> or <strong>"B"</strong>.</li>
-            <li>Column 2 must be a <strong>digit</strong>.</li>
+            <li>The character in column 1 must be <strong>"A"</strong> or <strong>"B"</strong>.</li>
+            <li>The character in column 2 must be a <strong>digit</strong>.</li>
             <li>If both are valid &rarr; <strong>File is updated (E<sub>70</sub>)</strong>.</li>
             <li>If Column 1 is invalid &rarr; <strong>Message X12 is issued (E<sub>71</sub>)</strong>.</li>
             <li>If Column 2 is not a digit &rarr; <strong>Message X13 is issued (E<sub>72</sub>)</strong>.</li>
           </ul>
         </div>
-        <p style="font-size: 0.92rem;">
-          • <strong>Causes:</strong> C1 (Col 1 = 'A'), C2 (Col 1 = 'B'), C3 (Col 2 = digit).<br>
-          • <strong>Constraint:</strong> <code>E</code> (Exclusive) between C1 and C2 (Column 1 cannot be 'A' and 'B' at the same time!).
-        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.5rem 0;">
+          <div style="background: var(--bg-raised); border: 1px solid var(--border); border-left: 4px solid var(--accent); padding: 1.25rem; border-radius: 8px;">
+            <h4 style="margin: 0 0 0.5rem 0; color: var(--accent); font-size: 1.05rem;">📥 Causes (Slide 31):</h4>
+            <ul style="margin: 0; padding-left: 1.25rem; line-height: 1.9; font-family: var(--font-mono); font-size: 0.95rem;">
+              <li><strong>C1:</strong> column 1 = "A"</li>
+              <li><strong>C2:</strong> column 1 = "B"</li>
+              <li><strong>C3:</strong> column 2 = digit</li>
+            </ul>
+          </div>
+          
+          <div style="background: var(--bg-raised); border: 1px solid var(--border); border-left: 4px solid #d9534f; padding: 1.25rem; border-radius: 8px;">
+            <h4 style="margin: 0 0 0.5rem 0; color: #d9534f; font-size: 1.05rem;">📤 Effects (Slide 31):</h4>
+            <ul style="margin: 0; padding-left: 1.25rem; line-height: 1.9; font-family: var(--font-mono); font-size: 0.95rem;">
+              <li><strong>E70:</strong> file updated</li>
+              <li><strong>E71:</strong> message X12 issued</li>
+              <li><strong>E72:</strong> message X13 issued</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="background: rgba(12, 122, 115, 0.08); border: 1px solid var(--accent); padding: 0.85rem 1.25rem; border-radius: 6px; margin-bottom: 1.5rem; font-size: 0.92rem;">
+          <strong>Constraint on Causes:</strong> <code>E</code> (Exclusive) between <strong>C1</strong> and <strong>C2</strong> (Column 1 cannot be 'A' and 'B' at the same time!).
+        </div>
 
         <div style="overflow-x: auto; margin: 1rem 0;">
           <table style="width: 100%; border-collapse: collapse; font-size: 0.9em; text-align: center;">
@@ -752,6 +772,6 @@
     </footer>
   </div>
 </div>
-<script src="assets/site.js?v=35" defer></script>
+<script src="assets/site.js?v=36" defer></script>
 </body>
 </html>
