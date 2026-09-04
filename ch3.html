@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=30">
+<link rel="stylesheet" href="assets/style.css?v=32">
 <script>(function(){try{var t=localStorage.getItem('dm2026-theme')||'light';document.documentElement.setAttribute('data-theme',t);var m=localStorage.getItem('dm2026-mode')||'concept';document.documentElement.setAttribute('data-mode',m);}catch(e){}})();</script>
 </head>
 <body>
@@ -533,14 +533,14 @@
         </div>
       </section>
 
-            <!-- SECTION 5: CAUSE-EFFECT GRAPHING -->
+                  <!-- SECTION 5: CAUSE-EFFECT GRAPHING & DECISION TABLES -->
       <section style="margin-bottom: 2.5rem;">
         <h2 style="border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; color: var(--text);">
-          5. Cause-Effect Graphing (CEG) &amp; The 4 Constraint Letters
+          5. Cause-Effect Graphing (CEG) &amp; Decision Tables
         </h2>
         <p>
-          What if settings depend on business rules? (e.g. <em>"If VIP AND balance &gt; 1000, approve transfer"</em>).
-          Cause-Effect Graphing turns complex rules into a simple <strong>Decision Table</strong> (where each column is 1 test case).
+          What if settings depend on complex business rules?
+          Cause-Effect Graphing turns rules into a simple <strong>Decision Table</strong> (where each vertical column is 1 test case).
         </p>
 
         <h3 style="color: var(--text); margin-top: 1.5rem;">The 4 Exam Constraint Letters (Crucial for Exam!)</h3>
@@ -604,12 +604,75 @@
           </table>
         </div>
 
-        <h3 style="color: var(--text); margin-top: 1.5rem;">How Graph Turns into a Decision Table (Slides 30&ndash;31)</h3>
+        <!-- INTUITIVE EXAMPLE: INSTAGRAM LOGIN -->
+        <h3 style="color: var(--text); margin-top: 2rem;">Example 1: The Intuitive Login Screen Decision Table</h3>
         <p>
-          • <strong>Specification:</strong> Column 1 must be "A" or "B". Column 2 must be a digit.<br>
+          Think of an app login screen with <strong>Username</strong> and <strong>Password</strong>:
+          <br>• <strong>1</strong> = TRUE / Correct input.
+          <br>• <strong>0</strong> = FALSE / Wrong input.
+          <br>• <strong>X</strong> = Action happens (Output triggered).
+          <br>• <strong>&mdash;</strong> = Action does not happen.
+        </p>
+
+        <div style="overflow-x: auto; margin: 1rem 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9em; text-align: center;">
+            <thead>
+              <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border);">
+                <th style="padding: 0.75rem; text-align: left;">Conditions &amp; Actions</th>
+                <th style="padding: 0.75rem; font-weight: 700;">TC 1 (Success)</th>
+                <th style="padding: 0.75rem; font-weight: 700;">TC 2 (Wrong Pass)</th>
+                <th style="padding: 0.75rem; font-weight: 700;">TC 3 (Wrong User)</th>
+                <th style="padding: 0.75rem; font-weight: 700;">TC 4 (Both Wrong)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem; text-align: left; font-family: var(--font-mono);">C1: Username Correct?</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">1</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">1</td>
+                <td style="padding: 0.75rem; color: #d9534f; font-weight: 700;">0</td>
+                <td style="padding: 0.75rem; color: #d9534f; font-weight: 700;">0</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem; text-align: left; font-family: var(--font-mono);">C2: Password Correct?</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">1</td>
+                <td style="padding: 0.75rem; color: #d9534f; font-weight: 700;">0</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">1</td>
+                <td style="padding: 0.75rem; color: #d9534f; font-weight: 700;">0</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border); background: rgba(12, 122, 115, 0.05);">
+                <td style="padding: 0.75rem; text-align: left; font-weight: 600;">E1: Action: Unlock Account</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: #0c7a73;">X</td>
+                <td style="padding: 0.75rem;">&mdash;</td>
+                <td style="padding: 0.75rem;">&mdash;</td>
+                <td style="padding: 0.75rem;">&mdash;</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem; text-align: left; font-weight: 600;">E2: Action: Show Error Message</td>
+                <td style="padding: 0.75rem;">&mdash;</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: #d9534f;">X</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: #d9534f;">X</td>
+                <td style="padding: 0.75rem; font-weight: 700; color: #d9534f;">X</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- PROFESSOR'S OFFICIAL EXAMPLE -->
+        <h3 style="color: var(--text); margin-top: 2rem;">Example 2: The Professor's Official Slide Example (Character Validation - Slides 30&ndash;31)</h3>
+        <div style="background: var(--code-bg); padding: 1rem 1.25rem; border-radius: 8px; margin-bottom: 1rem;">
+          <h4 style="margin-top: 0; color: var(--accent);">Official Specification:</h4>
+          <ul style="margin: 0; padding-left: 1.25rem; line-height: 1.6; font-size: 0.92rem;">
+            <li>Column 1 must be <strong>"A"</strong> or <strong>"B"</strong>.</li>
+            <li>Column 2 must be a <strong>digit</strong>.</li>
+            <li>If both are valid &rarr; <strong>File is updated ($E_{70}$)</strong>.</li>
+            <li>If Column 1 is invalid &rarr; <strong>Message X12 is issued ($E_{71}$)</strong>.</li>
+            <li>If Column 2 is not a digit &rarr; <strong>Message X13 is issued ($E_{72}$)</strong>.</li>
+          </ul>
+        </div>
+        <p style="font-size: 0.92rem;">
           • <strong>Causes:</strong> C1 (Col 1 = 'A'), C2 (Col 1 = 'B'), C3 (Col 2 = digit).<br>
-          • <strong>Effects:</strong> E70 (File Updated), E71 (Error X12), E72 (Error X13).<br>
-          • <strong>Constraint:</strong> <code>E</code> between C1 and C2 (Column 1 cannot be both 'A' and 'B' at once!).
+          • <strong>Constraint:</strong> <code>E</code> (Exclusive) between C1 and C2 (Column 1 cannot be 'A' and 'B' at the same time!).
         </p>
 
         <div style="overflow-x: auto; margin: 1rem 0;">
@@ -617,8 +680,8 @@
             <thead>
               <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border);">
                 <th style="padding: 0.75rem; text-align: left;">Condition / Action</th>
-                <th style="padding: 0.75rem; font-weight: 700;">TC 1 (Happy)</th>
-                <th style="padding: 0.75rem; font-weight: 700;">TC 2 (Happy)</th>
+                <th style="padding: 0.75rem; font-weight: 700;">TC 1 (Happy A)</th>
+                <th style="padding: 0.75rem; font-weight: 700;">TC 2 (Happy B)</th>
                 <th style="padding: 0.75rem; font-weight: 700; color: #d9534f;">TC 3 (Col 1 Fail)</th>
                 <th style="padding: 0.75rem; font-weight: 700; color: #d9534f;">TC 4 (Col 2 Fail)</th>
               </tr>
@@ -689,6 +752,6 @@
     </footer>
   </div>
 </div>
-<script src="assets/site.js?v=30" defer></script>
+<script src="assets/site.js?v=32" defer></script>
 </body>
 </html>
