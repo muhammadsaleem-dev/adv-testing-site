@@ -1855,3 +1855,41 @@ pre code.hljs {
   border-radius: 6px;
   border: 1px solid var(--border);
 }
+
+
+/* ==========================================================================
+   MOBILE SCROLLING & HORIZONTAL SPILLOVER FIX
+   ========================================================================== */
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.page, .page-shell, .page-content {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Ensure all tables scroll horizontally inside their container with momentum touch */
+.table-wrap, div[style*="overflow-x: auto"], div[style*="overflow-x:auto"] {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  box-sizing: border-box !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Prevent tables from breaking viewport */
+table {
+  border-collapse: collapse;
+  box-sizing: border-box;
+}
