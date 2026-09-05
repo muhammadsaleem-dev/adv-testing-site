@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=41">
+<link rel="stylesheet" href="assets/style.css?v=42">
 <script>(function(){try{var t=localStorage.getItem('dm2026-theme')||'light';document.documentElement.setAttribute('data-theme',t);var m=localStorage.getItem('dm2026-mode')||'concept';document.documentElement.setAttribute('data-mode',m);}catch(e){}})();</script>
 </head>
 <body>
@@ -479,140 +479,192 @@ include_cancelled    yes / no</div>
       <span class="drill-q">Click to reveal Suggested Answer</span>
     </summary>
         <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
-      <p><strong>Suggested Answer &amp; Rubric:</strong></p>
-      
-      <p style="margin-top: 1rem;"><strong style="color: var(--accent);">(a) Causes and Effects (1 P):</strong></p>
-      <div style="display: flex; flex-direction: column; gap: 0.75rem; margin: 0.75rem 0 1.25rem;">
-        <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--accent);">
-          <strong style="color: var(--accent);">Causes (Inputs):</strong>
-          <ul style="margin: 0.5rem 0 0 0; padding-left: 1.25rem; line-height: 1.8; font-family: var(--font-mono); font-size: 0.88rem;">
-            <li><strong>C1:</strong> Overdraft protection enabled (T/F)</li>
-            <li><strong>C2:</strong> Payment &le; balance / sufficient funds (T/F)</li>
-            <li><strong>C3:</strong> Payment exceeds overdraft limit (T/F)</li>
-          </ul>
+
+      <!-- STEP 1 -->
+      <div style="background: #fff8e1; border: 1px solid #ffe082; border-left: 4px solid #f59e0b; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.25rem;">
+        <h4 style="margin: 0 0 0.5rem 0; color: #b45309; font-size: 0.95rem;">🔍 Step 1 — Understand the Question</h4>
+        <p style="margin: 0 0 0.5rem 0; font-size: 0.88rem;">Look for the conditions that control what happens. Use the trick:</p>
+        <div style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.87rem;">
+          <div><strong style="font-family: var(--font-mono);">IF / WHEN / PROVIDED THAT / AND / OR</strong> &rarr; <span style="color: var(--accent); font-weight: 600;">Causes</span></div>
+          <div><strong style="font-family: var(--font-mono);">THEN / RETURN / REJECT / APPROVE / MESSAGE</strong> &rarr; <span style="color: #d9534f; font-weight: 600;">Effects</span></div>
         </div>
-        
-        <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; border-left: 3px solid #d9534f;">
-          <strong style="color: #d9534f;">Effects (Outputs):</strong>
-          <ul style="margin: 0.5rem 0 0 0; padding-left: 1.25rem; line-height: 1.8; font-family: var(--font-mono); font-size: 0.88rem;">
-            <li><strong>E1:</strong> Payment approved</li>
-            <li><strong>E2:</strong> Rejected with <code>INSUFFICIENT_FUNDS</code></li>
-            <li><strong>E3:</strong> Rejected with <code>OVERDRAFT_LIMIT_EXCEEDED</code></li>
-          </ul>
-        </div>
-        
-        <!-- EXAM TIP: HOW 6 PHRASES BECOME 3 CAUSES -->
-        <div style="background: var(--bg-raised); border: 1px solid var(--border); border-left: 4px solid var(--accent); padding: 1rem; border-radius: 8px; margin-top: 0.5rem;">
-          <h4 style="margin: 0 0 0.4rem 0; color: var(--accent); font-size: 0.95rem;">💡 Exam Tip: Why 6 Text Phrases Become Exactly 3 Causes</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0 0 0.75rem 0;">In the prompt, English sentences use 6 opposite phrases. In computer logic, each pair of opposites merges into <strong>1 binary light switch</strong>:</p>
-          
-          <div style="overflow-x: auto;">
-            <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem;">
-              <thead>
-                <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border);">
-                  <th style="padding: 0.4rem 0.6rem; text-align: left; width: 35%;">Binary Switch (Cause)</th>
-                  <th style="padding: 0.4rem 0.6rem; text-align: left; color: var(--accent); width: 32%;">When 1 (True)</th>
-                  <th style="padding: 0.4rem 0.6rem; text-align: left; color: #d9534f; width: 33%;">When 0 (False)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr style="border-bottom: 1px solid var(--border);">
-                  <td style="padding: 0.4rem 0.6rem; font-weight: 600;">C1: Overdraft Protection</td>
-                  <td style="padding: 0.4rem 0.6rem;">"overdraft enabled" (B. 1)</td>
-                  <td style="padding: 0.4rem 0.6rem;">"no overdraft" (B. 2)</td>
-                </tr>
-                <tr style="border-bottom: 1px solid var(--border);">
-                  <td style="padding: 0.4rem 0.6rem; font-weight: 600;">C2: Balance Check</td>
-                  <td style="padding: 0.4rem 0.6rem;">"payment below balance" (B. 1)</td>
-                  <td style="padding: 0.4rem 0.6rem;">"insufficient balance" (B. 2)</td>
-                </tr>
-                <tr>
-                  <td style="padding: 0.4rem 0.6rem; font-weight: 600;">C3: Overdraft Limit</td>
-                  <td style="padding: 0.4rem 0.6rem;">"limit exceeded" (B. 3)</td>
-                  <td style="padding: 0.4rem 0.6rem;">"limit not exceeded" (B. 1)</td>
-                </tr>
-              </tbody>
-            </table>
+      </div>
+
+      <!-- STEP 2 -->
+      <div style="background: var(--code-bg); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.25rem;">
+        <h4 style="margin: 0 0 0.75rem 0; color: var(--accent); font-size: 0.95rem;">📥 Step 2 — Find the Causes</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0 0 0.75rem 0;">Scan the specification for input conditions (things that can be true or false).</p>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem;">
+          <div style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem;">
+            <span style="background: var(--accent); color: #fff; border-radius: 50%; width: 1.4rem; height: 1.4rem; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">1</span>
+            <span>Overdraft protection enabled? (Yes / No)</span>
           </div>
-          
-          <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0.6rem 0 0 0; font-style: italic;">
-            <strong>How to write on exam:</strong> Always write down the <strong>When 1 (True)</strong> state for C1, C2, and C3!
-          </p>
+          <div style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem;">
+            <span style="background: var(--accent); color: #fff; border-radius: 50%; width: 1.4rem; height: 1.4rem; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">2</span>
+            <span>Overdraft limit not exceeded? (Yes / No)</span>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem;">
+            <span style="background: var(--accent); color: #fff; border-radius: 50%; width: 1.4rem; height: 1.4rem; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">3</span>
+            <span>Payment is below account balance? (Yes / No)</span>
+          </div>
+        </div>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0 0 0.75rem 0; font-style: italic;">💡 These are causes because they determine the outcome.</p>
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+            <thead>
+              <tr style="background: rgba(12,122,115,0.12); border-bottom: 2px solid var(--border);">
+                <th style="padding: 0.5rem 0.75rem; text-align: left; color: var(--accent);">Cause ID</th>
+                <th style="padding: 0.5rem 0.75rem; text-align: left; color: var(--accent);">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.4rem 0.75rem; font-weight: 700; font-family: var(--font-mono);">C1</td>
+                <td style="padding: 0.4rem 0.75rem;">Overdraft protection enabled<br><span style="font-size:0.8rem;color:var(--text-muted);">(1 = Yes, 0 = No)</span></td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.4rem 0.75rem; font-weight: 700; font-family: var(--font-mono);">C2</td>
+                <td style="padding: 0.4rem 0.75rem;">Overdraft limit not exceeded<br><span style="font-size:0.8rem;color:var(--text-muted);">(1 = Yes, 0 = No)</span></td>
+              </tr>
+              <tr>
+                <td style="padding: 0.4rem 0.75rem; font-weight: 700; font-family: var(--font-mono);">C3</td>
+                <td style="padding: 0.4rem 0.75rem;">Payment is below account balance<br><span style="font-size:0.8rem;color:var(--text-muted);">(1 = Yes, 0 = No)</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-      
-      <p style="margin-top: 1.25rem;"><strong style="color: var(--accent);">(b) Decision Table (2 P):</strong></p>
-      <div style="overflow-x: auto; margin: 0.75rem 0 1.25rem;">
-        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: center;">
-          <thead>
-            <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border);">
-              <th style="padding: 0.5rem 0.75rem; text-align: left;">Condition / Action</th>
-              <th style="padding: 0.5rem 0.75rem; font-weight: 700;">R1 (Normal)</th>
-              <th style="padding: 0.5rem 0.75rem; font-weight: 700;">R2 (OD Pay)</th>
-              <th style="padding: 0.5rem 0.75rem; font-weight: 700; color: #d9534f;">R3 (Exceeded)</th>
-              <th style="padding: 0.5rem 0.75rem; font-weight: 700;">R4 (No OD Pay)</th>
-              <th style="padding: 0.5rem 0.75rem; font-weight: 700; color: #d9534f;">R5 (No OD Fail)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 0.5rem 0.75rem; text-align: left; font-family: var(--font-mono);">C1: Overdraft Enabled</td>
-              <td style="padding: 0.5rem 0.75rem; font-weight: 600; color: var(--accent);">True</td>
-              <td style="padding: 0.5rem 0.75rem; font-weight: 600; color: var(--accent);">True</td>
-              <td style="padding: 0.5rem 0.75rem; font-weight: 600; color: var(--accent);">True</td>
-              <td style="padding: 0.5rem 0.75rem;">False</td>
-              <td style="padding: 0.5rem 0.75rem;">False</td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 0.5rem 0.75rem; text-align: left; font-family: var(--font-mono);">C2: Balance Sufficient</td>
-              <td style="padding: 0.5rem 0.75rem; font-weight: 600; color: var(--accent);">True</td>
-              <td style="padding: 0.5rem 0.75rem; color: #d9534f;">False</td>
-              <td style="padding: 0.5rem 0.75rem; color: #d9534f;">False</td>
-              <td style="padding: 0.5rem 0.75rem; font-weight: 600; color: var(--accent);">True</td>
-              <td style="padding: 0.5rem 0.75rem; color: #d9534f;">False</td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 0.5rem 0.75rem; text-align: left; font-family: var(--font-mono);">C3: Overdraft Exceeded</td>
-              <td style="padding: 0.5rem 0.75rem; color: var(--text-muted);">N/A</td>
-              <td style="padding: 0.5rem 0.75rem;">False</td>
-              <td style="padding: 0.5rem 0.75rem; font-weight: 700; color: #d9534f;">True</td>
-              <td style="padding: 0.5rem 0.75rem; color: var(--text-muted);">N/A</td>
-              <td style="padding: 0.5rem 0.75rem; color: var(--text-muted);">N/A</td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--border); background: rgba(12, 122, 115, 0.05);">
-              <td style="padding: 0.5rem 0.75rem; text-align: left; font-weight: 600;">E1: Payment Approved</td>
-              <td style="padding: 0.5rem 0.75rem; font-weight: 700; color: var(--accent);">X</td>
-              <td style="padding: 0.5rem 0.75rem; font-weight: 700; color: var(--accent);">X</td>
-              <td style="padding: 0.5rem 0.75rem;">&mdash;</td>
-              <td style="padding: 0.5rem 0.75rem; font-weight: 700; color: var(--accent);">X</td>
-              <td style="padding: 0.5rem 0.75rem;">&mdash;</td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 0.5rem 0.75rem; text-align: left; font-weight: 600;">E2: INSUFFICIENT_FUNDS</td>
-              <td style="padding: 0.5rem 0.75rem;">&mdash;</td>
-              <td style="padding: 0.5rem 0.75rem;">&mdash;</td>
-              <td style="padding: 0.5rem 0.75rem;">&mdash;</td>
-              <td style="padding: 0.5rem 0.75rem;">&mdash;</td>
-              <td style="padding: 0.5rem 0.75rem; font-weight: 700; color: #d9534f;">X</td>
-            </tr>
-            <tr>
-              <td style="padding: 0.5rem 0.75rem; text-align: left; font-weight: 600;">E3: OVERDRAFT_LIMIT_EXCEEDED</td>
-              <td style="padding: 0.5rem 0.75rem;">&mdash;</td>
-              <td style="padding: 0.5rem 0.75rem;">&mdash;</td>
-              <td style="padding: 0.5rem 0.75rem; font-weight: 700; color: #d9534f;">X</td>
-              <td style="padding: 0.5rem 0.75rem;">&mdash;</td>
-              <td style="padding: 0.5rem 0.75rem;">&mdash;</td>
-            </tr>
-          </tbody>
-        </table>
+
+      <!-- STEP 3 -->
+      <div style="background: var(--code-bg); border: 1px solid var(--border); border-left: 4px solid #d9534f; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.25rem;">
+        <h4 style="margin: 0 0 0.75rem 0; color: #d9534f; font-size: 0.95rem;">📤 Step 3 — Find the Effects</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0 0 0.75rem 0;">Look for the output results or system state changes.</p>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem;">
+          <div style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem;">
+            <span style="background: #d9534f; color: #fff; border-radius: 50%; width: 1.4rem; height: 1.4rem; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">1</span>
+            <span>Payment approved</span>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem;">
+            <span style="background: #d9534f; color: #fff; border-radius: 50%; width: 1.4rem; height: 1.4rem; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">2</span>
+            <span>Reject with <code>INSUFFICIENT_FUNDS</code></span>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem;">
+            <span style="background: #d9534f; color: #fff; border-radius: 50%; width: 1.4rem; height: 1.4rem; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">3</span>
+            <span>Reject with <code>OVERDRAFT_LIMIT_EXCEEDED</code></span>
+          </div>
+        </div>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0 0 0.75rem 0; font-style: italic;">💡 These are effects because they are what happens as a result.</p>
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+            <thead>
+              <tr style="background: rgba(217,83,79,0.10); border-bottom: 2px solid var(--border);">
+                <th style="padding: 0.5rem 0.75rem; text-align: left; color: #d9534f;">Effect ID</th>
+                <th style="padding: 0.5rem 0.75rem; text-align: left; color: #d9534f;">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.4rem 0.75rem; font-weight: 700; font-family: var(--font-mono);">E1</td>
+                <td style="padding: 0.4rem 0.75rem;">Payment approved<br><span style="font-size:0.8rem;color:var(--text-muted);">(1 = Yes, 0 = No)</span></td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.4rem 0.75rem; font-weight: 700; font-family: var(--font-mono);">E2</td>
+                <td style="padding: 0.4rem 0.75rem;">Reject with <code>INSUFFICIENT_FUNDS</code><br><span style="font-size:0.8rem;color:var(--text-muted);">(1 = Yes, 0 = No)</span></td>
+              </tr>
+              <tr>
+                <td style="padding: 0.4rem 0.75rem; font-weight: 700; font-family: var(--font-mono);">E3</td>
+                <td style="padding: 0.4rem 0.75rem;">Reject with <code>OVERDRAFT_LIMIT_EXCEEDED</code><br><span style="font-size:0.8rem;color:var(--text-muted);">(1 = Yes, 0 = No)</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      
-      <p style="margin-top: 1.25rem;"><strong style="color: var(--accent);">(c) Test Cases &amp; Impossible Combinations (1 P):</strong></p>
-      <ul style="margin: 0.5rem 0 0 0; padding-left: 1.25rem; line-height: 1.7; font-size: 0.9em;">
-        <li>3 boolean causes yield <strong>2<sup>3</sup> = 8 theoretical combinations</strong>.</li>
-        <li><strong>Impossible Combinations:</strong> If <code>C2</code> is True (balance is sufficient), the overdraft limit cannot mathematically be exceeded (<code>C3</code> is N/A). Furthermore, if <code>C1</code> is False (no overdraft protection), <code>C3</code> does not apply.</li>
-        <li><strong>Resulting Test Suite:</strong> Collapsing these impossible combinations leaves <strong>exactly 5 executable test cases</strong> (Rules R1 &ndash; R5).</li>
-      </ul>
+
+      <!-- STEP 4 -->
+      <div style="border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.25rem;">
+        <h4 style="margin: 0 0 0.75rem 0; font-size: 0.95rem; color: var(--text);">📊 Step 4 — Build the Decision Table (Columns = Test Cases)</h4>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0 0 0.75rem 0;">Each specification rule becomes <strong>one column</strong> — one complete test case.</p>
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: center;">
+            <thead>
+              <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border);">
+                <th style="padding: 0.5rem 0.75rem; text-align: left;" colspan="2">Cause / Effect</th>
+                <th style="padding: 0.5rem 0.75rem; font-weight: 700; color: var(--accent);">TC1</th>
+                <th style="padding: 0.5rem 0.75rem; font-weight: 700; color: var(--accent);">TC2</th>
+                <th style="padding: 0.5rem 0.75rem; font-weight: 700; color: var(--accent);">TC3</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border); background: rgba(12,122,115,0.04);">
+                <td style="padding: 0.4rem 0.5rem; font-weight: 700; color: var(--accent); font-size: 0.78rem; text-align: center; border-right: 1px solid var(--border);" rowspan="3">CAUSES</td>
+                <td style="padding: 0.4rem 0.75rem; text-align: left;">C1 — Overdraft protection enabled</td>
+                <td style="padding: 0.4rem 0.75rem; font-weight: 700; color: var(--accent);">1</td>
+                <td style="padding: 0.4rem 0.75rem; font-weight: 700; color: #d9534f;">0</td>
+                <td style="padding: 0.4rem 0.75rem; color: var(--text-muted);">—</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border); background: rgba(12,122,115,0.04);">
+                <td style="padding: 0.4rem 0.75rem; text-align: left;">C2 — Overdraft limit not exceeded</td>
+                <td style="padding: 0.4rem 0.75rem; font-weight: 700; color: var(--accent);">1</td>
+                <td style="padding: 0.4rem 0.75rem; color: var(--text-muted);">—</td>
+                <td style="padding: 0.4rem 0.75rem; font-weight: 700; color: #d9534f;">0</td>
+              </tr>
+              <tr style="border-bottom: 2px solid var(--border); background: rgba(12,122,115,0.04);">
+                <td style="padding: 0.4rem 0.75rem; text-align: left;">C3 — Payment below account balance</td>
+                <td style="padding: 0.4rem 0.75rem; font-weight: 700; color: var(--accent);">1</td>
+                <td style="padding: 0.4rem 0.75rem; font-weight: 700; color: #d9534f;">0</td>
+                <td style="padding: 0.4rem 0.75rem; color: var(--text-muted);">—</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border); background: rgba(217,83,79,0.04);">
+                <td style="padding: 0.4rem 0.5rem; font-weight: 700; color: #d9534f; font-size: 0.78rem; text-align: center; border-right: 1px solid var(--border);" rowspan="3">EFFECTS</td>
+                <td style="padding: 0.4rem 0.75rem; text-align: left; font-weight: 600;">E1 — APPROVED</td>
+                <td style="padding: 0.4rem 0.75rem; font-weight: 700; color: var(--accent);">1</td>
+                <td style="padding: 0.4rem 0.75rem; color: var(--text-muted);">0</td>
+                <td style="padding: 0.4rem 0.75rem; color: var(--text-muted);">0</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border); background: rgba(217,83,79,0.04);">
+                <td style="padding: 0.4rem 0.75rem; text-align: left; font-weight: 600;">E2 — INSUFFICIENT_FUNDS</td>
+                <td style="padding: 0.4rem 0.75rem; color: var(--text-muted);">0</td>
+                <td style="padding: 0.4rem 0.75rem; font-weight: 700; color: #d9534f;">1</td>
+                <td style="padding: 0.4rem 0.75rem; color: var(--text-muted);">0</td>
+              </tr>
+              <tr style="background: rgba(217,83,79,0.04);">
+                <td style="padding: 0.4rem 0.75rem; text-align: left; font-weight: 600;">E3 — OVERDRAFT_LIMIT_EXCEEDED</td>
+                <td style="padding: 0.4rem 0.75rem; color: var(--text-muted);">0</td>
+                <td style="padding: 0.4rem 0.75rem; color: var(--text-muted);">0</td>
+                <td style="padding: 0.4rem 0.75rem; font-weight: 700; color: #d9534f;">1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size: 0.82rem; color: var(--accent); text-align: center; margin: 0.6rem 0 0 0; font-style: italic;">Each column represents one complete test case.</p>
+      </div>
+
+      <!-- STEP 5 -->
+      <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1rem;">
+        <div style="background: #e8f5e9; border: 1px solid #a5d6a7; border-left: 4px solid #2e7d32; border-radius: 8px; padding: 1rem 1.25rem;">
+          <h4 style="margin: 0 0 0.5rem 0; color: #2e7d32; font-size: 0.95rem;">✅ Step 5 — Count the Test Cases</h4>
+          <p style="margin: 0; font-size: 0.95rem;"><strong>Number of test cases = 3</strong> (TC1, TC2, TC3)</p>
+        </div>
+        <div style="background: #fff3e0; border: 1px solid #ffe0b2; border-left: 4px solid #e65100; border-radius: 8px; padding: 1rem 1.25rem;">
+          <h4 style="margin: 0 0 0.5rem 0; color: #e65100; font-size: 0.95rem;">⚠️ Are there impossible combinations?</h4>
+          <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.87rem; line-height: 1.7;">
+            <li>Yes. You cannot have C2 = 1 and C2 = 0 at the same time.</li>
+            <li>Some combinations are not defined by the specification, so do not invent expected results for them.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- KEY TAKEAWAYS -->
+      <div style="background: var(--code-bg); border: 1px solid var(--border); border-left: 4px solid #7b3fe4; border-radius: 8px; padding: 1rem 1.25rem;">
+        <h4 style="margin: 0 0 0.5rem 0; color: #7b3fe4; font-size: 0.92rem;">🔑 Key Takeaways</h4>
+        <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.85rem; line-height: 1.8;">
+          <li><strong>Causes</strong> = input conditions (IF WHAT?)</li>
+          <li><strong>Effects</strong> = output/results (WHAT HAPPENS?)</li>
+          <li><strong>Rows</strong> = causes/effects, <strong>Columns</strong> = test cases</li>
+          <li>Use constraints to remove impossible combinations</li>
+          <li>Each column = one complete test case</li>
+        </ul>
+      </div>
     </div>
   </details>
 </div>
