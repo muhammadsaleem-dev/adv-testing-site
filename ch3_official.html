@@ -3,435 +3,572 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-<title>Official Questions | 3. Pairwise & Decision Tables</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c7a73'/%3E%3Ccircle cx='10' cy='11' r='3' fill='%23fff'/%3E%3Ccircle cx='22' cy='9' r='2.4' fill='%23fff'/%3E%3Ccircle cx='22' cy='23' r='3' fill='%23fff'/%3E%3Cpath d='M12.5 12.5L19.5 10M12 13.5L20 21' stroke='%23fff' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<title>Ch3 Official Questions · Pairwise &amp; CEG | ADV Testing</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2310B981'/%3E%3Ccircle cx='10' cy='11' r='3' fill='%23fff'/%3E%3Ccircle cx='22' cy='9' r='2.4' fill='%23fff'/%3E%3Ccircle cx='22' cy='23' r='3' fill='%23fff'/%3E%3Cpath d='M12.5 12.5L19.5 10M12 13.5L20 21' stroke='%23fff' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=42">
-<script>(function(){try{var t=localStorage.getItem('dm2026-theme')||'light';document.documentElement.setAttribute('data-theme',t);var m=localStorage.getItem('dm2026-mode')||'concept';document.documentElement.setAttribute('data-mode',m);}catch(e){}})();</script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=50">
+<script>(function(){try{var t=localStorage.getItem('adv-theme')||'dark';document.documentElement.setAttribute('data-theme',t);var m=localStorage.getItem('adv-mode')||'concept';document.documentElement.setAttribute('data-mode',m);}catch(e){}})();</script>
 </head>
 <body>
 
+<!-- TOP NAV -->
 <nav class="sitenav">
   <div class="sitenav-inner">
-    <a class="sitenav-home" href="index.html">ADV Testing</a>
+    <a class="sitenav-home" href="index.html">
+      <span style="background:linear-gradient(135deg,#10B981 0%,#6366f1 100%);color:#fff;padding:0.2rem 0.55rem;border-radius:6px;font-size:0.82rem;font-weight:800;letter-spacing:0.04em;">ADV</span>
+      <span style="font-weight:800;letter-spacing:-0.02em;">Testing</span>
+    </a>
     <div class="sitenav-links">
+      <a href="index.html">Overview</a>
+      <a href="ch1.html">Ch1 · BVA</a>
+      <a href="ch2.html">Ch2 · EP</a>
+      <a href="ch3.html">Ch3 · Pairwise</a>
+      <a href="ch3_official.html" class="active">Ch3 Official Qs</a>
+      <a href="ch4.html">Ch4 · MC/DC</a>
+      <a href="ch13.html">Mock Exam</a>
     </div>
     <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navPanel">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       Menu
     </button>
-        <button class="nav-toggle" id="forceRefreshBtn" type="button" aria-label="Force refresh page" title="Update &amp; Refresh" style="display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; padding: 0.32rem 0.55rem; cursor: pointer;">
-      🔄
-    </button>
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme">
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
-    <button class="mode-toggle" id="modeToggle" type="button" aria-label="Toggle technical mode" style="font-size: 1.1rem; line-height: 1;">🎓</button>
+    <button class="mode-toggle" id="modeToggle" type="button" aria-label="Toggle technical mode" style="font-size:1.1rem;line-height:1;">🎓</button>
   </div>
-    <div class="nav-panel" id="navPanel">
-    <div class="nav-group-title">Introduction</div>
-            <div class="nav-card-row">
-          <a href="index.html" class="nav-main-target">
-            <span class="nav-ch-badge">🏠</span>
-            <span class="nav-text-truncate">Home Overview</span>
-          </a>
-          
-        </div>
+  <div class="nav-panel" id="navPanel">
+    <div class="nav-panel-section">
+      <span class="nav-panel-label">Navigation</span>
+      <a href="index.html">🏠 Home Overview</a>
+      <a href="ch3.html">03 · Pairwise &amp; Decision Tables</a>
+      <a href="ch3_official.html" class="active">📋 Ch3 Official Questions</a>
+    </div>
+    <div class="nav-panel-section">
+      <span class="nav-panel-label">Stages</span>
+      <a href="#" onclick="return false;" data-target-stage="stage-1-spec" class="jump-stage-btn">📋 Stage 1: The Spec</a>
+      <a href="#" onclick="return false;" data-target-stage="stage-2-causes" class="jump-stage-btn">🔍 Stage 2: Causes</a>
+      <a href="#" onclick="return false;" data-target-stage="stage-3-effects" class="jump-stage-btn">📤 Stage 3: Effects</a>
+      <a href="#" onclick="return false;" data-target-stage="stage-4-table" class="jump-stage-btn">📊 Stage 4: Decision Table</a>
+      <a href="#" onclick="return false;" data-target-stage="stage-5-drills" class="jump-stage-btn">🎓 Stage 5: Exam Drills</a>
+    </div>
+  </div>
+</nav>
 
-    <div class="nav-group-title">Core Concepts</div>
-            <div class="nav-card-row">
-          <a href="ch1.html" class="nav-main-target">
-            <span class="nav-ch-badge">01</span>
-            <span class="nav-text-truncate">Fundamentals & Terms</span>
-          </a>
-          <a href="ch1_official.html" class="nav-pill-exam" title="Practice 5 Questions">🏛️ 5 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch2.html" class="nav-main-target">
-            <span class="nav-ch-badge">02</span>
-            <span class="nav-text-truncate">EC & BVA</span>
-          </a>
-          <a href="ch2_official.html" class="nav-pill-exam" title="Practice 4 Questions">🏛️ 4 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch3.html" class="nav-main-target">
-            <span class="nav-ch-badge">03</span>
-            <span class="nav-text-truncate">Pairwise & Decision Tables</span>
-          </a>
-          <a href="ch3_official.html" class="nav-pill-exam active-pill" title="Practice 4 Questions">🏛️ 4 Qs</a>
-        </div>
-
-    <div class="nav-group-title">Code & Coverage</div>
-            <div class="nav-card-row">
-          <a href="ch4.html" class="nav-main-target">
-            <span class="nav-ch-badge">04</span>
-            <span class="nav-text-truncate">White-Box & MC/DC</span>
-          </a>
-          <a href="ch4_official.html" class="nav-pill-exam" title="Practice 4 Questions">🏛️ 4 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch5.html" class="nav-main-target">
-            <span class="nav-ch-badge">05</span>
-            <span class="nav-text-truncate">AI Code & Static Analysis</span>
-          </a>
-          <a href="ch5_official.html" class="nav-pill-exam" title="Practice 4 Questions">🏛️ 4 Qs</a>
-        </div>
-
-    <div class="nav-group-title">Process & Risk</div>
-            <div class="nav-card-row">
-          <a href="ch6.html" class="nav-main-target">
-            <span class="nav-ch-badge">06</span>
-            <span class="nav-text-truncate">Test Process & MTS</span>
-          </a>
-          <a href="ch6_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch7.html" class="nav-main-target">
-            <span class="nav-ch-badge">07</span>
-            <span class="nav-text-truncate">Risk-Based Testing</span>
-          </a>
-          <a href="ch7_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
-        </div>
-
-    <div class="nav-group-title">Automation & Security</div>
-            <div class="nav-card-row">
-          <a href="ch8.html" class="nav-main-target">
-            <span class="nav-ch-badge">08</span>
-            <span class="nav-text-truncate">BDD & Gherkin</span>
-          </a>
-          <a href="ch8_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch9.html" class="nav-main-target">
-            <span class="nav-ch-badge">09</span>
-            <span class="nav-text-truncate">Web Automation & Perf</span>
-          </a>
-          <a href="ch9_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch10.html" class="nav-main-target">
-            <span class="nav-ch-badge">10</span>
-            <span class="nav-text-truncate">Security Testing</span>
-          </a>
-          <a href="ch10_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
-        </div>
-
-    <div class="nav-group-title">System Context</div>
-            <div class="nav-card-row">
-          <a href="ch11.html" class="nav-main-target">
-            <span class="nav-ch-badge">11</span>
-            <span class="nav-text-truncate">BudgetControl Architecture</span>
-          </a>
-          
-        </div>
-            <div class="nav-card-row">
-          <a href="ch12.html" class="nav-main-target">
-            <span class="nav-ch-badge">12</span>
-            <span class="nav-text-truncate">Course Summary & Artifacts</span>
-          </a>
-          <a href="ch12_official.html" class="nav-pill-exam" title="Practice 4 Questions">🏛️ 4 Qs</a>
-        </div>
-
-    <div class="nav-group-title">Exam Preparation</div>
-            <div class="nav-card-row">
-          <a href="exam_block_d.html" class="nav-main-target">
-            <span class="nav-ch-badge">⭐</span>
-            <span class="nav-text-truncate">Exam Task: Block D (25 P)</span>
-          </a>
-          
-        </div>
-            <div class="nav-card-row">
-          <a href="ch13.html" class="nav-main-target">
-            <span class="nav-ch-badge">📝</span>
-            <span class="nav-text-truncate">13. Mock Exam A (Questions)</span>
-          </a>
-          
-        </div>
-            <div class="nav-card-row">
-          <a href="ch14.html" class="nav-main-target">
-            <span class="nav-ch-badge">✅</span>
-            <span class="nav-text-truncate">14. Mock Exam A (Answers)</span>
-          </a>
-          
-        </div>
-            <div class="nav-card-row">
-          <a href="ch15.html" class="nav-main-target">
-            <span class="nav-ch-badge">🎯</span>
-            <span class="nav-text-truncate">15. Add'l Slide Questions</span>
-          </a>
-          
-        </div>
-            <div class="nav-card-row">
-          <a href="ch16.html" class="nav-main-target">
-            <span class="nav-ch-badge">🏁</span>
-            <span class="nav-text-truncate">16. Final Checklist</span>
-          </a>
-          
-        </div>
+<!-- MASTERCLASS STAGE NAV -->
+<nav class="masterclass-stage-nav" aria-label="Learning Stages">
+  <div class="stage-nav-inner" style="max-width:920px;margin:0 auto;padding:0 1.75rem;">
+    <div class="stage-pills-wrap">
+      <button type="button" class="stage-pill active" data-stage="stage-1-spec"><span>📋 1. The Spec</span></button>
+      <button type="button" class="stage-pill" data-stage="stage-2-causes"><span>🔍 2. Causes</span></button>
+      <button type="button" class="stage-pill" data-stage="stage-3-effects"><span>📤 3. Effects</span></button>
+      <button type="button" class="stage-pill" data-stage="stage-4-table"><span>📊 4. Decision Table</span></button>
+      <button type="button" class="stage-pill" data-stage="stage-5-drills"><span>🎓 5. Exam Drills</span></button>
+    </div>
+    <button type="button" class="stage-mode-btn" id="stageModeToggle">📑 Focused Stage Mode</button>
   </div>
 </nav>
 
 <div class="page-shell">
-    <aside class="sidebar-toc">
-    
-    <div class="nav-group-title">Introduction</div>
-            <div class="nav-card-row">
-          <a href="index.html" class="nav-main-target">
-            <span class="nav-ch-badge">🏠</span>
-            <span class="nav-text-truncate">Home Overview</span>
-          </a>
-          
-        </div>
 
-    <div class="nav-group-title">Core Concepts</div>
-            <div class="nav-card-row">
-          <a href="ch1.html" class="nav-main-target">
-            <span class="nav-ch-badge">01</span>
-            <span class="nav-text-truncate">Fundamentals & Terms</span>
-          </a>
-          <a href="ch1_official.html" class="nav-pill-exam" title="Practice 5 Questions">🏛️ 5 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch2.html" class="nav-main-target">
-            <span class="nav-ch-badge">02</span>
-            <span class="nav-text-truncate">EC & BVA</span>
-          </a>
-          <a href="ch2_official.html" class="nav-pill-exam" title="Practice 4 Questions">🏛️ 4 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch3.html" class="nav-main-target">
-            <span class="nav-ch-badge">03</span>
-            <span class="nav-text-truncate">Pairwise & Decision Tables</span>
-          </a>
-          <a href="ch3_official.html" class="nav-pill-exam active-pill" title="Practice 4 Questions">🏛️ 4 Qs</a>
-        </div>
-
-    <div class="nav-group-title">Code & Coverage</div>
-            <div class="nav-card-row">
-          <a href="ch4.html" class="nav-main-target">
-            <span class="nav-ch-badge">04</span>
-            <span class="nav-text-truncate">White-Box & MC/DC</span>
-          </a>
-          <a href="ch4_official.html" class="nav-pill-exam" title="Practice 4 Questions">🏛️ 4 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch5.html" class="nav-main-target">
-            <span class="nav-ch-badge">05</span>
-            <span class="nav-text-truncate">AI Code & Static Analysis</span>
-          </a>
-          <a href="ch5_official.html" class="nav-pill-exam" title="Practice 4 Questions">🏛️ 4 Qs</a>
-        </div>
-
-    <div class="nav-group-title">Process & Risk</div>
-            <div class="nav-card-row">
-          <a href="ch6.html" class="nav-main-target">
-            <span class="nav-ch-badge">06</span>
-            <span class="nav-text-truncate">Test Process & MTS</span>
-          </a>
-          <a href="ch6_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch7.html" class="nav-main-target">
-            <span class="nav-ch-badge">07</span>
-            <span class="nav-text-truncate">Risk-Based Testing</span>
-          </a>
-          <a href="ch7_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
-        </div>
-
-    <div class="nav-group-title">Automation & Security</div>
-            <div class="nav-card-row">
-          <a href="ch8.html" class="nav-main-target">
-            <span class="nav-ch-badge">08</span>
-            <span class="nav-text-truncate">BDD & Gherkin</span>
-          </a>
-          <a href="ch8_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch9.html" class="nav-main-target">
-            <span class="nav-ch-badge">09</span>
-            <span class="nav-text-truncate">Web Automation & Perf</span>
-          </a>
-          <a href="ch9_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch10.html" class="nav-main-target">
-            <span class="nav-ch-badge">10</span>
-            <span class="nav-text-truncate">Security Testing</span>
-          </a>
-          <a href="ch10_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
-        </div>
-
-    <div class="nav-group-title">System Context</div>
-            <div class="nav-card-row">
-          <a href="ch11.html" class="nav-main-target">
-            <span class="nav-ch-badge">11</span>
-            <span class="nav-text-truncate">BudgetControl Architecture</span>
-          </a>
-          
-        </div>
-            <div class="nav-card-row">
-          <a href="ch12.html" class="nav-main-target">
-            <span class="nav-ch-badge">12</span>
-            <span class="nav-text-truncate">Course Summary & Artifacts</span>
-          </a>
-          <a href="ch12_official.html" class="nav-pill-exam" title="Practice 4 Questions">🏛️ 4 Qs</a>
-        </div>
-
-    <div class="nav-group-title">Exam Preparation</div>
-            <div class="nav-card-row">
-          <a href="exam_block_d.html" class="nav-main-target">
-            <span class="nav-ch-badge">⭐</span>
-            <span class="nav-text-truncate">Exam Task: Block D (25 P)</span>
-          </a>
-          
-        </div>
-            <div class="nav-card-row">
-          <a href="ch13.html" class="nav-main-target">
-            <span class="nav-ch-badge">📝</span>
-            <span class="nav-text-truncate">13. Mock Exam A (Questions)</span>
-          </a>
-          
-        </div>
-            <div class="nav-card-row">
-          <a href="ch14.html" class="nav-main-target">
-            <span class="nav-ch-badge">✅</span>
-            <span class="nav-text-truncate">14. Mock Exam A (Answers)</span>
-          </a>
-          
-        </div>
-            <div class="nav-card-row">
-          <a href="ch15.html" class="nav-main-target">
-            <span class="nav-ch-badge">🎯</span>
-            <span class="nav-text-truncate">15. Add'l Slide Questions</span>
-          </a>
-          
-        </div>
-            <div class="nav-card-row">
-          <a href="ch16.html" class="nav-main-target">
-            <span class="nav-ch-badge">🏁</span>
-            <span class="nav-text-truncate">16. Final Checklist</span>
-          </a>
-          
-        </div>
-  
+  <!-- SIDEBAR -->
+  <aside class="sidebar-toc">
+    <div class="sidebar-block">
+      <span class="sidebar-label">Page Stages</span>
+      <button type="button" class="jump-stage-btn" data-target-stage="stage-1-spec" style="display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.6rem;margin:0.2rem 0;border-radius:6px;font-size:0.84rem;line-height:1.35;color:var(--text-muted);text-decoration:none;border-left:2px solid transparent;background:none;border:none;border-left:2px solid transparent;width:100%;text-align:left;cursor:pointer;transition:all 0.15s ease;">📋 Stage 1 · The Spec</button>
+      <button type="button" class="jump-stage-btn" data-target-stage="stage-2-causes" style="display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.6rem;margin:0.2rem 0;border-radius:6px;font-size:0.84rem;line-height:1.35;color:var(--text-muted);text-decoration:none;border-left:2px solid transparent;background:none;border:none;border-left:2px solid transparent;width:100%;text-align:left;cursor:pointer;transition:all 0.15s ease;">🔍 Stage 2 · Causes</button>
+      <button type="button" class="jump-stage-btn" data-target-stage="stage-3-effects" style="display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.6rem;margin:0.2rem 0;border-radius:6px;font-size:0.84rem;line-height:1.35;color:var(--text-muted);text-decoration:none;border-left:2px solid transparent;background:none;border:none;border-left:2px solid transparent;width:100%;text-align:left;cursor:pointer;transition:all 0.15s ease;">📤 Stage 3 · Effects</button>
+      <button type="button" class="jump-stage-btn" data-target-stage="stage-4-table" style="display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.6rem;margin:0.2rem 0;border-radius:6px;font-size:0.84rem;line-height:1.35;color:var(--text-muted);text-decoration:none;border-left:2px solid transparent;background:none;border:none;border-left:2px solid transparent;width:100%;text-align:left;cursor:pointer;transition:all 0.15s ease;">📊 Stage 4 · Decision Table</button>
+      <button type="button" class="jump-stage-btn" data-target-stage="stage-5-drills" style="display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.6rem;margin:0.2rem 0;border-radius:6px;font-size:0.84rem;line-height:1.35;color:var(--text-muted);text-decoration:none;border-left:2px solid transparent;background:none;border:none;border-left:2px solid transparent;width:100%;text-align:left;cursor:pointer;transition:all 0.15s ease;">🎓 Stage 5 · Exam Drills</button>
+    </div>
+    <div class="sidebar-block">
+      <span class="sidebar-label">Related</span>
+      <a href="ch3.html" style="display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.6rem;margin:0.2rem 0;border-radius:6px;font-size:0.84rem;color:var(--text-muted);text-decoration:none;border-left:2px solid transparent;transition:all 0.15s ease;">← Ch3 Theory Notes</a>
+      <a href="ch4_official.html" style="display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.6rem;margin:0.2rem 0;border-radius:6px;font-size:0.84rem;color:var(--text-muted);text-decoration:none;border-left:2px solid transparent;transition:all 0.15s ease;">Ch4 Official Qs →</a>
+    </div>
   </aside>
 
   <div class="page">
-    <div class="masthead">
+
+    <!-- MASTHEAD -->
+    <header class="masthead">
       <div>
-        <div class="eyebrow">3. Pairwise & Decision Tables</div>
-        <h1 class="title">Official Questions</h1>
+        <div class="eyebrow">Chapter 3 · Black-Box Testing Techniques</div>
+        <h1 class="title">Pairwise Testing &amp; Cause-Effect Graphing</h1>
+        <p class="dek">Official exam questions with step-by-step model answers — structured across 5 learning stages.</p>
+        <div class="masthead-badge-group">
+          <span class="masthead-badge masthead-badge-accent">CEG · Decision Table</span>
+          <span class="masthead-badge masthead-badge-teal">Pairwise Testing</span>
+          <span class="masthead-badge masthead-badge-gold">4 Official Questions</span>
+        </div>
       </div>
-      <div class="masthead-meta"></div>
-    </div>
-    
-    <div class="page-content concept-content">
+      <div class="masthead-meta">
+        <strong>Official</strong><br>Questions<br><span style="font-size:0.7rem;">CH03 Block B</span>
+      </div>
+    </header>
 
-<!-- PROFESSOR'S OFFICIAL EXAM ANSWER STRATEGY BANNER (Slide 44 & 45 Rubric) -->
-<div class="formula-box" style="margin-bottom: 2rem; border-left: 4px solid var(--accent); background: var(--bg-raised);">
-  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-    <h3 style="margin: 0; font-size: 1.05rem; color: var(--accent);">
-      📋 Professor's Official Exam Answer Strategy (Slide 44 &amp; 45)
-    </h3>
-    <span style="font-size: 0.75rem; font-weight: 700; background: rgba(12, 122, 115, 0.15); color: var(--accent); padding: 0.2rem 0.5rem; border-radius: 4px;">
-      Grading Rubric
-    </span>
-  </div>
-  
-  <p style="margin: 0 0 0.75rem 0; font-size: 0.88rem; color: var(--text-muted);">
-    To earn <strong>100% full points</strong> on the exam, structure your answers using the professor's required pattern:
-  </p>
+    <!-- =====================================================================
+         STAGE 1: THE SPEC
+         ===================================================================== -->
+    <div class="stage-view active" id="stage-1-spec">
+      <div class="chapter-head">
+        <span class="chapter-num">Stage 1</span>
+        <h2>The FinCon Specification</h2>
+      </div>
+      <p class="chapter-dek">Read the full specification before identifying causes and effects. This is the raw material for all subsequent stages.</p>
 
-  <div style="overflow-x: auto;">
-    <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
-      <thead>
-        <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border);">
-          <th style="padding: 0.5rem 0.75rem; text-align: left; width: 30%;">Topic</th>
-          <th style="padding: 0.5rem 0.75rem; text-align: left; width: 70%;">The Exact Structure Demanded</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom: 1px solid var(--border);">
-          <td style="padding: 0.5rem 0.75rem; font-weight: 600;">Boundary Values</td>
-          <td style="padding: 0.5rem 0.75rem;">List test values + Expected result (e.g. <code>4 rejected</code>, <code>5 accepted</code>).</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border);">
-          <td style="padding: 0.5rem 0.75rem; font-weight: 600;">Pairwise Testing</td>
-          <td style="padding: 0.5rem 0.75rem;">State largest pair formula (<code>L1 &times; L2</code>) + Identify missing pair.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border);">
-          <td style="padding: 0.5rem 0.75rem; font-weight: 600;">Cause-Effect Graphing</td>
-          <td style="padding: 0.5rem 0.75rem;">Identify <strong>Causes (Ci)</strong>, <strong>Effects (Ej)</strong>, <strong>Constraints</strong>, and <strong>Decision Table</strong>.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border);">
-          <td style="padding: 0.5rem 0.75rem; font-weight: 600;">Static Defects</td>
-          <td style="padding: 0.5rem 0.75rem;">3-part formula: <strong>Defect &rarr; Reason &rarr; Likely Tool</strong>.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border);">
-          <td style="padding: 0.5rem 0.75rem; font-weight: 600;">Gherkin / BDD</td>
-          <td style="padding: 0.5rem 0.75rem;"><code>Given / When / Then</code> with <strong>Observable Then</strong>.</td>
-        </tr>
-        <tr>
-          <td style="padding: 0.5rem 0.75rem; font-weight: 600;">Risk-Based Testing</td>
-          <td style="padding: 0.5rem 0.75rem;"><strong>Risk &rarr; Probability &times; Impact &rarr; Test Response</strong>.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+      <div style="background:var(--bg-raised);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:1.5rem 1.75rem;margin:1.5rem 0;">
+        <div style="display:inline-flex;align-items:center;gap:0.45rem;font-family:var(--font-mono);font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent-ink);background:var(--accent-soft);padding:0.25rem 0.75rem;border-radius:999px;margin-bottom:1rem;">
+          📄 FinCon Overdraft Specification
+        </div>
+        <h3 style="margin:0 0 1rem;font-size:1.05rem;color:var(--text);">FinCon: Overdraft Protection Rule</h3>
+        <p style="margin:0 0 0.75rem;font-size:0.95rem;line-height:1.7;"><strong>Scenario:</strong> FinCon applies the following rule for overdraft protection on payment processing:</p>
+        <ul style="margin:0 0 1.25rem;padding-left:1.4rem;font-size:0.95rem;line-height:1.8;">
+          <li>If the account has <strong>overdraft protection enabled</strong> and the <strong>overdraft limit is not exceeded</strong>, a payment below the account balance is <strong style="color:var(--accent);">approved</strong>.</li>
+          <li>If the account has <strong>no overdraft protection</strong> and the balance is insufficient, the payment is rejected with <strong style="color:#F43F5E;">INSUFFICIENT_FUNDS</strong>.</li>
+          <li>If the <strong>overdraft limit would be exceeded</strong>, reject with <strong style="color:#F43F5E;">OVERDRAFT_LIMIT_EXCEEDED</strong>.</li>
+        </ul>
 
+        <div style="background:var(--code-bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem 1.25rem;font-family:var(--font-mono);font-size:0.88rem;line-height:1.7;white-space:pre-wrap;">Rule 1:  IF  C1 (overdraft_enabled = true)
+         AND C2 (limit_not_exceeded = true)
+         AND C3 (payment_below_balance = true)
+         THEN E1 (payment APPROVED)
 
-<!-- QUESTION 1 -->
-<div class="question-card" style="background: var(--bg-raised); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm); color: var(--text);">
-  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
-      <span class="drill-tag">🏛️ Official Q</span> PAIRWISE TESTING (4 P)
-    </h3>
-  </div>
-  
-  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
-    <p><em>Source: CH03_Block_B_Pairwise_CEG.pdf</em></p>
-    
-    <p>A FinCon report export has three parameters:</p>
-    
-    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">Parameter            Values
+Rule 2:  IF  C1 = false  (no overdraft protection)
+         AND C3 = false  (balance insufficient)
+         THEN E2 (INSUFFICIENT_FUNDS)
+
+Rule 3:  IF  C2 = false  (limit would be exceeded)
+         THEN E3 (OVERDRAFT_LIMIT_EXCEEDED)</div>
+      </div>
+
+      <div style="background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem 1.5rem;margin:1.5rem 0;">
+        <h3 style="margin:0 0 0.75rem;font-size:1rem;color:var(--text);">📋 Also: Pairwise Testing Question</h3>
+        <p style="font-size:0.92rem;line-height:1.6;margin:0 0 1rem;">A FinCon report export has three parameters:</p>
+        <div style="background:var(--code-bg);padding:1rem;border-radius:6px;font-family:var(--font-mono);font-size:0.85em;margin:0.5rem 0 1rem;overflow-x:auto;white-space:pre;">Parameter            Values
 format               PDF / CSV / XML
 date_range           last 7 days / last 30 days / custom
 include_cancelled    yes / no</div>
-    
-    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
-      <li>Full combination would require 18 test cases.</li>
-    </ul>
-    
-    <p><em>Perform the following tasks:</em></p>
-    <ul style="list-style-type: circle; padding-left: 1.5rem; margin-bottom: 1rem;">
-      <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Explain what pairwise testing guarantees that the full combination also guarantees &mdash; and what it does not guarantee.</li>
-      <li><span style="color: #d9534f; font-weight: 600;">(b)</span> Construct a pairwise test suite for these three parameters. How many test cases does your suite contain? Verify that at least two specific pairs are covered.</li>
-    </ul>
-  </div>
+        <p style="font-size:0.88rem;color:var(--text-muted);margin:0;"><strong>Full combination</strong> would require 3 × 3 × 2 = <strong>18 test cases</strong>. Pairwise reduces this significantly.</p>
+      </div>
 
-  <details class="drill-item" style="margin-top: 1.25rem;">
-    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
-      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
-      <span class="drill-q">Click to reveal Suggested Answer</span>
-    </summary>
-    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
-      <p><strong>Suggested Answer:</strong></p>
-    <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Guarantees of Pairwise Testing <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
-    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
-      <li><strong>What it guarantees:</strong> Pairwise testing guarantees that every possible combination of any two parameters <span style="color: #d9534f; font-weight: 600;">(e.g., every format with every date_range)</span> is covered by at least one test case.</li>
-      <li><strong>What it does not guarantee:</strong> It does not guarantee coverage of 3-way or higher-order interactions <span style="color: #d9534f; font-weight: 600;">(e.g., a specific bug that only occurs when PDF + custom + yes are used together might be missed)</span>.</li>
-    </ul>
-    
-    <p><strong><span style="color: #d9534f; font-weight: 600;">(b)</span> Pairwise Test Suite <span style="color: #d9534f; font-weight: 600;">(3 P)</span>:</strong></p>
-    <p>The largest product of two parameters is 3 &times; 3 = 9 <span style="color: #d9534f; font-weight: 600;">(format &times; date_range)</span>, so a minimum of 9 test cases are required. A valid orthogonal array:</p>
-    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">TC  Format  Date_Range  Include_Cancelled
+      <div style="text-align:right;margin:3rem 0 1rem;">
+        <button type="button" class="btn-stepper btn-stepper-next jump-stage-btn" data-target-stage="stage-2-causes" style="padding:0.85rem 1.75rem;font-size:0.95rem;">
+          Proceed to Stage 2: Find the Causes →
+        </button>
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         STAGE 2: CAUSES
+         ===================================================================== -->
+    <div class="stage-view" id="stage-2-causes">
+      <div class="chapter-head">
+        <span class="chapter-num">Stage 2</span>
+        <h2>Identifying the Causes</h2>
+      </div>
+      <p class="chapter-dek">Causes are the input conditions that control the outcome. Scan for IF / WHEN / AND / OR keywords.</p>
+
+      <!-- Step 1: Understand -->
+      <div style="background:var(--bg-raised);border:1px solid var(--border);border-left:4px solid var(--amber);border-radius:var(--radius-md);padding:1rem 1.25rem;margin-bottom:1.25rem;">
+        <h4 style="margin:0 0 0.5rem;color:var(--amber);font-size:0.95rem;">🔍 Step 1 — Understand the Spec</h4>
+        <p style="margin:0 0 0.5rem;font-size:0.88rem;">Use this trick to identify causes vs. effects:</p>
+        <div style="display:flex;flex-direction:column;gap:0.4rem;font-size:0.87rem;">
+          <div><strong style="font-family:var(--font-mono);">IF / WHEN / PROVIDED THAT / AND / OR</strong> → <span style="color:var(--accent);font-weight:600;">Causes</span></div>
+          <div><strong style="font-family:var(--font-mono);">THEN / RETURN / REJECT / APPROVE / MESSAGE</strong> → <span style="color:#F43F5E;font-weight:600;">Effects</span></div>
+        </div>
+      </div>
+
+      <!-- Step 2: Find Causes -->
+      <div style="background:var(--code-bg);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:1rem 1.25rem;margin-bottom:1.25rem;">
+        <h4 style="margin:0 0 0.75rem;color:var(--accent);font-size:0.95rem;">📥 Step 2 — The Three Causes</h4>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin:0 0 0.75rem;">Scan the specification for input conditions (things that can be true or false).</p>
+        <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:0.75rem;">
+          <div style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.88rem;">
+            <span style="background:var(--accent);color:#fff;border-radius:50%;width:1.4rem;height:1.4rem;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">1</span>
+            <span>Overdraft protection enabled? (Yes / No)</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.88rem;">
+            <span style="background:var(--accent);color:#fff;border-radius:50%;width:1.4rem;height:1.4rem;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">2</span>
+            <span>Overdraft limit not exceeded? (Yes / No)</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.88rem;">
+            <span style="background:var(--accent);color:#fff;border-radius:50%;width:1.4rem;height:1.4rem;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">3</span>
+            <span>Payment is below account balance? (Yes / No)</span>
+          </div>
+        </div>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 0.75rem;font-style:italic;">💡 These are causes because they determine the outcome. All are binary (1 = Yes, 0 = No).</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="color:var(--accent);">Cause ID</th>
+                <th style="color:var(--accent);">Description</th>
+                <th style="color:var(--accent);">Values</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong style="font-family:var(--font-mono);color:var(--accent);">C1</strong></td>
+                <td>Overdraft protection enabled</td>
+                <td><code>1 = Yes, 0 = No</code></td>
+              </tr>
+              <tr>
+                <td><strong style="font-family:var(--font-mono);color:var(--accent);">C2</strong></td>
+                <td>Overdraft limit not exceeded</td>
+                <td><code>1 = Yes, 0 = No</code></td>
+              </tr>
+              <tr>
+                <td><strong style="font-family:var(--font-mono);color:var(--accent);">C3</strong></td>
+                <td>Payment is below account balance</td>
+                <td><code>1 = Yes, 0 = No</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="concept-takeaway">
+        <span class="ct-icon">🎯</span>
+        <div>
+          <p><strong>Rule:</strong> With 3 binary causes, you have a theoretical maximum of 2³ = 8 combinations. However, some combinations are impossible — reducing the actual test cases.</p>
+        </div>
+      </div>
+
+      <div style="text-align:right;margin:3rem 0 1rem;">
+        <button type="button" class="btn-stepper btn-stepper-next jump-stage-btn" data-target-stage="stage-3-effects" style="padding:0.85rem 1.75rem;font-size:0.95rem;">
+          Proceed to Stage 3: Find the Effects →
+        </button>
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         STAGE 3: EFFECTS
+         ===================================================================== -->
+    <div class="stage-view" id="stage-3-effects">
+      <div class="chapter-head">
+        <span class="chapter-num">Stage 3</span>
+        <h2>Identifying the Effects</h2>
+      </div>
+      <p class="chapter-dek">Effects are the observable output results or system state changes. Look for THEN / RETURN / REJECT / APPROVE.</p>
+
+      <div style="background:var(--code-bg);border:1px solid var(--border);border-left:4px solid #F43F5E;border-radius:var(--radius-md);padding:1rem 1.25rem;margin-bottom:1.25rem;">
+        <h4 style="margin:0 0 0.75rem;color:#F43F5E;font-size:0.95rem;">📤 The Three Effects</h4>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin:0 0 0.75rem;">Look for the output results or system state changes in the specification.</p>
+
+        <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:0.75rem;">
+          <div style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.88rem;">
+            <span style="background:#F43F5E;color:#fff;border-radius:50%;width:1.4rem;height:1.4rem;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">1</span>
+            <span>Payment <strong>approved</strong></span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.88rem;">
+            <span style="background:#F43F5E;color:#fff;border-radius:50%;width:1.4rem;height:1.4rem;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">2</span>
+            <span>Reject with <code>INSUFFICIENT_FUNDS</code></span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.88rem;">
+            <span style="background:#F43F5E;color:#fff;border-radius:50%;width:1.4rem;height:1.4rem;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">3</span>
+            <span>Reject with <code>OVERDRAFT_LIMIT_EXCEEDED</code></span>
+          </div>
+        </div>
+
+        <p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 0.75rem;font-style:italic;">💡 These are effects because they are what happens as a result of the causes.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="color:#F43F5E;">Effect ID</th>
+                <th style="color:#F43F5E;">Description</th>
+                <th style="color:#F43F5E;">Values</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong style="font-family:var(--font-mono);color:var(--accent);">E1</strong></td>
+                <td>Payment approved</td>
+                <td><code>1 = Yes, 0 = No</code></td>
+              </tr>
+              <tr>
+                <td><strong style="font-family:var(--font-mono);color:#F43F5E;">E2</strong></td>
+                <td>Reject with <code>INSUFFICIENT_FUNDS</code></td>
+                <td><code>1 = Yes, 0 = No</code></td>
+              </tr>
+              <tr>
+                <td><strong style="font-family:var(--font-mono);color:#F43F5E;">E3</strong></td>
+                <td>Reject with <code>OVERDRAFT_LIMIT_EXCEEDED</code></td>
+                <td><code>1 = Yes, 0 = No</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout teacher-note">
+        <div class="callout-content">
+          <strong>💡 Teacher's Note</strong>
+          <p>Effects must be <em>mutually exclusive</em> — exactly one effect fires per test case. If you find two effects firing simultaneously, re-check your cause identification.</p>
+        </div>
+      </div>
+
+      <div style="text-align:right;margin:3rem 0 1rem;">
+        <button type="button" class="btn-stepper btn-stepper-next jump-stage-btn" data-target-stage="stage-4-table" style="padding:0.85rem 1.75rem;font-size:0.95rem;">
+          Proceed to Stage 4: Build the Decision Table →
+        </button>
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         STAGE 4: DECISION TABLE
+         ===================================================================== -->
+    <div class="stage-view" id="stage-4-table">
+      <div class="chapter-head">
+        <span class="chapter-num">Stage 4</span>
+        <h2>The Decision Table</h2>
+      </div>
+      <p class="chapter-dek">Each specification rule becomes one column — one complete test case. Rows = causes/effects, Columns = test cases.</p>
+
+      <div style="border:1px solid var(--border);border-radius:var(--radius-md);padding:1rem 1.25rem;margin-bottom:1.25rem;">
+        <h4 style="margin:0 0 0.75rem;font-size:0.95rem;color:var(--text);">📊 Build the Decision Table (Columns = Test Cases)</h4>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 0.75rem;">Each specification rule becomes <strong>one column</strong> — one complete test case.</p>
+        <div class="table-wrap">
+          <table style="text-align:center;">
+            <thead>
+              <tr>
+                <th style="text-align:left;" colspan="2">Cause / Effect</th>
+                <th style="font-weight:700;color:var(--accent);">TC1</th>
+                <th style="font-weight:700;color:var(--accent);">TC2</th>
+                <th style="font-weight:700;color:var(--accent);">TC3</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:rgba(16,185,129,0.04);">
+                <td style="font-weight:700;color:var(--accent);font-size:0.78rem;text-align:center;border-right:1px solid var(--border);writing-mode:horizontal-tb;" rowspan="3">CAUSES</td>
+                <td style="text-align:left;">C1 — Overdraft protection enabled</td>
+                <td style="font-weight:700;color:var(--accent);">1</td>
+                <td style="font-weight:700;color:#F43F5E;">0</td>
+                <td style="color:var(--text-muted);">—</td>
+              </tr>
+              <tr style="background:rgba(16,185,129,0.04);">
+                <td style="text-align:left;">C2 — Overdraft limit not exceeded</td>
+                <td style="font-weight:700;color:var(--accent);">1</td>
+                <td style="color:var(--text-muted);">—</td>
+                <td style="font-weight:700;color:#F43F5E;">0</td>
+              </tr>
+              <tr style="background:rgba(16,185,129,0.04);">
+                <td style="text-align:left;">C3 — Payment below account balance</td>
+                <td style="font-weight:700;color:var(--accent);">1</td>
+                <td style="font-weight:700;color:#F43F5E;">0</td>
+                <td style="color:var(--text-muted);">—</td>
+              </tr>
+              <tr style="background:rgba(244,63,94,0.04);">
+                <td style="font-weight:700;color:#F43F5E;font-size:0.78rem;text-align:center;border-right:1px solid var(--border);" rowspan="3">EFFECTS</td>
+                <td style="text-align:left;font-weight:600;">E1 — APPROVED</td>
+                <td style="font-weight:700;color:var(--accent);">1</td>
+                <td style="color:var(--text-muted);">0</td>
+                <td style="color:var(--text-muted);">0</td>
+              </tr>
+              <tr style="background:rgba(244,63,94,0.04);">
+                <td style="text-align:left;font-weight:600;">E2 — INSUFFICIENT_FUNDS</td>
+                <td style="color:var(--text-muted);">0</td>
+                <td style="font-weight:700;color:#F43F5E;">1</td>
+                <td style="color:var(--text-muted);">0</td>
+              </tr>
+              <tr style="background:rgba(244,63,94,0.04);">
+                <td style="text-align:left;font-weight:600;">E3 — OVERDRAFT_LIMIT_EXCEEDED</td>
+                <td style="color:var(--text-muted);">0</td>
+                <td style="color:var(--text-muted);">0</td>
+                <td style="font-weight:700;color:#F43F5E;">1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.82rem;color:var(--accent);text-align:center;margin:0.6rem 0 0;font-style:italic;">Each column represents one complete test case.</p>
+      </div>
+
+      <!-- Count + Impossible Combinations -->
+      <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:1.5rem;">
+        <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.3);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:1rem 1.25rem;">
+          <h4 style="margin:0 0 0.5rem;color:var(--accent);font-size:0.95rem;">✅ Step 5 — Count the Test Cases</h4>
+          <p style="margin:0;font-size:0.95rem;"><strong>Number of test cases = 3</strong> (TC1, TC2, TC3). Each column = one complete test case.</p>
+        </div>
+        <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.3);border-left:4px solid var(--amber);border-radius:var(--radius-md);padding:1rem 1.25rem;">
+          <h4 style="margin:0 0 0.5rem;color:var(--amber);font-size:0.95rem;">⚠️ Are There Impossible Combinations?</h4>
+          <ul style="margin:0;padding-left:1.25rem;font-size:0.87rem;line-height:1.7;">
+            <li>Yes. You cannot have C2 = 1 (limit not exceeded) and C2 = 0 (limit exceeded) simultaneously.</li>
+            <li>Some combinations are not defined by the specification — do not invent expected results for them.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Key Takeaways -->
+      <div style="background:var(--code-bg);border:1px solid var(--border);border-left:4px solid #A855F7;border-radius:var(--radius-md);padding:1rem 1.25rem;margin-bottom:1.5rem;">
+        <h4 style="margin:0 0 0.5rem;color:#A855F7;font-size:0.92rem;">🔑 Key Takeaways — Exam Formula</h4>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.85rem;line-height:1.8;">
+          <li><strong>Causes</strong> = input conditions (IF WHAT?)</li>
+          <li><strong>Effects</strong> = output/results (WHAT HAPPENS?)</li>
+          <li><strong>Rows</strong> = causes/effects, <strong>Columns</strong> = test cases</li>
+          <li>Use constraints to remove impossible combinations</li>
+          <li>Each column = one complete test case</li>
+        </ul>
+      </div>
+
+      <div style="text-align:right;margin:3rem 0 1rem;">
+        <button type="button" class="btn-stepper btn-stepper-next jump-stage-btn" data-target-stage="stage-5-drills" style="padding:0.85rem 1.75rem;font-size:0.95rem;">
+          Proceed to Stage 5: Exam Drills 🎓 →
+        </button>
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         STAGE 5: EXAM DRILLS
+         ===================================================================== -->
+    <div class="stage-view" id="stage-5-drills">
+      <div class="chapter-head">
+        <span class="chapter-num">Stage 5</span>
+        <h2>Exam Drills</h2>
+      </div>
+      <p class="chapter-dek">Test your mastery of Cause-Effect Graphing and Pairwise Testing with official-format questions. Click an option to see instant feedback.</p>
+
+      <!-- Quiz Card 1 -->
+      <div class="cert-quiz-card">
+        <div class="cert-quiz-badge">Question 1 · Cause Identification · CEG</div>
+        <div class="cert-quiz-question">How many causes does the FinCon overdraft specification have?</div>
+        <div class="cert-quiz-options">
+          <button type="button" class="cert-opt" data-correct="false" data-reason="There are only 3 binary conditions in the spec. 2 causes would mean only 4 combinations — not enough to model all 3 outcomes.">
+            <span class="cert-opt-letter">A</span>
+            <span>2 causes</span>
+          </button>
+          <button type="button" class="cert-opt" data-correct="true" data-reason="Correct! C1: Overdraft protection enabled, C2: Limit not exceeded, C3: Payment below balance. All three are binary input conditions.">
+            <span class="cert-opt-letter">B</span>
+            <span>3 causes (C1, C2, C3)</span>
+          </button>
+          <button type="button" class="cert-opt" data-correct="false" data-reason="4 causes would mean up to 16 combinations (2⁴) — far more than what this spec defines. Only 3 conditions are mentioned.">
+            <span class="cert-opt-letter">C</span>
+            <span>4 causes</span>
+          </button>
+        </div>
+        <div class="cert-feedback"></div>
+      </div>
+
+      <!-- Quiz Card 2 -->
+      <div class="cert-quiz-card">
+        <div class="cert-quiz-badge">Question 2 · Effect Identification · CEG</div>
+        <div class="cert-quiz-question">Which of the following is NOT an effect in the FinCon overdraft specification?</div>
+        <div class="cert-quiz-options">
+          <button type="button" class="cert-opt" data-correct="false" data-reason="E1 (Payment APPROVED) is a valid effect — it appears in Rule 1 of the specification.">
+            <span class="cert-opt-letter">A</span>
+            <span>Payment approved (E1)</span>
+          </button>
+          <button type="button" class="cert-opt" data-correct="true" data-reason="Correct! PAYMENT_PENDING is not defined anywhere in the FinCon specification. Only E1 (approved), E2 (insufficient funds), and E3 (overdraft limit exceeded) are valid effects.">
+            <span class="cert-opt-letter">B</span>
+            <span>PAYMENT_PENDING</span>
+          </button>
+          <button type="button" class="cert-opt" data-correct="false" data-reason="E3 (OVERDRAFT_LIMIT_EXCEEDED) is a valid effect — it appears in Rule 3 of the specification.">
+            <span class="cert-opt-letter">C</span>
+            <span>OVERDRAFT_LIMIT_EXCEEDED (E3)</span>
+          </button>
+        </div>
+        <div class="cert-feedback"></div>
+      </div>
+
+      <!-- Quiz Card 3 -->
+      <div class="cert-quiz-card">
+        <div class="cert-quiz-badge">Question 3 · Decision Table · TC Count</div>
+        <div class="cert-quiz-question">How many test cases (columns) does the FinCon decision table contain?</div>
+        <div class="cert-quiz-options">
+          <button type="button" class="cert-opt" data-correct="false" data-reason="2 test cases would only cover 2 of the 3 specification rules. You need one column per rule.">
+            <span class="cert-opt-letter">A</span>
+            <span>2 test cases</span>
+          </button>
+          <button type="button" class="cert-opt" data-correct="true" data-reason="Correct! TC1 = approved, TC2 = INSUFFICIENT_FUNDS, TC3 = OVERDRAFT_LIMIT_EXCEEDED. Each specification rule maps to exactly one test case column.">
+            <span class="cert-opt-letter">B</span>
+            <span>3 test cases (TC1, TC2, TC3)</span>
+          </button>
+          <button type="button" class="cert-opt" data-correct="false" data-reason="8 would be 2³ — but many combinations are impossible or undefined. The spec only defines 3 valid scenarios.">
+            <span class="cert-opt-letter">C</span>
+            <span>8 test cases (2³ combinations)</span>
+          </button>
+        </div>
+        <div class="cert-feedback"></div>
+      </div>
+
+      <!-- Quiz Card 4: Pairwise -->
+      <div class="cert-quiz-card">
+        <div class="cert-quiz-badge">Question 4 · Pairwise Testing · Report Export</div>
+        <div class="cert-quiz-question">For the FinCon report export (Format: 3 values, Date Range: 3 values, Include Cancelled: 2 values), what is the minimum number of test cases required for pairwise coverage?</div>
+        <div class="cert-quiz-options">
+          <button type="button" class="cert-opt" data-correct="false" data-reason="18 is the full combination count (3×3×2). Pairwise significantly reduces this while still covering all 2-way pairs.">
+            <span class="cert-opt-letter">A</span>
+            <span>18 (full combination)</span>
+          </button>
+          <button type="button" class="cert-opt" data-correct="true" data-reason="Correct! The largest two-parameter product is 3×3 = 9 (format × date_range). A valid orthogonal array covering all pairs needs at minimum 9 test cases.">
+            <span class="cert-opt-letter">B</span>
+            <span>9 test cases (L1 × L2 = 3 × 3)</span>
+          </button>
+          <button type="button" class="cert-opt" data-correct="false" data-reason="6 is not enough to cover all pairs. You need at least 9 to ensure every format × date_range pair is covered at least once.">
+            <span class="cert-opt-letter">C</span>
+            <span>6 test cases</span>
+          </button>
+        </div>
+        <div class="cert-feedback"></div>
+      </div>
+
+      <!-- Quiz Card 5: Pairwise guarantee -->
+      <div class="cert-quiz-card">
+        <div class="cert-quiz-badge">Question 5 · Pairwise · Guarantees</div>
+        <div class="cert-quiz-question">What does pairwise testing guarantee that full combination testing also guarantees?</div>
+        <div class="cert-quiz-options">
+          <button type="button" class="cert-opt" data-correct="false" data-reason="Pairwise does NOT guarantee 3-way or higher-order interaction coverage. That is the key limitation compared to full combination.">
+            <span class="cert-opt-letter">A</span>
+            <span>All 3-way parameter interactions are covered</span>
+          </button>
+          <button type="button" class="cert-opt" data-correct="false" data-reason="Pairwise does not guarantee all values appear in all positions — it only guarantees every pair of parameter values appears together at least once.">
+            <span class="cert-opt-letter">B</span>
+            <span>Every parameter value appears in every position</span>
+          </button>
+          <button type="button" class="cert-opt" data-correct="true" data-reason="Correct! Pairwise guarantees that every possible combination of any two parameters (e.g., every format with every date_range) is covered by at least one test case.">
+            <span class="cert-opt-letter">C</span>
+            <span>Every 2-parameter combination is covered at least once</span>
+          </button>
+        </div>
+        <div class="cert-feedback"></div>
+      </div>
+
+      <!-- Full Official Questions Section -->
+      <div style="margin-top:3.5rem;padding-top:2rem;border-top:1px solid var(--border);">
+        <h3 style="margin:0 0 1rem;">📋 Full Official Exam Questions</h3>
+        <p style="color:var(--text-muted);font-size:0.92rem;margin:0 0 1.5rem;">The complete text of official questions from CH03_Block_B_Pairwise_CEG.pdf with model answers.</p>
+
+        <!-- Q1: Pairwise -->
+        <div style="background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem;margin-bottom:2rem;box-shadow:var(--shadow-sm);">
+          <h4 style="margin:0 0 0.75rem;color:var(--text);display:flex;align-items:center;gap:0.5rem;">
+            <span class="cert-quiz-badge" style="margin:0;">Q1 · PAIRWISE TESTING (4 P)</span>
+          </h4>
+          <p style="font-size:0.92rem;margin:0 0 0.75rem;"><em>Source: CH03_Block_B_Pairwise_CEG.pdf</em></p>
+          <p style="font-size:0.92rem;margin:0 0 0.75rem;">A FinCon report export has three parameters:</p>
+          <div style="background:var(--code-bg);padding:1rem;border-radius:6px;font-family:var(--font-mono);font-size:0.85em;margin:0.5rem 0 1rem;overflow-x:auto;white-space:pre;">Parameter            Values
+format               PDF / CSV / XML
+date_range           last 7 days / last 30 days / custom
+include_cancelled    yes / no</div>
+          <p style="font-size:0.92rem;margin:0 0 0.5rem;"><strong>(a)</strong> Explain what pairwise testing guarantees — and what it does NOT guarantee.</p>
+          <p style="font-size:0.92rem;margin:0 0 1rem;"><strong>(b)</strong> Construct a pairwise test suite. How many test cases? Verify two specific pairs are covered.</p>
+          <details class="drill-item" style="margin-top:1.25rem;">
+            <summary style="cursor:pointer;font-weight:600;padding:0.75rem 1rem;background:var(--accent-soft);border-radius:6px;">
+              <span class="drill-tag">👁️ Model Answer</span>
+              <span class="drill-q">Click to reveal</span>
+            </summary>
+            <div class="drill-a" style="margin-top:1rem;padding:0.5rem 0;">
+              <p><strong>(a) Guarantees (1 P):</strong></p>
+              <ul>
+                <li><strong>Guarantees:</strong> Every possible combination of any two parameters (e.g., every format × every date_range) is covered by at least one test case.</li>
+                <li><strong>Does NOT guarantee:</strong> 3-way interactions (e.g., PDF + custom + yes might miss a specific bug).</li>
+              </ul>
+              <p><strong>(b) Pairwise Test Suite (3 P):</strong></p>
+              <p>Largest product: 3 × 3 = 9 (format × date_range) → minimum 9 test cases.</p>
+              <div style="background:var(--code-bg);padding:1rem;border-radius:6px;font-family:var(--font-mono);font-size:0.85em;margin:0.5rem 0;overflow-x:auto;white-space:pre;">TC  Format  Date_Range  Include_Cancelled
 1   PDF     7 days      yes
 2   PDF     30 days     no
 3   PDF     custom      yes
@@ -441,267 +578,75 @@ include_cancelled    yes / no</div>
 7   XML     7 days      yes
 8   XML     30 days     no
 9   XML     custom      yes</div>
-    <p>Verification of two specific pairs <span style="color: #d9534f; font-weight: 600;">(e.g., CSV + yes, XML + 30 days)</span>: CSV + yes is covered in TC 5. XML + 30 days is covered in TC 8.</p>
-    </div>
-  </details>
-</div>
-
-<!-- QUESTION 2 -->
-<div class="question-card" style="background: var(--bg-raised); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm); color: var(--text);">
-  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
-      <span class="drill-tag">🏛️ Official Q</span> CAUSE-EFFECT GRAPHING (4 P)
-    </h3>
-  </div>
-  
-  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
-    <p><em>Source: CH03_Block_B_Pairwise_CEG.pdf</em></p>
-    
-    <p>FinCon applies the following rule for overdraft protection:</p>
-    
-    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
-      <li>If the account has overdraft protection enabled and the overdraft limit is not exceeded, a payment below the account balance is <span style="color: #d9534f; font-weight: 600;">approved</span>.</li>
-      <li>If the account has no overdraft protection and the balance is insufficient, the payment is rejected with <span style="color: #d9534f; font-weight: 600;">INSUFFICIENT_FUNDS</span>.</li>
-      <li>If the overdraft limit would be exceeded, reject with <span style="color: #d9534f; font-weight: 600;">OVERDRAFT_LIMIT_EXCEEDED</span>.</li>
-    </ul>
-    
-    <p><em>Perform the following tasks:</em></p>
-    <ul style="list-style-type: circle; padding-left: 1.5rem; margin-bottom: 1rem;">
-      <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Identify all causes and effects.</li>
-      <li><span style="color: #d9534f; font-weight: 600;">(b)</span> Build a decision table covering all valid combinations.</li>
-      <li><span style="color: #d9534f; font-weight: 600;">(c)</span> State how many test cases result and explain whether any combinations are impossible.</li>
-    </ul>
-  </div>
-
-  <details class="drill-item" style="margin-top: 1.25rem;">
-    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
-      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
-      <span class="drill-q">Click to reveal Suggested Answer</span>
-    </summary>
-        <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
-
-      <!-- STEP 1 -->
-      <div style="background: #fff8e1; border: 1px solid #ffe082; border-left: 4px solid #f59e0b; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.25rem;">
-        <h4 style="margin: 0 0 0.5rem 0; color: #b45309; font-size: 0.95rem;">🔍 Step 1 — Understand the Question</h4>
-        <p style="margin: 0 0 0.5rem 0; font-size: 0.88rem;">Look for the conditions that control what happens. Use the trick:</p>
-        <div style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.87rem;">
-          <div><strong style="font-family: var(--font-mono);">IF / WHEN / PROVIDED THAT / AND / OR</strong> &rarr; <span style="color: var(--accent); font-weight: 600;">Causes</span></div>
-          <div><strong style="font-family: var(--font-mono);">THEN / RETURN / REJECT / APPROVE / MESSAGE</strong> &rarr; <span style="color: #d9534f; font-weight: 600;">Effects</span></div>
+              <p>Verification: CSV + yes → TC5 ✓ | XML + 30 days → TC8 ✓</p>
+            </div>
+          </details>
         </div>
+
+        <!-- Q2: CEG -->
+        <div style="background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem;margin-bottom:2rem;box-shadow:var(--shadow-sm);">
+          <h4 style="margin:0 0 0.75rem;color:var(--text);display:flex;align-items:center;gap:0.5rem;">
+            <span class="cert-quiz-badge" style="margin:0;">Q2 · CAUSE-EFFECT GRAPHING (4 P)</span>
+          </h4>
+          <p style="font-size:0.92rem;margin:0 0 0.75rem;"><em>FinCon overdraft protection spec (see Stage 1)</em></p>
+          <p style="font-size:0.92rem;margin:0 0 0.5rem;"><strong>(a)</strong> Identify all causes and effects.</p>
+          <p style="font-size:0.92rem;margin:0 0 0.5rem;"><strong>(b)</strong> Build a decision table covering all valid combinations.</p>
+          <p style="font-size:0.92rem;margin:0 0 1rem;"><strong>(c)</strong> State how many test cases result and explain whether any combinations are impossible.</p>
+          <details class="drill-item" style="margin-top:1.25rem;">
+            <summary style="cursor:pointer;font-weight:600;padding:0.75rem 1rem;background:var(--accent-soft);border-radius:6px;">
+              <span class="drill-tag">👁️ Model Answer</span>
+              <span class="drill-q">Click to reveal</span>
+            </summary>
+            <div class="drill-a" style="margin-top:1rem;padding:0.5rem 0;">
+              <p><strong>(a) Causes:</strong> C1 = Overdraft protection enabled, C2 = Overdraft limit not exceeded, C3 = Payment below balance.</p>
+              <p><strong>Effects:</strong> E1 = Approved, E2 = INSUFFICIENT_FUNDS, E3 = OVERDRAFT_LIMIT_EXCEEDED.</p>
+              <p><strong>(b) Decision Table:</strong> See Stage 4 for the full table (TC1, TC2, TC3).</p>
+              <p><strong>(c)</strong> 3 test cases. Yes, impossible combinations exist — e.g., C2 cannot be both 1 and 0 simultaneously.</p>
+            </div>
+          </details>
+        </div>
+
+      </div><!-- end full official questions -->
+
+      <!-- Navigation back -->
+      <div style="display:flex;justify-content:space-between;margin:3rem 0 1rem;flex-wrap:wrap;gap:1rem;">
+        <button type="button" class="btn-stepper btn-stepper-prev jump-stage-btn" data-target-stage="stage-4-table" style="padding:0.85rem 1.75rem;font-size:0.95rem;">
+          ← Back to Stage 4
+        </button>
+        <a href="ch3.html" class="btn-stepper btn-stepper-next" style="padding:0.85rem 1.75rem;font-size:0.95rem;text-decoration:none;">
+          Return to Ch3 Theory →
+        </a>
       </div>
 
-      <!-- STEP 2 -->
-      <div style="background: var(--code-bg); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.25rem;">
-        <h4 style="margin: 0 0 0.75rem 0; color: var(--accent); font-size: 0.95rem;">📥 Step 2 — Find the Causes</h4>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0 0 0.75rem 0;">Scan the specification for input conditions (things that can be true or false).</p>
-        <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem;">
-          <div style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem;">
-            <span style="background: var(--accent); color: #fff; border-radius: 50%; width: 1.4rem; height: 1.4rem; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">1</span>
-            <span>Overdraft protection enabled? (Yes / No)</span>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem;">
-            <span style="background: var(--accent); color: #fff; border-radius: 50%; width: 1.4rem; height: 1.4rem; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">2</span>
-            <span>Overdraft limit not exceeded? (Yes / No)</span>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem;">
-            <span style="background: var(--accent); color: #fff; border-radius: 50%; width: 1.4rem; height: 1.4rem; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">3</span>
-            <span>Payment is below account balance? (Yes / No)</span>
-          </div>
-        </div>
-        <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0 0 0.75rem 0; font-style: italic;">💡 These are causes because they determine the outcome.</p>
-        <div style="overflow-x: auto;">
-          <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
-            <thead>
-              <tr style="background: rgba(12,122,115,0.12); border-bottom: 2px solid var(--border);">
-                <th style="padding: 0.5rem 0.75rem; text-align: left; color: var(--accent);">Cause ID</th>
-                <th style="padding: 0.5rem 0.75rem; text-align: left; color: var(--accent);">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding: 0.4rem 0.75rem; font-weight: 700; font-family: var(--font-mono);">C1</td>
-                <td style="padding: 0.4rem 0.75rem;">Overdraft protection enabled<br><span style="font-size:0.8rem;color:var(--text-muted);">(1 = Yes, 0 = No)</span></td>
-              </tr>
-              <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding: 0.4rem 0.75rem; font-weight: 700; font-family: var(--font-mono);">C2</td>
-                <td style="padding: 0.4rem 0.75rem;">Overdraft limit not exceeded<br><span style="font-size:0.8rem;color:var(--text-muted);">(1 = Yes, 0 = No)</span></td>
-              </tr>
-              <tr>
-                <td style="padding: 0.4rem 0.75rem; font-weight: 700; font-family: var(--font-mono);">C3</td>
-                <td style="padding: 0.4rem 0.75rem;">Payment is below account balance<br><span style="font-size:0.8rem;color:var(--text-muted);">(1 = Yes, 0 = No)</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+    </div><!-- /stage-5-drills -->
 
-      <!-- STEP 3 -->
-      <div style="background: var(--code-bg); border: 1px solid var(--border); border-left: 4px solid #d9534f; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.25rem;">
-        <h4 style="margin: 0 0 0.75rem 0; color: #d9534f; font-size: 0.95rem;">📤 Step 3 — Find the Effects</h4>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0 0 0.75rem 0;">Look for the output results or system state changes.</p>
-        <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem;">
-          <div style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem;">
-            <span style="background: #d9534f; color: #fff; border-radius: 50%; width: 1.4rem; height: 1.4rem; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">1</span>
-            <span>Payment approved</span>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem;">
-            <span style="background: #d9534f; color: #fff; border-radius: 50%; width: 1.4rem; height: 1.4rem; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">2</span>
-            <span>Reject with <code>INSUFFICIENT_FUNDS</code></span>
-          </div>
-          <div style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem;">
-            <span style="background: #d9534f; color: #fff; border-radius: 50%; width: 1.4rem; height: 1.4rem; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">3</span>
-            <span>Reject with <code>OVERDRAFT_LIMIT_EXCEEDED</code></span>
-          </div>
-        </div>
-        <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0 0 0.75rem 0; font-style: italic;">💡 These are effects because they are what happens as a result.</p>
-        <div style="overflow-x: auto;">
-          <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
-            <thead>
-              <tr style="background: rgba(217,83,79,0.10); border-bottom: 2px solid var(--border);">
-                <th style="padding: 0.5rem 0.75rem; text-align: left; color: #d9534f;">Effect ID</th>
-                <th style="padding: 0.5rem 0.75rem; text-align: left; color: #d9534f;">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding: 0.4rem 0.75rem; font-weight: 700; font-family: var(--font-mono);">E1</td>
-                <td style="padding: 0.4rem 0.75rem;">Payment approved<br><span style="font-size:0.8rem;color:var(--text-muted);">(1 = Yes, 0 = No)</span></td>
-              </tr>
-              <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding: 0.4rem 0.75rem; font-weight: 700; font-family: var(--font-mono);">E2</td>
-                <td style="padding: 0.4rem 0.75rem;">Reject with <code>INSUFFICIENT_FUNDS</code><br><span style="font-size:0.8rem;color:var(--text-muted);">(1 = Yes, 0 = No)</span></td>
-              </tr>
-              <tr>
-                <td style="padding: 0.4rem 0.75rem; font-weight: 700; font-family: var(--font-mono);">E3</td>
-                <td style="padding: 0.4rem 0.75rem;">Reject with <code>OVERDRAFT_LIMIT_EXCEEDED</code><br><span style="font-size:0.8rem;color:var(--text-muted);">(1 = Yes, 0 = No)</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+  </div><!-- /page -->
+</div><!-- /page-shell -->
 
-      <!-- STEP 4 -->
-      <div style="border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.25rem;">
-        <h4 style="margin: 0 0 0.75rem 0; font-size: 0.95rem; color: var(--text);">📊 Step 4 — Build the Decision Table (Columns = Test Cases)</h4>
-        <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0 0 0.75rem 0;">Each specification rule becomes <strong>one column</strong> — one complete test case.</p>
-        <div style="overflow-x: auto;">
-          <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: center;">
-            <thead>
-              <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border);">
-                <th style="padding: 0.5rem 0.75rem; text-align: left;" colspan="2">Cause / Effect</th>
-                <th style="padding: 0.5rem 0.75rem; font-weight: 700; color: var(--accent);">TC1</th>
-                <th style="padding: 0.5rem 0.75rem; font-weight: 700; color: var(--accent);">TC2</th>
-                <th style="padding: 0.5rem 0.75rem; font-weight: 700; color: var(--accent);">TC3</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="border-bottom: 1px solid var(--border); background: rgba(12,122,115,0.04);">
-                <td style="padding: 0.4rem 0.5rem; font-weight: 700; color: var(--accent); font-size: 0.78rem; text-align: center; border-right: 1px solid var(--border);" rowspan="3">CAUSES</td>
-                <td style="padding: 0.4rem 0.75rem; text-align: left;">C1 — Overdraft protection enabled</td>
-                <td style="padding: 0.4rem 0.75rem; font-weight: 700; color: var(--accent);">1</td>
-                <td style="padding: 0.4rem 0.75rem; font-weight: 700; color: #d9534f;">0</td>
-                <td style="padding: 0.4rem 0.75rem; color: var(--text-muted);">—</td>
-              </tr>
-              <tr style="border-bottom: 1px solid var(--border); background: rgba(12,122,115,0.04);">
-                <td style="padding: 0.4rem 0.75rem; text-align: left;">C2 — Overdraft limit not exceeded</td>
-                <td style="padding: 0.4rem 0.75rem; font-weight: 700; color: var(--accent);">1</td>
-                <td style="padding: 0.4rem 0.75rem; color: var(--text-muted);">—</td>
-                <td style="padding: 0.4rem 0.75rem; font-weight: 700; color: #d9534f;">0</td>
-              </tr>
-              <tr style="border-bottom: 2px solid var(--border); background: rgba(12,122,115,0.04);">
-                <td style="padding: 0.4rem 0.75rem; text-align: left;">C3 — Payment below account balance</td>
-                <td style="padding: 0.4rem 0.75rem; font-weight: 700; color: var(--accent);">1</td>
-                <td style="padding: 0.4rem 0.75rem; font-weight: 700; color: #d9534f;">0</td>
-                <td style="padding: 0.4rem 0.75rem; color: var(--text-muted);">—</td>
-              </tr>
-              <tr style="border-bottom: 1px solid var(--border); background: rgba(217,83,79,0.04);">
-                <td style="padding: 0.4rem 0.5rem; font-weight: 700; color: #d9534f; font-size: 0.78rem; text-align: center; border-right: 1px solid var(--border);" rowspan="3">EFFECTS</td>
-                <td style="padding: 0.4rem 0.75rem; text-align: left; font-weight: 600;">E1 — APPROVED</td>
-                <td style="padding: 0.4rem 0.75rem; font-weight: 700; color: var(--accent);">1</td>
-                <td style="padding: 0.4rem 0.75rem; color: var(--text-muted);">0</td>
-                <td style="padding: 0.4rem 0.75rem; color: var(--text-muted);">0</td>
-              </tr>
-              <tr style="border-bottom: 1px solid var(--border); background: rgba(217,83,79,0.04);">
-                <td style="padding: 0.4rem 0.75rem; text-align: left; font-weight: 600;">E2 — INSUFFICIENT_FUNDS</td>
-                <td style="padding: 0.4rem 0.75rem; color: var(--text-muted);">0</td>
-                <td style="padding: 0.4rem 0.75rem; font-weight: 700; color: #d9534f;">1</td>
-                <td style="padding: 0.4rem 0.75rem; color: var(--text-muted);">0</td>
-              </tr>
-              <tr style="background: rgba(217,83,79,0.04);">
-                <td style="padding: 0.4rem 0.75rem; text-align: left; font-weight: 600;">E3 — OVERDRAFT_LIMIT_EXCEEDED</td>
-                <td style="padding: 0.4rem 0.75rem; color: var(--text-muted);">0</td>
-                <td style="padding: 0.4rem 0.75rem; color: var(--text-muted);">0</td>
-                <td style="padding: 0.4rem 0.75rem; font-weight: 700; color: #d9534f;">1</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p style="font-size: 0.82rem; color: var(--accent); text-align: center; margin: 0.6rem 0 0 0; font-style: italic;">Each column represents one complete test case.</p>
-      </div>
+<!-- MOBILE BOTTOM DOCK -->
+<nav class="mobile-bottom-dock" aria-label="Stage navigation">
+  <button type="button" class="dock-item jump-stage-btn active" data-target-stage="stage-1-spec">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    Spec
+  </button>
+  <button type="button" class="dock-item jump-stage-btn" data-target-stage="stage-2-causes">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    Causes
+  </button>
+  <button type="button" class="dock-item jump-stage-btn" data-target-stage="stage-3-effects">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    Effects
+  </button>
+  <button type="button" class="dock-item jump-stage-btn" data-target-stage="stage-4-table">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+    Table
+  </button>
+  <button type="button" class="dock-item jump-stage-btn" data-target-stage="stage-5-drills">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    Drills
+  </button>
+</nav>
 
-      <!-- STEP 5 -->
-      <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1rem;">
-        <div style="background: #e8f5e9; border: 1px solid #a5d6a7; border-left: 4px solid #2e7d32; border-radius: 8px; padding: 1rem 1.25rem;">
-          <h4 style="margin: 0 0 0.5rem 0; color: #2e7d32; font-size: 0.95rem;">✅ Step 5 — Count the Test Cases</h4>
-          <p style="margin: 0; font-size: 0.95rem;"><strong>Number of test cases = 3</strong> (TC1, TC2, TC3)</p>
-        </div>
-        <div style="background: #fff3e0; border: 1px solid #ffe0b2; border-left: 4px solid #e65100; border-radius: 8px; padding: 1rem 1.25rem;">
-          <h4 style="margin: 0 0 0.5rem 0; color: #e65100; font-size: 0.95rem;">⚠️ Are there impossible combinations?</h4>
-          <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.87rem; line-height: 1.7;">
-            <li>Yes. You cannot have C2 = 1 and C2 = 0 at the same time.</li>
-            <li>Some combinations are not defined by the specification, so do not invent expected results for them.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- KEY TAKEAWAYS -->
-      <div style="background: var(--code-bg); border: 1px solid var(--border); border-left: 4px solid #7b3fe4; border-radius: 8px; padding: 1rem 1.25rem;">
-        <h4 style="margin: 0 0 0.5rem 0; color: #7b3fe4; font-size: 0.92rem;">🔑 Key Takeaways</h4>
-        <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.85rem; line-height: 1.8;">
-          <li><strong>Causes</strong> = input conditions (IF WHAT?)</li>
-          <li><strong>Effects</strong> = output/results (WHAT HAPPENS?)</li>
-          <li><strong>Rows</strong> = causes/effects, <strong>Columns</strong> = test cases</li>
-          <li>Use constraints to remove impossible combinations</li>
-          <li>Each column = one complete test case</li>
-        </ul>
-      </div>
-    </div>
-  </details>
-</div>
-
-<!-- QUESTION 3 -->
-<div class="question-card" style="background: var(--bg-raised); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm); color: var(--text);">
-  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
-      <span class="drill-tag">🏛️ Official Q</span> AI OUTPUT REVIEW (4 P)
-    </h3>
-  </div>
-  
-  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
-    <p><em>Source: CH03_Block_B_Pairwise_CEG.pdf</em></p>
-    
-    <p>You give an LLM the FinCon debit handling specification from the lecture and receive these test cases:</p>
-    
-    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">>>> debit(account_active=True, balance=1000, amount=500)
-'approved'
->>> debit(account_active=False, balance=1000, amount=500)
-'INSUFFICIENT_FUNDS'
->>> debit(account_active=True, balance=100, amount=500)
-'INSUFFICIENT_FUNDS'
->>> debit(account_active=True, balance=0, amount=1)
-'approved'</div>
-    
-    <p><em>Perform the following tasks:</em></p>
-    <ul style="list-style-type: circle; padding-left: 1.5rem; margin-bottom: 1rem;">
-      <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Identify two factual errors in the AI output.</li>
-      <li><span style="color: #d9534f; font-weight: 600;">(b)</span> Identify one important combination missing from this test suite.</li>
-      <li><span style="color: #d9534f; font-weight: 600;">(c)</span> Rewrite the test suite with corrections and additions.</li>
-    </ul>
-  </div>
-
-  <details class="drill-item" style="margin-top: 1.25rem;">
-    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
-      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
-      <span class="drill-q">Click to reveal Suggested Answer</span>
-    </summary>
-    
+<script src="assets/site.js?v=50"></script>
+</body>
+</html>
