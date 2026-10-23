@@ -3,403 +3,164 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-<title>Official Questions | 4. White-Box Coverage & MC/DC</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c7a73'/%3E%3Ccircle cx='10' cy='11' r='3' fill='%23fff'/%3E%3Ccircle cx='22' cy='9' r='2.4' fill='%23fff'/%3E%3Ccircle cx='22' cy='23' r='3' fill='%23fff'/%3E%3Cpath d='M12.5 12.5L19.5 10M12 13.5L20 21' stroke='%23fff' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<title>Ch4 Official Questions · White-Box, MC/DC &amp; Mocks | ADV Testing</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2310B981'/%3E%3Ccircle cx='10' cy='11' r='3' fill='%23fff'/%3E%3Ccircle cx='22' cy='9' r='2.4' fill='%23fff'/%3E%3Ccircle cx='22' cy='23' r='3' fill='%23fff'/%3E%3Cpath d='M12.5 12.5L19.5 10M12 13.5L20 21' stroke='%23fff' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=38">
-<script>(function(){try{var t=localStorage.getItem('dm2026-theme')||'light';document.documentElement.setAttribute('data-theme',t);var m=localStorage.getItem('dm2026-mode')||'concept';document.documentElement.setAttribute('data-mode',m);}catch(e){}})();</script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=50">
+<script>(function(){try{var t=localStorage.getItem('adv-theme')||'dark';document.documentElement.setAttribute('data-theme',t);var m=localStorage.getItem('adv-mode')||'concept';document.documentElement.setAttribute('data-mode',m);}catch(e){}})();</script>
 </head>
 <body>
 
+<!-- TOP NAV -->
 <nav class="sitenav">
   <div class="sitenav-inner">
-    <a class="sitenav-home" href="index.html">ADV Testing</a>
+    <a class="sitenav-home" href="index.html">
+      <span style="background:linear-gradient(135deg,#10B981 0%,#6366f1 100%);color:#fff;padding:0.2rem 0.55rem;border-radius:6px;font-size:0.82rem;font-weight:800;letter-spacing:0.04em;">ADV</span>
+      <span style="font-weight:800;letter-spacing:-0.02em;">Testing</span>
+    </a>
     <div class="sitenav-links">
+      <a href="index.html">Overview</a>
+      <a href="ch1.html">Ch1 · BVA</a>
+      <a href="ch2.html">Ch2 · EP</a>
+      <a href="ch3_official.html">Ch3 · Pairwise &amp; CEG</a>
+      <a href="ch4_official.html" class="active">Ch4 · MC/DC &amp; Mocks</a>
+      <a href="ch13.html">Mock Exam</a>
     </div>
     <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navPanel">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       Menu
     </button>
-        <button class="nav-toggle" id="forceRefreshBtn" type="button" aria-label="Force refresh page" title="Update &amp; Refresh" style="display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; padding: 0.32rem 0.55rem; cursor: pointer;">
-      🔄
-    </button>
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme">
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
-    <button class="mode-toggle" id="modeToggle" type="button" aria-label="Toggle technical mode" style="font-size: 1.1rem; line-height: 1;">🎓</button>
+    <button class="mode-toggle" id="modeToggle" type="button" aria-label="Toggle technical mode" style="font-size:1.1rem;line-height:1;">🎓</button>
   </div>
-    <div class="nav-panel" id="navPanel">
-    <div class="nav-group-title">Introduction</div>
-            <div class="nav-card-row">
-          <a href="index.html" class="nav-main-target">
-            <span class="nav-ch-badge">🏠</span>
-            <span class="nav-text-truncate">Home Overview</span>
-          </a>
-          
-        </div>
+  <div class="nav-panel" id="navPanel">
+    <div class="nav-panel-section">
+      <span class="nav-panel-label">Navigation</span>
+      <a href="index.html">🏠 Home Overview</a>
+      <a href="ch3_official.html">📋 Ch3 · Pairwise &amp; CEG</a>
+      <a href="ch4_official.html" class="active">📋 Ch4 · MC/DC &amp; Mocks</a>
+    </div>
+    <div class="nav-panel-section">
+      <span class="nav-panel-label">Stages</span>
+      <a href="#" onclick="return false;" data-target-stage="stage-1-subsumption" class="jump-stage-btn">📐 Stage 1: Subsumption</a>
+      <a href="#" onclick="return false;" data-target-stage="stage-2-mcdc-rules" class="jump-stage-btn">⚡ Stage 2: MC/DC Rules</a>
+      <a href="#" onclick="return false;" data-target-stage="stage-3-mcdc-table" class="jump-stage-btn">📊 Stage 3: FinCon MC/DC Table</a>
+      <a href="#" onclick="return false;" data-target-stage="stage-4-mocks" class="jump-stage-btn">🧪 Stage 4: Python Mocks</a>
+      <a href="#" onclick="return false;" data-target-stage="stage-5-drills" class="jump-stage-btn">🎓 Stage 5: Exam Drills</a>
+    </div>
+  </div>
+</nav>
 
-    <div class="nav-group-title">Core Concepts</div>
-            <div class="nav-card-row">
-          <a href="ch1.html" class="nav-main-target">
-            <span class="nav-ch-badge">01</span>
-            <span class="nav-text-truncate">Fundamentals & Terms</span>
-          </a>
-          <a href="ch1_official.html" class="nav-pill-exam" title="Practice 5 Questions">🏛️ 5 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch2.html" class="nav-main-target">
-            <span class="nav-ch-badge">02</span>
-            <span class="nav-text-truncate">EC & BVA</span>
-          </a>
-          <a href="ch2_official.html" class="nav-pill-exam" title="Practice 4 Questions">🏛️ 4 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch3.html" class="nav-main-target">
-            <span class="nav-ch-badge">03</span>
-            <span class="nav-text-truncate">Pairwise & Decision Tables</span>
-          </a>
-          <a href="ch3_official.html" class="nav-pill-exam" title="Practice 4 Questions">🏛️ 4 Qs</a>
-        </div>
-
-    <div class="nav-group-title">Code & Coverage</div>
-            <div class="nav-card-row">
-          <a href="ch4.html" class="nav-main-target">
-            <span class="nav-ch-badge">04</span>
-            <span class="nav-text-truncate">White-Box & MC/DC</span>
-          </a>
-          <a href="ch4_official.html" class="nav-pill-exam active-pill" title="Practice 4 Questions">🏛️ 4 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch5.html" class="nav-main-target">
-            <span class="nav-ch-badge">05</span>
-            <span class="nav-text-truncate">AI Code & Static Analysis</span>
-          </a>
-          <a href="ch5_official.html" class="nav-pill-exam" title="Practice 4 Questions">🏛️ 4 Qs</a>
-        </div>
-
-    <div class="nav-group-title">Process & Risk</div>
-            <div class="nav-card-row">
-          <a href="ch6.html" class="nav-main-target">
-            <span class="nav-ch-badge">06</span>
-            <span class="nav-text-truncate">Test Process & MTS</span>
-          </a>
-          <a href="ch6_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch7.html" class="nav-main-target">
-            <span class="nav-ch-badge">07</span>
-            <span class="nav-text-truncate">Risk-Based Testing</span>
-          </a>
-          <a href="ch7_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
-        </div>
-
-    <div class="nav-group-title">Automation & Security</div>
-            <div class="nav-card-row">
-          <a href="ch8.html" class="nav-main-target">
-            <span class="nav-ch-badge">08</span>
-            <span class="nav-text-truncate">BDD & Gherkin</span>
-          </a>
-          <a href="ch8_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch9.html" class="nav-main-target">
-            <span class="nav-ch-badge">09</span>
-            <span class="nav-text-truncate">Web Automation & Perf</span>
-          </a>
-          <a href="ch9_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch10.html" class="nav-main-target">
-            <span class="nav-ch-badge">10</span>
-            <span class="nav-text-truncate">Security Testing</span>
-          </a>
-          <a href="ch10_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
-        </div>
-
-    <div class="nav-group-title">System Context</div>
-            <div class="nav-card-row">
-          <a href="ch11.html" class="nav-main-target">
-            <span class="nav-ch-badge">11</span>
-            <span class="nav-text-truncate">BudgetControl Architecture</span>
-          </a>
-          
-        </div>
-            <div class="nav-card-row">
-          <a href="ch12.html" class="nav-main-target">
-            <span class="nav-ch-badge">12</span>
-            <span class="nav-text-truncate">Course Summary & Artifacts</span>
-          </a>
-          <a href="ch12_official.html" class="nav-pill-exam" title="Practice 4 Questions">🏛️ 4 Qs</a>
-        </div>
-
-    <div class="nav-group-title">Exam Preparation</div>
-            <div class="nav-card-row">
-          <a href="exam_block_d.html" class="nav-main-target">
-            <span class="nav-ch-badge">⭐</span>
-            <span class="nav-text-truncate">Exam Task: Block D (25 P)</span>
-          </a>
-          
-        </div>
-            <div class="nav-card-row">
-          <a href="ch13.html" class="nav-main-target">
-            <span class="nav-ch-badge">📝</span>
-            <span class="nav-text-truncate">13. Mock Exam A (Questions)</span>
-          </a>
-          
-        </div>
-            <div class="nav-card-row">
-          <a href="ch14.html" class="nav-main-target">
-            <span class="nav-ch-badge">✅</span>
-            <span class="nav-text-truncate">14. Mock Exam A (Answers)</span>
-          </a>
-          
-        </div>
-            <div class="nav-card-row">
-          <a href="ch15.html" class="nav-main-target">
-            <span class="nav-ch-badge">🎯</span>
-            <span class="nav-text-truncate">15. Add'l Slide Questions</span>
-          </a>
-          
-        </div>
-            <div class="nav-card-row">
-          <a href="ch16.html" class="nav-main-target">
-            <span class="nav-ch-badge">🏁</span>
-            <span class="nav-text-truncate">16. Final Checklist</span>
-          </a>
-          
-        </div>
+<!-- MASTERCLASS STAGE NAV -->
+<nav class="masterclass-stage-nav" aria-label="Learning Stages">
+  <div class="stage-nav-inner" style="max-width:920px;margin:0 auto;padding:0 1.75rem;">
+    <div class="stage-pills-wrap">
+      <button type="button" class="stage-pill active" data-stage="stage-1-subsumption"><span>📐 1. Subsumption</span></button>
+      <button type="button" class="stage-pill" data-stage="stage-2-mcdc-rules"><span>⚡ 2. MC/DC Rules</span></button>
+      <button type="button" class="stage-pill" data-stage="stage-3-mcdc-table"><span>📊 3. FinCon MC/DC Table</span></button>
+      <button type="button" class="stage-pill" data-stage="stage-4-mocks"><span>🧪 4. Python Mocks</span></button>
+      <button type="button" class="stage-pill" data-stage="stage-5-drills"><span>🎓 5. Exam Drills</span></button>
+    </div>
+    <button type="button" class="stage-mode-btn" id="stageModeToggle">📑 Focused Stage Mode</button>
   </div>
 </nav>
 
 <div class="page-shell">
-    <aside class="sidebar-toc">
-    
-    <div class="nav-group-title">Introduction</div>
-            <div class="nav-card-row">
-          <a href="index.html" class="nav-main-target">
-            <span class="nav-ch-badge">🏠</span>
-            <span class="nav-text-truncate">Home Overview</span>
-          </a>
-          
-        </div>
 
-    <div class="nav-group-title">Core Concepts</div>
-            <div class="nav-card-row">
-          <a href="ch1.html" class="nav-main-target">
-            <span class="nav-ch-badge">01</span>
-            <span class="nav-text-truncate">Fundamentals & Terms</span>
-          </a>
-          <a href="ch1_official.html" class="nav-pill-exam" title="Practice 5 Questions">🏛️ 5 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch2.html" class="nav-main-target">
-            <span class="nav-ch-badge">02</span>
-            <span class="nav-text-truncate">EC & BVA</span>
-          </a>
-          <a href="ch2_official.html" class="nav-pill-exam" title="Practice 4 Questions">🏛️ 4 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch3.html" class="nav-main-target">
-            <span class="nav-ch-badge">03</span>
-            <span class="nav-text-truncate">Pairwise & Decision Tables</span>
-          </a>
-          <a href="ch3_official.html" class="nav-pill-exam" title="Practice 4 Questions">🏛️ 4 Qs</a>
-        </div>
-
-    <div class="nav-group-title">Code & Coverage</div>
-            <div class="nav-card-row">
-          <a href="ch4.html" class="nav-main-target">
-            <span class="nav-ch-badge">04</span>
-            <span class="nav-text-truncate">White-Box & MC/DC</span>
-          </a>
-          <a href="ch4_official.html" class="nav-pill-exam active-pill" title="Practice 4 Questions">🏛️ 4 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch5.html" class="nav-main-target">
-            <span class="nav-ch-badge">05</span>
-            <span class="nav-text-truncate">AI Code & Static Analysis</span>
-          </a>
-          <a href="ch5_official.html" class="nav-pill-exam" title="Practice 4 Questions">🏛️ 4 Qs</a>
-        </div>
-
-    <div class="nav-group-title">Process & Risk</div>
-            <div class="nav-card-row">
-          <a href="ch6.html" class="nav-main-target">
-            <span class="nav-ch-badge">06</span>
-            <span class="nav-text-truncate">Test Process & MTS</span>
-          </a>
-          <a href="ch6_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch7.html" class="nav-main-target">
-            <span class="nav-ch-badge">07</span>
-            <span class="nav-text-truncate">Risk-Based Testing</span>
-          </a>
-          <a href="ch7_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
-        </div>
-
-    <div class="nav-group-title">Automation & Security</div>
-            <div class="nav-card-row">
-          <a href="ch8.html" class="nav-main-target">
-            <span class="nav-ch-badge">08</span>
-            <span class="nav-text-truncate">BDD & Gherkin</span>
-          </a>
-          <a href="ch8_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch9.html" class="nav-main-target">
-            <span class="nav-ch-badge">09</span>
-            <span class="nav-text-truncate">Web Automation & Perf</span>
-          </a>
-          <a href="ch9_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
-        </div>
-            <div class="nav-card-row">
-          <a href="ch10.html" class="nav-main-target">
-            <span class="nav-ch-badge">10</span>
-            <span class="nav-text-truncate">Security Testing</span>
-          </a>
-          <a href="ch10_official.html" class="nav-pill-exam" title="Practice 1 Questions">🏛️ 1 Qs</a>
-        </div>
-
-    <div class="nav-group-title">System Context</div>
-            <div class="nav-card-row">
-          <a href="ch11.html" class="nav-main-target">
-            <span class="nav-ch-badge">11</span>
-            <span class="nav-text-truncate">BudgetControl Architecture</span>
-          </a>
-          
-        </div>
-            <div class="nav-card-row">
-          <a href="ch12.html" class="nav-main-target">
-            <span class="nav-ch-badge">12</span>
-            <span class="nav-text-truncate">Course Summary & Artifacts</span>
-          </a>
-          <a href="ch12_official.html" class="nav-pill-exam" title="Practice 4 Questions">🏛️ 4 Qs</a>
-        </div>
-
-    <div class="nav-group-title">Exam Preparation</div>
-            <div class="nav-card-row">
-          <a href="exam_block_d.html" class="nav-main-target">
-            <span class="nav-ch-badge">⭐</span>
-            <span class="nav-text-truncate">Exam Task: Block D (25 P)</span>
-          </a>
-          
-        </div>
-            <div class="nav-card-row">
-          <a href="ch13.html" class="nav-main-target">
-            <span class="nav-ch-badge">📝</span>
-            <span class="nav-text-truncate">13. Mock Exam A (Questions)</span>
-          </a>
-          
-        </div>
-            <div class="nav-card-row">
-          <a href="ch14.html" class="nav-main-target">
-            <span class="nav-ch-badge">✅</span>
-            <span class="nav-text-truncate">14. Mock Exam A (Answers)</span>
-          </a>
-          
-        </div>
-            <div class="nav-card-row">
-          <a href="ch15.html" class="nav-main-target">
-            <span class="nav-ch-badge">🎯</span>
-            <span class="nav-text-truncate">15. Add'l Slide Questions</span>
-          </a>
-          
-        </div>
-            <div class="nav-card-row">
-          <a href="ch16.html" class="nav-main-target">
-            <span class="nav-ch-badge">🏁</span>
-            <span class="nav-text-truncate">16. Final Checklist</span>
-          </a>
-          
-        </div>
-  
+  <!-- SIDEBAR -->
+  <aside class="sidebar-toc">
+    <div class="sidebar-block">
+      <span class="sidebar-label">Chapter 4 Stages</span>
+      <button type="button" class="jump-stage-btn" data-target-stage="stage-1-subsumption" style="display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.6rem;margin:0.2rem 0;border-radius:6px;font-size:0.84rem;line-height:1.35;color:var(--text-muted);text-decoration:none;background:none;border:none;border-left:2px solid transparent;width:100%;text-align:left;cursor:pointer;transition:all 0.15s ease;">📐 Stage 1 · Subsumption</button>
+      <button type="button" class="jump-stage-btn" data-target-stage="stage-2-mcdc-rules" style="display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.6rem;margin:0.2rem 0;border-radius:6px;font-size:0.84rem;line-height:1.35;color:var(--text-muted);text-decoration:none;background:none;border:none;border-left:2px solid transparent;width:100%;text-align:left;cursor:pointer;transition:all 0.15s ease;">⚡ Stage 2 · MC/DC Rules</button>
+      <button type="button" class="jump-stage-btn" data-target-stage="stage-3-mcdc-table" style="display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.6rem;margin:0.2rem 0;border-radius:6px;font-size:0.84rem;line-height:1.35;color:var(--text-muted);text-decoration:none;background:none;border:none;border-left:2px solid transparent;width:100%;text-align:left;cursor:pointer;transition:all 0.15s ease;">📊 Stage 3 · MC/DC Table</button>
+      <button type="button" class="jump-stage-btn" data-target-stage="stage-4-mocks" style="display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.6rem;margin:0.2rem 0;border-radius:6px;font-size:0.84rem;line-height:1.35;color:var(--text-muted);text-decoration:none;background:none;border:none;border-left:2px solid transparent;width:100%;text-align:left;cursor:pointer;transition:all 0.15s ease;">🧪 Stage 4 · Python Mocks</button>
+      <button type="button" class="jump-stage-btn" data-target-stage="stage-5-drills" style="display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.6rem;margin:0.2rem 0;border-radius:6px;font-size:0.84rem;line-height:1.35;color:var(--text-muted);text-decoration:none;background:none;border:none;border-left:2px solid transparent;width:100%;text-align:left;cursor:pointer;transition:all 0.15s ease;">🎓 Stage 5 · Exam Drills</button>
+    </div>
+    <div class="sidebar-block">
+      <span class="sidebar-label">Exam Weight</span>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin:0 0 0.5rem;line-height:1.5;">
+        <strong>11 Points Total</strong><br>
+        Q1 Subsumption (3 P)<br>
+        Q2 MC/DC (4 P)<br>
+        Q3 Mocks (4 P)
+      </p>
+      <div style="font-size:0.75rem;font-weight:700;color:var(--accent);background:var(--accent-soft);border:1px solid rgba(16,185,129,0.25);padding:0.25rem 0.5rem;border-radius:4px;display:inline-block;">
+        High Priority Block
+      </div>
+    </div>
   </aside>
 
   <div class="page">
-    <div class="masthead">
+
+    <!-- MASTHEAD -->
+    <header class="masthead">
       <div>
-        <div class="eyebrow">4. White-Box Coverage & MC/DC</div>
-        <h1 class="title">Official Questions</h1>
+        <div class="eyebrow">Chapter 4 · White-Box Testing &amp; Coverage</div>
+        <h1 class="title">White-Box Coverage, MC/DC &amp; Python Mocking</h1>
+        <p class="dek">Official exam questions, worked MC/DC truth tables, and complete unittest.mock implementations structured across 5 masterclass stages.</p>
+        <div class="masthead-badge-group">
+          <span class="masthead-badge masthead-badge-accent">DO-178C MC/DC</span>
+          <span class="masthead-badge masthead-badge-teal">Subsumption Hierarchy</span>
+          <span class="masthead-badge masthead-badge-gold">MagicMock Suite</span>
+        </div>
       </div>
-      <div class="masthead-meta"></div>
-    </div>
-    
-    <div class="page-content concept-content">
+      <div class="masthead-meta">
+        <strong>Official</strong><br>Questions<br><span style="font-size:0.7rem;">CH04 Block B</span>
+      </div>
+    </header>
 
-<!-- PROFESSOR'S OFFICIAL EXAM ANSWER STRATEGY BANNER (Slide 44 & 45 Rubric) -->
-<div class="formula-box" style="margin-bottom: 2rem; border-left: 4px solid var(--accent); background: var(--bg-raised);">
-  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-    <h3 style="margin: 0; font-size: 1.05rem; color: var(--accent);">
-      📋 Professor's Official Exam Answer Strategy (Slide 44 &amp; 45)
-    </h3>
-    <span style="font-size: 0.75rem; font-weight: 700; background: rgba(12, 122, 115, 0.15); color: var(--accent); padding: 0.2rem 0.5rem; border-radius: 4px;">
-      Grading Rubric
-    </span>
-  </div>
-  
-  <p style="margin: 0 0 0.75rem 0; font-size: 0.88rem; color: var(--text-muted);">
-    To earn <strong>100% full points</strong> on the exam, structure your answers using the professor's required pattern:
-  </p>
+    <!-- =====================================================================
+         STAGE 1: SUBSUMPTION LADDER
+         ===================================================================== -->
+    <div class="stage-view active" id="stage-1-subsumption">
+      <div class="chapter-head">
+        <span class="chapter-num">Stage 1</span>
+        <h2>The Coverage Subsumption Hierarchy</h2>
+      </div>
+      <p class="chapter-dek">Understanding which coverage criteria mathematically include and guarantee others — and why Statement coverage alone is dangerously deceptive.</p>
 
-  <div style="overflow-x: auto;">
-    <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
-      <thead>
-        <tr style="background: var(--code-bg); border-bottom: 2px solid var(--border);">
-          <th style="padding: 0.5rem 0.75rem; text-align: left; width: 30%;">Topic</th>
-          <th style="padding: 0.5rem 0.75rem; text-align: left; width: 70%;">The Exact Structure Demanded</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom: 1px solid var(--border);">
-          <td style="padding: 0.5rem 0.75rem; font-weight: 600;">Boundary Values</td>
-          <td style="padding: 0.5rem 0.75rem;">List test values + Expected result (e.g. <code>4 rejected</code>, <code>5 accepted</code>).</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border);">
-          <td style="padding: 0.5rem 0.75rem; font-weight: 600;">Pairwise Testing</td>
-          <td style="padding: 0.5rem 0.75rem;">State largest pair formula (<code>L1 &times; L2</code>) + Identify missing pair.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border);">
-          <td style="padding: 0.5rem 0.75rem; font-weight: 600;">Cause-Effect Graphing</td>
-          <td style="padding: 0.5rem 0.75rem;">Identify <strong>Causes (Ci)</strong>, <strong>Effects (Ej)</strong>, <strong>Constraints</strong>, and <strong>Decision Table</strong>.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border);">
-          <td style="padding: 0.5rem 0.75rem; font-weight: 600;">Static Defects</td>
-          <td style="padding: 0.5rem 0.75rem;">3-part formula: <strong>Defect &rarr; Reason &rarr; Likely Tool</strong>.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border);">
-          <td style="padding: 0.5rem 0.75rem; font-weight: 600;">Gherkin / BDD</td>
-          <td style="padding: 0.5rem 0.75rem;"><code>Given / When / Then</code> with <strong>Observable Then</strong>.</td>
-        </tr>
-        <tr>
-          <td style="padding: 0.5rem 0.75rem; font-weight: 600;">Risk-Based Testing</td>
-          <td style="padding: 0.5rem 0.75rem;"><strong>Risk &rarr; Probability &times; Impact &rarr; Test Response</strong>.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+      <!-- Subsumption Hierarchy Box -->
+      <div style="background:var(--bg-raised);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius-md);padding:1.5rem;margin:1.5rem 0;">
+        <h3 style="margin:0 0 0.75rem;font-size:1.1rem;color:var(--text);">The Coverage Hierarchy Ladder</h3>
+        <p style="font-size:0.92rem;line-height:1.6;margin:0 0 1rem;color:var(--text-muted);">
+          Coverage criterion <strong>A subsumes B</strong> if every test suite that satisfies A is mathematically guaranteed to also satisfy B.
+        </p>
+        
+        <div style="display:flex;flex-direction:column;gap:0.6rem;font-family:var(--font-mono);font-size:0.88rem;">
+          <div style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.25);padding:0.75rem 1rem;border-radius:6px;display:flex;justify-content:space-between;align-items:center;">
+            <span><strong>Multiple Condition Coverage / Path Coverage</strong></span>
+            <span style="color:#A5B4FC;font-size:0.75rem;font-weight:700;">STRONGEST (often 2ⁿ tests)</span>
+          </div>
+          <div style="text-align:center;color:var(--text-dim);font-size:0.8rem;">▼ subsumes</div>
+          <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);padding:0.75rem 1rem;border-radius:6px;display:flex;justify-content:space-between;align-items:center;">
+            <span><strong>MC/DC (Modified Condition / Decision Coverage)</strong></span>
+            <span style="color:var(--accent);font-size:0.75rem;font-weight:700;">N + 1 TESTS (Aviation DO-178C)</span>
+          </div>
+          <div style="text-align:center;color:var(--text-dim);font-size:0.8rem;">▼ subsumes</div>
+          <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.25);padding:0.75rem 1rem;border-radius:6px;display:flex;justify-content:space-between;align-items:center;">
+            <span><strong>Branch / Decision Coverage</strong></span>
+            <span style="color:var(--amber);font-size:0.75rem;font-weight:700;">Every branch True AND False</span>
+          </div>
+          <div style="text-align:center;color:var(--text-dim);font-size:0.8rem;">▼ subsumes</div>
+          <div style="background:rgba(244,63,94,0.1);border:1px solid rgba(244,63,94,0.25);padding:0.75rem 1rem;border-radius:6px;display:flex;justify-content:space-between;align-items:center;">
+            <span><strong>Statement Coverage</strong></span>
+            <span style="color:#F43F5E;font-size:0.75rem;font-weight:700;">WEAKEST (Lines executed)</span>
+          </div>
+        </div>
+      </div>
 
-
-<!-- QUESTION 1 -->
-<div class="question-card" style="background: var(--bg-raised); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm); color: var(--text);">
-  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
-      <span class="drill-tag">🏛️ Official Q</span> COVERAGE SUBSUMPTION (3 P)
-    </h3>
-  </div>
-  
-  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
-    <p><em>Source: CH04_AdvTest_05_Cover_Mock_full.pdf</em></p>
-    
-    <p>A colleague analyzes the following function:</p>
-    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">def transfer(amount: float, target_exists: bool, daily_limit: float) -> str:
+      <!-- Official Exam Problem 1 Walkthrough -->
+      <div style="background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.5rem;margin:1.5rem 0;">
+        <span class="card-badge">Official Exam Task 1</span>
+        <h3 style="margin:0.5rem 0 1rem;font-size:1.05rem;">The Guard Clause Transfer Code</h3>
+        
+        <div style="background:var(--code-bg);border:1px solid var(--border);border-radius:6px;padding:1rem 1.25rem;font-family:var(--font-mono);font-size:0.85em;line-height:1.7;margin-bottom:1rem;overflow-x:auto;">def transfer(amount: float, target_exists: bool, daily_limit: float) -> str:
     if amount <= 0:
         return "invalid"
     if not target_exists:
@@ -407,102 +168,202 @@
     if amount > daily_limit:
         return "limit_exceeded"
     return "approved"</div>
-    
-    <p><em>Perform the following tasks:</em></p>
-    <ul style="list-style-type: circle; padding-left: 1.5rem; margin-bottom: 1rem;">
-      <li><span style="color: #d9534f; font-weight: 600;">(a)</span> How many test cases are needed for 100% statement coverage?</li>
-      <li><span style="color: #d9534f; font-weight: 600;">(b)</span> How many test cases are needed for 100% branch coverage?</li>
-      <li><span style="color: #d9534f; font-weight: 600;">(c)</span> A colleague achieves 100% statement coverage but misses the <span style="color: #d9534f; font-weight: 600;">"limit_exceeded"</span> path. Explain why this is possible and what it reveals about statement coverage as a sole criterion.</li>
-    </ul>
-  </div>
 
-  <details class="drill-item" style="margin-top: 1.25rem;">
-    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
-      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
-      <span class="drill-q">Click to reveal Suggested Answer</span>
-    </summary>
-    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
-      <p><strong>Suggested Answer:</strong></p>
-    <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Test cases for 100% statement coverage <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
-    <p><strong>4 test cases.</strong> To execute every statement in this function, we must trigger every <span style="color: #d9534f; font-weight: 600;">return</span> statement. Because they are mutually exclusive branches, this requires exactly 4 test cases.</p>
-    
-    <p><strong><span style="color: #d9534f; font-weight: 600;">(b)</span> Test cases for 100% branch coverage <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
-    <p><strong>4 test cases.</strong> Because the function consists purely of guard clauses that exit early, traversing all <span style="color: #d9534f; font-weight: 600;">True</span> branches and the final <span style="color: #d9534f; font-weight: 600;">False</span> fall-through path automatically covers all branches.</p>
-    
-    <p><strong><span style="color: #d9534f; font-weight: 600;">(c)</span> Missing the path despite 100% statement coverage <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
-    <p><em>(Trick question / logical nuance)</em>: In this <strong>specific</strong> implementation, it is mathematically impossible to achieve 100% statement coverage and miss the <span style="color: #d9534f; font-weight: 600;">"limit_exceeded"</span> path, because <span style="color: #d9534f; font-weight: 600;">return "limit_exceeded"</span> is itself a statement. If the colleague missed it, they do not actually have 100% statement coverage. <br><br>However, if the code were written differently <span style="color: #d9534f; font-weight: 600;">(e.g., using a single status variable updated by multiple if statements without early returns)</span>, one could hit all statements while skipping a specific logical branch. This reveals that statement coverage is a weak metric because it only guarantees code was <em>executed</em>, not that all logical control-flow permutations were tested.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1.25rem;">
+          <div style="background:var(--bg);border:1px solid var(--border);padding:1rem;border-radius:8px;">
+            <div style="font-size:0.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;">(a) 100% Statement Coverage</div>
+            <div style="font-size:1.2rem;font-weight:800;color:var(--accent);font-family:var(--font-mono);margin:0.25rem 0 0.5rem;">4 Test Cases</div>
+            <p style="font-size:0.85rem;color:var(--text-muted);margin:0;line-height:1.5;">Each return statement is mutually exclusive. To execute all 4 return statements, you need exactly 4 test cases.</p>
+          </div>
+          <div style="background:var(--bg);border:1px solid var(--border);padding:1rem;border-radius:8px;">
+            <div style="font-size:0.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;">(b) 100% Branch Coverage</div>
+            <div style="font-size:1.2rem;font-weight:800;color:var(--accent);font-family:var(--font-mono);margin:0.25rem 0 0.5rem;">4 Test Cases</div>
+            <p style="font-size:0.85rem;color:var(--text-muted);margin:0;line-height:1.5;">Because all branches are early-exit guard clauses, the 4 tests that trigger the 3 True paths + 1 final False fall-through naturally cover 100% of branches.</p>
+          </div>
+        </div>
+
+        <!-- The Trick Question Callout -->
+        <div style="background:rgba(245,158,11,0.08);border-left:3px solid var(--amber);padding:1rem;border-radius:0 6px 6px 0;margin-top:1.25rem;font-size:0.88rem;line-height:1.6;">
+          <strong>🎯 Exam Gotcha (Part c):</strong> A colleague claims they achieved 100% statement coverage but missed <code>limit_exceeded</code>.  
+          In <em>this specific code</em>, that is <strong>mathematically impossible</strong> because <code>return "limit_exceeded"</code> is itself an executable statement! If they skipped that line, their statement coverage was not 100%.  
+          <em>General takeaway:</em> In non-guard code (where status flags are overwritten), statement coverage routinely misses entire logic branches.
+        </div>
+      </div>
+
+      <div style="text-align:right;margin:3rem 0 1rem;">
+        <button type="button" class="btn-stepper btn-stepper-next jump-stage-btn" data-target-stage="stage-2-mcdc-rules" style="padding:0.85rem 1.75rem;font-size:0.95rem;">
+          Proceed to Stage 2: MC/DC Rules →
+        </button>
+      </div>
     </div>
-  </details>
-</div>
 
-<!-- QUESTION 2 -->
-<div class="question-card" style="background: var(--bg-raised); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm); color: var(--text);">
-  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
-      <span class="drill-tag">🏛️ Official Q</span> MC/DC (4 P)
-    </h3>
-  </div>
-  
-  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
-    <p><em>Source: CH04_AdvTest_05_Cover_Mock_full.pdf</em></p>
-    
-    <p>FinCon applies this rule:</p>
-    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">if is_premium and (balance > 10000 or overdraft_enabled):
-    apply_bonus_rate()</div>
-    
-    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
-      <li>There are three conditions: <span style="color: #d9534f; font-weight: 600;">is_premium (P)</span>, <span style="color: #d9534f; font-weight: 600;">balance > 10000 (B)</span>, <span style="color: #d9534f; font-weight: 600;">overdraft_enabled (O)</span>.</li>
-    </ul>
-    
-    <p><em>Perform the following tasks:</em></p>
-    <ul style="list-style-type: circle; padding-left: 1.5rem; margin-bottom: 1rem;">
-      <li><span style="color: #d9534f; font-weight: 600;">(a)</span> How many test cases does MC/DC require at minimum?</li>
-      <li><span style="color: #d9534f; font-weight: 600;">(b)</span> Construct a minimal MC/DC test suite. For each test case, show which condition's independence it demonstrates.</li>
-      <li><span style="color: #d9534f; font-weight: 600;">(c)</span> Explain why condition coverage alone would not be sufficient here.</li>
-    </ul>
-  </div>
+    <!-- =====================================================================
+         STAGE 2: MC/DC RULES
+         ===================================================================== -->
+    <div class="stage-view" id="stage-2-mcdc-rules">
+      <div class="chapter-head">
+        <span class="chapter-num">Stage 2</span>
+        <h2>MC/DC: The Aviation Safety Standard</h2>
+      </div>
+      <p class="chapter-dek">Why aviation standard DO-178C mandates MC/DC, how the N+1 formula works, and how to verify condition independence in seconds.</p>
 
-  <details class="drill-item" style="margin-top: 1.25rem;">
-    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
-      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
-      <span class="drill-q">Click to reveal Suggested Answer</span>
-    </summary>
-    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
-      <p><strong>Suggested Answer:</strong></p>
-    <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Minimum MC/DC test cases <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
-    <p>For N independent conditions, Modified Condition/Decision Coverage <span style="color: #d9534f; font-weight: 600;">(MC/DC)</span> requires <strong>N + 1</strong> test cases. Here N=3, so <strong>4 test cases</strong> are required at minimum.</p>
-    
-    <p><strong><span style="color: #d9534f; font-weight: 600;">(b)</span> Minimal MC/DC suite <span style="color: #d9534f; font-weight: 600;">(2 P)</span>:</strong></p>
-    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">TC   P       B       O       | Outcome
-1    True    True    False   | True
-2    False   True    False   | False
-3    True    False   False   | False
-4    True    False   True    | True</div>
-    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
-      <li><strong>Independence of P:</strong> Pair <strong>TC 1 and TC 2</strong> <span style="color: #d9534f; font-weight: 600;">(P changes, B and O held constant, outcome changes)</span>.</li>
-      <li><strong>Independence of B:</strong> Pair <strong>TC 1 and TC 3</strong> <span style="color: #d9534f; font-weight: 600;">(B changes, P and O held constant, outcome changes)</span>.</li>
-      <li><strong>Independence of O:</strong> Pair <strong>TC 3 and TC 4</strong> <span style="color: #d9534f; font-weight: 600;">(O changes, P and B held constant, outcome changes)</span>.</li>
-    </ul>
-    
-    <p><strong><span style="color: #d9534f; font-weight: 600;">(c)</span> Insufficiency of Condition Coverage <span style="color: #d9534f; font-weight: 600;">(1 P)</span>:</strong></p>
-    <p>Condition coverage merely requires that each individual condition <span style="color: #d9534f; font-weight: 600;">(P, B, O)</span> evaluates to both True and False at least once across the suite. It does <em>not</em> guarantee that the condition actually affects the final decision, nor does it guarantee that the overall decision itself takes on both True and False outcomes.</p>
+      <div class="quote-card" style="margin:1.5rem 0;padding:1.25rem 1.5rem;background:rgba(16,185,129,0.08);border-left:4px solid var(--accent);border-radius:0 var(--radius-md) var(--radius-md) 0;">
+        "Each condition has been shown to independently affect the decision outcome by varying just that condition while holding all other possible conditions fixed."
+        <span style="display:block;margin-top:0.5rem;font-weight:700;font-size:0.82rem;text-transform:uppercase;color:var(--accent-ink);">— FAA RTCA DO-178C (Level A Aviation Standard)</span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin:1.5rem 0;">
+        <div style="background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem;">
+          <h4 style="margin:0 0 0.5rem;color:var(--accent);font-size:1rem;">Rule 1: The Size Formula (N + 1)</h4>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin:0;">
+            Instead of testing all $2^N$ combinations (which explodes exponentially), MC/DC achieves rigorous safety with a linear minimum of <strong>N + 1 test cases</strong> for $N$ conditions.
+          </p>
+          <div style="background:var(--code-bg);border:1px solid var(--border);border-radius:4px;padding:0.5rem 0.75rem;font-family:var(--font-mono);font-size:0.85rem;margin-top:0.75rem;">
+            N=2 conditions → Min 3 tests<br>
+            N=3 conditions → Min 4 tests<br>
+            N=4 conditions → Min 5 tests
+          </div>
+        </div>
+
+        <div style="background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem;">
+          <h4 style="margin:0 0 0.5rem;color:var(--accent);font-size:1rem;">Rule 2: The Independence Pair</h4>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin:0;">
+            To prove condition $X$ is independently influential, you must locate two test cases $(TC_a, TC_b)$ where:
+          </p>
+          <ul style="font-size:0.85rem;color:var(--text);line-height:1.6;padding-left:1.2rem;margin:0.5rem 0 0;">
+            <li>Condition $X$ flips ($0 \leftrightarrow 1$)</li>
+            <li>All other conditions remain <strong>identical</strong></li>
+            <li>The final decision outcome <strong>flips</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="background:var(--bg-raised);border:1px solid var(--border);border-left:4px solid #F43F5E;border-radius:var(--radius-md);padding:1.25rem;margin:1.5rem 0;">
+        <h4 style="margin:0 0 0.5rem;color:#F43F5E;font-size:0.95rem;">⚠️ Why Condition Coverage Alone Fails</h4>
+        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin:0;">
+          Condition Coverage only demands that every sub-condition evaluates to True and False at least once. It does <em>not</em> check whether that condition actually reached the final output or was masked by short-circuit operators. MC/DC proves the condition has real control.
+        </p>
+      </div>
+
+      <div style="text-align:right;margin:3rem 0 1rem;">
+        <button type="button" class="btn-stepper btn-stepper-next jump-stage-btn" data-target-stage="stage-3-mcdc-table" style="padding:0.85rem 1.75rem;font-size:0.95rem;">
+          Proceed to Stage 3: FinCon MC/DC Table →
+        </button>
+      </div>
     </div>
-  </details>
-</div>
 
-<!-- QUESTION 3 -->
-<div class="question-card" style="background: var(--bg-raised); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm); color: var(--text);">
-  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-    <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-color);">
-      <span class="drill-tag">🏛️ Official Q</span> MOCKS (4 P)
-    </h3>
-  </div>
-  
-  <div class="question-prompt" style="font-size: 0.95rem; line-height: 1.6;">
-    <p><em>Source: CH04_AdvTest_05_Cover_Mock_full.pdf</em></p>
-    
-    <p>You are given the following function:</p>
-    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">def send_transfer(amount: int, recipient_id: str, db, notifier) -> str:
+    <!-- =====================================================================
+         STAGE 3: FINCON MC/DC TABLE
+         ===================================================================== -->
+    <div class="stage-view" id="stage-3-mcdc-table">
+      <div class="chapter-head">
+        <span class="chapter-num">Stage 3</span>
+        <h2>The FinCon MC/DC Decision Table</h2>
+      </div>
+      <p class="chapter-dek">Step-by-step construction of the official 4-point exam question with full truth values and independence pair verification.</p>
+
+      <div style="background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem 1.5rem;margin:1.5rem 0;">
+        <span class="card-badge">FinCon Bonus Rule</span>
+        <div style="background:var(--code-bg);border:1px solid var(--border);border-radius:6px;padding:0.85rem 1.1rem;font-family:var(--font-mono);font-size:0.9em;margin:0.5rem 0 1rem;">
+          if is_premium and (balance > 10000 or overdraft_enabled):<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;apply_bonus_rate()
+        </div>
+        <p style="font-size:0.9rem;color:var(--text-muted);margin:0;">
+          <strong>Variables:</strong> $P = \text{is\_premium}$, $B = (\text{balance} > 10000)$, $O = \text{overdraft\_enabled}$.<br>
+          <strong>Formula:</strong> $\text{Decision} = P \text{ and } (B \text{ or } O)$.
+        </p>
+      </div>
+
+      <!-- MC/DC Table -->
+      <div style="background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-md);overflow-x:auto;margin:1.5rem 0;">
+        <table style="width:100%;border-collapse:collapse;font-size:0.88rem;text-align:center;">
+          <thead>
+            <tr style="background:rgba(255,255,255,0.03);border-bottom:2px solid var(--border);">
+              <th style="padding:0.75rem 1rem;text-align:left;">Test Case</th>
+              <th style="padding:0.75rem 1rem;">P (Premium)</th>
+              <th style="padding:0.75rem 1rem;">B (Balance &gt; 10k)</th>
+              <th style="padding:0.75rem 1rem;">O (Overdraft)</th>
+              <th style="padding:0.75rem 1rem;">(B or O)</th>
+              <th style="padding:0.75rem 1rem;color:var(--accent);">Decision Outcome</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:0.65rem 1rem;font-weight:700;text-align:left;font-family:var(--font-mono);">TC1</td>
+              <td style="padding:0.65rem 1rem;color:var(--accent);font-weight:700;">True</td>
+              <td style="padding:0.65rem 1rem;color:var(--accent);font-weight:700;">True</td>
+              <td style="padding:0.65rem 1rem;color:#F43F5E;">False</td>
+              <td style="padding:0.65rem 1rem;">True</td>
+              <td style="padding:0.65rem 1rem;color:var(--accent);font-weight:800;">True (Bonus Applied)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:0.65rem 1rem;font-weight:700;text-align:left;font-family:var(--font-mono);">TC2</td>
+              <td style="padding:0.65rem 1rem;color:#F43F5E;font-weight:700;">False</td>
+              <td style="padding:0.65rem 1rem;color:var(--accent);font-weight:700;">True</td>
+              <td style="padding:0.65rem 1rem;color:#F43F5E;">False</td>
+              <td style="padding:0.65rem 1rem;">True</td>
+              <td style="padding:0.65rem 1rem;color:#F43F5E;font-weight:800;">False (No Bonus)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:0.65rem 1rem;font-weight:700;text-align:left;font-family:var(--font-mono);">TC3</td>
+              <td style="padding:0.65rem 1rem;color:var(--accent);font-weight:700;">True</td>
+              <td style="padding:0.65rem 1rem;color:#F43F5E;font-weight:700;">False</td>
+              <td style="padding:0.65rem 1rem;color:#F43F5E;">False</td>
+              <td style="padding:0.65rem 1rem;">False</td>
+              <td style="padding:0.65rem 1rem;color:#F43F5E;font-weight:800;">False (No Bonus)</td>
+            </tr>
+            <tr>
+              <td style="padding:0.65rem 1rem;font-weight:700;text-align:left;font-family:var(--font-mono);">TC4</td>
+              <td style="padding:0.65rem 1rem;color:var(--accent);font-weight:700;">True</td>
+              <td style="padding:0.65rem 1rem;color:#F43F5E;font-weight:700;">False</td>
+              <td style="padding:0.65rem 1rem;color:var(--accent);font-weight:700;">True</td>
+              <td style="padding:0.65rem 1rem;">True</td>
+              <td style="padding:0.65rem 1rem;color:var(--accent);font-weight:800;">True (Bonus Applied)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Verification Cards -->
+      <h3 style="margin:2rem 0 1rem;font-size:1.05rem;">Independence Proof Verification:</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;">
+        <div style="background:var(--bg-raised);border:1px solid var(--border);border-left:3px solid var(--accent);padding:1rem;border-radius:6px;">
+          <strong style="color:var(--accent);display:block;margin-bottom:0.25rem;">Proving Independence of P:</strong>
+          <span style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text);">Pair TC1 &amp; TC2</span>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin:0.4rem 0 0;line-height:1.5;">P flips (T→F). B is held at True, O is held at False. Outcome flips from True to False. ✅</p>
+        </div>
+        <div style="background:var(--bg-raised);border:1px solid var(--border);border-left:3px solid var(--accent);padding:1rem;border-radius:6px;">
+          <strong style="color:var(--accent);display:block;margin-bottom:0.25rem;">Proving Independence of B:</strong>
+          <span style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text);">Pair TC1 &amp; TC3</span>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin:0.4rem 0 0;line-height:1.5;">B flips (T→F). P is held at True, O is held at False. Outcome flips from True to False. ✅</p>
+        </div>
+        <div style="background:var(--bg-raised);border:1px solid var(--border);border-left:3px solid var(--accent);padding:1rem;border-radius:6px;">
+          <strong style="color:var(--accent);display:block;margin-bottom:0.25rem;">Proving Independence of O:</strong>
+          <span style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text);">Pair TC3 &amp; TC4</span>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin:0.4rem 0 0;line-height:1.5;">O flips (F→T). P is held at True, B is held at False. Outcome flips from False to True. ✅</p>
+        </div>
+      </div>
+
+      <div style="text-align:right;margin:3rem 0 1rem;">
+        <button type="button" class="btn-stepper btn-stepper-next jump-stage-btn" data-target-stage="stage-4-mocks" style="padding:0.85rem 1.75rem;font-size:0.95rem;">
+          Proceed to Stage 4: Python Mocks →
+        </button>
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         STAGE 4: PYTHON MOCKS
+         ===================================================================== -->
+    <div class="stage-view" id="stage-4-mocks">
+      <div class="chapter-head">
+        <span class="chapter-num">Stage 4</span>
+        <h2>Python Mocking (`unittest.mock`)</h2>
+      </div>
+      <p class="chapter-dek">Testing unit functions in complete isolation using MagicMock: verifying side-effect calls, return values, and non-interactions.</p>
+
+      <div style="background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem;margin:1.5rem 0;">
+        <span class="card-badge">Target Function Under Test</span>
+        <div style="background:var(--code-bg);border:1px solid var(--border);border-radius:6px;padding:0.85rem 1.1rem;font-family:var(--font-mono);font-size:0.85em;margin:0.5rem 0;line-height:1.7;">def send_transfer(amount: int, recipient_id: str, db, notifier) -> str:
     recipient = db.find_account(recipient_id)
     if recipient is None:
         return "recipient_not_found"
@@ -510,67 +371,271 @@
     db.credit_recipient(recipient, amount)
     notifier.send_email(recipient.email, amount)
     return "transfer_complete"</div>
-    
-    <p><em>Perform the following tasks:</em></p>
-    <ul style="list-style-type: circle; padding-left: 1.5rem; margin-bottom: 1rem;">
-      <li><span style="color: #d9534f; font-weight: 600;">(a)</span> Write a unittest test case using <span style="color: #d9534f; font-weight: 600;">MagicMock</span> that verifies the happy path: both <span style="color: #d9534f; font-weight: 600;">debit_sender</span> and <span style="color: #d9534f; font-weight: 600;">credit_recipient</span> are called, and <span style="color: #d9534f; font-weight: 600;">notifier.send_email</span> is called with the correct recipient email.</li>
-      <li><span style="color: #d9534f; font-weight: 600;">(b)</span> Write a test case that verifies that when <span style="color: #d9534f; font-weight: 600;">db.find_account</span> returns <span style="color: #d9534f; font-weight: 600;">None</span>, neither <span style="color: #d9534f; font-weight: 600;">debit_sender</span> nor <span style="color: #d9534f; font-weight: 600;">credit_recipient</span> is called.</li>
-    </ul>
-  </div>
+      </div>
 
-  <details class="drill-item" style="margin-top: 1.25rem;">
-    <summary style="cursor: pointer; font-weight: 600; color: #0c7a73; padding: 0.75rem 1rem; background: rgba(12, 122, 115, 0.08); border-radius: 6px;">
-      <span class="drill-tag">👁️ Model Answer &amp; Rubric</span>
-      <span class="drill-q">Click to reveal Suggested Answer</span>
-    </summary>
-    <div class="drill-a" style="margin-top: 1rem; padding: 0.5rem 0;">
-      <p><strong>Suggested Answer:</strong></p>
-    <p><strong><span style="color: #d9534f; font-weight: 600;">(a)</span> Happy Path Mock Test <span style="color: #d9534f; font-weight: 600;">(2 P)</span>:</strong></p>
-    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">from unittest.mock import MagicMock
+      <!-- Code Box Happy Path -->
+      <div style="background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.5rem;margin:1.5rem 0;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+          <h4 style="margin:0;font-size:1rem;color:var(--accent);">Task (a): Happy Path Test (2 Points)</h4>
+          <span style="font-family:var(--font-mono);font-size:0.75rem;background:var(--accent-soft);color:var(--accent-ink);padding:0.2rem 0.5rem;border-radius:4px;">Assert Called</span>
+        </div>
+        <p style="font-size:0.88rem;color:var(--text-muted);margin:0 0 1rem;line-height:1.6;">
+          Verifies that when the recipient exists, <code>debit_sender</code>, <code>credit_recipient</code>, and <code>notifier.send_email</code> are executed with the exact expected arguments.
+        </p>
+        <div style="background:var(--code-bg);border:1px solid var(--border);border-radius:6px;padding:1rem;font-family:var(--font-mono);font-size:0.85em;line-height:1.7;overflow-x:auto;">from unittest.mock import MagicMock
 
 def test_send_transfer_happy_path():
-    # 1. Setup mocks
+    # 1. Arrange: Setup mock dependencies
     db = MagicMock()
     notifier = MagicMock()
     
     mock_recipient = MagicMock()
     mock_recipient.email = "test@example.com"
-    db.find_account.return_value = mock_recipient
+    db.find_account.return_value = mock_recipient  # Canned response
     
-    # 2. Execute
+    # 2. Act: Execute transfer
     result = send_transfer(500, "rec_123", db, notifier)
     
-    # 3. Assert outputs and interactions
+    # 3. Assert: Verify outcome & call interactions
     assert result == "transfer_complete"
     db.debit_sender.assert_called_once_with(500)
     db.credit_recipient.assert_called_once_with(mock_recipient, 500)
     notifier.send_email.assert_called_once_with("test@example.com", 500)</div>
-    
-    <p><strong><span style="color: #d9534f; font-weight: 600;">(b)</span> Negative Path Mock Test <span style="color: #d9534f; font-weight: 600;">(2 P)</span>:</strong></p>
-    <div style="background: var(--code-bg); padding: 1rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85em; margin: 0.5rem 0 1rem 0; overflow-x: auto; white-space: pre;">def test_send_transfer_recipient_not_found():
-    # 1. Setup mocks
+      </div>
+
+      <!-- Code Box Negative Path -->
+      <div style="background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.5rem;margin:1.5rem 0;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+          <h4 style="margin:0;font-size:1rem;color:#F43F5E;">Task (b): Negative Path Test (2 Points)</h4>
+          <span style="font-family:var(--font-mono);font-size:0.75rem;background:rgba(244,63,94,0.14);color:#F43F5E;padding:0.2rem 0.5rem;border-radius:4px;">Assert Not Called</span>
+        </div>
+        <p style="font-size:0.88rem;color:var(--text-muted);margin:0 0 1rem;line-height:1.6;">
+          Verifies safety: when <code>db.find_account</code> returns <code>None</code>, money must NOT move and no emails must be sent.
+        </p>
+        <div style="background:var(--code-bg);border:1px solid var(--border);border-radius:6px;padding:1rem;font-family:var(--font-mono);font-size:0.85em;line-height:1.7;overflow-x:auto;">def test_send_transfer_recipient_not_found():
+    # 1. Arrange: Simulate missing recipient
     db = MagicMock()
     notifier = MagicMock()
     db.find_account.return_value = None
     
-    # 2. Execute
+    # 2. Act: Execute transfer with bad ID
     result = send_transfer(500, "invalid_id", db, notifier)
     
-    # 3. Assert outputs and non-interactions
+    # 3. Assert: Must return error AND must NOT call financial mutations
     assert result == "recipient_not_found"
     db.debit_sender.assert_not_called()
     db.credit_recipient.assert_not_called()
     notifier.send_email.assert_not_called()</div>
-    </div>
-  </details>
-</div>
+      </div>
 
-</div>
-    <footer class="page-footer">
-      <span><a href="ch4.html">← Back to Chapter</a></span>
-    </footer>
-  </div>
-</div>
-<script src="assets/site.js?v=38" defer></script>
+      <div style="text-align:right;margin:3rem 0 1rem;">
+        <button type="button" class="btn-stepper btn-stepper-next jump-stage-btn" data-target-stage="stage-5-drills" style="padding:0.85rem 1.75rem;font-size:0.95rem;">
+          Proceed to Stage 5: Exam Drills →
+        </button>
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         STAGE 5: EXAM DRILLS
+         ===================================================================== -->
+    <div class="stage-view" id="stage-5-drills">
+      <div class="chapter-head">
+        <span class="chapter-num">Stage 5</span>
+        <h2>Exam Mastery &amp; Interactive Drills</h2>
+      </div>
+      <p class="chapter-dek">Test yourself on the official Chapter 4 exam questions with instant feedback.</p>
+
+      <!-- Quiz Card 1 -->
+      <div class="cert-quiz-card">
+        <div class="cert-quiz-badge">Question 1 · Coverage Subsumption · 3 Pts</div>
+        <div class="cert-quiz-question">Which coverage criterion subsumes Branch (Decision) Coverage?</div>
+        <div class="cert-quiz-options">
+          <button type="button" class="cert-opt" data-correct="false" data-reason="Statement coverage is strictly weaker than Branch coverage. 100% statement coverage does NOT guarantee 100% branch coverage.">
+            <span class="cert-opt-letter">A</span>
+            <span>Statement Coverage</span>
+          </button>
+          <button type="button" class="cert-opt" data-correct="true" data-reason="Correct! MC/DC subsumes Branch Coverage. Reaching 100% MC/DC guarantees that every branch has evaluated to both True and False.">
+            <span class="cert-opt-letter">B</span>
+            <span>Modified Condition / Decision Coverage (MC/DC)</span>
+          </button>
+          <button type="button" class="cert-opt" data-correct="false" data-reason="Condition coverage checks sub-conditions in isolation, and does not subsume Branch coverage.">
+            <span class="cert-opt-letter">C</span>
+            <span>Condition Coverage</span>
+          </button>
+        </div>
+        <div class="cert-feedback"></div>
+      </div>
+
+      <!-- Quiz Card 2 -->
+      <div class="cert-quiz-card">
+        <div class="cert-quiz-badge">Question 2 · MC/DC Sizing Rule · 1 Pt</div>
+        <div class="cert-quiz-question">For an expression with N=3 boolean conditions, what is the theoretical minimum number of test cases required for 100% MC/DC?</div>
+        <div class="cert-quiz-options">
+          <button type="button" class="cert-opt" data-correct="false" data-reason="3 test cases is N, which is insufficient to demonstrate both states and the independence of each condition.">
+            <span class="cert-opt-letter">A</span>
+            <span>3 test cases (N)</span>
+          </button>
+          <button type="button" class="cert-opt" data-correct="true" data-reason="Correct! The fundamental sizing law of MC/DC states that minimum test cases = N + 1. For N=3, exactly 4 test cases are needed.">
+            <span class="cert-opt-letter">B</span>
+            <span>4 test cases (N + 1)</span>
+          </button>
+          <button type="button" class="cert-opt" data-correct="false" data-reason="8 is 2ⁿ (Multiple Condition Coverage). MC/DC exists specifically to avoid this exponential test count.">
+            <span class="cert-opt-letter">C</span>
+            <span>8 test cases (2ᴺ)</span>
+          </button>
+        </div>
+        <div class="cert-feedback"></div>
+      </div>
+
+      <!-- Quiz Card 3 -->
+      <div class="cert-quiz-card">
+        <div class="cert-quiz-badge">Question 3 · MC/DC Independence Pair · 2 Pts</div>
+        <div class="cert-quiz-question">In `is_premium and (balance > 10000 or overdraft_enabled)`, which test pair proves the independence of `is_premium` (P)?</div>
+        <div class="cert-quiz-options">
+          <button type="button" class="cert-opt" data-correct="true" data-reason="Correct! Between TC1 (True, True, False) and TC2 (False, True, False), only P changes while B and O stay identical, and the outcome flips from True to False.">
+            <span class="cert-opt-letter">A</span>
+            <span>TC1 (True, True, False) vs TC2 (False, True, False)</span>
+          </button>
+          <button type="button" class="cert-opt" data-correct="false" data-reason="TC1 vs TC3 tests condition B (balance > 10000), not P.">
+            <span class="cert-opt-letter">B</span>
+            <span>TC1 (True, True, False) vs TC3 (True, False, False)</span>
+          </button>
+          <button type="button" class="cert-opt" data-correct="false" data-reason="TC3 vs TC4 tests condition O (overdraft_enabled), not P.">
+            <span class="cert-opt-letter">C</span>
+            <span>TC3 (True, False, False) vs TC4 (True, False, True)</span>
+          </button>
+        </div>
+        <div class="cert-feedback"></div>
+      </div>
+
+      <!-- Quiz Card 4 -->
+      <div class="cert-quiz-card">
+        <div class="cert-quiz-badge">Question 4 · Python Mocking Safety · 2 Pts</div>
+        <div class="cert-quiz-question">When verifying the negative path where account lookup fails, which assertion method ensures that no funds were withdrawn?</div>
+        <div class="cert-quiz-options">
+          <button type="button" class="cert-opt" data-correct="false" data-reason="assert_called() checks that the function WAS called at least once — the exact opposite of what we want to verify.">
+            <span class="cert-opt-letter">A</span>
+            <span>db.debit_sender.assert_called()</span>
+          </button>
+          <button type="button" class="cert-opt" data-correct="true" data-reason="Correct! db.debit_sender.assert_not_called() proves that the mutation method was never invoked during the execution.">
+            <span class="cert-opt-letter">B</span>
+            <span>db.debit_sender.assert_not_called()</span>
+          </button>
+          <button type="button" class="cert-opt" data-correct="false" data-reason="assert_called_with(0) checks that debit_sender was called with amount 0. We want to prove it was not called at all.">
+            <span class="cert-opt-letter">C</span>
+            <span>db.debit_sender.assert_called_with(0)</span>
+          </button>
+        </div>
+        <div class="cert-feedback"></div>
+      </div>
+
+      <!-- Full Official Questions Section -->
+      <div style="margin-top:3.5rem;padding-top:2rem;border-top:1px solid var(--border);">
+        <h3 style="margin:0 0 1rem;">📋 Complete Official Exam Papers (CH04 Block B)</h3>
+        <p style="color:var(--text-muted);font-size:0.92rem;margin:0 0 1.5rem;">The official questions with model answers and scoring breakdown.</p>
+
+        <!-- Official Q1 -->
+        <div style="background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem;margin-bottom:1.5rem;">
+          <h4 style="margin:0 0 0.5rem;display:flex;align-items:center;gap:0.5rem;">
+            <span class="cert-quiz-badge" style="margin:0;">Q1 · COVERAGE SUBSUMPTION (3 P)</span>
+          </h4>
+          <p style="font-size:0.9rem;color:var(--text-muted);margin:0 0 0.75rem;">Guard clause `transfer(amount, target_exists, daily_limit)` analysis.</p>
+          <details class="drill-item" style="margin-top:0.75rem;">
+            <summary style="cursor:pointer;font-weight:600;padding:0.75rem 1rem;background:var(--accent-soft);border-radius:6px;">
+              <span class="drill-tag">👁️ Model Answer</span>
+              <span class="drill-q">Click to reveal</span>
+            </summary>
+            <div class="drill-a" style="margin-top:1rem;padding:0.5rem 0;">
+              <p><strong>(a) Statement Coverage (1 P):</strong> 4 test cases. Each return statement is mutually exclusive, so hitting all statements requires triggering each return path.</p>
+              <p><strong>(b) Branch Coverage (1 P):</strong> 4 test cases. All branches are guard clauses with early returns, so traversing all 3 True paths + 1 False fall-through covers all branches.</p>
+              <p><strong>(c) Nuance (1 P):</strong> In this specific code, missing <code>limit_exceeded</code> means statement coverage is not 100% because that return statement was skipped. In general code, however, statement coverage misses unwritten else branches.</p>
+            </div>
+          </details>
+        </div>
+
+        <!-- Official Q2 -->
+        <div style="background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem;margin-bottom:1.5rem;">
+          <h4 style="margin:0 0 0.5rem;display:flex;align-items:center;gap:0.5rem;">
+            <span class="cert-quiz-badge" style="margin:0;">Q2 · MC/DC DECISION TABLE (4 P)</span>
+          </h4>
+          <p style="font-size:0.9rem;color:var(--text-muted);margin:0 0 0.75rem;">`if is_premium and (balance > 10000 or overdraft_enabled)`</p>
+          <details class="drill-item" style="margin-top:0.75rem;">
+            <summary style="cursor:pointer;font-weight:600;padding:0.75rem 1rem;background:var(--accent-soft);border-radius:6px;">
+              <span class="drill-tag">👁️ Model Answer</span>
+              <span class="drill-q">Click to reveal</span>
+            </summary>
+            <div class="drill-a" style="margin-top:1rem;padding:0.5rem 0;">
+              <p><strong>(a) Minimum Tests (1 P):</strong> N + 1 = 3 + 1 = <strong>4 test cases</strong>.</p>
+              <p><strong>(b) Minimal Suite &amp; Independence Pairs (2 P):</strong></p>
+              <ul>
+                <li>TC1 (T, T, F) &amp; TC2 (F, T, F) → proves <strong>is_premium</strong></li>
+                <li>TC1 (T, T, F) &amp; TC3 (T, F, F) → proves <strong>balance &gt; 10000</strong></li>
+                <li>TC3 (T, F, F) &amp; TC4 (T, F, T) → proves <strong>overdraft_enabled</strong></li>
+              </ul>
+              <p><strong>(c) Condition Coverage Flaw (1 P):</strong> Condition coverage only verifies that individual conditions were evaluated to True and False at least once; it does not ensure that the condition actually determined the decision outcome.</p>
+            </div>
+          </details>
+        </div>
+
+        <!-- Official Q3 -->
+        <div style="background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem;margin-bottom:1.5rem;">
+          <h4 style="margin:0 0 0.5rem;display:flex;align-items:center;gap:0.5rem;">
+            <span class="cert-quiz-badge" style="margin:0;">Q3 · PYTHON MOCKS (4 P)</span>
+          </h4>
+          <p style="font-size:0.9rem;color:var(--text-muted);margin:0 0 0.75rem;">`send_transfer(amount, recipient_id, db, notifier)` unit test suite.</p>
+          <details class="drill-item" style="margin-top:0.75rem;">
+            <summary style="cursor:pointer;font-weight:600;padding:0.75rem 1rem;background:var(--accent-soft);border-radius:6px;">
+              <span class="drill-tag">👁️ Model Answer</span>
+              <span class="drill-q">Click to reveal</span>
+            </summary>
+            <div class="drill-a" style="margin-top:1rem;padding:0.5rem 0;">
+              <p><strong>(a) Happy Path Test (2 P):</strong> Configure <code>db.find_account.return_value = mock_recipient</code>, call <code>send_transfer</code>, verify <code>assert result == "transfer_complete"</code>, <code>db.debit_sender.assert_called_once_with(500)</code>, <code>db.credit_recipient.assert_called_once_with(mock_recipient, 500)</code>, and <code>notifier.send_email.assert_called_once_with(mock_recipient.email, 500)</code>.</p>
+              <p><strong>(b) Negative Path Test (2 P):</strong> Configure <code>db.find_account.return_value = None</code>, call <code>send_transfer</code>, verify <code>assert result == "recipient_not_found"</code>, <code>db.debit_sender.assert_not_called()</code>, <code>db.credit_recipient.assert_not_called()</code>, and <code>notifier.send_email.assert_not_called()</code>.</p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+
+      <!-- Navigation Footer -->
+      <div style="display:flex;justify-content:space-between;margin:3rem 0 1rem;flex-wrap:wrap;gap:1rem;">
+        <a href="ch3_official.html" class="btn-stepper btn-stepper-prev" style="padding:0.85rem 1.75rem;font-size:0.95rem;text-decoration:none;">
+          ← Back to Ch3 Official Qs
+        </a>
+        <a href="index.html" class="btn-stepper btn-stepper-next" style="padding:0.85rem 1.75rem;font-size:0.95rem;text-decoration:none;">
+          Course Hub Overview →
+        </a>
+      </div>
+
+    </div><!-- /stage-5-drills -->
+
+  </div><!-- /page -->
+</div><!-- /page-shell -->
+
+<!-- MOBILE BOTTOM DOCK -->
+<nav class="mobile-bottom-dock" aria-label="Stage navigation">
+  <button type="button" class="dock-item jump-stage-btn active" data-target-stage="stage-1-subsumption">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    Ladder
+  </button>
+  <button type="button" class="dock-item jump-stage-btn" data-target-stage="stage-2-mcdc-rules">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    Rules
+  </button>
+  <button type="button" class="dock-item jump-stage-btn" data-target-stage="stage-3-mcdc-table">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+    Table
+  </button>
+  <button type="button" class="dock-item jump-stage-btn" data-target-stage="stage-4-mocks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31M14 9.3V1.99M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0"/></svg>
+    Mocks
+  </button>
+  <button type="button" class="dock-item jump-stage-btn" data-target-stage="stage-5-drills">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    Drills
+  </button>
+</nav>
+
+<script src="assets/site.js?v=50"></script>
 </body>
 </html>
